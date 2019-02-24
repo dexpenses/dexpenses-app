@@ -1,31 +1,49 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <v-app>
+    <v-toolbar app>
+      <v-toolbar-title class="headline text-uppercase">
+        <span>DexmoHQ</span>
+        <span class="font-weight-light">DEXPENSES</span>
+      </v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-btn
+        flat
+        href="https://github.com/vuetifyjs/vuetify/releases/latest"
+        target="_blank"
+      >
+        <span class="mr-2" v-if="user">{{ user.displayName }}</span>
+      </v-btn>
+    </v-toolbar>
+
+    <v-content>
+      <router-view/>
+    </v-content>
+  </v-app>
 </template>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-}
+<script>
+import { mapActions, mapState } from 'vuex';
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+export default {
+  name: 'App',
+  data() {
+    return {
+      //
+    };
+  },
+  computed: {
+    ...mapState(['user', 'keywords']),
+  },
+  methods: {
+    ...mapActions(['ensureLoggedIn']),
+  },
+  created() {
+    this.ensureLoggedIn();
+  },
+  watch: {
+    keywords(v) {
+      console.log(v);
+    },
+  },
+};
+</script>
