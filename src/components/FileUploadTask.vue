@@ -32,6 +32,9 @@
     </div>
 </template>
 <script>
+import firebase from 'firebase/app';
+import { mapState } from 'vuex';
+
 export default {
   name: 'fileUploadTask',
   props: ['task'],
@@ -42,6 +45,7 @@ export default {
     };
   },
   computed: {
+    ...mapState(['user']),
     percentage() {
       return (this.snapshot.bytesTransferred / this.snapshot.totalBytes) * 100;
     },
@@ -56,6 +60,14 @@ export default {
       console.error(error);
     }, async () => {
       this.downloadUrl = await this.task.snapshot.ref.getDownloadURL();
+      firebase.firestore()
+        .collection('receiptsByUser').doc(this.user.uid).collection('receipts')
+        .doc(this.task.snapshot.ref.name)
+        .set({
+          downloadUrl: this.downloadUrl,
+        }, {
+          merge: true,
+        });
     });
   },
   filters: {
