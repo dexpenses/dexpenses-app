@@ -2,6 +2,7 @@ import * as functions from 'firebase-functions';
 import * as vision from '@google-cloud/vision';
 import * as admin from 'firebase-admin';
 import * as path from 'path';
+import extractorPipeline from './extract/pipeline';
 
 admin.initializeApp();
 
@@ -11,12 +12,7 @@ export const detectText = functions.storage.object().onFinalize(async object => 
   }
   const userId = path.basename(path.dirname(object.name));
   const fileName = path.basename(object.name);
-  const [downloadUrl] = await admin.storage().bucket(object.bucket).file(object.name).getSignedUrl({
-    action: 'read',
-    expires: '03-09-2491'
-  });
   console.log('OCR', userId, fileName);
-
   const client = new vision.ImageAnnotatorClient();
   const [result] = await client.documentTextDetection(`gs://${object.bucket}/${object.name}`);
   const fullTextAnnotation = result.fullTextAnnotation;
@@ -25,8 +21,21 @@ export const detectText = functions.storage.object().onFinalize(async object => 
     .doc(fileName)
     .set(
       {
-        downloadUrl,
         text: fullTextAnnotation.text
       }
     );
 });
+
+export const analyseReceiptText = functions.firestore.document('receiptTextsByUser/{userId}/receiptTexts/{receiptId}')
+  .onCreate((snap, context) => {
+    const data = snap.data();
+    const result = extractorPipeline((data || {}).text);
+    return admin.firestore()
+      .collection('receiptsByUser').doc(context.params.userId)
+      .collection('receipts').doc(context.params.receiptId)
+      .set({
+        result
+      }, {
+          merge: true,
+        });
+  });
