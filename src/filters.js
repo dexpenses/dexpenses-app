@@ -21,3 +21,16 @@ Vue.filter('dataSizeProgress', ([value, total]) => {
   const [i, totalUnitValue] = pickUnit(total);
   return `${(value / (1000 ** i)).toFixed(2)}/${totalUnitValue.toFixed(2)} ${dataSizes[i]}`;
 });
+
+Vue.filter('humanReadableTime', (value) => {
+  let date = value;
+  if (value.toDate) {
+    date = value.toDate();
+  }
+  return date.toLocaleDateString();
+});
+
+const currencies = {
+  EUR: '€',
+};
+Vue.filter('currency', ({ value, currency }) => `${value.toFixed(2)} ${currencies[currency] || currency}`);

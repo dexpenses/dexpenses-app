@@ -8,7 +8,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     user: null,
-    keywords: [],
+    receipts: [],
   },
   getters: {
     isAuthenticated: state => state.user != null,
@@ -20,8 +20,8 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    loadReceipts: firebaseAction(({ bindFirebaseRef }) => {
-      bindFirebaseRef('keywords', firebase.firestore().collection('keywords'))
+    loadReceipts: firebaseAction(({ bindFirebaseRef, state }) => {
+      bindFirebaseRef('receipts', firebase.firestore().collection('receiptsByUser').doc(state.user.uid).collection('receipts'))
         .then(() => console.log('successfully bound ref'))
         .catch(error => console.error(error));
     }),
