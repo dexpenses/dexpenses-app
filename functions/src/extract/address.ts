@@ -1,11 +1,14 @@
 import { Extractor } from "./extractor";
 import { Receipt } from "./receipt";
+import { DependsOn } from "./DependsOn";
+import { HeaderExtractor } from "./header";
 
 export interface Address {
   city?: string;
   street?: string;
 }
 
+@DependsOn(HeaderExtractor)
 export class AddressExtractor extends Extractor {
 
   constructor() {
