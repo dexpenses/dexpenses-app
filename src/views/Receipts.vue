@@ -41,7 +41,6 @@
             {{receipt.result.data.date | humanReadableTime }}
             {{receipt.result.data.time}}
           </div>
-          {{receipt.result}}
         </div>
       </div>
     </div>
@@ -55,6 +54,9 @@ export default {
   name: 'receipts',
   computed: {
     ...mapState(['receipts']),
+  },
+  watch: {
+    receipts: console.log,
   },
 };
 </script>

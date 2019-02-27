@@ -2,17 +2,40 @@ import { Extractor } from "./extractor";
 import { Receipt } from "./receipt";
 import { DependsOn } from "./DependsOn";
 import { HeaderExtractor } from "./header";
+import * as fs from 'fs';
+import * as path from 'path';
 
 export interface Address {
   city?: string;
   street?: string;
 }
 
+type CityName = string
+type ZipCodeMapping = { [zipCode: string]: CityName };
+
+function loadZipCodeMapping(filePath: string): ZipCodeMapping {
+  return fs.readFileSync(filePath, 'utf8').split('\n')
+    .filter(line => !!line)
+    .map(line => line.split(';'))
+    .reduce((mapping, [city, zip]) => {
+      mapping[zip.trim()] = city.trim();
+      return mapping;
+    }, {});
+}
+
 @DependsOn(HeaderExtractor)
 export class AddressExtractor extends Extractor {
+  private readonly zipCodeMapping?: ZipCodeMapping;
+  private readonly cityRegex: RegExp;
 
-  constructor() {
+  constructor(zipCodeMappingPath?: string,
+    zipCodeRegex = /(?!01000|99999)(0[1-9]\d{3}|[1-9]\d{4})/,
+    cityNameRegex = /([a-z\u00e0-\u00ff]+)/) {
     super('address');
+    if (zipCodeMappingPath) {
+      this.zipCodeMapping = loadZipCodeMapping(path.resolve(__dirname, zipCodeMappingPath));
+    }
+    this.cityRegex = new RegExp(`${zipCodeRegex.source}\\s+${cityNameRegex.source}`, 'i');
   }
 
   extract(text: string, lines: string[], extracted: Receipt) {
@@ -22,8 +45,8 @@ export class AddressExtractor extends Extractor {
     const address: Address = {};
     for (const line of extracted.header) {
       if (!address.city) {
-        const city = line.match(/\d{4,5}\s+[a-z\u00e0-\u00ff]+/i);
-        if (city) {
+        const city = line.match(this.cityRegex);
+        if (city && (!this.zipCodeMapping || this.zipCodeMapping[city[1]] === city[2])) {
           address.city = city[0];
         }
       }

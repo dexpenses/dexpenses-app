@@ -23,6 +23,9 @@ Vue.filter('dataSizeProgress', ([value, total]) => {
 });
 
 Vue.filter('humanReadableTime', (value) => {
+  if (!value) {
+    return '';
+  }
   let date = value;
   if (value.toDate) {
     date = value.toDate();
@@ -33,4 +36,10 @@ Vue.filter('humanReadableTime', (value) => {
 const currencies = {
   EUR: '€',
 };
-Vue.filter('currency', ({ value, currency }) => `${value.toFixed(2)} ${currencies[currency] || currency}`);
+Vue.filter('currency', (money) => {
+  if (!money) {
+    return '';
+  }
+  const { value, currency } = money;
+  return `${value.toFixed(2)} ${currencies[currency] || currency}`;
+});

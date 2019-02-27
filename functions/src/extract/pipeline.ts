@@ -6,10 +6,13 @@ import { AmountExtractor } from "./amount";
 import { PaymentMethodExtractor } from "./paymentMethod";
 import { ReceiptResult, Receipt } from "./receipt";
 import DateTimePostProcessor from "./postprocess/DateTimePostProcessor";
+import { PhoneNumberExtractor } from "./phone";
+import HeaderSanitizer from "./postprocess/HeaderSanitizer";
 
 const extractorPipeline = [
   new HeaderExtractor(),
   new AddressExtractor(),
+  new PhoneNumberExtractor(),
   new DateExtractor(),
   new TimeExtractor(),
   new AmountExtractor(),
@@ -19,7 +22,8 @@ const extractorPipeline = [
 // todo check dependencies of extractors or re-order pipeline (error only on circular)
 
 const postProcessors = [
-  new DateTimePostProcessor()
+  new DateTimePostProcessor(),
+  new HeaderSanitizer(),
 ]
 
 export default function (text: string): ReceiptResult {

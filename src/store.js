@@ -22,7 +22,6 @@ export default new Vuex.Store({
   actions: {
     loadReceipts: firebaseAction(({ bindFirebaseRef, state }) => {
       bindFirebaseRef('receipts', firebase.firestore().collection('receiptsByUser').doc(state.user.uid).collection('receipts'))
-        .then(() => console.log('successfully bound ref'))
         .catch(error => console.error(error));
     }),
     ensureLoggedIn({ commit, dispatch }) {

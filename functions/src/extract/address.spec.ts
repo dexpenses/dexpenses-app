@@ -3,7 +3,7 @@ import 'mocha';
 import { AddressExtractor } from './address';
 
 describe('Address extractor', () => {
-  const extractor = new AddressExtractor();
+  const extractor = new AddressExtractor('model/German-Zip-Codes.csv');
 
   it('should be successfully extract the street', () => {
     const streets = [
@@ -34,7 +34,7 @@ describe('Address extractor', () => {
     const cities = [
       '38440 Wolfsburg',
       '38440  Wolfsburg',
-      '0511  Hannover',
+      '30159  Hannover',
       '37081 Göttingen'
     ];
     for (const city of cities) {

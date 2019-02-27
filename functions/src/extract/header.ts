@@ -8,7 +8,8 @@ const irrelevantLines = [
   /^Trace(\-?Nr\.?|nummer)/i,
   /kundenbeleg/i,
   /h(ae|ä)ndlerbeleg/i,
-]
+  /zwischensumme/i,
+];
 
 export class HeaderExtractor extends Extractor {
 
