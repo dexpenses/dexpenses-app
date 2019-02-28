@@ -7,8 +7,19 @@
       indeterminate
     ></v-progress-circular>
     <div>
-      <div v-for="receipt in receipts" :key="receipt.id">
-        <img :src="receipt.downloadUrl" alt="No img for you" height="200" />
+      <div class="receipt" v-for="receipt in receipts" :key="receipt.id">
+        <v-img class="grey" :src="receipt.downloadUrl" alt="No img for you"
+        height="200" width="200" max-width="200">
+          <!-- <v-layout
+                    slot="placeholder"
+                    fill-height
+                    align-center
+                    justify-center
+                    ma-0
+                  >
+                    <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+                  </v-layout> -->
+        </v-img>
         <span v-if="!receipt.result || receipt.result.state === 'pending'">
           Pending
           <v-progress-circular indeterminate/>
@@ -16,30 +27,37 @@
         <span v-else-if="receipt.result.state === 'unreadable'">
           unreadable
         </span>
-        <div v-else>
-          <div>
-            {{receipt.result.data.header
-            .filter(h => h !== receipt.result.data.address.street
-            && h !== receipt.result.data.address.city)
-            .join(', ')}}
+        <div class="receipt-info" v-else>
+          <div class="header">
+            {{receipt.result.data.header.join(', ')}}
           </div>
-          <div>
-            <v-icon>location_on</v-icon>
-            {{receipt.result.data.address.street}}, {{receipt.result.data.address.city}}
-          </div>
-          <div>
-            <v-icon>attach_money</v-icon>
-            {{receipt.result.data.amount | currency }}
-          </div>
-          <div>
-            <v-icon v-if="receipt.result.data.paymentMethod === 'CASH'">money</v-icon>
-            <v-icon v-else>credit_card</v-icon>
-            {{receipt.result.data.paymentMethod}}
-          </div>
-          <div>
-            <v-icon>av_timer</v-icon>
-            {{receipt.result.data.date | humanReadableTime }}
-            {{receipt.result.data.time}}
+          <div class="fields">
+            <div>
+              <v-icon>location_on</v-icon>
+              <span>
+                {{receipt.result.data.address.street}}, {{receipt.result.data.address.city}}
+              </span>
+            </div>
+            <div>
+              <v-icon>attach_money</v-icon>
+              <span>
+                {{receipt.result.data.amount | currency }}
+              </span>
+            </div>
+            <div>
+              <v-icon v-if="receipt.result.data.paymentMethod === 'CASH'">money</v-icon>
+              <v-icon v-else>credit_card</v-icon>
+              <span>
+                {{receipt.result.data.paymentMethod}}
+              </span>
+            </div>
+            <div>
+              <v-icon>av_timer</v-icon>
+              <span>
+                {{receipt.result.data.date | humanReadableTime }}
+                {{receipt.result.data.time}}
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -62,5 +80,25 @@ export default {
 </script>
 
 <style scoped>
-
+.receipt {
+  display: flex;
+}
+.receipt-info {
+  padding: 1em;
+}
+.receipt-info .header {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+.receipt-info .fields {
+  display: flex;
+  flex-direction: column;
+}
+.receipt-info .fields > * {
+  display: flex;
+  align-items: center;
+}
+.receipt-info .fields > * > .v-icon {
+  margin-right: .2em;
+}
 </style>
