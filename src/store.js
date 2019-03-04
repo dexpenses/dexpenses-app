@@ -25,21 +25,17 @@ export default new Vuex.Store({
       bindFirebaseRef('receipts', firebase.firestore().collection('receiptsByUser').doc(state.user.uid).collection('receipts'))
         .catch(error => console.error(error));
     }),
-    checkLoggedIn({ commit, dispatch }) {
-      firebase.auth()
-        .setPersistence(firebase.auth.Auth.Persistence.LOCAL)
-        .then(() => {
-          firebase.auth().onAuthStateChanged((user) => {
-            if (user) {
-              commit('setUser', user);
-              dispatch('loadReceipts');
-            }
-          });
-        })
-        .catch((error) => {
-          console.error('error setting firebase auth persistence', error);
-          dispatch('login');
+    async checkLoggedIn({ commit, dispatch }) {
+      await firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
+      return new Promise((resolve) => {
+        firebase.auth().onAuthStateChanged((user) => {
+          if (user) {
+            commit('setUser', user);
+            dispatch('loadReceipts');
+          }
+          resolve(user);
         });
+      });
     },
     login({ commit, dispatch }) {
       firebase.auth()
@@ -47,6 +43,7 @@ export default new Vuex.Store({
         .then((result) => {
           commit('setUser', result.user);
           dispatch('loadReceipts');
+          router.push('dashboard');
         })
         .catch((error) => {
           console.error(error);
@@ -55,8 +52,7 @@ export default new Vuex.Store({
     async logout({ commit }) {
       await firebase.auth().signOut();
       commit('setUser', null);
-      router.push('home');
-      // todo redirect to home
+      router.push({ name: 'home' });
     },
   },
 });
