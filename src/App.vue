@@ -3,28 +3,41 @@
     <v-toolbar app>
       <v-toolbar-title class="headline text-uppercase">
         <router-link to="/">
-        <span>DexmoHQ</span>
-        <span class="font-weight-light">DEXPENSES</span>
+          <span>DexmoHQ</span>
+          <span class="font-weight-light">DEXPENSES</span>
         </router-link>
       </v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-toolbar-items>
-        <v-btn flat to="/dashboard">
-          Dashboard
+
+      <v-toolbar-items v-if="user">
+        <v-btn flat to="/dashboard">Dashboard
           <v-icon right>dashboard</v-icon>
         </v-btn>
-        <v-btn flat to="receipts">
-          Receipts
+        <v-btn flat to="receipts">Receipts
           <v-icon right>receipt</v-icon>
         </v-btn>
       </v-toolbar-items>
+
+      <v-spacer></v-spacer>
+
+      <v-flex class="pending-message">
+        <span v-if="pendingReceiptsCount">
+          {{pendingReceiptsCount}} receipts pending.
+          <v-progress-circular indeterminate size="16" width="1"></v-progress-circular>
+        </span>
+        <span v-else>No receipts pending.
+          <v-icon>check</v-icon>
+        </span>
+      </v-flex>
+
+      <v-badge color="primary" left overlap>
+        <span slot="badge">2</span>
+        <v-btn flat icon>
+          <v-icon medium>notifications</v-icon>
+        </v-btn>
+      </v-badge>
+
       <account-menu v-if="user"/>
-      <v-btn v-else
-        color="primary"
-        @click="login"
-      >
-        LOGIN
-      </v-btn>
+      <v-btn v-else color="primary" @click="login">LOGIN</v-btn>
     </v-toolbar>
 
     <v-content>
@@ -34,7 +47,7 @@
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex';
+import { mapActions, mapState, mapGetters } from 'vuex';
 import AccountMenu from '@/components/AccountMenu.vue';
 
 export default {
@@ -49,6 +62,7 @@ export default {
   },
   computed: {
     ...mapState(['user']),
+    ...mapGetters(['pendingReceiptsCount']),
   },
   methods: {
     ...mapActions(['checkLoggedIn', 'login', 'logout']),
@@ -67,5 +81,8 @@ export default {
 .headline a {
   text-decoration: none !important;
   color: unset !important;
+}
+.pending-message {
+  margin-right: 1em;
 }
 </style>

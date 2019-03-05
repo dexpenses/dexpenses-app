@@ -13,6 +13,11 @@ export default new Vuex.Store({
   },
   getters: {
     isAuthenticated: state => state.user != null,
+    pendingReceiptsCount(state) {
+      return !state.receipts
+        ? null
+        : state.receipts.filter(r => !r.result || r.result === 'pending').length;
+    },
   },
   mutations: {
     ...firebaseMutations,
@@ -22,8 +27,14 @@ export default new Vuex.Store({
   },
   actions: {
     loadReceipts: firebaseAction(({ bindFirebaseRef, state }) => {
-      bindFirebaseRef('receipts', firebase.firestore().collection('receiptsByUser').doc(state.user.uid).collection('receipts'))
-        .catch(error => console.error(error));
+      bindFirebaseRef(
+        'receipts',
+        firebase
+          .firestore()
+          .collection('receiptsByUser')
+          .doc(state.user.uid)
+          .collection('receipts'),
+      ).catch(error => console.error(error));
     }),
     async checkLoggedIn({ commit, dispatch }) {
       await firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
@@ -39,7 +50,8 @@ export default new Vuex.Store({
       });
     },
     login({ commit, dispatch }) {
-      firebase.auth()
+      firebase
+        .auth()
         .signInWithPopup(new firebase.auth.GoogleAuthProvider())
         .then((result) => {
           commit('setUser', result.user);

@@ -1,11 +1,15 @@
 <template>
   <v-container>
-    <v-progress-circular v-if="!receipts || receipts.length === 0"
+    <FileUpload/>
+    <v-progress-circular v-if="!receipts"
       :size="70"
       :width="7"
       color="primary"
       indeterminate
     ></v-progress-circular>
+    <div v-else-if="receipts.length === 0">
+      No receipts
+    </div>
     <div>
       <div class="receipt" v-for="receipt in receipts" :key="receipt.id">
         <v-img class="grey" :src="receipt.downloadUrl" alt="No img for you"
@@ -67,9 +71,13 @@
 
 <script>
 import { mapState } from 'vuex';
+import FileUpload from '@/components/FileUpload.vue';
 
 export default {
   name: 'receipts',
+  components: {
+    FileUpload,
+  },
   computed: {
     ...mapState(['receipts']),
   },
