@@ -1,9 +1,12 @@
 <template>
-    <div @drop.prevent="$emit('dropped', $event.dataTransfer.files)"
-    @dragover="$emit('hovered', true)"
-    @dragleave="$emit('hovered', false)">
-        <slot/>
-    </div>
+  <div
+    @drop.prevent="$emit('dropped', $event.dataTransfer.files)"
+    @drag.prevent
+    @dragover.prevent="$emit('hovered', true)"
+    @dragleave.prevent="$emit('hovered', false)"
+  >
+    <slot/>
+  </div>
 </template>
 <script>
 export default {
