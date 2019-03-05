@@ -30,6 +30,7 @@ export default new Vuex.Store({
       return new Promise((resolve) => {
         firebase.auth().onAuthStateChanged((user) => {
           if (user) {
+            console.log(user);
             commit('setUser', user);
             dispatch('loadReceipts');
           }

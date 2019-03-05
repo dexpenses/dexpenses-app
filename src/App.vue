@@ -2,12 +2,24 @@
   <v-app>
     <v-toolbar app>
       <v-toolbar-title class="headline text-uppercase">
+        <router-link to="/">
         <span>DexmoHQ</span>
         <span class="font-weight-light">DEXPENSES</span>
+        </router-link>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <account-menu v-show="user"/>
-      <v-btn v-show="!user"
+      <v-toolbar-items>
+        <v-btn flat to="/dashboard">
+          Dashboard
+          <v-icon right>dashboard</v-icon>
+        </v-btn>
+        <v-btn flat to="receipts">
+          Receipts
+          <v-icon right>receipt</v-icon>
+        </v-btn>
+      </v-toolbar-items>
+      <account-menu v-if="user"/>
+      <v-btn v-else
         color="primary"
         @click="login"
       >
@@ -51,3 +63,9 @@ export default {
   },
 };
 </script>
+<style scoped>
+.headline a {
+  text-decoration: none !important;
+  color: unset !important;
+}
+</style>
