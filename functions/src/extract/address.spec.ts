@@ -15,40 +15,32 @@ describe('Address extractor', () => {
       'Beispielstrasse 1234',
       'Beispielstrasse 1234a',
       'An dem Wege 1',
-    ]
+    ];
     for (const street of streets) {
-      const result = extractor.extract('', [], {
-        header: [
-          street,
-          '38440 Wolfsburg'
-        ]
-      })
-      expect(result).not.to.be.undefined;
+      const extracted = {
+        header: ['Toller Laden', street, '38440 Wolfsburg'],
+      };
+      const result = extractor.extract('', [], extracted);
+      expect(result).to.exist;
       if (result) {
         expect(result.street).to.equal(street);
       }
+      expect(extracted.header).to.deep.equal(['Toller Laden']);
     }
   });
 
   it('should be successfully extract the city', () => {
-    const cities = [
-      '38440 Wolfsburg',
-      '38440  Wolfsburg',
-      '30159  Hannover',
-      '37081 Göttingen'
-    ];
+    const cities = ['38440 Wolfsburg', '38440  Wolfsburg', '30159  Hannover', '37081 Göttingen'];
     for (const city of cities) {
-      const result = extractor.extract('', [], {
-        header: [
-          'An dem Wege 1',
-          city
-        ]
-      })
-      expect(result).not.to.be.undefined;
+      const extracted = {
+        header: ['Toller Laden', 'An dem Wege 1', city],
+      };
+      const result = extractor.extract('', [], extracted);
+      expect(result).to.exist;
       if (result) {
         expect(result.city).to.equal(city);
       }
+      expect(extracted.header).to.deep.equal(['Toller Laden']);
     }
   });
-
 });

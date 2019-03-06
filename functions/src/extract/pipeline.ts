@@ -1,13 +1,12 @@
-import { HeaderExtractor } from "./header";
-import { AddressExtractor } from "./address";
-import { DateExtractor } from "./date";
-import { TimeExtractor } from "./time";
-import { AmountExtractor } from "./amount";
-import { PaymentMethodExtractor } from "./paymentMethod";
-import { ReceiptResult, Receipt } from "./receipt";
-import DateTimePostProcessor from "./postprocess/DateTimePostProcessor";
-import { PhoneNumberExtractor } from "./phone";
-import HeaderSanitizer from "./postprocess/HeaderSanitizer";
+import { HeaderExtractor } from './header';
+import { AddressExtractor } from './address';
+import { DateExtractor } from './date';
+import { TimeExtractor } from './time';
+import { AmountExtractor } from './amount';
+import { PaymentMethodExtractor } from './paymentMethod';
+import { ReceiptResult, Receipt } from './receipt';
+import DateTimePostProcessor from './postprocess/DateTimePostProcessor';
+import { PhoneNumberExtractor } from './phone';
 
 const extractorPipeline = [
   new HeaderExtractor(),
@@ -21,12 +20,13 @@ const extractorPipeline = [
 
 // todo check dependencies of extractors or re-order pipeline (error only on circular)
 
-const postProcessors = [
-  new DateTimePostProcessor(),
-  new HeaderSanitizer(),
-]
+const postProcessors = [new DateTimePostProcessor()];
 
-export default function (text: string): ReceiptResult {
+function isReady({ header, date, amount }: Receipt): boolean {
+  return header && header.length > 0 && date && amount;
+}
+
+export default function(text: string): ReceiptResult {
   if (!text) {
     return {
       state: 'no-text',
@@ -34,22 +34,18 @@ export default function (text: string): ReceiptResult {
   }
   const lines = text.split('\n');
   const extracted: Receipt = {};
-  let partial = false;
   let anySuccess = false;
   for (const extractor of extractorPipeline) {
     try {
       const value = extractor.extract(text, lines, extracted);
       extracted[extractor.field] = value;
-      if (!value) {
-        partial = true;
-      } else {
+      if (value) {
         anySuccess = true;
       }
     } catch (e) {
       extracted[extractor.field] = {
-        error: e.message || (typeof e === 'string' && e) || 'unknown'
+        error: e.message || (typeof e === 'string' && e) || 'unknown',
       };
-      partial = true;
     }
   }
   if (!anySuccess) {
@@ -62,7 +58,7 @@ export default function (text: string): ReceiptResult {
     postProcessor.touch(extracted);
   }
   return {
-    state: partial ? 'partial' : 'ready',
+    state: isReady(extracted) ? 'ready' : 'partial',
     data: extracted,
   };
 }

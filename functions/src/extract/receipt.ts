@@ -4,5 +4,6 @@ export interface ReceiptResult {
 }
 
 export interface Receipt {
-  [field: string]: any
+  header?: string[];
+  [field: string]: any;
 }
