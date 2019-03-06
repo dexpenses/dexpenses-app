@@ -12,8 +12,11 @@
         <v-btn flat to="/dashboard">Dashboard
           <v-icon right>dashboard</v-icon>
         </v-btn>
-        <v-btn flat to="receipts">Receipts
+        <v-btn flat to="/receipts">Receipts
           <v-icon right>receipt</v-icon>
+        </v-btn>
+        <v-btn flat to="/receipts/upload">Upload
+          <v-icon right>cloud_upload</v-icon>
         </v-btn>
       </v-toolbar-items>
 

@@ -19,18 +19,7 @@ Vue.filter('dataSize', (value) => {
 
 Vue.filter('dataSizeProgress', ([value, total]) => {
   const [i, totalUnitValue] = pickUnit(total);
-  return `${(value / (1000 ** i)).toFixed(2)}/${totalUnitValue.toFixed(2)} ${dataSizes[i]}`;
-});
-
-Vue.filter('humanReadableTime', (value) => {
-  if (!value) {
-    return '';
-  }
-  let date = value;
-  if (value.toDate) {
-    date = value.toDate();
-  }
-  return date.toLocaleDateString();
+  return `${(value / 1000 ** i).toFixed(2)}/${totalUnitValue.toFixed(2)} ${dataSizes[i]}`;
 });
 
 const currencies = {
@@ -42,4 +31,25 @@ Vue.filter('currency', (money) => {
   }
   const { value, currency } = money;
   return `${value.toFixed(2)} ${currencies[currency] || currency}`;
+});
+
+Vue.filter('date', (value) => {
+  if (!value) {
+    return '';
+  }
+  let date = value;
+  if (value.toDate) {
+    date = value.toDate();
+  }
+  return date.toLocaleDateString();
+});
+
+Vue.filter('time', (value) => {
+  if (!value) {
+    return value;
+  }
+  const { hour, minute, second } = value;
+  return `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}${
+    second ? `:${second.toString().padStart(2, '0')}` : ''
+  }`;
 });

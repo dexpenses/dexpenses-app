@@ -12,11 +12,11 @@ export default new Vuex.Store({
     receipts: [],
   },
   getters: {
-    isAuthenticated: state => state.user != null,
+    isAuthenticated: (state) => state.user != null,
     pendingReceiptsCount(state) {
       return !state.receipts
         ? null
-        : state.receipts.filter(r => !r.result || r.result === 'pending').length;
+        : state.receipts.filter((r) => !r.result || r.result === 'pending').length;
     },
   },
   mutations: {
@@ -33,9 +33,26 @@ export default new Vuex.Store({
           .firestore()
           .collection('receiptsByUser')
           .doc(state.user.uid)
-          .collection('receipts'),
-      ).catch(error => console.error(error));
+          .collection('receipts')
+      ).catch((error) => console.error(error));
     }),
+    updateReceipt({ state }, { id, field, value }) {
+      console.log('updating', id, field, value);
+      return firebase
+        .firestore()
+        .collection('receiptsByUser')
+        .doc(state.user.uid)
+        .collection('receipts')
+        .doc(id)
+        .set(
+          {
+            result: {
+              data: { [field]: value },
+            },
+          },
+          { merge: true }
+        );
+    },
     async checkLoggedIn({ commit, dispatch }) {
       await firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
       return new Promise((resolve) => {
