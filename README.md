@@ -1,4 +1,5 @@
 # dexpenses-app
+[![Build Status](https://www.travis-ci.com/dexmo007/dexpenses-app.svg?branch=master)](https://www.travis-ci.com/dexmo007/dexpenses-app)
 
 ## Project setup
 ```
