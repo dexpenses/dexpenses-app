@@ -1,31 +1,29 @@
 <template>
+  <div>
+    <drop-zone
+      class="dropzone"
+      @hovered="hovering = $event"
+      @dropped="startUpload($event)"
+      :class="{hovering: hovering}"
+    >
+      <h3>Just drop some files</h3>
+
+      <div class="file">
+        <label class="file-label">
+          <input type="file" @change="startUpload($event.target.files)" multiple>
+          <span class="file-cta">
+            <span class="file-icon">
+              <fa icon="upload"/>
+            </span>
+            <span class="file-label">or choose a file…</span>
+          </span>
+        </label>
+      </div>
+    </drop-zone>
     <div>
-        <drop-zone class="dropzone"
-        @hovered="hovering = $event"
-        @dropped="startUpload($event)"
-        :class="{hovering: hovering}">
-
-        <h3>Just drop some files</h3>
-
-            <div class="file">
-                <label class="file-label">
-                <input type="file" @change="startUpload($event.target.files)" multiple>
-                <span class="file-cta">
-                    <span class="file-icon">
-                    <fa icon="upload"/>
-                    </span>
-                    <span class="file-label">
-                    or choose a file…
-                    </span>
-                </span>
-                </label>
-            </div>
-        </drop-zone>
-        <div>
-            <file-upload-task v-for="(uploadTask, index) in uploadTasks" :key="index"
-            :task="uploadTask"/>
-        </div>
+      <file-upload-task v-for="(uploadTask, index) in uploadTasks" :key="index" :task="uploadTask"/>
     </div>
+  </div>
 </template>
 <script>
 import { mapState } from 'vuex';
@@ -52,9 +50,12 @@ export default {
     startUpload(files) {
       for (let i = 0; i < files.length; i += 1) {
         const file = files[i];
+        console.log(file);
         const uploadTask = firebase.storage()
           .ref(`images/${this.user.uid}/${Date.now()}-${file.name}`)
-          .put(file);
+          .put(file, {
+            contentType: file.type,
+          });
         this.uploadTasks.push(uploadTask);
       }
     },
