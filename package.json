@@ -21,7 +21,7 @@
     "vuexfire": "^3.0.0-alpha.14"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.4.0",
+    "@vue/cli-plugin-babel": "^3.5.0",
     "@vue/cli-plugin-e2e-cypress": "^3.5.0",
     "@vue/cli-plugin-eslint": "^3.5.0",
     "@vue/cli-plugin-unit-mocha": "^3.4.0",
