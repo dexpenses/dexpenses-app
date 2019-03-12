@@ -15,14 +15,14 @@
         <v-btn flat to="/receipts">Receipts
           <v-icon right>receipt</v-icon>
         </v-btn>
-        <v-btn flat to="/receipts/upload">Upload
+        <v-btn flat to="/upload">Upload
           <v-icon right>cloud_upload</v-icon>
         </v-btn>
       </v-toolbar-items>
 
       <v-spacer></v-spacer>
 
-      <v-flex class="pending-message">
+      <v-flex v-if="user" class="pending-message">
         <span v-if="pendingReceiptsCount">
           {{pendingReceiptsCount}} receipts pending.
           <v-progress-circular indeterminate size="16" width="1"></v-progress-circular>
@@ -32,7 +32,7 @@
         </span>
       </v-flex>
 
-      <v-badge color="primary" left overlap>
+      <v-badge v-if="user" color="primary" left overlap>
         <span slot="badge">2</span>
         <v-btn flat icon>
           <v-icon medium>notifications</v-icon>

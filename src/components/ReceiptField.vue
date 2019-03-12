@@ -3,7 +3,7 @@
     <v-icon :color="missing && required ? 'red lighten-1' : undefined">{{icon}}</v-icon>
     <span class="receipt-field-value">
       <span @dblclick="edit" v-show="!editing">
-        <slot :value="value">{{displayValue}}</slot>
+        <slot v-if="value" :value="value">{{displayValue}}</slot>
       </span>
       <v-text-field
         class="edit-input"

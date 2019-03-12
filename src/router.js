@@ -32,7 +32,7 @@ export default new Router({
       component: () => import('./views/Receipts.vue'),
     },
     {
-      path: '/receipts/upload',
+      path: '/upload',
       name: 'uploadReceipts',
       component: () => import('./views/UploadReceipts.vue'),
     },
