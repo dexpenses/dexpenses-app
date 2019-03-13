@@ -20,7 +20,7 @@
         </label>
       </div>
     </drop-zone>
-    <div>
+    <div class="file-upload-tasks">
       <file-upload-task v-for="(uploadTask, index) in uploadTasks" :key="index" :task="uploadTask"/>
     </div>
   </div>
@@ -86,5 +86,9 @@ progress::-webkit-progress-value {
 
 .file input {
     display: none;
+}
+.file-upload-tasks {
+  display: flex;
+  flex-wrap: wrap;
 }
 </style>

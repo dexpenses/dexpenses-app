@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import { DateTime } from 'luxon';
 
 const dataSizes = ['B', 'KB', 'MB', 'GB', 'TB'];
 
@@ -41,7 +42,9 @@ Vue.filter('date', (value) => {
   if (value.toDate) {
     date = value.toDate();
   }
-  return date.toLocaleDateString();
+  return DateTime.fromJSDate(date, {
+    zone: 'Europe/Berlin',
+  }).toFormat('MM/dd/yyyy');
 });
 
 Vue.filter('time', (value) => {
@@ -53,3 +56,5 @@ Vue.filter('time', (value) => {
     second ? `:${second.toString().padStart(2, '0')}` : ''
   }`;
 });
+
+Vue.filter('address', (value) => (!value ? '' : `${value.street}, ${value.city}`));
