@@ -9,42 +9,70 @@
       </v-toolbar-title>
 
       <v-toolbar-items v-if="user">
-        <v-btn flat to="/dashboard">Dashboard
+        <v-btn
+          flat
+          to="/dashboard"
+        >Dashboard
           <v-icon right>dashboard</v-icon>
         </v-btn>
-        <v-btn flat to="/receipts">Receipts
+        <v-btn
+          flat
+          to="/receipts"
+        >Receipts
           <v-icon right>receipt</v-icon>
         </v-btn>
-        <v-btn flat to="/upload">Upload
+        <v-btn
+          flat
+          to="/upload"
+        >Upload
           <v-icon right>cloud_upload</v-icon>
         </v-btn>
       </v-toolbar-items>
 
       <v-spacer></v-spacer>
 
-      <v-flex v-if="user" class="pending-message">
+      <v-flex
+        v-if="user"
+        class="pending-message"
+      >
         <span v-if="pendingReceiptsCount">
           {{pendingReceiptsCount}} receipts pending.
-          <v-progress-circular indeterminate size="16" width="1"></v-progress-circular>
+          <v-progress-circular
+            indeterminate
+            size="16"
+            width="1"
+          ></v-progress-circular>
         </span>
         <span v-else>No receipts pending.
           <v-icon>check</v-icon>
         </span>
       </v-flex>
 
-      <v-badge v-if="user" color="primary" left overlap>
+      <v-badge
+        v-if="user"
+        color="primary"
+        left
+        overlap
+      >
         <span slot="badge">2</span>
-        <v-btn flat icon>
+        <v-btn
+          flat
+          icon
+        >
           <v-icon medium>notifications</v-icon>
         </v-btn>
       </v-badge>
 
-      <account-menu v-if="user"/>
-      <v-btn v-else color="primary" @click="login">LOGIN</v-btn>
+      <account-menu v-if="user" />
+      <v-btn
+        v-else
+        color="primary"
+        @click="login"
+      >LOGIN</v-btn>
     </v-toolbar>
 
     <v-content>
-      <router-view/>
+      <router-view />
     </v-content>
   </v-app>
 </template>
@@ -58,25 +86,15 @@ export default {
   components: {
     AccountMenu,
   },
-  data() {
-    return {
-      //
-    };
-  },
   computed: {
-    ...mapState(['user']),
-    ...mapGetters(['pendingReceiptsCount']),
+    ...mapState('user', ['user']),
+    ...mapGetters('receipts', ['pendingReceiptsCount']),
   },
   methods: {
-    ...mapActions(['checkLoggedIn', 'login', 'logout']),
+    ...mapActions('user', ['checkLoggedIn', 'login', 'logout']),
   },
   created() {
     this.checkLoggedIn();
-  },
-  watch: {
-    keywords(v) {
-      console.log(v);
-    },
   },
 };
 </script>

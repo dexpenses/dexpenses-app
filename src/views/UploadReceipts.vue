@@ -1,7 +1,7 @@
 <template>
-    <v-container>
-        <file-upload/>
-    </v-container>
+  <v-container>
+    <file-upload />
+  </v-container>
 </template>
 <script>
 import FileUpload from '@/components/FileUpload.vue';
@@ -12,8 +12,7 @@ export default {
     FileUpload,
   },
   data() {
-    return {
-    };
+    return {};
   },
 };
 </script>

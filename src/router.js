@@ -13,28 +13,28 @@ export default new Router({
       name: 'home',
       component: () => import('./views/Home.vue'),
       async beforeEnter(to, from, next) {
-        const user = await store.dispatch('checkLoggedIn');
+        const user = await store.dispatch('user/checkLoggedIn');
         if (!user) {
           next();
         } else {
           next('dashboard');
         }
-      },
+      }
     },
     {
       path: '/dashboard',
       name: 'dashboard',
-      component: () => import('./views/Dashboard.vue'),
+      component: () => import('./views/Dashboard.vue')
     },
     {
       path: '/receipts',
       name: 'receipts',
-      component: () => import('./views/Receipts.vue'),
+      component: () => import('./views/Receipts.vue')
     },
     {
       path: '/upload',
       name: 'uploadReceipts',
-      component: () => import('./views/UploadReceipts.vue'),
-    },
-  ],
+      component: () => import('./views/UploadReceipts.vue')
+    }
+  ]
 });
