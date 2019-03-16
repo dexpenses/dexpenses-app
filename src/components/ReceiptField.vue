@@ -2,7 +2,11 @@
   <div>
     <v-icon :color="missing && required ? 'red lighten-1' : undefined">{{icon}}</v-icon>
     <span class="receipt-field-value">
-      <span class="fixed" @dblclick="edit" v-show="!editing">{{displayValue}}</span>
+      <span
+        class="fixed"
+        @dblclick="edit"
+        v-show="!editing"
+      >{{displayValue}}</span>
       <v-form
         class="form"
         ref="form"
@@ -10,7 +14,11 @@
         v-show="editing || missing"
         v-model="valid"
       >
-        <slot name="editor" :value="changedValueHolder" :loading="submitted">
+        <slot
+          name="editor"
+          :value="changedValueHolder"
+          :loading="submitted"
+        >
           <v-text-field
             class="edit-input"
             height="1em"
@@ -23,7 +31,12 @@
             :return-masked-value="true"
           />
         </slot>
-        <v-btn flat icon type="submit" v-if="editing || changedValueHolder.changedValue">
+        <v-btn
+          flat
+          icon
+          type="submit"
+          v-if="editing || changedValueHolder.changedValue"
+        >
           <v-icon>check</v-icon>
         </v-btn>
         <v-btn
@@ -59,7 +72,7 @@ export default {
     },
     formatter: {
       type: [Function, String],
-      default: v => !v ? '' : v.toString(),
+      default: v => (!v ? '' : v.toString()),
     },
   },
   data() {
@@ -69,7 +82,7 @@ export default {
       },
       submitted: false,
       editing: false,
-      valid: false
+      valid: false,
     };
   },
   computed: {
@@ -87,47 +100,51 @@ export default {
     },
   },
   methods: {
-    ...mapActions(['updateReceipt']),
+    ...mapActions('receipts', ['updateReceipt']),
     edit() {
       this.editing = true;
       this.changedValueHolder.changedValue = this.format(this.value);
-      this.$nextTick(() => this.$refs.editInput && this.$refs.editInput.focus());
+      this.$nextTick(
+        () => this.$refs.editInput && this.$refs.editInput.focus()
+      );
     },
     async submit() {
       if (!this.valid) {
         return;
       }
       this.editing = false;
-      console.log(this.changedValueHolder.changedValue);
       const value = this.parser(this.changedValueHolder.changedValue);
-      console.log(value);
       this.changedValueHolder.changedValue = '';
       if (deepEqual(value, this.value)) {
         return;
       }
       this.submitted = true;
-      await this.updateReceipt({id:this.receipt.id,field:this.field,value});
+      await this.updateReceipt({
+        id: this.receipt.id,
+        field: this.field,
+        value,
+      });
       this.submitted = false;
     },
     format(v) {
       if (typeof this.formatter === 'string') {
         return this.$options.filters[this.filter](v);
       }
-      return  this.formatter(v);
-    }
+      return this.formatter(v);
+    },
   },
 };
 </script>
 <style>
 .receipt-field-value {
-  margin-left: .2em;
+  margin-left: 0.2em;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .receipt-field-value .fixed {
-  margin-top: .2em;
-  margin-bottom: .2em;
+  margin-top: 0.2em;
+  margin-bottom: 0.2em;
 }
 .edit-input {
   height: 1em;

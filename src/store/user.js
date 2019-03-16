@@ -5,15 +5,15 @@ import router from '@/router';
 export default {
   namespaced: true,
   state: {
-    user: null
+    user: null,
   },
   getters: {
-    isAuthenticated: state => state.user != null
+    isAuthenticated: state => state.user != null,
   },
   mutations: {
     setUser(state, user) {
       state.user = user;
-    }
+    },
   },
   actions: {
     async checkLoggedIn({ commit, dispatch }) {
@@ -22,6 +22,7 @@ export default {
         firebase.auth().onAuthStateChanged(user => {
           if (user) {
             commit('setUser', user);
+            dispatch('receipts/loadOpenReceipts', {}, { root: true });
             dispatch('receipts/loadReceipts', {}, { root: true });
           }
           resolve(user);
@@ -34,6 +35,7 @@ export default {
         .signInWithPopup(new firebase.auth.GoogleAuthProvider())
         .then(result => {
           commit('setUser', result.user);
+          dispatch('receipts/loadOpenReceipts', {}, { root: true });
           dispatch('receipts/loadReceipts', {}, { root: true });
           router.push('dashboard');
         })
@@ -45,6 +47,6 @@ export default {
       await firebase.auth().signOut();
       commit('setUser', null);
       router.push({ name: 'home' });
-    }
-  }
+    },
+  },
 };

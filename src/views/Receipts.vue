@@ -1,5 +1,13 @@
 <template>
   <v-container>
+    <ReceiptCard
+      v-for="receipt in openReceipts"
+      :key="receipt.id"
+      :receipt="receipt"
+    />
+    <p>
+      ===============================
+    </p>
     <v-progress-circular
       v-if="!receipts"
       :size="70"
@@ -16,13 +24,20 @@
       />
     </div>
     <Observer @intersect="intersected" />
+    <v-progress-circular
+      indeterminate
+      v-if="loading"
+    />
+    <p v-if="endReached">End reached</p>
   </v-container>
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { createNamespacedHelpers } from 'vuex';
 import ReceiptCard from '@/components/ReceiptCard.vue';
 import Observer from '@/components/Observer.vue';
+
+const { mapActions, mapState } = createNamespacedHelpers('receipts');
 
 export default {
   name: 'receipts',
@@ -30,12 +45,22 @@ export default {
     ReceiptCard,
     Observer,
   },
+  data() {
+    return {
+      first: true,
+    };
+  },
   computed: {
-    ...mapState('receipts', ['receipts']),
+    ...mapState(['openReceipts', 'receipts', 'loading', 'endReached']),
   },
   methods: {
+    ...mapActions(['loadReceipts', 'loadOpenReceipts']),
     intersected() {
-      console.log('Got it! We intersected!');
+      if (this.first) {
+        this.first = false;
+        return;
+      }
+      this.loadReceipts();
     },
   },
 };

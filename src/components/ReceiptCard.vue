@@ -9,11 +9,17 @@
       max-width="200"
     ></v-img>
     <span v-if="!receipt.result || receipt.result.state === 'pending'">Pending
-      <v-progress-circular indeterminate/>
+      <v-progress-circular indeterminate />
     </span>
     <span v-else-if="receipt.result.state === 'unreadable'">unreadable</span>
-    <div class="receipt-info" v-else>
-      <ReceiptHeader :receipt-id="receipt.id" :header="receipt.result.data.header"/>
+    <div
+      class="receipt-info"
+      v-else
+    >
+      <ReceiptHeader
+        :receipt-id="receipt.id"
+        :header="receipt.result.data.header"
+      />
 
       <div class="fields">
         <ReceiptField
@@ -24,11 +30,18 @@
           :formatter="v => !v ? '' : v.street + ', ' + v.city"
           :parser="v => ({street:v.split(',')[0].trim(),city:v.split(',')[1].trim()})"
         >
-          <template slot="editor" slot-scope="props">
-            <v-text-field v-model="props.value.changedValue"/>
+          <template
+            slot="editor"
+            slot-scope="props"
+          >
+            <v-text-field v-model="props.value.changedValue" />
           </template>
         </ReceiptField>
-        <ReceiptField icon="phone" :receipt="receipt" field="phone"/>
+        <ReceiptField
+          icon="phone"
+          :receipt="receipt"
+          field="phone"
+        />
 
         <ReceiptField
           icon="date_range"
@@ -87,21 +100,22 @@ export default {
   },
   data() {
     return {
-      paymentMethods: ['CASH','CREDIT','DEBIT'],
+      paymentMethods: ['CASH', 'CREDIT', 'DEBIT'],
       headerModal: false,
     };
   },
   methods: {
     parseTime(s) {
-      const [hour, minute, second] = s.split(':')
-        .map(v => v ? parseInt(v, 10) : null);
-      return {hour,minute,second};
+      const [hour, minute, second] = s
+        .split(':')
+        .map(v => (v ? parseInt(v, 10) : null));
+      return { hour, minute, second };
     },
     parseDate(s) {
       return DateTime.fromFormat(s, 'MM/dd/yyyy', {
-          zone: 'Europe/Berlin',
-        }).toJSDate()
-    }
+        zone: 'Europe/Berlin',
+      }).toJSDate();
+    },
   },
 };
 </script>
@@ -120,7 +134,7 @@ export default {
 .receipt-info .fields > * {
   display: flex;
   align-items: center;
-  margin-top: .3em;
+  margin-top: 0.3em;
 }
 .header-input {
   margin: 0;
