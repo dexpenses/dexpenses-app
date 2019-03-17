@@ -44,7 +44,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(['user']),
+    ...mapState('user',['user']),
   },
   methods: {
     startUpload(files) {
