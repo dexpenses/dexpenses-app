@@ -10,10 +10,14 @@
 
       <div class="file">
         <label class="file-label">
-          <input type="file" @change="startUpload($event.target.files)" multiple>
+          <input
+            type="file"
+            @change="startUpload($event.target.files)"
+            multiple
+          >
           <span class="file-cta">
             <span class="file-icon">
-              <fa icon="upload"/>
+              <v-icon>cloud_upload</v-icon>
             </span>
             <span class="file-label">or choose a file…</span>
           </span>
@@ -21,7 +25,11 @@
       </div>
     </drop-zone>
     <div class="file-upload-tasks">
-      <file-upload-task v-for="(uploadTask, index) in uploadTasks" :key="index" :task="uploadTask"/>
+      <file-upload-task
+        v-for="(uploadTask, index) in uploadTasks"
+        :key="index"
+        :task="uploadTask"
+      />
     </div>
   </div>
 </template>
@@ -44,14 +52,15 @@ export default {
     };
   },
   computed: {
-    ...mapState('user',['user']),
+    ...mapState('user', ['user']),
   },
   methods: {
     startUpload(files) {
       for (let i = 0; i < files.length; i += 1) {
         const file = files[i];
         console.log(file);
-        const uploadTask = firebase.storage()
+        const uploadTask = firebase
+          .storage()
           .ref(`images/${this.user.uid}/${Date.now()}-${file.name}`)
           .put(file, {
             contentType: file.type,
@@ -64,28 +73,28 @@ export default {
 </script>
 <style scoped>
 .dropzone {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    height: 300px;
-    border: 2px dashed #f16624;
-    border-radius: 5px;
-    background: white;
-    margin: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 300px;
+  border: 2px dashed #f16624;
+  border-radius: 5px;
+  background: white;
+  margin: 10px 0;
 }
 
 .dropzone.hovering {
-    border: 2px solid #f16624;
-    color: #dadada !important;
+  border: 2px solid #f16624;
+  color: #dadada !important;
 }
 
 progress::-webkit-progress-value {
-    transition: width 0.1s ease;
+  transition: width 0.1s ease;
 }
 
 .file input {
-    display: none;
+  display: none;
 }
 .file-upload-tasks {
   display: flex;

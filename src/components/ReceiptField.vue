@@ -128,7 +128,7 @@ export default {
     },
     format(v) {
       if (typeof this.formatter === 'string') {
-        return this.$options.filters[this.filter](v);
+        return this.$options.filters[this.formatter](v);
       }
       return this.formatter(v);
     },

@@ -1,0 +1,254 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReceiptField.vue should apply the provided filter 1`] = `
+<div>
+  <v-icon-stub>
+    icon
+  </v-icon-stub>
+   
+  <span
+    class="receipt-field-value"
+  >
+    <span
+      class="fixed"
+    >
+      VALUE
+    </span>
+     
+    <v-form-stub
+      class="form"
+      style="display: none;"
+    >
+      <v-text-field-stub
+        class="edit-input"
+        height="1em"
+        return-masked-value="true"
+      />
+       
+      <!---->
+       
+      <!---->
+    </v-form-stub>
+  </span>
+</div>
+`;
+
+exports[`ReceiptField.vue should enter edit mode on double-click of the text 1`] = `
+<div>
+  <i
+    aria-hidden="true"
+    class="v-icon material-icons theme--light"
+  >
+    icon
+  </i>
+   
+  <span
+    class="receipt-field-value"
+  >
+    <span
+      class="fixed"
+    >
+      value
+    </span>
+     
+    <v-form-stub
+      class="form"
+      style="display: none;"
+    >
+      <div
+        class="v-input edit-input v-text-field theme--light"
+      >
+        <div
+          class="v-input__control"
+        >
+          <div
+            class="v-input__slot"
+            style="height: 1em;"
+          >
+            <div
+              class="v-text-field__slot"
+            >
+              <input
+                type="text"
+              />
+            </div>
+          </div>
+          <div
+            class="v-text-field__details"
+          >
+            <div
+              class="v-messages theme--light"
+            >
+              <div
+                class="v-messages__wrapper"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+       
+      <!---->
+       
+      <!---->
+    </v-form-stub>
+  </span>
+</div>
+`;
+
+exports[`ReceiptField.vue should enter edit mode on double-click of the text 2`] = `
+<div>
+  <i
+    aria-hidden="true"
+    class="v-icon material-icons theme--light"
+  >
+    icon
+  </i>
+   
+  <span
+    class="receipt-field-value"
+  >
+    <span
+      class="fixed"
+      style="display: none;"
+    >
+      value
+    </span>
+     
+    <v-form-stub
+      class="form"
+      style=""
+    >
+      <div
+        class="v-input edit-input v-text-field v-input--is-label-active v-input--is-dirty theme--light"
+      >
+        <div
+          class="v-input__control"
+        >
+          <div
+            class="v-input__slot"
+            style="height: 1em;"
+          >
+            <div
+              class="v-text-field__slot"
+            >
+              <input
+                type="text"
+              />
+            </div>
+          </div>
+          <div
+            class="v-text-field__details"
+          >
+            <div
+              class="v-messages theme--light"
+            >
+              <div
+                class="v-messages__wrapper"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+       
+      <button
+        class="v-btn v-btn--flat v-btn--icon theme--light"
+        type="submit"
+      >
+        <div
+          class="v-btn__content"
+        >
+          <i
+            aria-hidden="true"
+            class="v-icon material-icons theme--light"
+          >
+            check
+          </i>
+        </div>
+      </button>
+       
+      <button
+        class="v-btn v-btn--flat v-btn--icon theme--light"
+        type="button"
+      >
+        <div
+          class="v-btn__content"
+        >
+          <i
+            aria-hidden="true"
+            class="v-icon material-icons theme--light"
+          >
+            close
+          </i>
+        </div>
+      </button>
+    </v-form-stub>
+  </span>
+</div>
+`;
+
+exports[`ReceiptField.vue should render correctly 1`] = `
+<div>
+  <v-icon-stub>
+    icon
+  </v-icon-stub>
+   
+  <span
+    class="receipt-field-value"
+  >
+    <span
+      class="fixed"
+    >
+      value
+    </span>
+     
+    <v-form-stub
+      class="form"
+      style="display: none;"
+    >
+      <v-text-field-stub
+        class="edit-input"
+        height="1em"
+        return-masked-value="true"
+      />
+       
+      <!---->
+       
+      <!---->
+    </v-form-stub>
+  </span>
+</div>
+`;
+
+exports[`ReceiptField.vue should show red icon if required value is missing 1`] = `
+<div>
+  <v-icon-stub
+    color="red lighten-1"
+  >
+    icon
+  </v-icon-stub>
+   
+  <span
+    class="receipt-field-value"
+  >
+    <span
+      class="fixed"
+    >
+      
+    </span>
+     
+    <v-form-stub
+      class="form"
+    >
+      <v-text-field-stub
+        class="edit-input"
+        height="1em"
+        return-masked-value="true"
+      />
+       
+      <!---->
+       
+      <!---->
+    </v-form-stub>
+  </span>
+</div>
+`;
