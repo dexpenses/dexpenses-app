@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Vuetify from 'vuetify';
 import { shallowMount, mount } from '@vue/test-utils';
 import ReceiptField from '@/components/ReceiptField.vue';
+import '@/directives';
 
 Vue.use(Vuetify, {}); // should actually use localVue, but that causes a console error atm
 
