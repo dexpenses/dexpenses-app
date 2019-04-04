@@ -4,8 +4,8 @@
     <span class="receipt-field-value">
       <span
         class="fixed"
-        @dblclick="edit"
-        v-dblclick-or-hold="test"
+        v-dblclick-or-hold
+        @dblclickorhold="edit"
         v-show="!editing"
       >{{displayValue}}</span>
       <v-form
