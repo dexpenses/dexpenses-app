@@ -7,6 +7,10 @@ export default {
   state: {
     openReceipts: [],
     receipts: [],
+    loading: {
+      openReceipts: false,
+      receipts: false,
+    },
   },
   getters: {
     pendingReceiptsCount(state) {
@@ -15,9 +19,16 @@ export default {
         : state.receipts.filter(r => !r.result || r.result === 'pending').length;
     },
   },
+  mutations: {
+    setLoading(state, [what, loading]) {
+      state.loading[what] = loading;
+    },
+  },
   actions: {
-    loadOpenReceipts: firebaseAction(({ bindFirebaseRef, rootState }) => {
-      bindFirebaseRef(
+    loadOpenReceipts: firebaseAction(async ({ bindFirebaseRef, rootState, dispatch, commit }) => {
+      commit('setLoading', ['openReceipts', true]);
+      await dispatch('user/checkLoggedIn', {}, { root: true });
+      await bindFirebaseRef(
         'openReceipts',
         firebase
           .firestore()
@@ -26,9 +37,12 @@ export default {
           .collection('receipts')
           .where('result.data.date', '==', null)
       );
+      commit('setLoading', ['openReceipts', false]);
     }),
-    loadReceipts: firebaseAction(({ bindFirebaseRef, rootState }) => {
-      bindFirebaseRef(
+    loadReceipts: firebaseAction(async ({ bindFirebaseRef, rootState, dispatch, commit }) => {
+      commit('setLoading', ['receipts', true]);
+      await dispatch('user/checkLoggedIn', {}, { root: true });
+      await bindFirebaseRef(
         'receipts',
         firebase
           .firestore()
@@ -40,6 +54,7 @@ export default {
           .orderBy('result.data.time', 'desc')
           .limit(20)
       );
+      commit('setLoading', ['receipts', false]);
     }),
     unbindReceipts: firebaseAction(({ unbindFirebaseRef }) => {
       unbindFirebaseRef('openReceipts');

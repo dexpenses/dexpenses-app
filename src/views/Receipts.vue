@@ -3,26 +3,26 @@
     <v-subheader>
       We're gonna need your help with these...
     </v-subheader>
-    <v-container>
+    <v-container v-if="!loading.openReceipts">
       <ReceiptCard
         v-for="receipt in openReceipts"
         :key="receipt.id"
         :receipt="receipt"
       />
     </v-container>
+    <v-container v-else>
+      <v-progress-circular indeterminate />
+    </v-container>
     <v-subheader>
       Your Receipts
     </v-subheader>
     <v-container>
       <v-progress-circular
-        v-if="!receipts"
-        :size="70"
-        :width="7"
-        color="primary"
         indeterminate
+        v-if="loading.receipts"
       />
       <div v-else-if="receipts.length === 0">No receipts</div>
-      <div>
+      <div v-else>
         <ReceiptCard
           v-for="receipt in receipts"
           :key="receipt.id"
@@ -50,7 +50,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(['openReceipts', 'receipts']),
+    ...mapState(['openReceipts', 'receipts', 'loading']),
   },
   methods: {
     ...mapActions(['loadReceipts', 'loadOpenReceipts', 'unbindReceipts']),

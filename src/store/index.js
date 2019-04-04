@@ -8,10 +8,10 @@ Vue.use(Vuex);
 /* eslint-disable no-param-reassign */
 export default new Vuex.Store({
   mutations: {
-    ...firebaseMutations
+    ...firebaseMutations,
   },
   modules: {
     user,
-    receipts
-  }
+    receipts,
+  },
 });
