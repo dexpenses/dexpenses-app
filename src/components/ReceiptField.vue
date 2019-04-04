@@ -5,6 +5,7 @@
       <span
         class="fixed"
         @dblclick="edit"
+        v-dblclick-or-hold="test"
         v-show="!editing"
       >{{displayValue}}</span>
       <v-form
@@ -107,6 +108,9 @@ export default {
       this.$nextTick(
         () => this.$refs.editInput && this.$refs.editInput.focus()
       );
+    },
+    test() {
+      console.log('triggered!');
     },
     async submit() {
       if (!this.valid) {

@@ -5,6 +5,7 @@ import router from './router';
 import store from './store';
 import './firebase';
 import './filters';
+import './directives';
 
 Vue.config.productionTip = false;
 
