@@ -13,14 +13,16 @@ Vue.directive('dblclickOrHold', {
      */
     const holdDuration = binding.value || 500;
     let timeout;
-    el.addEventListener('mousedown', e => {
-      if (e.button !== 0) {
-        return;
-      }
+    const holdStart = () => {
       timeout = setTimeout(() => {
         timeout = null;
         el.dispatchEvent(new Event('dblclickorhold'));
       }, holdDuration);
+    };
+    el.addEventListener('mousedown', holdStart);
+    el.addEventListener('touchstart', e => {
+      e.preventDefault();
+      holdStart();
     });
     const cancel = () => {
       if (timeout) {
@@ -30,5 +32,6 @@ Vue.directive('dblclickOrHold', {
     };
     el.addEventListener('mouseup', cancel);
     el.addEventListener('mouseleave', cancel);
+    el.addEventListener('touchend', cancel);
   },
 });
