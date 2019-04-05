@@ -160,7 +160,7 @@ export default {
 .receipt-field-text-field {
   height: 1em;
   margin: 0;
-  padding: 0;
+  padding: 0 !important;
 }
 .receipt-field-text-field input {
   width: 100%;
