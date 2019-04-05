@@ -20,7 +20,7 @@ exports[`ReceiptField.vue should apply the provided filter 1`] = `
       style="display: none;"
     >
       <v-text-field-stub
-        class="edit-input"
+        class="edit-input receipt-field-text-field"
         height="1em"
         return-masked-value="true"
       />
@@ -56,7 +56,7 @@ exports[`ReceiptField.vue should enter edit mode on double-click of the text 1`]
       style="display: none;"
     >
       <div
-        class="v-input edit-input v-text-field theme--light"
+        class="v-input edit-input receipt-field-text-field v-text-field theme--light"
       >
         <div
           class="v-input__control"
@@ -119,7 +119,7 @@ exports[`ReceiptField.vue should enter edit mode on double-click of the text 2`]
       style=""
     >
       <div
-        class="v-input edit-input v-text-field v-input--is-label-active v-input--is-dirty theme--light"
+        class="v-input edit-input receipt-field-text-field v-text-field v-input--is-label-active v-input--is-dirty theme--light"
       >
         <div
           class="v-input__control"
@@ -206,7 +206,7 @@ exports[`ReceiptField.vue should render correctly 1`] = `
       style="display: none;"
     >
       <v-text-field-stub
-        class="edit-input"
+        class="edit-input receipt-field-text-field"
         height="1em"
         return-masked-value="true"
       />
@@ -240,7 +240,7 @@ exports[`ReceiptField.vue should show red icon if required value is missing 1`] 
       class="form"
     >
       <v-text-field-stub
-        class="edit-input"
+        class="edit-input receipt-field-text-field"
         height="1em"
         return-masked-value="true"
       />
