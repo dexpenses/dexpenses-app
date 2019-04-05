@@ -13,7 +13,10 @@ Vue.directive('dblclickOrHold', {
      */
     const holdDuration = binding.value || 500;
     let timeout;
-    el.addEventListener('mousedown', () => {
+    el.addEventListener('mousedown', e => {
+      if (e.button !== 0) {
+        return;
+      }
       timeout = setTimeout(() => {
         timeout = null;
         el.dispatchEvent(new Event('dblclickorhold'));

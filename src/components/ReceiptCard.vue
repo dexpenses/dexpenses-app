@@ -1,13 +1,6 @@
 <template>
   <div class="receipt">
-    <v-img
-      class="grey"
-      :src="receipt.downloadUrl"
-      alt="No img for you"
-      height="200"
-      width="200"
-      max-width="200"
-    ></v-img>
+    <ReceiptImage :src="receipt.downloadUrl" />
     <span v-if="!receipt.result || receipt.result.state === 'pending'">Pending
       <v-progress-circular indeterminate />
     </span>
@@ -34,7 +27,11 @@
             slot="editor"
             slot-scope="props"
           >
-            <v-text-field v-model="props.value.changedValue" />
+            <v-text-field
+              class="receipt-field-text-field"
+              height="1em"
+              v-model="props.value.changedValue"
+            />
           </template>
         </ReceiptField>
         <ReceiptField
@@ -82,11 +79,20 @@
         />
       </div>
     </div>
+    <div>
+      <v-chip>
+        <v-icon left>fastfood</v-icon>
+        Food
+      </v-chip>
+      <v-chip>Weekly</v-chip>
+      <v-chip>Supermarket</v-chip>
+    </div>
   </div>
 </template>
 <script>
 import { DateTime } from 'luxon';
 import ReceiptField from './ReceiptField.vue';
+import ReceiptImage from './ReceiptImage.vue';
 import ReceiptHeader from './ReceiptHeader.vue';
 
 export default {
@@ -94,6 +100,7 @@ export default {
   components: {
     ReceiptField,
     ReceiptHeader,
+    ReceiptImage,
   },
   props: {
     receipt: Object,
@@ -123,9 +130,12 @@ export default {
 <style scoped>
 .receipt {
   display: flex;
+  width: 100%;
+  justify-content: space-between;
 }
 .receipt-info {
   padding: 1em;
+  flex-grow: 1;
 }
 .receipt-info .fields {
   display: flex;

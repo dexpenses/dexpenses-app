@@ -3,9 +3,14 @@
     <div
       class="header"
       :class="{empty: !header.length}"
-      @dblclick="headerModal = true; headers = [...header]"
+      v-dblclick-or-hold
+      @dblclickorhold="headerModal = true; headers = [...header]"
     >{{!header.length ? 'No header found' : header.join(', ') }}</div>
-    <v-dialog v-model="headerModal" persistent>
+    <v-dialog
+      v-model="headerModal"
+      persistent
+      max-width="50vw"
+    >
       <v-card>
         <v-card-title class="headline">Edit Headers</v-card-title>
         <v-card-text>
@@ -29,13 +34,28 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn v-if="!loading" color="red darken-1" flat icon @click="headerModal = false">
+          <v-btn
+            v-if="!loading"
+            color="red darken-1"
+            flat
+            icon
+            @click="headerModal = false"
+          >
             <v-icon>close</v-icon>
           </v-btn>
-          <v-btn v-if="!loading" color="green darken-1" flat icon @click="submitNewHeaders">
+          <v-btn
+            v-if="!loading"
+            color="green darken-1"
+            flat
+            icon
+            @click="submitNewHeaders"
+          >
             <v-icon>check</v-icon>
           </v-btn>
-          <v-progress-circular indeterminate v-if="loading"/>
+          <v-progress-circular
+            indeterminate
+            v-if="loading"
+          />
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -43,13 +63,15 @@
 </template>
 <script>
 import deepEqual from 'deep-equal';
-import { mapActions } from 'vuex';
+import { createNamespacedHelpers } from 'vuex';
+
+const { mapActions } = createNamespacedHelpers('receipts');
 
 export default {
   name: 'receiptHeader',
   props: {
     receiptId: String,
-    header: Array
+    header: Array,
   },
   data() {
     return {
@@ -74,13 +96,17 @@ export default {
         return;
       }
       this.loading = true;
-      await this.updateReceipt({id:this.receiptId,field:'header',value: newHeaders});
+      await this.updateReceipt({
+        id: this.receiptId,
+        field: 'header',
+        value: newHeaders,
+      });
       this.loading = false;
       this.headerModal = false;
     },
     ...mapActions(['updateReceipt']),
   },
-}
+};
 </script>
 
 <style scoped>

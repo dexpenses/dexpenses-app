@@ -21,7 +21,7 @@
           :loading="submitted"
         >
           <v-text-field
-            class="edit-input"
+            class="edit-input receipt-field-text-field"
             height="1em"
             ref="editInput"
             v-model="changedValueHolder.changedValue"
@@ -69,7 +69,7 @@ export default {
     mask: String,
     parser: {
       type: Function,
-      default: v => v.trim(),
+      default: v => (v ? v.trim() : v),
     },
     formatter: {
       type: [Function, String],
@@ -109,15 +109,20 @@ export default {
         () => this.$refs.editInput && this.$refs.editInput.focus()
       );
     },
-    test() {
-      console.log('triggered!');
-    },
     async submit() {
       if (!this.valid) {
         return;
       }
       this.editing = false;
-      const value = this.parser(this.changedValueHolder.changedValue);
+      let value;
+      if (
+        !this.changedValueHolder.changedValue ||
+        !this.changedValueHolder.changedValue.trim()
+      ) {
+        value = null;
+      } else {
+        value = this.parser(this.changedValueHolder.changedValue);
+      }
       this.changedValueHolder.changedValue = '';
       if (deepEqual(value, this.value)) {
         return;
@@ -139,23 +144,25 @@ export default {
   },
 };
 </script>
-<style>
+<style scoped>
 .receipt-field-value {
   margin-left: 0.2em;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.receipt-field-value .fixed {
-  margin-top: 0.2em;
-  margin-bottom: 0.2em;
+.form {
+  display: flex;
+  height: 1em;
 }
-.edit-input {
+</style>
+<style>
+.receipt-field-text-field {
   height: 1em;
   margin: 0;
   padding: 0;
 }
-.form {
-  display: flex;
+.receipt-field-text-field input {
+  width: 100%;
 }
 </style>

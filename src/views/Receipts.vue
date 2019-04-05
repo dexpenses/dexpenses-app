@@ -1,18 +1,20 @@
 <template>
   <v-container>
-    <v-subheader>
-      We're gonna need your help with these...
-    </v-subheader>
-    <v-container v-if="!loading.openReceipts">
-      <ReceiptCard
-        v-for="receipt in openReceipts"
-        :key="receipt.id"
-        :receipt="receipt"
-      />
-    </v-container>
-    <v-container v-else>
-      <v-progress-circular indeterminate />
-    </v-container>
+    <template v-if="loading.openReceipts || openReceipts.length > 0">
+      <v-subheader>
+        We're gonna need your help with these...
+      </v-subheader>
+      <v-container v-if="!loading.openReceipts">
+        <ReceiptCard
+          v-for="receipt in openReceipts"
+          :key="receipt.id"
+          :receipt="receipt"
+        />
+      </v-container>
+      <v-container v-else>
+        <v-progress-circular indeterminate />
+      </v-container>
+    </template>
     <v-subheader>
       Your Receipts
     </v-subheader>
