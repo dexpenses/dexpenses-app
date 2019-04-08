@@ -19,22 +19,27 @@ export default new Router({
         } else {
           next('dashboard');
         }
-      }
+      },
     },
     {
       path: '/dashboard',
       name: 'dashboard',
-      component: () => import('./views/Dashboard.vue')
+      component: () => import('./views/Dashboard.vue'),
     },
     {
       path: '/receipts',
       name: 'receipts',
-      component: () => import('./views/Receipts.vue')
+      component: () => import('./views/Receipts.vue'),
     },
     {
       path: '/upload',
       name: 'uploadReceipts',
-      component: () => import('./views/UploadReceipts.vue')
-    }
-  ]
+      component: () => import('./views/UploadReceipts.vue'),
+    },
+    {
+      path: '/rules',
+      name: 'rules',
+      component: () => import('./views/Rules.vue'),
+    },
+  ],
 });

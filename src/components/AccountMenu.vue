@@ -22,6 +22,20 @@
 
       <v-list-tile
         ripple
+        to="/rules"
+      >
+        <v-list-tile-content>
+          <v-list-tile-title>
+            Rules
+          </v-list-tile-title>
+        </v-list-tile-content>
+        <v-list-tile-action>
+          <v-icon>build</v-icon>
+        </v-list-tile-action>
+      </v-list-tile>
+
+      <v-list-tile
+        ripple
         @click="openSettings"
       >
         <v-list-tile-content>
