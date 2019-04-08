@@ -6,10 +6,15 @@
     <span>{{key}}</span>
     <div class="children">
       <Condition
-        :value="c"
+        v-model="arg[index]"
+        @input="$emit('input', {[key]: arg})"
         v-for="(c, index) in arg"
         :key="index"
       />
+      <div class="add-icon">
+        <v-icon @click="arg.push({})">add_circle</v-icon>
+      </div>
+
     </div>
   </div>
   <div
@@ -18,7 +23,10 @@
   >
     <span>Not</span>
     <div class="children">
-      <Condition :value="arg" />
+      <Condition
+        v-model="arg"
+        @input="$emit('input', {[key]: arg})"
+      />
     </div>
   </div>
   <div
@@ -39,6 +47,7 @@
     ></v-select>
 
     <component
+      v-if="key"
       :is="key.slice(0,1).toUpperCase() + key.slice(1) + 'Condition'"
       v-model="arg"
       @input="$emit('input',{[key]: arg})"
@@ -78,6 +87,12 @@ export default {
       arg: Object.values(this.value)[0],
     };
   },
+  watch: {
+    value(v) {
+      [this.key] = Object.keys(v);
+      [this.arg] = Object.values(v);
+    },
+  },
 };
 </script>
 <style scoped>
@@ -87,6 +102,17 @@ export default {
 }
 .bool-condition > .children > * {
   margin: 1em;
+}
+.add-icon {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+.add-icon i {
+  opacity: 0.5;
+}
+.add-icon i:hover {
+  opacity: 1;
 }
 .not-condition > .children {
   display: flex;

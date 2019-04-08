@@ -7,7 +7,7 @@
     ></v-text-field>
     <v-checkbox
       v-model="caseSensitive"
-      @input="$emit('input', params)"
+      @change="$emit('input', params)"
       label="Case Sensitive"
     ></v-checkbox>
   </div>
