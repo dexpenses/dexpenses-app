@@ -2,13 +2,17 @@
   <div>
     <v-select
       v-model="op"
+      @input="$emit('input', params)"
       :items="['<', '<=', '==', '>=', '>']"
       menu-props="auto"
       label="Select"
       hide-details
       single-line
     ></v-select>
-    <v-text-field :value="n"></v-text-field>
+    <v-text-field
+      v-model="n"
+      @input="$emit('input', params)"
+    ></v-text-field>
   </div>
 </template>
 <script>
@@ -19,10 +23,8 @@ export default {
     return { op, n };
   },
   computed: {
-    json() {
-      return {
-        amount: [this.op, this.n],
-      };
+    params() {
+      return [this.op, this.n];
     },
   },
 };
