@@ -4,7 +4,9 @@
     <v-select
       v-model="value$"
       @input="$emit('input', value$)"
-      :items="['DEBIT', 'CASH', 'CREDIT', 'PAYPAL']"
+      :items="paymentMethods"
+      item-text="displayName"
+      item-value="name"
       menu-props="auto"
       label="Select"
       hide-details
@@ -13,12 +15,20 @@
   </div>
 </template>
 <script>
+import { paymentMethods } from '@/util/receipt';
+
 export default {
   props: ['value'],
   data() {
     return {
       value$: this.value,
+      paymentMethods,
     };
+  },
+  watch: {
+    value(v) {
+      this.value$ = v;
+    },
   },
 };
 </script>

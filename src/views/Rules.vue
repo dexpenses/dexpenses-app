@@ -1,18 +1,25 @@
 <template>
   <v-container>
-    <v-select
-      v-model="selected"
-      :items="selectableRules"
-      item-text="name"
-      item-value="index"
-      menu-props="auto"
-      label="Select"
-      hide-details
-      single-line
-    ></v-select>
+    <v-layout row>
+      <v-select
+        v-model="selected"
+        :items="selectableRules"
+        item-text="name"
+        item-value="index"
+        menu-props="auto"
+        label="Select"
+        hide-details
+        single-line
+      ></v-select>
+      <v-btn
+        color="primary"
+        @click="addNewRule"
+      >New Rule</v-btn>
+    </v-layout>
     <v-container>
       <v-subheader>Rule info</v-subheader>
       <v-text-field
+        ref="nameField"
         label="Name"
         v-model="rules[selected].name"
       ></v-text-field>
@@ -38,6 +45,22 @@
           @keyup.enter="addTag"
         >
       </v-container>
+      <v-layout row>
+        <v-btn
+          color="primary"
+          :disabled="!anyChanges"
+        >Save</v-btn>
+        <v-btn
+          color="error"
+          :disabled="!anyChanges"
+          @click="discard"
+        >Discard</v-btn>
+        <RuleTester v-model="testingRule" />
+        <v-btn>
+          <v-icon left>play_arrow</v-icon>
+          Run
+        </v-btn>
+      </v-layout>
     </v-container>
     <div>
       {{rules[selected]}}
@@ -45,12 +68,15 @@
   </v-container>
 </template>
 <script>
+import deepEqual from 'deep-equal';
 import Condition from '@/components/rules/Condition.vue';
+import RuleTester from '@/components/rules/RuleTester.vue';
 
 export default {
   name: 'Rules',
   components: {
     Condition,
+    RuleTester,
   },
   computed: {
     selectableRules() {
@@ -59,8 +85,24 @@ export default {
         index,
       }));
     },
+    anyChanges() {
+      return !deepEqual(
+        this.rules[this.selected],
+        this.$lastSavedState[this.selected]
+      );
+    },
   },
   methods: {
+    addNewRule() {
+      this.rules.push({
+        condition: {
+          $and: [],
+        },
+        tags: [],
+      });
+      this.selected = this.rules.length - 1;
+      this.$refs.nameField.focus();
+    },
     addTag() {
       if (!this.newTag) {
         return;
@@ -70,11 +112,19 @@ export default {
       }
       this.newTag = '';
     },
+    discard() {
+      this.$set(this.rules, this.selected, this.$lastSavedState[this.selected]);
+    },
+  },
+  created() {
+    this.$lastSavedState = JSON.parse(JSON.stringify(this.rules));
   },
   data() {
     return {
       selected: 1,
       newTag: '',
+      $lastSavedState: [],
+      testingRule: false,
       rules: [
         {
           condition: {

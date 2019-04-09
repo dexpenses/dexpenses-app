@@ -35,5 +35,12 @@ export default {
       ];
     },
   },
+  watch: {
+    value(v) {
+      const [type, time] = v || [];
+      this.type = type;
+      this.time = time;
+    },
+  },
 };
 </script>

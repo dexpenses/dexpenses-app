@@ -24,5 +24,12 @@ export default {
       return [this.searchString, this.caseSensitive];
     },
   },
+  watch: {
+    value(v) {
+      const [searchString, caseSensitive] = v || [];
+      this.searchString = searchString;
+      this.caseSensitive = caseSensitive;
+    },
+  },
 };
 </script>

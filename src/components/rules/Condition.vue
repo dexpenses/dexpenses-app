@@ -3,31 +3,45 @@
     v-if="key === '$and' || key == '$or'"
     class="bool-condition"
   >
-    <span>{{key}}</span>
+    <v-select
+      class="field-select"
+      v-model="key"
+      @input="$emit('input', {[key]: arg})"
+      :items="[{key:'$and',text:'All Of'}, {key:'$or',text:'Any Of'}]"
+      item-text="text"
+      item-value="key"
+      menu-props="auto"
+      label="Select"
+      hide-details
+      single-line
+    ></v-select>
+
     <div class="children">
       <Condition
         v-model="arg[index]"
         @input="$emit('input', {[key]: arg})"
+        @delete="arg.splice(index, 1)"
         v-for="(c, index) in arg"
         :key="index"
       />
       <div class="add-icon">
-        <v-icon @click="arg.push({})">add_circle</v-icon>
+        <v-icon
+          class="hoverable-icon"
+          @click="arg.push({})"
+        >add_circle</v-icon>
       </div>
 
     </div>
   </div>
   <div
     v-else-if="key === '$not'"
-    class="bool-condition"
+    class="not-condition"
   >
     <span>Not</span>
-    <div class="children">
-      <Condition
-        v-model="arg"
-        @input="$emit('input', {[key]: arg})"
-      />
-    </div>
+    <Condition
+      v-model="arg"
+      @input="$emit('input', {[key]: arg})"
+    />
   </div>
   <div
     v-else
@@ -38,11 +52,13 @@
       class="field-select"
       v-model="key"
       @input="arg = undefined; $emit('input', {[key]: arg})"
-      :items="['header', 'amount', 'currency', 'date', 'time', 'paymentMethod']"
+      :items="fieldNames"
+      item-text="displayName"
+      item-value="name"
       menu-props="auto"
       label="Select"
       hide-details
-      :prepend-icon="icons[key]"
+      :prepend-icon="(fields[key] || {}).icon"
       single-line
     ></v-select>
 
@@ -52,6 +68,11 @@
       v-model="arg"
       @input="$emit('input',{[key]: arg})"
     />
+
+    <v-icon
+      class="hoverable-icon"
+      @click="$emit('delete')"
+    >delete</v-icon>
   </div>
 </template>
 <script>
@@ -61,6 +82,7 @@ import DateCondition from './DateCondition.vue';
 import HeaderCondition from './HeaderCondition.vue';
 import PaymentMethodCondition from './PaymentMethodCondition.vue';
 import TimeCondition from './TimeCondition.vue';
+import { fields } from '@/util/receipt';
 
 export default {
   name: 'Condition',
@@ -75,14 +97,11 @@ export default {
   },
   data() {
     return {
-      icons: {
-        header: 'title',
-        amount: 'attach_money',
-        currency: 'attach_money',
-        date: 'date_range',
-        time: 'access_time',
-        paymentMethod: 'money',
-      },
+      fields,
+      fieldNames: Object.entries(fields).map(([name, def]) => ({
+        ...def,
+        name,
+      })),
       key: Object.keys(this.value)[0],
       arg: Object.values(this.value)[0],
     };
@@ -108,16 +127,18 @@ export default {
   display: flex;
   justify-content: center;
 }
-.add-icon i {
+.hoverable-icon {
   opacity: 0.5;
 }
-.add-icon i:hover {
+.hoverable-icon:hover {
   opacity: 1;
 }
-.not-condition > .children {
+.not-condition {
   display: flex;
   align-items: center;
-  background: #d3d3d36e;
+}
+.not-condition > span {
+  padding-right: 1em;
 }
 .field-condition {
   display: flex;
@@ -140,10 +161,12 @@ export default {
   padding-top: 0;
   margin-top: 0;
 }
-.field-condition > div > .v-text-field {
+.field-condition > div > .v-text-field,
+.field-condition > div > .v-input--selection-controls {
   margin-top: 0;
 }
-.field-condition > div > .v-text-field .v-input__slot {
+.field-condition > div > .v-text-field .v-input__slot,
+.field-condition > div > .v-input--selection-controls .v-input__slot {
   margin-bottom: 0;
 }
 </style>

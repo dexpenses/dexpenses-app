@@ -20,5 +20,10 @@ export default {
       value$: this.value,
     };
   },
+  watch: {
+    value(v) {
+      this.value$ = v;
+    },
+  },
 };
 </script>

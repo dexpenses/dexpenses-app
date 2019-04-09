@@ -27,5 +27,12 @@ export default {
       return [this.op, this.n];
     },
   },
+  watch: {
+    value(v) {
+      const [op, n] = v || [];
+      this.op = op;
+      this.n = n;
+    },
+  },
 };
 </script>
