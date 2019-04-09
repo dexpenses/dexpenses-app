@@ -82,12 +82,18 @@
                 multiple
               ></v-autocomplete>
             </v-flex>
+            <v-textarea v-model="receiptJson"></v-textarea>
           </v-layout>
         </v-container>
         <small>*indicates required field</small>
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
+        <v-btn
+          color="blue darken-1"
+          flat
+          @click="test"
+        >Go!</v-btn>
         <v-btn
           color="blue darken-1"
           flat
@@ -98,14 +104,18 @@
   </v-dialog>
 </template>
 <script>
+import { parseCondition } from '@dexmo/dexpenses-rule-conditions';
+
 export default {
   name: 'RuleTester',
   props: {
     value: Boolean,
+    condition: Object,
   },
   data() {
     return {
       show: this.value,
+      receiptJson: '',
     };
   },
   watch: {
@@ -114,6 +124,11 @@ export default {
     },
   },
   methods: {
+    test() {
+      const engine = parseCondition(this.condition);
+      console.log(engine);
+      console.log(engine.test(JSON.parse(this.receiptJson)));
+    },
     hide() {
       this.show = false;
       this.$emit('input', false);

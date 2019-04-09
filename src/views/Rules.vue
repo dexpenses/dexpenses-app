@@ -55,7 +55,10 @@
           :disabled="!anyChanges"
           @click="discard"
         >Discard</v-btn>
-        <RuleTester v-model="testingRule" />
+        <RuleTester
+          v-model="testingRule"
+          :condition="rules[selected].condition"
+        />
         <v-btn>
           <v-icon left>play_arrow</v-icon>
           Run
