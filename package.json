@@ -10,7 +10,8 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
-    "@dexmo/dexpenses-rule-conditions": "^1.0.2",
+    "@dexmo/vue-transitioning-result-icon": "^0.1.1",
+    "@dexpenses/rule-conditions": "^1.0.4",
     "deep-equal": "^1.0.1",
     "firebase": "^5.9.2",
     "luxon": "^1.12.0",

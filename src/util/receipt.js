@@ -7,11 +7,13 @@ export const fields = {
   paymentMethod: { icon: 'money', displayName: 'Payment Method' },
 };
 export const paymentMethods = [
-  { name: 'DEBIT', displayName: 'Debit Card' },
-  { name: 'CREDIT', displayName: 'Credit Card' },
-  { name: 'CASH', displayName: 'Cash' },
+  { name: 'DEBIT', displayName: 'Debit Card', icon: 'credit_card' },
+  { name: 'CREDIT', displayName: 'Credit Card', icon: 'credit_card' },
+  { name: 'CASH', displayName: 'Cash', icon: 'money' },
   { name: 'PAYPAL', displayName: 'PayPal' },
 ];
+
+export const currencies = ['EUR', 'USD', 'GBP'];
 
 export const dateFields = [
   {

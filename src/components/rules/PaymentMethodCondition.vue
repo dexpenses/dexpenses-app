@@ -1,24 +1,21 @@
 <template>
   <div>
     <span>is</span>
-    <v-select
+    <PaymentMethodInput
       v-model="value$"
       @input="$emit('input', value$)"
-      :items="paymentMethods"
-      item-text="displayName"
-      item-value="name"
-      menu-props="auto"
-      label="Select"
-      hide-details
-      single-line
-    ></v-select>
+    />
   </div>
 </template>
 <script>
 import { paymentMethods } from '@/util/receipt';
+import PaymentMethodInput from '@/components/fields/PaymentMethodInput.vue';
 
 export default {
   props: ['value'],
+  components: {
+    PaymentMethodInput,
+  },
   data() {
     return {
       value$: this.value,

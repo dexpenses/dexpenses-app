@@ -57,7 +57,7 @@
         >Discard</v-btn>
         <RuleTester
           v-model="testingRule"
-          :condition="rules[selected].condition"
+          :rule="rules[selected]"
         />
         <v-btn>
           <v-icon left>play_arrow</v-icon>
@@ -84,7 +84,7 @@ export default {
   computed: {
     selectableRules() {
       return this.rules.map((rule, index) => ({
-        name: rule.name || `Anonymous rule #${index}`,
+        name: rule.name,
         index,
       }));
     },
@@ -98,6 +98,7 @@ export default {
   methods: {
     addNewRule() {
       this.rules.push({
+        name: `Anonymous rule #${this.rules.length}`,
         condition: {
           $and: [],
         },
@@ -130,12 +131,14 @@ export default {
       testingRule: false,
       rules: [
         {
+          name: 'Simple header',
           condition: {
             header: ['markt', true],
           },
           tags: ['markt', 'header'],
         },
         {
+          name: 'Simple header or payment method',
           condition: {
             $or: [
               {
@@ -149,6 +152,7 @@ export default {
           tags: ['markt', 'header', 'EC'],
         },
         {
+          name: 'All conditions included',
           condition: {
             $and: [
               {

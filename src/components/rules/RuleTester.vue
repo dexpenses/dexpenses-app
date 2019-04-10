@@ -2,7 +2,9 @@
   <v-dialog
     v-model="show"
     persistent
-    max-width="600px"
+    fullscreen
+    hide-overlay
+    transition="dialog-bottom-transition"
   >
     <template v-slot:activator="{ on }">
       <v-btn v-on="on">
@@ -11,112 +13,147 @@
       </v-btn>
     </template>
     <v-card>
-      <v-card-title>
-        <span class="headline">User Profile</span>
-      </v-card-title>
-      <v-card-text>
-        <v-container grid-list-md>
-          <v-layout wrap>
-            <v-flex
-              xs12
-              sm6
-              md4
-            >
-              <v-text-field
-                label="Legal first name*"
-                required
-              ></v-text-field>
-            </v-flex>
-            <v-flex
-              xs12
-              sm6
-              md4
-            >
-              <v-text-field
-                label="Legal middle name"
-                hint="example of helper text only on focus"
-              ></v-text-field>
-            </v-flex>
-            <v-flex
-              xs12
-              sm6
-              md4
-            >
-              <v-text-field
-                label="Legal last name*"
-                hint="example of persistent helper text"
-                persistent-hint
-                required
-              ></v-text-field>
-            </v-flex>
-            <v-flex xs12>
-              <v-text-field
-                label="Email*"
-                required
-              ></v-text-field>
-            </v-flex>
-            <v-flex xs12>
-              <v-text-field
-                label="Password*"
-                type="password"
-                required
-              ></v-text-field>
-            </v-flex>
-            <v-flex
-              xs12
-              sm6
-            >
-              <v-select
-                :items="['0-17', '18-29', '30-54', '54+']"
-                label="Age*"
-                required
-              ></v-select>
-            </v-flex>
-            <v-flex
-              xs12
-              sm6
-            >
-              <v-autocomplete
-                :items="['Skiing', 'Ice hockey', 'Soccer', 'Basketball', 'Hockey', 'Reading', 'Writing', 'Coding', 'Basejump']"
-                label="Interests"
-                multiple
-              ></v-autocomplete>
-            </v-flex>
-            <v-textarea v-model="receiptJson"></v-textarea>
-          </v-layout>
-        </v-container>
-        <small>*indicates required field</small>
-      </v-card-text>
-      <v-card-actions>
-        <v-spacer></v-spacer>
+      <v-toolbar
+        dark
+        color="primary"
+      >
         <v-btn
-          color="blue darken-1"
-          flat
-          @click="test"
-        >Go!</v-btn>
-        <v-btn
-          color="blue darken-1"
-          flat
+          icon
+          dark
           @click="hide"
-        >Close</v-btn>
-      </v-card-actions>
+        >
+          <v-icon>close</v-icon>
+        </v-btn>
+        <v-toolbar-title>{{`Testing rule: ${rule.name}`}}</v-toolbar-title>
+        <v-spacer></v-spacer>
+      </v-toolbar>
+      <v-card-text>
+
+        <v-expansion-panel
+          :value="0"
+          popout
+        >
+          <v-expansion-panel-content>
+            <template v-slot:header>
+              <div>Custom receipt</div>
+            </template>
+            <v-card>
+              <v-card-text>
+                <v-form>
+                  <v-container grid-list-md>
+                    <v-layout wrap>
+                      <v-flex xs12>
+                        <v-text-field
+                          @input="$set(receipt.header, 0, $event)"
+                          label="Header"
+                          prepend-icon="title"
+                        ></v-text-field>
+                      </v-flex>
+
+                      <v-flex
+                        xs12
+                        sm6
+                      >
+                        <DateInput v-model="receipt.date" />
+                      </v-flex>
+                      <v-flex
+                        xs12
+                        sm6
+                      >
+                        <TimeInput v-model="receipt.time" />
+                      </v-flex>
+
+                      <v-flex
+                        xs12
+                        sm6
+                        md4
+                      >
+                        <v-text-field
+                          label="Amount"
+                          prepend-icon="attach_money"
+                        ></v-text-field>
+                      </v-flex>
+                      <v-flex
+                        xs12
+                        sm6
+                        md4
+                      >
+                        <CurrencyInput v-model="receipt.amount.currency" />
+                      </v-flex>
+                      <v-flex
+                        xs12
+                        sm6
+                        md4
+                      >
+                        <PaymentMethodInput v-model="receipt.paymentMethod" />
+                      </v-flex>
+                    </v-layout>
+                  </v-container>
+                </v-form>
+              </v-card-text>
+            </v-card>
+          </v-expansion-panel-content>
+          <v-expansion-panel-content>
+            <template v-slot:header>
+              <div>Search for a sample receipt</div>
+            </template>
+            <v-card>
+              <v-card-text>
+                ...not implemented...
+              </v-card-text>
+            </v-card>
+          </v-expansion-panel-content>
+        </v-expansion-panel>
+
+        <v-layout justify-center>
+          <transitioning-result-icon
+            class="result-icon"
+            :success-color="$vuetify.theme.success"
+            :error-color="$vuetify.theme.error"
+            :error="!result"
+          />
+        </v-layout>
+      </v-card-text>
     </v-card>
   </v-dialog>
 </template>
 <script>
-import { parseCondition } from '@dexmo/dexpenses-rule-conditions';
+import { parseCondition } from '@dexpenses/rule-conditions';
+import PaymentMethodInput from '@/components/fields/PaymentMethodInput.vue';
+import CurrencyInput from '@/components/fields/CurrencyInput.vue';
+import DateInput from '@/components/fields/DateInput.vue';
+import TimeInput from '@/components/fields/TimeInput.vue';
+import TransitioningResultIcon from '@dexmo/vue-transitioning-result-icon';
 
 export default {
   name: 'RuleTester',
   props: {
     value: Boolean,
-    condition: Object,
+    rule: Object,
+  },
+  components: {
+    PaymentMethodInput,
+    CurrencyInput,
+    DateInput,
+    TimeInput,
+    TransitioningResultIcon,
   },
   data() {
     return {
       show: this.value,
-      receiptJson: '',
+      receipt: { header: [''], amount: {}, date: null, time: null },
     };
+  },
+  computed: {
+    engine() {
+      if (!this.rule) {
+        return null;
+      }
+      return parseCondition(this.rule.condition);
+    },
+    result() {
+      return this.engine.test(this.receipt);
+    },
   },
   watch: {
     value(v) {
@@ -125,9 +162,9 @@ export default {
   },
   methods: {
     test() {
-      const engine = parseCondition(this.condition);
+      const engine = parseCondition(this.rule.condition);
       console.log(engine);
-      console.log(engine.test(JSON.parse(this.receiptJson)));
+      console.log(engine.test(this.receipt));
     },
     hide() {
       this.show = false;
@@ -136,3 +173,8 @@ export default {
   },
 };
 </script>
+<style scoped>
+.result-icon {
+  width: 72px;
+}
+</style>
