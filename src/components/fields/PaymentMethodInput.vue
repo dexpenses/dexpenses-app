@@ -1,5 +1,6 @@
 <template>
   <v-select
+    class="payment-method-input"
     v-model="value$"
     @input="$emit('input', value$)"
     :items="paymentMethods"
@@ -35,3 +36,8 @@ export default {
   },
 };
 </script>
+<style>
+.payment-method-input .v-input__slot {
+  max-width: 10em;
+}
+</style>

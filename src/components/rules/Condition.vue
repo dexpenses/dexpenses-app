@@ -4,7 +4,7 @@
     class="bool-condition"
   >
     <v-select
-      class="field-select"
+      class="field-select bool-select"
       v-model="key"
       @input="$emit('input', {[key]: arg})"
       :items="[{key:'$and',text:'All Of'}, {key:'$or',text:'Any Of'}]"
@@ -155,6 +155,12 @@ export default {
 }
 .field-condition > div > span {
   padding: 0 1em;
+}
+.field-select {
+  max-width: 200px;
+}
+.bool-select {
+  max-width: 6em;
 }
 .field-select,
 .field-condition > div > .v-select {
