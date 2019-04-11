@@ -41,5 +41,10 @@ export default new Router({
       name: 'rules',
       component: () => import('./views/Rules.vue'),
     },
+    {
+      path: '/settings',
+      name: 'settings',
+      component: () => import('./views/Settings.vue'),
+    },
   ],
 });
