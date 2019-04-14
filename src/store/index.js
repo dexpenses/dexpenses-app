@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import { firebaseMutations } from 'vuexfire';
 import receipts from './receipts';
 import user from './user';
+import recurring from './recurring';
 
 Vue.use(Vuex);
 /* eslint-disable no-param-reassign */
@@ -13,5 +14,6 @@ export default new Vuex.Store({
   modules: {
     user,
     receipts,
+    recurring,
   },
 });

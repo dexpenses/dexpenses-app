@@ -3,7 +3,7 @@
     v-model="value$"
     ref="input"
     @input="emit"
-    label="Date"
+    :label="label"
     :prepend-icon="icon"
     mask="##/##/####"
     :rules="[v => this.validateDate(v) || 'Invalid date.']"
@@ -16,7 +16,13 @@ import { DateTime } from 'luxon';
 
 export default {
   name: 'DateInput',
-  props: ['value'],
+  props: {
+    value: Date,
+    label: {
+      type: String,
+      default: 'Date',
+    },
+  },
   data() {
     return {
       value$: this.formatDate(this.value),

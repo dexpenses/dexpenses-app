@@ -35,7 +35,7 @@
 
       <v-spacer></v-spacer>
 
-      <v-flex
+      <!-- <v-flex
         v-if="user"
         class="pending-message hidden-sm-and-down"
       >
@@ -50,7 +50,7 @@
         <span v-else>No receipts pending.
           <v-icon>check</v-icon>
         </span>
-      </v-flex>
+      </v-flex> -->
 
       <account-menu
         v-if="user"
@@ -157,6 +157,11 @@ export default {
           name: 'Dashboard',
           link: '/dashboard',
           icon: 'dashboard',
+        },
+        {
+          name: 'Recurring',
+          link: '/recurring',
+          icon: 'payment',
         },
         {
           name: 'Receipts',

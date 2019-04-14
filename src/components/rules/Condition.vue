@@ -127,12 +127,6 @@ export default {
   display: flex;
   justify-content: center;
 }
-.hoverable-icon {
-  opacity: 0.5;
-}
-.hoverable-icon:hover {
-  opacity: 1;
-}
 .not-condition {
   display: flex;
   align-items: center;

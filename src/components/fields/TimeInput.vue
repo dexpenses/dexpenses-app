@@ -39,7 +39,7 @@ export default {
       if (!s) {
         return true;
       }
-      return !!s.match(/^(0\d|1[0-2]):([0-5]\d):?(([0-5]\d))?$/);
+      return !!s.match(/^([01]\d|2[0-4]):([0-5]\d):?(([0-5]\d))?$/);
     },
     format(d) {
       return this.$options.filters.time(d);

@@ -8,6 +8,8 @@ import './firebase';
 import './filters';
 import './directives';
 
+import './styles.css';
+
 Vue.use(VueViewer);
 
 Vue.config.productionTip = false;

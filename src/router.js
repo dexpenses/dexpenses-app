@@ -27,6 +27,11 @@ export default new Router({
       component: () => import('./views/Dashboard.vue'),
     },
     {
+      path: '/recurring',
+      name: 'recurring',
+      component: () => import('./views/Recurring.vue'),
+    },
+    {
       path: '/receipts',
       name: 'receipts',
       component: () => import('./views/Receipts.vue'),
