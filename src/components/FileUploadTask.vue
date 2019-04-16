@@ -84,20 +84,32 @@ export default {
       },
       async () => {
         this.downloadUrl = await this.task.snapshot.ref.getDownloadURL();
-        firebase
+        const docRef = firebase
           .firestore()
           .collection('receiptsByUser')
           .doc(this.user.uid)
           .collection('receipts')
-          .doc(this.task.snapshot.ref.name)
-          .set(
-            {
-              downloadUrl: this.downloadUrl,
-            },
-            {
-              merge: true,
-            }
+          .doc(this.task.snapshot.ref.name);
+
+        firebase.firestore().runTransaction(async transaction => {
+          const doc = await transaction.get(docRef);
+          if (doc.exists && doc.data().result && doc.data().result.state) {
+            return transaction.set(
+              docRef,
+              {
+                downloadUrl: this.downloadUrl,
+              },
+              {
+                merge: true,
+              }
+            );
+          }
+          return transaction.set(
+            docRef,
+            { downloadUrl: this.downloadUrl, result: { state: 'pending' } },
+            { merge: true }
           );
+        });
       }
     );
   },
