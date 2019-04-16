@@ -80,12 +80,16 @@
       </div>
     </div>
     <div>
-      <v-chip>
+      <!-- <v-chip>
         <v-icon left>fastfood</v-icon>
         Food
       </v-chip>
       <v-chip>Weekly</v-chip>
-      <v-chip>Supermarket</v-chip>
+      <v-chip>Supermarket</v-chip> -->
+      <v-chip
+        v-for="tag in receipt.tags"
+        :key="tag"
+      >{{tag}}</v-chip>
     </div>
   </div>
 </template>
