@@ -1,5 +1,31 @@
 <template>
   <v-container>
+    <template v-if="loading.pendingReceipts || pendingReceipts.length > 0">
+      <v-subheader>
+        Pending Receipts
+      </v-subheader>
+      <v-progress-linear
+        class="pending-receipts-loader"
+        v-if="!loading.pendingReceipts"
+        indeterminate
+        height="3px"
+      />
+      <v-container v-if="!loading.pendingReceipts">
+        <div
+          class="image-viewer"
+          v-viewer="{toolbar: false, navbar: true, title: false}"
+        >
+          <img
+            v-for="receipt in pendingReceipts"
+            :key="receipt.id"
+            :src="receipt.downloadUrl"
+          />
+        </div>
+      </v-container>
+      <v-container v-else>
+        <v-progress-circular indeterminate />
+      </v-container>
+    </template>
     <template v-if="loading.openReceipts || openReceipts.length > 0">
       <v-subheader>
         We're gonna need your help with these...
@@ -52,17 +78,39 @@ export default {
     };
   },
   computed: {
-    ...mapState(['openReceipts', 'receipts', 'loading']),
+    ...mapState(['openReceipts', 'receipts', 'pendingReceipts', 'loading']),
   },
   methods: {
-    ...mapActions(['loadReceipts', 'loadOpenReceipts', 'unbindReceipts']),
+    ...mapActions([
+      'loadReceipts',
+      'loadOpenReceipts',
+      'loadPendingReceipts',
+      'unbindReceipts',
+    ]),
   },
   mounted() {
     this.loadOpenReceipts();
     this.loadReceipts();
+    this.loadPendingReceipts();
   },
   destroyed() {
     this.unbindReceipts();
   },
 };
 </script>
+<style scoped>
+.image-viewer {
+  height: 100px;
+  max-height: 100px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.image-viewer img {
+  max-width: 100px;
+  max-height: 100px;
+}
+.pending-receipts-loader {
+  margin: 0;
+}
+</style>

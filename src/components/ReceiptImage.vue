@@ -34,8 +34,6 @@
   </div>
 </template>
 <script>
-import 'viewerjs/dist/viewer.css';
-
 export default {
   props: ['src'],
   data() {

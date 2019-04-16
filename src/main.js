@@ -8,6 +8,7 @@ import './firebase';
 import './filters';
 import './directives';
 
+import 'viewerjs/dist/viewer.css';
 import './styles.css';
 
 Vue.use(VueViewer);

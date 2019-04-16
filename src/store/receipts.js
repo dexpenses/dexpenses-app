@@ -1,15 +1,26 @@
 import firebase from 'firebase/app';
 import { firebaseAction } from 'vuexfire';
 
+function bindReceiptsAction(name, queryOrRefFactory) {
+  return firebaseAction(async ({ bindFirebaseRef, rootState, dispatch, commit }) => {
+    commit('setLoading', [name, true]);
+    await dispatch('user/checkLoggedIn', {}, { root: true });
+    await bindFirebaseRef(name, queryOrRefFactory(rootState));
+    commit('setLoading', [name, false]);
+  });
+}
+
 /* eslint-disable no-param-reassign */
 export default {
   namespaced: true,
   state: {
     openReceipts: [],
     receipts: [],
+    pendingReceipts: [],
     loading: {
       openReceipts: false,
       receipts: false,
+      pendingReceipts: false,
     },
   },
   getters: {
@@ -25,39 +36,35 @@ export default {
     },
   },
   actions: {
-    loadOpenReceipts: firebaseAction(async ({ bindFirebaseRef, rootState, dispatch, commit }) => {
-      commit('setLoading', ['openReceipts', true]);
-      await dispatch('user/checkLoggedIn', {}, { root: true });
-      await bindFirebaseRef(
-        'openReceipts',
-        firebase
-          .firestore()
-          .collection('receiptsByUser')
-          .doc(rootState.user.user.uid)
-          .collection('receipts')
-          .where('result.data.date', '==', null)
-      );
-      commit('setLoading', ['openReceipts', false]);
-    }),
-    loadReceipts: firebaseAction(async ({ bindFirebaseRef, rootState, dispatch, commit }) => {
-      commit('setLoading', ['receipts', true]);
-      await dispatch('user/checkLoggedIn', {}, { root: true });
-      await bindFirebaseRef(
-        'receipts',
-        firebase
-          .firestore()
-          .collection('receiptsByUser')
-          .doc(rootState.user.user.uid)
-          .collection('receipts')
-          .where('result.state', '==', 'ready')
-          .orderBy('result.data.date', 'desc')
-          .orderBy('result.data.time', 'desc')
-          .limit(20)
-      );
-      commit('setLoading', ['receipts', false]);
-    }),
+    loadOpenReceipts: bindReceiptsAction('openReceipts', rootState =>
+      firebase
+        .firestore()
+        .collection('receiptsByUser')
+        .doc(rootState.user.user.uid)
+        .collection('receipts')
+        .where('result.state', '==', 'partial')
+    ),
+    loadReceipts: bindReceiptsAction('receipts', rootState =>
+      firebase
+        .firestore()
+        .collection('receiptsByUser')
+        .doc(rootState.user.user.uid)
+        .collection('receipts')
+        .where('result.state', '==', 'ready')
+        .orderBy('result.data.timestamp', 'desc')
+        .limit(20)
+    ),
+    loadPendingReceipts: bindReceiptsAction('pendingReceipts', rootState =>
+      firebase
+        .firestore()
+        .collection('receiptsByUser')
+        .doc(rootState.user.user.uid)
+        .collection('receipts')
+        .where('result.state', '==', 'pending')
+    ),
     unbindReceipts: firebaseAction(({ unbindFirebaseRef }) => {
       unbindFirebaseRef('openReceipts');
+      unbindFirebaseRef('pendingReceipts');
       unbindFirebaseRef('receipts');
     }),
     updateReceipt({ rootState }, { id, field, value }) {
