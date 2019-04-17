@@ -7,7 +7,7 @@
       absolute
     >
       <v-toolbar-side-icon
-        class="hidden-sm-and-up"
+        class="hidden-md-and-up"
         v-if="user"
         @click.stop="drawer = !drawer"
       ></v-toolbar-side-icon>
