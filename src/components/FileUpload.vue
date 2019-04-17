@@ -58,7 +58,6 @@ export default {
     startUpload(files) {
       for (let i = 0; i < files.length; i += 1) {
         const file = files[i];
-        console.log(file);
         const uploadTask = firebase
           .storage()
           .ref(`images/${this.user.uid}/${Date.now()}-${file.name}`)
