@@ -1,14 +1,6 @@
 import firebase from 'firebase/app';
 import { firebaseAction } from 'vuexfire';
-
-function bindReceiptsAction(name, queryOrRefFactory) {
-  return firebaseAction(async ({ bindFirebaseRef, rootState, dispatch, commit }) => {
-    commit('setLoading', [name, true]);
-    await dispatch('user/checkLoggedIn', {}, { root: true });
-    await bindFirebaseRef(name, queryOrRefFactory(rootState));
-    commit('setLoading', [name, false]);
-  });
-}
+import firebaseBindAction from './firebase-bind-action';
 
 /* eslint-disable no-param-reassign */
 export default {
@@ -36,7 +28,7 @@ export default {
     },
   },
   actions: {
-    loadOpenReceipts: bindReceiptsAction('openReceipts', rootState =>
+    loadOpenReceipts: firebaseBindAction('openReceipts', ({ rootState }) =>
       firebase
         .firestore()
         .collection('receiptsByUser')
@@ -44,7 +36,7 @@ export default {
         .collection('receipts')
         .where('result.state', '==', 'partial')
     ),
-    loadReceipts: bindReceiptsAction('receipts', rootState =>
+    loadReceipts: firebaseBindAction('receipts', ({ rootState }) =>
       firebase
         .firestore()
         .collection('receiptsByUser')
@@ -54,7 +46,7 @@ export default {
         .orderBy('result.data.timestamp', 'desc')
         .limit(20)
     ),
-    loadPendingReceipts: bindReceiptsAction('pendingReceipts', rootState =>
+    loadPendingReceipts: firebaseBindAction('pendingReceipts', ({ rootState }) =>
       firebase
         .firestore()
         .collection('receiptsByUser')
@@ -68,7 +60,6 @@ export default {
       unbindFirebaseRef('receipts');
     }),
     updateReceipt({ rootState }, { id, field, value }) {
-      console.log('updating', id, field, value);
       return firebase
         .firestore()
         .collection('receiptsByUser')
