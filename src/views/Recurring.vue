@@ -49,7 +49,7 @@ export default {
   },
   data() {
     return {
-      showForm: true,
+      showForm: false,
       recurringPaymentToEdit: null,
     };
   },
