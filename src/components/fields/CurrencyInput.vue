@@ -1,7 +1,7 @@
 <template>
   <v-select
-    v-model="value$"
-    @input="$emit('input', value$)"
+    :value="value"
+    @input="$emit('input', $event)"
     :items="currencies"
     menu-props="auto"
     label="Currency"
@@ -13,18 +13,12 @@
 import { currencies } from '@/util/receipt';
 
 export default {
-  name: 'PaymentMethodInput',
+  name: 'CurrencyInput',
   props: ['value'],
   data() {
     return {
-      value$: this.value,
       currencies,
     };
-  },
-  watch: {
-    value(v) {
-      this.value$ = v;
-    },
   },
 };
 </script>

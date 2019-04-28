@@ -1,7 +1,6 @@
 <template>
   <v-text-field
-    v-model="value$"
-    ref="input"
+    :value="formattedValue"
     @input="emit"
     label="Time"
     :prepend-icon="icon"
@@ -18,22 +17,21 @@ export default {
   props: ['value'],
   data() {
     return {
-      value$: this.format(this.value),
       icon: fields.time.icon,
     };
   },
-  watch: {
-    value(v) {
-      this.value$ = this.format(v);
+  computed: {
+    formattedValue() {
+      return this.format(this.value);
     },
   },
   methods: {
-    emit() {
-      if (!this.$refs.input.validate()) {
+    emit(value) {
+      if (!this.validate(value)) {
         return;
       }
 
-      this.$emit('input', this.parse(this.value$));
+      this.$emit('input', this.parse(value));
     },
     validate(s) {
       if (!s) {

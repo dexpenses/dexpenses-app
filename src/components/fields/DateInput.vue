@@ -1,6 +1,6 @@
 <template>
   <v-text-field
-    v-model="value$"
+    :value="formattedValue"
     ref="input"
     @input="emit"
     :label="label"
@@ -25,21 +25,20 @@ export default {
   },
   data() {
     return {
-      value$: this.formatDate(this.value),
       icon: fields.date.icon,
     };
   },
-  watch: {
-    value(v) {
-      this.value$ = this.formatDate(v);
+  computed: {
+    formattedValue() {
+      return this.formatDate(this.value);
     },
   },
   methods: {
-    emit() {
+    emit(value) {
       if (!this.$refs.input.validate()) {
         return;
       }
-      this.$emit('input', this.parseDate(this.value$));
+      this.$emit('input', this.parseDate(value));
     },
     validateDate(s) {
       if (!s) {

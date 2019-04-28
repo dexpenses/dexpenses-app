@@ -1,14 +1,14 @@
 <template>
   <v-select
     class="payment-method-input"
-    v-model="value$"
-    @input="$emit('input', value$)"
+    :value="value"
+    @input="$emit('input', $event)"
     :items="paymentMethods"
     item-text="displayName"
     item-value="name"
     menu-props="auto"
     label="Payment method"
-    :prepend-icon="icons[value$]"
+    :prepend-icon="icons[value]"
     hide-details
     single-line
   ></v-select>
@@ -21,18 +21,12 @@ export default {
   props: ['value'],
   data() {
     return {
-      value$: this.value,
       paymentMethods,
       icons: paymentMethods.reduce((acc, cur) => {
         acc[cur.name] = cur.icon;
         return acc;
       }, {}),
     };
-  },
-  watch: {
-    value(v) {
-      this.value$ = v;
-    },
   },
 };
 </script>

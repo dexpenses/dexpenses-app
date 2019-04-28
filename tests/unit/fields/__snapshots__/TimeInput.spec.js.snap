@@ -1,0 +1,337 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TimeInput.vue should not trigger input event if new value is set programmatically 1`] = `
+<div
+  class="v-input v-text-field v-input--is-label-active v-input--is-dirty theme--light"
+>
+  <div
+    class="v-input__prepend-outer"
+  >
+    <div
+      class="v-input__icon v-input__icon--prepend"
+    >
+      <i
+        aria-hidden="true"
+        class="v-icon material-icons theme--light"
+      >
+        access_time
+      </i>
+    </div>
+  </div>
+  <div
+    class="v-input__control"
+  >
+    <div
+      class="v-input__slot"
+    >
+      <div
+        class="v-text-field__slot"
+      >
+        <label
+          aria-hidden="true"
+          class="v-label v-label--active theme--light"
+          style="left: 0px; position: absolute;"
+        >
+          Time
+        </label>
+        <input
+          aria-label="Time"
+          maxlength="8"
+          type="text"
+        />
+      </div>
+    </div>
+    <div
+      class="v-text-field__details"
+    >
+      <div
+        class="v-messages theme--light"
+      >
+        <div
+          class="v-messages__wrapper"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`TimeInput.vue should not trigger input event if new value is set programmatically 2`] = `
+<div
+  class="v-input v-text-field v-input--is-label-active v-input--is-dirty theme--light"
+>
+  <div
+    class="v-input__prepend-outer"
+  >
+    <div
+      class="v-input__icon v-input__icon--prepend"
+    >
+      <i
+        aria-hidden="true"
+        class="v-icon material-icons theme--light"
+      >
+        access_time
+      </i>
+    </div>
+  </div>
+  <div
+    class="v-input__control"
+  >
+    <div
+      class="v-input__slot"
+    >
+      <div
+        class="v-text-field__slot"
+      >
+        <label
+          aria-hidden="true"
+          class="v-label v-label--active theme--light"
+          style="left: 0px; position: absolute;"
+        >
+          Time
+        </label>
+        <input
+          aria-label="Time"
+          maxlength="8"
+          type="text"
+        />
+      </div>
+    </div>
+    <div
+      class="v-text-field__details"
+    >
+      <div
+        class="v-messages theme--light"
+      >
+        <div
+          class="v-messages__wrapper"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`TimeInput.vue should render correctly 1`] = `
+<div
+  class="v-input v-text-field theme--light"
+>
+  <div
+    class="v-input__prepend-outer"
+  >
+    <div
+      class="v-input__icon v-input__icon--prepend"
+    >
+      <i
+        aria-hidden="true"
+        class="v-icon material-icons theme--light"
+      >
+        access_time
+      </i>
+    </div>
+  </div>
+  <div
+    class="v-input__control"
+  >
+    <div
+      class="v-input__slot"
+    >
+      <div
+        class="v-text-field__slot"
+      >
+        <label
+          aria-hidden="true"
+          class="v-label theme--light"
+          style="left: 0px; position: absolute;"
+        >
+          Time
+        </label>
+        <input
+          aria-label="Time"
+          maxlength="8"
+          type="text"
+        />
+      </div>
+    </div>
+    <div
+      class="v-text-field__details"
+    >
+      <div
+        class="v-messages theme--light"
+      >
+        <div
+          class="v-messages__wrapper"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`TimeInput.vue should render correctly with value 1`] = `
+<div
+  class="v-input v-text-field v-input--is-label-active v-input--is-dirty theme--light"
+>
+  <div
+    class="v-input__prepend-outer"
+  >
+    <div
+      class="v-input__icon v-input__icon--prepend"
+    >
+      <i
+        aria-hidden="true"
+        class="v-icon material-icons theme--light"
+      >
+        access_time
+      </i>
+    </div>
+  </div>
+  <div
+    class="v-input__control"
+  >
+    <div
+      class="v-input__slot"
+    >
+      <div
+        class="v-text-field__slot"
+      >
+        <label
+          aria-hidden="true"
+          class="v-label v-label--active theme--light"
+          style="left: 0px; position: absolute;"
+        >
+          Time
+        </label>
+        <input
+          aria-label="Time"
+          maxlength="8"
+          type="text"
+        />
+      </div>
+    </div>
+    <div
+      class="v-text-field__details"
+    >
+      <div
+        class="v-messages theme--light"
+      >
+        <div
+          class="v-messages__wrapper"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`TimeInput.vue should trigger input event if user selects new item 1`] = `
+<div
+  class="v-input v-text-field v-input--is-label-active v-input--is-dirty theme--light"
+>
+  <div
+    class="v-input__prepend-outer"
+  >
+    <div
+      class="v-input__icon v-input__icon--prepend"
+    >
+      <i
+        aria-hidden="true"
+        class="v-icon material-icons theme--light"
+      >
+        access_time
+      </i>
+    </div>
+  </div>
+  <div
+    class="v-input__control"
+  >
+    <div
+      class="v-input__slot"
+    >
+      <div
+        class="v-text-field__slot"
+      >
+        <label
+          aria-hidden="true"
+          class="v-label v-label--active theme--light"
+          style="left: 0px; position: absolute;"
+        >
+          Time
+        </label>
+        <input
+          aria-label="Time"
+          maxlength="8"
+          type="text"
+        />
+      </div>
+    </div>
+    <div
+      class="v-text-field__details"
+    >
+      <div
+        class="v-messages theme--light"
+      >
+        <div
+          class="v-messages__wrapper"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`TimeInput.vue should update v-model correctly 1`] = `
+<div
+  class="v-input v-text-field v-input--is-label-active v-input--is-dirty theme--light"
+>
+  <div
+    class="v-input__prepend-outer"
+  >
+    <div
+      class="v-input__icon v-input__icon--prepend"
+    >
+      <i
+        aria-hidden="true"
+        class="v-icon material-icons theme--light"
+      >
+        access_time
+      </i>
+    </div>
+  </div>
+  <div
+    class="v-input__control"
+  >
+    <div
+      class="v-input__slot"
+    >
+      <div
+        class="v-text-field__slot"
+      >
+        <label
+          aria-hidden="true"
+          class="v-label v-label--active theme--light"
+          style="left: 0px; position: absolute;"
+        >
+          Time
+        </label>
+        <input
+          aria-label="Time"
+          maxlength="8"
+          type="text"
+        />
+      </div>
+    </div>
+    <div
+      class="v-text-field__details"
+    >
+      <div
+        class="v-messages theme--light"
+      >
+        <div
+          class="v-messages__wrapper"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
