@@ -74,6 +74,7 @@ exports[`PaymentMethodInput.vue should not trigger input event if new value is s
               role="list"
             >
               <div
+                class="primary--text"
                 role="listitem"
               >
                 <a
@@ -224,6 +225,7 @@ exports[`PaymentMethodInput.vue should not trigger input event if new value is s
               role="list"
             >
               <div
+                class=""
                 role="listitem"
               >
                 <a
@@ -241,6 +243,7 @@ exports[`PaymentMethodInput.vue should not trigger input event if new value is s
                 </a>
               </div>
               <div
+                class="primary--text"
                 role="listitem"
               >
                 <a
@@ -512,6 +515,7 @@ exports[`PaymentMethodInput.vue should render correctly with value 1`] = `
               role="list"
             >
               <div
+                class="primary--text"
                 role="listitem"
               >
                 <a
@@ -662,6 +666,7 @@ exports[`PaymentMethodInput.vue should update v-model correctly 1`] = `
               role="list"
             >
               <div
+                class="primary--text"
                 role="listitem"
               >
                 <a

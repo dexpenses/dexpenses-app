@@ -60,6 +60,7 @@ exports[`CurrencyInput.vue should not trigger input event if new value is set pr
               role="list"
             >
               <div
+                class="primary--text"
                 role="listitem"
               >
                 <a
@@ -179,6 +180,7 @@ exports[`CurrencyInput.vue should not trigger input event if new value is set pr
               role="list"
             >
               <div
+                class=""
                 role="listitem"
               >
                 <a
@@ -196,6 +198,7 @@ exports[`CurrencyInput.vue should not trigger input event if new value is set pr
                 </a>
               </div>
               <div
+                class="primary--text"
                 role="listitem"
               >
                 <a
@@ -419,6 +422,7 @@ exports[`CurrencyInput.vue should render correctly with value 1`] = `
               role="list"
             >
               <div
+                class="primary--text"
                 role="listitem"
               >
                 <a
@@ -538,6 +542,7 @@ exports[`CurrencyInput.vue should trigger input event if user selects new item 1
               role="list"
             >
               <div
+                class="primary--text"
                 role="listitem"
               >
                 <a
@@ -657,6 +662,7 @@ exports[`CurrencyInput.vue should update v-model correctly 1`] = `
               role="list"
             >
               <div
+                class="primary--text"
                 role="listitem"
               >
                 <a
