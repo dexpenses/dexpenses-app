@@ -1044,10 +1044,10 @@
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
   integrity sha512-shAmDyaQC4H92APFoIaVDHCx5bStIocgvbwQyxPRrbUY20V1EYTbSDchWbuwlMG3V17cprZhA6+78JfB+3DTPw==
 
-"@posva/vuefire-core@^1.0.3":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@posva/vuefire-core/-/vuefire-core-1.1.0.tgz#4a3bf8a2719172325c6a6dae791feb44b485e8ff"
-  integrity sha512-Z/jwkwyRUwC7KHpy7/ptjQwv3c0uDkAL9rmtYw8KNAK7ZKUFNAj4gqdMNgNbfmXykRLDYwtYDwuBWdtH2jR02Q==
+"@posva/vuefire-core@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@posva/vuefire-core/-/vuefire-core-1.1.2.tgz#a1e1b8bb72de02a3ad3aff538b144942bfd00033"
+  integrity sha512-NvmEU8uo/6kHpMs2cXF2gHItHBvuXltLmCeY99xBeeoSptOqJ01VZN4HyLzs4xnq/sWhWYK2twyfl77LidZ8OQ==
 
 "@soda/friendly-errors-webpack-plugin@^1.7.1":
   version "1.7.1"
@@ -10826,12 +10826,12 @@ vuex@^3.1.0:
   resolved "https://registry.yarnpkg.com/vuex/-/vuex-3.1.0.tgz#634b81515cf0cfe976bd1ffe9601755e51f843b9"
   integrity sha512-mdHeHT/7u4BncpUZMlxNaIdcN/HIt1GsGG5LKByArvYG/v6DvHcOxvDCts+7SRdCoIRGllK8IMZvQtQXLppDYg==
 
-vuexfire@3.0.0-alpha.14:
-  version "3.0.0-alpha.14"
-  resolved "https://registry.yarnpkg.com/vuexfire/-/vuexfire-3.0.0-alpha.14.tgz#8fbbb963b5cccdd0f46cebf087b180a9112969a3"
-  integrity sha512-8g10+Corxgcjd+9tMGT2R2YYdDtgGeHOc5DDtqvoBEyxIe/Yz3c0L8DwCSqjV+Ed3MjID/rgGP3r9xDYGrrHcg==
+vuexfire@3.0.0-alpha.17:
+  version "3.0.0-alpha.17"
+  resolved "https://registry.yarnpkg.com/vuexfire/-/vuexfire-3.0.0-alpha.17.tgz#1317bae201b0f3379d31d68783f81bf652abaf16"
+  integrity sha512-HMAe4re3GtIauzceMrGeV53bWzD9a9FTR6UoIvrdi9E7z1fZy4UR/Ehy+JEOI+q0TzZ6PtLsCep1KnT8lt6/yg==
   dependencies:
-    "@posva/vuefire-core" "^1.0.3"
+    "@posva/vuefire-core" "^1.1.2"
 
 w3c-hr-time@^1.0.1:
   version "1.0.1"
