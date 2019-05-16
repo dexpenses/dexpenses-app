@@ -10,5 +10,6 @@ const config = {
   projectId: 'dexpenses-207219',
   storageBucket: 'dexpenses-207219.appspot.com',
   messagingSenderId: '45657867106',
+  appId: '1:45657867106:web:b582be708a26239e',
 };
 firebase.initializeApp(config);
