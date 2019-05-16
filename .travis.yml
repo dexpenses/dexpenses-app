@@ -3,7 +3,7 @@ node_js:
   - '11'
 cache: yarn
 script:
-  - yarn test:unit
+  - yarn test:unit --silent
 deploy:
   on:
     branch: master
