@@ -13,3 +13,12 @@ function validateIntRange(value, min, max) {
   return `Value must be between ${min} and ${max}.`;
 }
 export const intRange = (min, max) => v => !v || validateIntRange(v, min, max);
+
+export const number = v => !v || !!Number(v) || 'Must be a number.';
+
+export const time = s => {
+  if (!s) {
+    return true;
+  }
+  return !!s.match(/^([01]\d|2[0-4]):([0-5]\d):?(([0-5]\d))?$/) || 'Invalid time.';
+};

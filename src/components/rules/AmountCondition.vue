@@ -1,8 +1,8 @@
 <template>
   <div>
     <v-select
-      v-model="op"
-      @input="$emit('input', params)"
+      :value="value[0]"
+      @input="$emit('input', [$event, value[1]])"
       :items="['<', '<=', '==', '>=', '>']"
       menu-props="auto"
       label="Select"
@@ -10,29 +10,20 @@
       single-line
     ></v-select>
     <v-text-field
-      v-model="n"
-      @input="$emit('input', params)"
+      ref="numberField"
+      :value="value[1]"
+      @input="$refs.numberField.validate() && $emit('input', [value[0], Number($event)])"
+      :rules="[required, number]"
     ></v-text-field>
   </div>
 </template>
 <script>
+import { required, number } from '@/util/form-rules';
+
 export default {
   props: ['value'],
   data() {
-    const [op, n] = this.value || [];
-    return { op, n };
-  },
-  computed: {
-    params() {
-      return [this.op, this.n];
-    },
-  },
-  watch: {
-    value(v) {
-      const [op, n] = v || [];
-      this.op = op;
-      this.n = n;
-    },
+    return { required, number };
   },
 };
 </script>

@@ -21,6 +21,7 @@
     </v-layout>
     <v-container v-if="!rules.length && !newRule">
       <v-alert
+        v-if="!loading"
         :value="true"
         color="info"
         icon="info"

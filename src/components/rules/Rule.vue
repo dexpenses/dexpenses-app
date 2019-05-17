@@ -49,6 +49,7 @@
         Run
       </v-btn>
     </v-layout>
+    <!-- {{rule}} -->
   </v-container>
 </template>
 <script>
@@ -62,7 +63,7 @@ const { mapGetters } = createNamespacedHelpers('rules');
 function cloneRule(rule) {
   const clone = JSON.parse(JSON.stringify(rule));
   if (clone.last_updated) {
-    clone.last_updated = new Date(rule.last_updated.toDate());
+    clone.last_updated = new Date(rule.last_updated);
   }
   return clone;
 }
@@ -102,11 +103,14 @@ export default {
       return !this.ruleId;
     },
     anyChanges() {
-      console.log(this.rule, this.savedState);
+      // console.log(this.rule, this.savedState);
       return !this.ruleId || !deepEqual(this.rule, this.savedState);
     },
   },
   watch: {
+    testRule($event) {
+      this.log(JSON.stringify($event, undefined, 2));
+    },
     anyChanges(v) {
       this.$emit('lock-changed', v);
     },

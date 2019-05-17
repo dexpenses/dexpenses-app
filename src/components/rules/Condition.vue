@@ -5,8 +5,8 @@
   >
     <v-select
       class="field-select bool-select"
-      v-model="key"
-      @input="$emit('input', {[key]: arg})"
+      :value="key"
+      @input="$emit('input', {[$event]: arg})"
       :items="[{key:'$and',text:'All Of'}, {key:'$or',text:'Any Of'}]"
       item-text="text"
       item-value="key"
@@ -18,16 +18,16 @@
 
     <div class="children">
       <Condition
-        v-model="arg[index]"
-        @input="$emit('input', {[key]: arg})"
-        @delete="arg.splice(index, 1)"
+        :value="c"
+        @input="$emit('input', {[key]: [...arg.slice(0, index), $event, ...arg.slice(index + 1)]})"
+        @delete="$emit('input', {[key]: [...arg.slice(0, index), ...arg.slice(index + 1)]})"
         v-for="(c, index) in arg"
         :key="index"
       />
       <div class="add-icon">
         <v-icon
           class="hoverable-icon"
-          @click="arg.push({})"
+          @click="$emit('input', {[key]: [...arg, {}]})"
         >add_circle</v-icon>
       </div>
 
@@ -39,8 +39,8 @@
   >
     <span>Not</span>
     <Condition
-      v-model="arg"
-      @input="$emit('input', {[key]: arg})"
+      :value="arg"
+      @input="$emit('input', {[key]: $event})"
     />
   </div>
   <div
@@ -50,8 +50,8 @@
 
     <v-select
       class="field-select"
-      v-model="key"
-      @input="arg = undefined; $emit('input', {[key]: arg})"
+      :value="key"
+      @input="$emit('input', {[$event]: []})"
       :items="fieldNames"
       item-text="displayName"
       item-value="name"
@@ -64,9 +64,9 @@
 
     <component
       v-if="key"
-      :is="key.slice(0,1).toUpperCase() + key.slice(1) + 'Condition'"
-      v-model="arg"
-      @input="$emit('input',{[key]: arg})"
+      :is="key[0].toUpperCase() + key.slice(1) + 'Condition'"
+      :value="arg"
+      @input="$emit('input',{[key]: $event})"
     />
 
     <v-icon
@@ -102,14 +102,14 @@ export default {
         ...def,
         name,
       })),
-      key: Object.keys(this.value)[0],
-      arg: Object.values(this.value)[0],
     };
   },
-  watch: {
-    value(v) {
-      [this.key] = Object.keys(v);
-      [this.arg] = Object.values(v);
+  computed: {
+    key() {
+      return Object.keys(this.value)[0];
+    },
+    arg() {
+      return Object.values(this.value)[0];
     },
   },
 };

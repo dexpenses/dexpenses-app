@@ -5,18 +5,20 @@
     label="Time"
     :prepend-icon="icon"
     mask="##:##:##"
-    :rules="[v => this.validate(v) || 'Invalid time.']"
+    :rules="[time]"
     :return-masked-value="true"
   ></v-text-field>
 </template>
 <script>
 import { fields } from '@/util/receipt';
+import { time } from '@/util/form-rules';
 
 export default {
   name: 'TimeInput',
   props: ['value'],
   data() {
     return {
+      time,
       icon: fields.time.icon,
     };
   },

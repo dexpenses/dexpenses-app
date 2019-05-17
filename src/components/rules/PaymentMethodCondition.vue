@@ -2,8 +2,8 @@
   <div>
     <span>is</span>
     <PaymentMethodInput
-      v-model="value$"
-      @input="$emit('input', value$)"
+      :value="value"
+      @input="$emit('input', $event)"
     />
   </div>
 </template>
@@ -18,14 +18,8 @@ export default {
   },
   data() {
     return {
-      value$: this.value,
       paymentMethods,
     };
-  },
-  watch: {
-    value(v) {
-      this.value$ = v;
-    },
   },
 };
 </script>

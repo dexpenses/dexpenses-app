@@ -29,6 +29,10 @@
       </v-toolbar>
       <v-card-text>
 
+        <v-container v-if="rule.condition">
+          {{rule.condition | prettifyCondition }}
+        </v-container>
+
         <v-expansion-panel
           :value="0"
           popout
@@ -71,6 +75,7 @@
                         <v-text-field
                           label="Amount"
                           prepend-icon="attach_money"
+                          v-model="receipt.amount.value"
                         ></v-text-field>
                       </v-flex>
                       <v-flex
@@ -125,6 +130,18 @@ import DateInput from '@/components/fields/DateInput.vue';
 import TimeInput from '@/components/fields/TimeInput.vue';
 import TransitioningResultIcon from '@dexmo/vue-transitioning-result-icon';
 
+function prettifyCondition(condition) {
+  const [[key, value]] = Object.entries(condition);
+  switch (key) {
+    case '$and':
+    case '$or':
+      return `${key} (${value.map(prettifyCondition).join(', ')})`;
+    case '$not':
+      return `not ${prettifyCondition(value)}`;
+    default:
+      return `${key}: ${Array.isArray(value) ? value.join(' ') : value}`;
+  }
+}
 export default {
   name: 'RuleTester',
   props: {
@@ -140,35 +157,39 @@ export default {
   },
   data() {
     return {
-      show: this.value,
       receipt: { header: [''], amount: {}, date: null, time: null },
     };
   },
   computed: {
+    show: {
+      get() {
+        return this.value;
+      },
+      set(value) {
+        this.$emit('input', value);
+      },
+    },
     engine() {
-      if (!this.rule) {
+      if (!this.value || !this.rule) {
         return null;
       }
       return parseCondition(this.rule.condition);
     },
     result() {
+      if (!this.engine) {
+        return null;
+      }
       return this.engine.test(this.receipt);
     },
   },
-  watch: {
-    value(v) {
-      this.show = v;
-    },
-  },
   methods: {
-    test() {
-      const engine = parseCondition(this.rule.condition);
-      console.log(engine);
-      console.log(engine.test(this.receipt));
-    },
     hide() {
       this.show = false;
-      this.$emit('input', false);
+    },
+  },
+  filters: {
+    prettifyCondition(condition) {
+      return prettifyCondition(condition);
     },
   },
 };

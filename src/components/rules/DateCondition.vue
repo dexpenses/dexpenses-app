@@ -1,8 +1,8 @@
 <template>
   <div>
     <v-select
-      v-model="dateField"
-      @input="$emit('input', params)"
+      :value="dateField"
+      @input="$emit('input', update(0, $event))"
       :items="dateFields"
       item-text="displayName"
       item-value="name"
@@ -12,8 +12,8 @@
       single-line
     ></v-select>
     <v-select
-      v-model="op"
-      @input="$emit('input', params)"
+      :value="value[1]"
+      @input="$emit('input', update(1, $event))"
       :items="['<', '<=', '==', '>=', '>']"
       menu-props="auto"
       label="Select"
@@ -29,13 +29,14 @@
       label="Select"
       hide-details
       single-line
-      v-model="n"
-      @input="$emit('input', params)"
+      :value="value[2]"
+      @input="$emit('input', update(2, $event))"
     ></v-select>
     <v-text-field
       v-else
-      v-model="n"
-      @input="$emit('input', params)"
+      type="number"
+      :value="value[2]"
+      @input="$emit('input', update(2, Number($event)))"
     ></v-text-field>
   </div>
 </template>
@@ -45,26 +46,21 @@ import { weekdays, dateFields } from '@/util/receipt';
 export default {
   props: ['value'],
   data() {
-    const [dateField, op, n] = this.value || [];
     return {
-      dateField,
-      op,
-      n,
       weekdays: weekdays.map((name, index) => ({ name, value: index + 1 })),
       dateFields,
     };
   },
   computed: {
-    params() {
-      return [this.dateField, this.op, this.n];
+    dateField() {
+      return this.value[0];
     },
   },
-  watch: {
-    value(v) {
-      const [dateField, op, n] = v || [];
-      this.dateField = dateField;
-      this.op = op;
-      this.n = n;
+  methods: {
+    update(i, v) {
+      const newValue = [...this.value];
+      newValue[i] = v;
+      return newValue;
     },
   },
 };

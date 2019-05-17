@@ -1,8 +1,8 @@
 <template>
   <div>
     <v-select
-      v-model="type"
-      @input="$emit('input', params)"
+      :value="value[0]"
+      @input="$emit('input', [$event, value[1]])"
       :items="['before', 'after']"
       menu-props="auto"
       label="Select"
@@ -10,37 +10,22 @@
       single-line
     ></v-select>
     <v-text-field
-      v-model="time"
-      @input="$emit('input', params)"
+      ref="timeField"
+      :value="value[1]"
+      @input="$refs.timeField && $refs.timeField.validate() && $emit('input', [value[0], $event])"
+      mask="##:##:##"
+      :rules="[time]"
+      :return-masked-value="true"
     ></v-text-field>
   </div>
 </template>
 <script>
+import { time } from '@/util/form-rules';
+
 export default {
   props: ['value'],
   data() {
-    const [type, time] = this.value || [];
-    return { type, time };
-  },
-  computed: {
-    params() {
-      const [hour, minute, second] = this.time.split(':');
-      return [
-        this.type,
-        {
-          hour: parseInt(hour, 10),
-          minute: parseInt(minute, 10),
-          second: second ? parseInt(second, 10) : null,
-        },
-      ];
-    },
-  },
-  watch: {
-    value(v) {
-      const [type, time] = v || [];
-      this.type = type;
-      this.time = time;
-    },
+    return { time };
   },
 };
 </script>
