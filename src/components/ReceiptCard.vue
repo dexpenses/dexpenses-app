@@ -95,6 +95,7 @@
 </template>
 <script>
 import { DateTime } from 'luxon';
+import { Time } from '@dexpenses/core';
 import ReceiptField from './ReceiptField.vue';
 import ReceiptImage from './ReceiptImage.vue';
 import ReceiptHeader from './ReceiptHeader.vue';
@@ -117,10 +118,7 @@ export default {
   },
   methods: {
     parseTime(s) {
-      const [hour, minute, second] = s
-        .split(':')
-        .map(v => (v ? parseInt(v, 10) : null));
-      return { hour, minute, second };
+      return Time.parse(s);
     },
     parseDate(s) {
       return DateTime.fromFormat(s, 'MM/dd/yyyy', {
