@@ -5,6 +5,7 @@ export const fields = {
   date: { icon: 'date_range', displayName: 'Date' },
   time: { icon: 'access_time', displayName: 'Time' },
   paymentMethod: { icon: 'money', displayName: 'Payment Method' },
+  placeType: { icon: 'place', displayName: 'Place Type' },
 };
 export const paymentMethods = [
   { name: 'DEBIT', displayName: 'Debit Card', icon: 'credit_card' },
