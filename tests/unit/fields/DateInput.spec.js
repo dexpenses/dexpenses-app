@@ -3,7 +3,6 @@ import Vuetify from 'vuetify';
 import { mount } from '@vue/test-utils';
 import DateInput from '@/components/fields/DateInput.vue';
 import { DateTime } from 'luxon';
-import { nextTickFor } from '../utils';
 
 import '@/filters';
 
@@ -29,7 +28,7 @@ describe('DateInput.vue', () => {
     const wrapper = mount(DateInput);
     wrapper.find('input').setValue('04/28/2019');
     expect(wrapper.find('input').element.value).toEqual('04/28/2019');
-    await nextTickFor(wrapper.vm);
+    await wrapper.vm.$nextTick();
 
     expect(wrapper.element).toMatchSnapshot();
     expect(wrapper.emitted().input).toBeTruthy();
@@ -69,7 +68,7 @@ describe('DateInput.vue', () => {
     });
 
     wrapper.find('input').setValue('04/28/2019');
-    await nextTickFor(wrapper.vm);
+    await wrapper.vm.$nextTick();
 
     expect(wrapper.vm.modelValue).toEqual(
       DateTime.fromFormat('28.04.2019', 'dd.MM.yyyy', {

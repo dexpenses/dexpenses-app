@@ -4,7 +4,6 @@ import { mount } from '@vue/test-utils';
 import TimeInput from '@/components/fields/TimeInput.vue';
 
 import '@/filters';
-import { nextTickFor } from '../utils';
 
 Vue.use(Vuetify, {}); // should actually use localVue, but that causes a console error atm
 
@@ -32,7 +31,7 @@ describe('TimeInput.vue', () => {
     const wrapper = mount(TimeInput);
     wrapper.find('input').setValue('13:00:00');
     expect(wrapper.find('input').element.value).toEqual('13:00:00');
-    await nextTickFor(wrapper.vm);
+    await wrapper.vm.$nextTick();
     // nextTick handling is necessary bcs of mask attr on text-field (damy)
     expect(wrapper.element).toMatchSnapshot();
     expect(wrapper.emitted().input).toBeTruthy();
@@ -76,7 +75,7 @@ describe('TimeInput.vue', () => {
     });
 
     wrapper.find('input').setValue('13:00:00');
-    await nextTickFor(wrapper.vm);
+    await wrapper.vm.$nextTick();
 
     expect(wrapper.vm.modelValue).toEqual({ hour: 13, minute: 0, second: 0 });
     expect(wrapper.element).toMatchSnapshot();
