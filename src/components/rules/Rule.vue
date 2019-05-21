@@ -11,7 +11,10 @@
       v-model="rule.description"
     ></v-textarea>
     <v-subheader>Conditions</v-subheader>
-    <Condition v-model="rule.condition" />
+    <Condition
+      v-model="rule.condition"
+      root
+    />
     <v-subheader>Tags</v-subheader>
     <v-container class="tags">
       <v-chip

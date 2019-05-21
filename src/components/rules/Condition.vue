@@ -3,24 +3,32 @@
     v-if="key === '$and' || key == '$or'"
     class="bool-condition"
   >
-    <v-select
-      class="field-select bool-select"
-      :value="key"
-      @input="$emit('input', {[$event]: arg})"
-      :items="[{key:'$and',text:'All Of'}, {key:'$or',text:'Any Of'}]"
-      item-text="text"
-      item-value="key"
-      menu-props="auto"
-      label="Select"
-      hide-details
-      single-line
-    ></v-select>
+    <v-layout>
+      <v-select
+        class="field-select bool-select"
+        :value="key"
+        @input="$emit('input', {[$event]: arg})"
+        :items="[{key:'$and',text:'All Of'}, {key:'$or',text:'Any Of'}]"
+        item-text="text"
+        item-value="key"
+        menu-props="auto"
+        label="Select"
+        hide-details
+        single-line
+      ></v-select>
+      <v-icon
+        v-if="!root"
+        class="hoverable-icon"
+        @click="$emit('delete')"
+      >delete</v-icon>
+    </v-layout>
 
     <div class="children">
       <Condition
         :value="c"
         @input="$emit('input', {[key]: [...arg.slice(0, index), $event, ...arg.slice(index + 1)]})"
         @delete="$emit('input', {[key]: [...arg.slice(0, index), ...arg.slice(index + 1)]})"
+        @invert="$emit('input', {[key]: [...arg.slice(0, index), {$not:c}, ...arg.slice(index + 1)]})"
         v-for="(c, index) in arg"
         :key="index"
       />
@@ -41,6 +49,8 @@
     <Condition
       :value="arg"
       @input="$emit('input', {[key]: $event})"
+      @delete="$emit('delete')"
+      @invert="$emit('input', arg)"
     />
   </div>
   <div
@@ -68,7 +78,18 @@
       :value="arg"
       @input="$emit('input',{[key]: $event})"
     />
-
+    <v-tooltip top>
+      <template v-slot:activator="{ on }">
+        <v-icon
+          v-on="on"
+          class="hoverable-icon"
+          @click="$emit('invert')"
+        >
+          autorenew
+        </v-icon>
+      </template>
+      <span>Invert</span>
+    </v-tooltip>
     <v-icon
       class="hoverable-icon"
       @click="$emit('delete')"
@@ -88,7 +109,10 @@ import { fields } from '@/util/receipt';
 
 export default {
   name: 'Condition',
-  props: ['value'],
+  props: {
+    value: Object,
+    root: Boolean,
+  },
   components: {
     AmountCondition,
     CurrencyCondition,
@@ -102,10 +126,16 @@ export default {
   data() {
     return {
       fields,
-      fieldNames: Object.entries(fields).map(([name, def]) => ({
-        ...def,
-        name,
-      })),
+      fieldNames: Object.entries(fields)
+        .map(([name, def]) => ({
+          ...def,
+          name,
+        }))
+        .concat([
+          { name: '$and', displayName: 'All Of' },
+          { name: '$or', displayName: 'Any Of' },
+          { name: '$not', displayName: 'Not' },
+        ]),
     };
   },
   computed: {
