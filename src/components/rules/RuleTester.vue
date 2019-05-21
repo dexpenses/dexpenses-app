@@ -73,9 +73,11 @@
                         md4
                       >
                         <v-text-field
+                          type="number"
                           label="Amount"
                           prepend-icon="attach_money"
-                          v-model="receipt.amount.value"
+                          :value="receipt.amount.value"
+                          @input="receipt.amount.value = Number($event)"
                         ></v-text-field>
                       </v-flex>
                       <v-flex
@@ -179,7 +181,7 @@ export default {
     return {
       receipt: {
         header: [''],
-        amount: {},
+        amount: { value: null, currency: null },
         date: null,
         time: null,
         place: { types: [null, null] },
