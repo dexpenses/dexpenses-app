@@ -127,13 +127,17 @@
           </v-expansion-panel-content>
         </v-expansion-panel>
 
-        <v-layout justify-center>
+        <v-layout
+          justify-center
+          align-center
+        >
           <transitioning-result-icon
             class="result-icon"
             :success-color="$vuetify.theme.success"
             :error-color="$vuetify.theme.error"
             :error="!result"
           />
+          <span class="result-message">Receipt {{result ? 'matches' : 'does not match'}}</span>
         </v-layout>
       </v-card-text>
     </v-card>
@@ -149,17 +153,27 @@ import PlaceTypeInput from '@/components/fields/PlaceTypeInput.vue';
 import PlaceTypeCategoryInput from '@/components/fields/PlaceTypeCategoryInput.vue';
 import TransitioningResultIcon from '@dexmo/vue-transitioning-result-icon';
 import { placeTypeMappings } from '@dexpenses/core';
+import { prettifyCamelCase } from '@/util/string';
 
 function prettifyCondition(condition) {
   const [[key, value]] = Object.entries(condition);
   switch (key) {
     case '$and':
+      return value.map(prettifyCondition).join(' AND ');
     case '$or':
-      return `${key} (${value.map(prettifyCondition).join(', ')})`;
+      return `(${value.map(prettifyCondition).join(' OR ')})`;
     case '$not':
-      return `not ${prettifyCondition(value)}`;
+      return `not (${prettifyCondition(value)})`;
+    case 'header':
+      return `header includes "${value[0]}"${
+        value[1] ? ' (case-sensitive)' : ''
+      }`;
+    case 'date':
+      return `date's ${prettifyCamelCase(value[0])} ${value[1]} ${value[2]}`;
     default:
-      return `${key}: ${Array.isArray(value) ? value.join(' ') : value}`;
+      return `${prettifyCamelCase(key)}: ${
+        Array.isArray(value) ? value.join(' ') : `is ${value}`
+      }`;
   }
 }
 export default {
@@ -225,18 +239,14 @@ export default {
       return prettifyCondition(condition);
     },
   },
-  watch: {
-    receipt: {
-      deep: true,
-      handler(v) {
-        console.log(JSON.stringify(v, undefined, 2));
-      },
-    },
-  },
 };
 </script>
 <style scoped>
 .result-icon {
   width: 72px;
+}
+.result-message {
+  margin-left: 1em;
+  font-size: 1.5em;
 }
 </style>
