@@ -16,6 +16,7 @@
 </template>
 <script>
 import { placeTypeMappings } from '@dexpenses/core';
+import { prettifySnakeCase } from '@/util/string';
 
 export default {
   props: ['value'],
@@ -23,11 +24,7 @@ export default {
     return {
       placeTypes: Object.keys(placeTypeMappings).map(placeType => ({
         value: placeType,
-        name:
-          placeType[0].toUpperCase() +
-          placeType
-            .slice(1)
-            .replace(/_([a-z])/g, (_, $1) => ` ${$1.toUpperCase()}`),
+        name: prettifySnakeCase(placeType),
       })),
     };
   },
