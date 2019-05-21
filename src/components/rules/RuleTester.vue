@@ -12,7 +12,7 @@
         Test
       </v-btn>
     </template>
-    <v-card>
+    <v-card v-if="show">
       <v-toolbar
         dark
         color="primary"
