@@ -92,6 +92,21 @@
                       >
                         <PaymentMethodInput v-model="receipt.paymentMethod" />
                       </v-flex>
+                      <v-flex
+                        xs12
+                        sm6
+                      >
+                        <PlaceTypeInput
+                          prepend-icon
+                          @input="$set(receipt.place.types, 0, $event)"
+                        />
+                      </v-flex>
+                      <v-flex
+                        xs12
+                        sm6
+                      >
+                        <PlaceTypeCategoryInput @input="$set(receipt.place.types, 1, findPlaceTypeForCategory($event))" />
+                      </v-flex>
                     </v-layout>
                   </v-container>
                 </v-form>
@@ -128,7 +143,10 @@ import PaymentMethodInput from '@/components/fields/PaymentMethodInput.vue';
 import CurrencyInput from '@/components/fields/CurrencyInput.vue';
 import DateInput from '@/components/fields/DateInput.vue';
 import TimeInput from '@/components/fields/TimeInput.vue';
+import PlaceTypeInput from '@/components/fields/PlaceTypeInput.vue';
+import PlaceTypeCategoryInput from '@/components/fields/PlaceTypeCategoryInput.vue';
 import TransitioningResultIcon from '@dexmo/vue-transitioning-result-icon';
+import { placeTypeMappings } from '@dexpenses/core';
 
 function prettifyCondition(condition) {
   const [[key, value]] = Object.entries(condition);
@@ -153,11 +171,19 @@ export default {
     CurrencyInput,
     DateInput,
     TimeInput,
+    PlaceTypeInput,
+    PlaceTypeCategoryInput,
     TransitioningResultIcon,
   },
   data() {
     return {
-      receipt: { header: [''], amount: {}, date: null, time: null },
+      receipt: {
+        header: [''],
+        amount: {},
+        date: null,
+        time: null,
+        place: { types: [null, null] },
+      },
     };
   },
   computed: {
@@ -186,10 +212,23 @@ export default {
     hide() {
       this.show = false;
     },
+    findPlaceTypeForCategory(category) {
+      return Object.entries(placeTypeMappings).find(
+        ([, c]) => c === category
+      )[0];
+    },
   },
   filters: {
     prettifyCondition(condition) {
       return prettifyCondition(condition);
+    },
+  },
+  watch: {
+    receipt: {
+      deep: true,
+      handler(v) {
+        console.log(JSON.stringify(v, undefined, 2));
+      },
     },
   },
 };

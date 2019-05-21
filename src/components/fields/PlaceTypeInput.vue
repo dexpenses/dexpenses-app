@@ -9,6 +9,7 @@
     label="Place type"
     hide-details
     single-line
+    :prepend-icon="this.prependIcon ? 'place' : null"
   ></v-autocomplete>
 </template>
 <script>
@@ -16,7 +17,7 @@ import { placeTypeMappings } from '@dexpenses/core';
 import { prettifySnakeCase } from '@/util/string';
 
 export default {
-  props: ['value'],
+  props: { value: String, prependIcon: Boolean },
   data() {
     return {
       placeTypes: Object.keys(placeTypeMappings).map(placeType => ({
