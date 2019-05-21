@@ -1,6 +1,6 @@
-import { prettifySnakeCase } from '@/util/string';
+import { prettifySnakeCase, prettifyCamelCase } from '@/util/string';
 
-describe('StringUtil.prettifySnakeCase', () => {
+describe('util/string.prettifySnakeCase', () => {
   it('should capitalize string without _', () => {
     expect(prettifySnakeCase('foo')).toBe('Foo');
   });
@@ -11,5 +11,15 @@ describe('StringUtil.prettifySnakeCase', () => {
 
   it('should omit dangling _', () => {
     expect(prettifySnakeCase('_foo_bar_')).toBe('Foo Bar');
+  });
+});
+
+describe('util/string.prettifyCamelCase', () => {
+  it('should capitalize simple string', () => {
+    expect(prettifyCamelCase('foo')).toBe('Foo');
+  });
+
+  it('should replace bump by space', () => {
+    expect(prettifyCamelCase('fooBar')).toBe('Foo Bar');
   });
 });
