@@ -83,6 +83,7 @@ import HeaderCondition from './HeaderCondition.vue';
 import PaymentMethodCondition from './PaymentMethodCondition.vue';
 import TimeCondition from './TimeCondition.vue';
 import PlaceTypeCondition from './PlaceTypeCondition.vue';
+import PlaceTypeCategoryCondition from './PlaceTypeCategoryCondition.vue';
 import { fields } from '@/util/receipt';
 
 export default {
@@ -96,6 +97,7 @@ export default {
     PaymentMethodCondition,
     TimeCondition,
     PlaceTypeCondition,
+    PlaceTypeCategoryCondition,
   },
   data() {
     return {
