@@ -3866,7 +3866,7 @@ echarts@^4.2.1:
   dependencies:
     zrender "4.0.7"
 
-editorconfig@^0.15.3:
+editorconfig@^0.15.2:
   version "0.15.3"
   resolved "https://registry.yarnpkg.com/editorconfig/-/editorconfig-0.15.3.tgz#bef84c4e75fb8dcb0ce5cee8efd51c15999befc5"
   integrity sha512-M9wIMFx96vq0R4F+gRpY3o2exzb8hEj/n9S8unZtHSvYjibBp/iMufSzvmOcV/laG0ZtuTVGtiJggPOSW2r93g==
