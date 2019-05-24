@@ -1,9 +1,16 @@
 <template>
   <div>
-    <v-btn
-      @click="drillUp"
-      :disabled="drillLevel === 0"
-    >Drill Up</v-btn>
+    <v-breadcrumbs
+      divider=">"
+      :items="drillBreadcrumbItems"
+    >
+      <template v-slot:item="props">
+        <a
+          @click="jumpTo(props.item)"
+          :class="[props.item.last && 'disabled']"
+        >{{ props.item.text.toUpperCase() }}</a>
+      </template>
+    </v-breadcrumbs>
     <BarChart
       :chart-data="chartData"
       v-if="chartData"
@@ -50,6 +57,21 @@ const startEndFor = {
   },
 };
 
+const breadcrumbFor = {
+  monthly(start) {
+    const [y] = start.split('-');
+    return `${y}`;
+  },
+  daily(start) {
+    const [y, m] = start.split('-');
+    return `${m}/${y}`;
+  },
+  hourly(start) {
+    const [, , d] = start.split('-');
+    return `${d}`;
+  },
+};
+
 const unitForPeriod = {
   yearly: 'year',
   monthly: 'month',
@@ -70,10 +92,30 @@ export default {
       drillLevels: ['yearly', 'monthly', 'daily', 'hourly'],
       start: '2018-05-01',
       end: '2019-05-01',
+      drillBreadcrumbs: [
+        {
+          text: 'Overall',
+          start: '1970-01-01',
+          end: '2020-01-01', // TODO: dynamic
+        },
+        {
+          text: 'Last year',
+          start: '2018-05-01',
+          end: '2019-05-01',
+        },
+      ],
     };
   },
+  computed: {
+    drillBreadcrumbItems() {
+      return this.drillBreadcrumbs.map((bc, index, a) => ({
+        ...bc,
+        index,
+        last: index === a.length - 1,
+      }));
+    },
+  },
   methods: {
-    drillUp() {},
     async drillDown(e) {
       if (this.drillLevel === this.drillLevels.length - 1) {
         return;
@@ -83,6 +125,28 @@ export default {
       [this.start, this.end] = startEndFor[this.drillLevels[this.drillLevel]](
         drillSource
       );
+      await this.update();
+      const breadcrumb = breadcrumbFor[this.drillLevels[this.drillLevel]](
+        this.start,
+        this.end
+      );
+      this.drillBreadcrumbs.push({
+        text: breadcrumb,
+        start: this.start,
+        end: this.end,
+      });
+    },
+    async jumpTo(level) {
+      if (level.last) {
+        return;
+      }
+      this.drillBreadcrumbs.splice(
+        level.index + 1,
+        this.drillBreadcrumbs.length
+      );
+      this.start = level.start;
+      this.end = level.end;
+      this.drillLevel = level.index;
       await this.update();
     },
     async update() {

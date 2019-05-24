@@ -28,10 +28,16 @@ export default {
           ],
         },
         onClick: e => {
-          console.log('onClick');
-
+          // eslint-disable-next-line
+          if (!this.$data || !this.$data._chart) {
+            // no drill if no chart is rendered
+            return;
+          }
           // eslint-disable-next-line
           const [active] = this.$data._chart.getElementAtEvent(e);
+          if (!active) {
+            return; // no drill if clicked outside bars
+          }
           const target = {
             // eslint-disable-next-line
             label: active._chart.data.labels[active._index],
@@ -49,7 +55,6 @@ export default {
   },
   watch: {
     chartData() {
-      console.log('options changed');
       // eslint-disable-next-line
       const chart = this.$data._chart;
       chart.data = this.chartData;
