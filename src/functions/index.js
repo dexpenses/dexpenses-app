@@ -5,3 +5,5 @@ export const aggregateTotalOverTimePeriod = firebase
   .httpsCallable('aggregateTotalOverTimePeriod');
 
 export const aggregateTotal = firebase.functions().httpsCallable('aggregateTotal');
+
+export const aggregateByTags = firebase.functions().httpsCallable('aggregateByTags');
