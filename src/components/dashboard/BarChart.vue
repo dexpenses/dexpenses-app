@@ -1,5 +1,13 @@
 <script>
 import { Bar } from 'vue-chartjs';
+import { DateTime } from 'luxon';
+
+const tooltipFormats = {
+  year: 'yyyy',
+  month: 'MM/yyyy',
+  day: 'MM/dd/yyyy',
+  hour: 'MM/dd/yyyy HH',
+};
 
 /* eslint-disable no-underscore-dangle: "off" */
 export default {
@@ -13,6 +21,20 @@ export default {
         legend: {
           display: false,
         },
+        tooltips: {
+          displayColors: false,
+          callbacks: {
+            title([tooltipItem], data) {
+              const date = data.labels[tooltipItem.index];
+              return DateTime.fromJSDate(date).toFormat(
+                tooltipFormats[data.$unit]
+              );
+            },
+            label(tooltipItem) {
+              return `${tooltipItem.value} €`;
+            },
+          },
+        },
         scales: {
           xAxes: [
             {
@@ -20,9 +42,6 @@ export default {
               time: {
                 unit: this.chartData.$unit,
                 round: this.chartData.$unit,
-                // displayFormats: {
-                //   day: 'MMM D'
-                // }
               },
             },
           ],
@@ -61,7 +80,6 @@ export default {
       const timeOptions = chart.options.scales.xAxes[0].time;
       timeOptions.unit = this.chartData.$unit;
       timeOptions.round = this.chartData.$unit;
-      // TODO: we should adapt the tooltip value for given unit
       chart.update();
     },
   },

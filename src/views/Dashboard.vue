@@ -11,30 +11,40 @@
         >{{ props.item.text.toUpperCase() }}</a>
       </template>
     </v-breadcrumbs>
-    <BarChart
-      :chart-data="chartData"
-      v-if="chartData"
-      @drill="drillDown"
-    />
+    <div
+      class="chart-container"
+      :class="{loading}"
+    >
+      <BarChart
+        :chart-data="chartData"
+        v-if="chartData"
+        @drill="drillDown"
+      />
+      <v-progress-circular
+        v-if="loading"
+        class="loader"
+        indeterminate
+        color="primary"
+      ></v-progress-circular>
+
+    </div>
   </div>
 </template>
 <script>
 import BarChart from '@/components/dashboard/BarChart.vue';
 import { aggregateTotalOverTimePeriod } from '@/functions';
+import { dateRange } from '@/util/dates';
+import { DateTime } from 'luxon';
 
 function label(period) {
   switch (period) {
     case 'yearly':
-      // return r => r.year;
       return row => new Date(row.year, 0, 1);
     case 'monthly':
-      // return row => `${row.month}/${row.year}`;
       return row => new Date(row.year, row.month - 1, 1);
     case 'daily':
-      // return row => row.day;
       return row => new Date(row.year, row.month - 1, row.day);
     case 'hourly':
-      // return row => row.hour;
       return row => new Date(row.year, row.month - 1, row.day, row.hour);
     default:
       return '';
@@ -86,6 +96,7 @@ export default {
   },
   data() {
     return {
+      loading: false,
       rows: null,
       chartData: null,
       drillLevel: 1,
@@ -96,7 +107,9 @@ export default {
         {
           text: 'Overall',
           start: '1970-01-01',
-          end: '2020-01-01', // TODO: dynamic
+          end: DateTime.local()
+            .plus({ years: 1 })
+            .toSQLDate(),
         },
         {
           text: 'Last year',
@@ -150,6 +163,16 @@ export default {
       await this.update();
     },
     async update() {
+      this.loading = true;
+
+      const unit = unitForPeriod[this.drillLevels[this.drillLevel]];
+      const from = DateTime.fromSQL(this.start);
+      const to = DateTime.fromSQL(this.end);
+      const dates = dateRange(unit, from, to);
+      this.chartData = this.newChartData({
+        labels: dates,
+        data: Array(dates.length).fill(0),
+      }); // TODO: estimate axis height?
       const req = {
         period: this.drillLevels[this.drillLevel],
         start: this.start,
@@ -161,14 +184,21 @@ export default {
       this.rows = result.data;
       console.log('result', this.rows);
 
-      this.chartData = {
-        $unit: unitForPeriod[this.drillLevels[this.drillLevel]],
+      this.chartData = this.newChartData({
         labels: result.data.map(label(this.drillLevels[this.drillLevel])),
+        data: result.data.map(r => r.total),
+      });
+      this.loading = false;
+    },
+    newChartData({ labels, data }) {
+      return {
+        $unit: unitForPeriod[this.drillLevels[this.drillLevel]],
+        labels,
         datasets: [
           {
             label: 'Expenses',
-            backgroundColor: '#f87979',
-            data: result.data.map(r => r.total),
+            backgroundColor: this.$vuetify.theme.primary,
+            data,
           },
         ],
       };
@@ -182,5 +212,22 @@ export default {
 <style scoped>
 .dashboard-item {
   border: 2px solid black;
+}
+.chart-container {
+  position: relative;
+}
+.chart-container.loading::before {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: white;
+  opacity: 0.7;
+}
+.chart-container.loading .loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 </style>
