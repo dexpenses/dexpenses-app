@@ -122,7 +122,6 @@ export default {
         return;
       }
       // TODO: what if we're not saving?
-      console.log('Rule.vue received new value');
       this.saving = false;
 
       this.ruleId = newValue.id;
@@ -144,7 +143,6 @@ export default {
       this.newTag = '';
     },
     async save() {
-      console.log('saving...', this.ruleId, this.rule);
       this.saving = true;
       const rule = cloneRule(this.rule);
       rule.last_updated = new Date();
@@ -155,7 +153,6 @@ export default {
         this.$emit('saved-new', id);
       }
       // TODO: poststuff
-      console.log('saved!');
     },
     discard() {
       if (this.isNewRule) {

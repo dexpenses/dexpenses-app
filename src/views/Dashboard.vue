@@ -111,8 +111,7 @@ export default {
   },
   methods: {
     layoutUpdated(e) {
-      console.log(JSON.stringify(e));
-      // console.log(JSON.stringify(this.layout));
+      console.log(e);
     },
   },
 };

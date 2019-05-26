@@ -91,8 +91,8 @@ export default {
       };
       this.selected = this.selectableRules.length - 1;
     },
+    // eslint-disable-next-line no-unused-vars
     selectById(id) {
-      console.log('@savedNew', id);
       this.newRule = null;
       this.selected = 0; // todo find by id
     },

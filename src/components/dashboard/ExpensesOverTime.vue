@@ -187,17 +187,13 @@ export default {
           data: Array(dates.length).fill(0),
         }); // TODO: estimate axis height?
       }
-
       const req = {
         period: this.drillLevels[this.drillLevel],
         start: this.start,
         end: this.end,
       };
-      console.log('requesting', req);
-
       const result = await aggregateTotalOverTimePeriod(req);
       this.rows = result.data;
-      console.log('result', this.rows);
 
       this.chartData = this.newChartData({
         labels: result.data.map(label(this.drillLevels[this.drillLevel])),
