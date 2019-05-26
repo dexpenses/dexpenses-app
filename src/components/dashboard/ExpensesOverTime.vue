@@ -1,5 +1,8 @@
 <template>
   <div>
+    <div class="header">
+      <h2>{{title}}</h2>
+    </div>
     <v-breadcrumbs
       divider=">"
       :items="drillBreadcrumbItems"
@@ -16,6 +19,7 @@
       :class="{loading}"
     >
       <BarChart
+        :style="{height: '100%', position: 'relative'}"
         :chart-data="chartData"
         v-if="chartData"
         @drill="drillDown"
@@ -91,6 +95,12 @@ const unitForPeriod = {
 
 export default {
   name: 'ExpensesOverTime',
+  props: {
+    title: {
+      type: String,
+      default: 'Expenses over time',
+    },
+  },
   components: {
     BarChart,
   },
@@ -101,8 +111,10 @@ export default {
       chartData: null,
       drillLevel: 1,
       drillLevels: ['yearly', 'monthly', 'daily', 'hourly'],
-      start: '2018-05-01',
-      end: '2019-05-01',
+      start: DateTime.local()
+        .minus({ years: 1 })
+        .toSQLDate(),
+      end: DateTime.local().toSQLDate(),
       drillBreadcrumbs: [
         {
           text: 'Overall',
@@ -210,8 +222,13 @@ export default {
 };
 </script>
 <style scoped>
+.header {
+  padding: 0.2em;
+}
 .chart-container {
   position: relative;
+  height: calc(100% - 37px - 57px);
+  width: 100%;
 }
 .chart-container.loading::before {
   content: '';

@@ -1,11 +1,9 @@
 <template>
-  <div>
-    <DoughnutChart
-      v-if="chartData"
-      :chart-data="chartData"
-      :options="{responsive: true}"
-    />
-  </div>
+  <DoughnutChart
+    v-if="chartData"
+    :chart-data="chartData"
+    :options="{responsive: true}"
+  />
 </template>
 <script>
 import firebase from 'firebase/app';
