@@ -176,15 +176,18 @@ export default {
     },
     async update() {
       this.loading = true;
+      if (!this.chartData) {
+        // render dummy chart to display loading animation
+        const unit = unitForPeriod[this.drillLevels[this.drillLevel]];
+        const from = DateTime.fromSQL(this.start);
+        const to = DateTime.fromSQL(this.end);
+        const dates = dateRange(unit, from, to);
+        this.chartData = this.newChartData({
+          labels: dates,
+          data: Array(dates.length).fill(0),
+        }); // TODO: estimate axis height?
+      }
 
-      const unit = unitForPeriod[this.drillLevels[this.drillLevel]];
-      const from = DateTime.fromSQL(this.start);
-      const to = DateTime.fromSQL(this.end);
-      const dates = dateRange(unit, from, to);
-      this.chartData = this.newChartData({
-        labels: dates,
-        data: Array(dates.length).fill(0),
-      }); // TODO: estimate axis height?
       const req = {
         period: this.drillLevels[this.drillLevel],
         start: this.start,
@@ -237,11 +240,13 @@ export default {
   width: 100%;
   background: white;
   opacity: 0.7;
+  z-index: 50;
 }
 .chart-container.loading .loader {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 51;
 }
 </style>
