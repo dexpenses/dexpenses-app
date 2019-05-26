@@ -2,7 +2,7 @@
   <DoughnutChart
     v-if="chartData"
     :chart-data="chartData"
-    :options="{responsive: true}"
+    :options="{responsive: true, maintainAspectRatio: false}"
   />
 </template>
 <script>
