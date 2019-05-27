@@ -2,6 +2,10 @@
   <div class="kpi-container">
     <h2>{{title}}</h2>
     <span v-if="value">{{value}} €</span>
+    <span
+      class="red--text text--lighten-1"
+      v-else-if="error"
+    >Error</span>
     <div
       class="loader"
       v-else
@@ -22,13 +26,18 @@ export default {
   data() {
     return {
       value: null,
+      error: false,
     };
   },
   async mounted() {
-    const { data } = await firebase.functions().httpsCallable(this.func)(
-      this.data || {}
-    );
-    this.value = data.value;
+    try {
+      const { data } = await firebase.functions().httpsCallable(this.func)(
+        this.data || {}
+      );
+      this.value = data.value;
+    } catch {
+      this.error = true;
+    }
   },
 };
 </script>

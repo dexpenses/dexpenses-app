@@ -34,11 +34,7 @@ import TagCloud from '@/components/dashboard/TagCloud.vue';
 import DoughnutAggregation from '@/components/dashboard/DoughnutAggregation.vue';
 import Map from '@/components/dashboard/Map.vue';
 import Kpi from '@/components/dashboard/Kpi.vue';
-import { DateTime } from 'luxon';
-
-const firstOfMonth = DateTime.local()
-  .set({ day: 1, hour: 0, minute: 0, second: 0, millisecond: 0 })
-  .toSQLDate();
+import { parseProps } from '@/util/relative-dates';
 
 const testLayout = [
   {
@@ -48,7 +44,7 @@ const testLayout = [
     h: 2,
     i: '0',
     component: 'Kpi',
-    props: { title: 'Overall total', func: 'aggregateTotal' },
+    props: { title: 'Average monthly total', func: 'aggregateAverageTotal' },
   },
   {
     x: 3,
@@ -60,7 +56,7 @@ const testLayout = [
     props: {
       title: 'Current month',
       func: 'aggregateTotal',
-      data: { start: firstOfMonth },
+      data: { start: '$firstOfMonth' },
     },
   },
   { x: 6, y: 0, w: 3, h: 2, i: '2', component: 'TagCloud' },
@@ -105,7 +101,10 @@ export default {
   },
   data() {
     return {
-      layout: testLayout,
+      layout: testLayout.map(item => ({
+        ...item,
+        props: parseProps(item.props),
+      })),
       editing: false,
     };
   },
