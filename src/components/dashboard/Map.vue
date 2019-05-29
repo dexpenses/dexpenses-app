@@ -65,7 +65,7 @@ export default {
   },
   async mounted() {
     const map = await this.$refs.map.$mapPromise;
-    map.addListener('bounds_changed', async () => {
+    map.addListener('idle', async () => {
       const bounds = map.getBounds();
       const ne = bounds.getNorthEast();
       const sw = bounds.getSouthWest();
