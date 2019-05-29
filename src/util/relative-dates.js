@@ -2,32 +2,43 @@ import { DateTime } from 'luxon';
 
 const relativeDateFunction = {
   now: now => now,
-  firstOfMonth: now => now.set({ day: 1, hour: 0, minute: 0, second: 0, millisecond: 0 }),
-  oneYearAgo: now => now.minus({ years: 1 }),
 };
 
-function parseDate(value) {
+function parseDate(value, mutations) {
   const func = value.replace(/^\$/, '');
 
-  if (relativeDateFunction[func]) {
-    return relativeDateFunction[func](DateTime.local()).toSQLDate();
+  if (!relativeDateFunction[func]) {
+    throw new Error('invalid relative date start point');
   }
-  return value;
+  let date = relativeDateFunction[func](DateTime.local());
+  if (mutations) {
+    Object.entries(mutations).forEach(([mutator, arg]) => {
+      date = date[mutator](arg);
+    });
+  }
+  return date.toSQLDate();
 }
 
-/* eslint-disable no-param-reassign */
 // eslint-disable-next-line import/prefer-default-export
 export function parseProps(props) {
   if (!props) {
     return props;
   }
-  // eslint-disable-next-line no-restricted-syntax
-  for (const [key, value] of Object.entries(props)) {
-    if (value === Object(value)) {
-      props[key] = parseProps(value);
-    } else if (typeof value === 'string' && value.startsWith('$')) {
-      props[key] = parseDate(value);
-    }
-  }
-  return props;
+  return Object.fromEntries(
+    Object.entries(props).map(([key, value]) => {
+      let parsed;
+      if (value === Object(value)) {
+        if (Object.keys(value).length === 1 && Object.keys(value)[0].startsWith('$')) {
+          parsed = parseDate(Object.keys(value)[0], Object.values(value)[0]);
+        } else {
+          parsed = parseProps(value);
+        }
+      } else if (typeof value === 'string' && value.startsWith('$')) {
+        parsed = parseDate(value);
+      } else {
+        parsed = value;
+      }
+      return [key, parsed];
+    })
+  );
 }
