@@ -35,8 +35,8 @@
   </div>
 </template>
 <script>
+import firebase from 'firebase/app';
 import BarChart from '@/components/dashboard/BarChart.vue';
-import { aggregateTotalOverTimePeriod } from '@/functions';
 import { dateRange } from '@/util/dates';
 import { DateTime } from 'luxon';
 
@@ -192,7 +192,9 @@ export default {
         start: this.start,
         end: this.end,
       };
-      const result = await aggregateTotalOverTimePeriod(req);
+      const result = await firebase
+        .functions()
+        .httpsCallable('aggregateTotalOverTimePeriod')(req);
       this.rows = result.data;
 
       this.chartData = this.newChartData({

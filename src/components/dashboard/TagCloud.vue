@@ -22,8 +22,8 @@
 </template>
 
 <script>
+import firebase from 'firebase/app';
 import VueWordCloud from 'vuewordcloud';
-import { aggregateByTags } from '@/functions';
 
 export default {
   components: {
@@ -37,7 +37,9 @@ export default {
     };
   },
   async mounted() {
-    const { data } = await aggregateByTags({});
+    const { data } = await firebase
+      .functions()
+      .httpsCallable('aggregateByTags')({});
     this.tags = data.map(({ tag, total }) => [tag, total]);
     this.top3Threshold = data[2] ? data[2].total : 0;
     this.top10Threshold = data[9] ? data[9].total : 0;
