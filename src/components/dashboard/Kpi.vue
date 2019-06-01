@@ -1,6 +1,6 @@
 <template>
   <div class="kpi-container">
-    <h2>{{title}}</h2>
+    <h2 v-if="title">{{title}}</h2>
     <span v-if="value">{{value}} €</span>
     <span
       class="red--text text--lighten-1"
@@ -20,7 +20,10 @@ import firebase from 'firebase/app';
 export default {
   props: {
     title: String,
-    func: String,
+    func: {
+      type: String,
+      required: true,
+    },
     data: Object,
   },
   data() {

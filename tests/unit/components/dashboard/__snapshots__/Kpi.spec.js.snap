@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`dashboard/Kpi should render error correctly 1`] = `
+<div
+  class="kpi-container"
+>
+  <h2>
+    title
+  </h2>
+   
+  <div
+    class="loader"
+  >
+    <v-progress-circular-stub
+      indeterminate=""
+    />
+  </div>
+</div>
+`;
+
+exports[`dashboard/Kpi should render error correctly 2`] = `
+<div
+  class="kpi-container"
+>
+  <h2>
+    title
+  </h2>
+   
+  <span
+    class="red--text text--lighten-1"
+  >
+    Error
+  </span>
+</div>
+`;
+
+exports[`dashboard/Kpi should render value correctly 1`] = `
+<div
+  class="kpi-container"
+>
+  <h2>
+    title
+  </h2>
+   
+  <div
+    class="loader"
+  >
+    <v-progress-circular-stub
+      indeterminate=""
+    />
+  </div>
+</div>
+`;
+
+exports[`dashboard/Kpi should render value correctly 2`] = `
+<div
+  class="kpi-container"
+>
+  <h2>
+    title
+  </h2>
+   
+  <span>
+    1 €
+  </span>
+</div>
+`;
