@@ -1,5 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`dashboard/Kpi should render absent value correctly 1`] = `
+<div
+  class="kpi-container"
+>
+  <h2>
+    title
+  </h2>
+   
+  <div
+    class="loader"
+  >
+    <v-progress-circular-stub
+      indeterminate=""
+    />
+  </div>
+</div>
+`;
+
+exports[`dashboard/Kpi should render absent value correctly 2`] = `
+<div
+  class="kpi-container"
+>
+  <h2>
+    title
+  </h2>
+   
+  <span>
+    0 €
+  </span>
+</div>
+`;
+
 exports[`dashboard/Kpi should render error correctly 1`] = `
 <div
   class="kpi-container"

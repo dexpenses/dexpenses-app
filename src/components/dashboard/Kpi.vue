@@ -1,7 +1,7 @@
 <template>
   <div class="kpi-container">
     <h2 v-if="title">{{title}}</h2>
-    <span v-if="value">{{value}} €</span>
+    <span v-if="value || value === 0">{{value}} €</span>
     <span
       class="red--text text--lighten-1"
       v-else-if="error"
@@ -37,7 +37,9 @@ export default {
       const { data } = await firebase.functions().httpsCallable(this.func)(
         this.data || {}
       );
-      this.value = data.value;
+      console.log('got KPI', this.title, data);
+
+      this.value = data.value || 0;
     } catch {
       this.error = true;
     }
