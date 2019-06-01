@@ -1,14 +1,9 @@
 import { parseProps } from '@/util/relative-dates';
-import MockDate from 'mockdate';
-import { DateTime } from 'luxon';
+import * as mockDate from 'jest-date-mock';
 
 describe('relative-dates', () => {
   beforeEach(() => {
-    MockDate.set(DateTime.fromSQL('2019-01-17').toJSDate());
-  });
-
-  afterEach(() => {
-    MockDate.reset();
+    mockDate.advanceTo('2019-01-17T00:00:00.000Z');
   });
 
   it('should parse $now', () => {

@@ -6490,6 +6490,11 @@ jest-config@^23.6.0:
     micromatch "^2.3.11"
     pretty-format "^23.6.0"
 
+jest-date-mock@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/jest-date-mock/-/jest-date-mock-1.0.7.tgz#b1e5071beb314cbfcfb0a21d8560a2122519f5c3"
+  integrity sha512-ZgbYlURRhVpf52Jho4tlyUgpJJ+nYvhxIWhIIEdarmsSuTxFZlC9DmKCyQXsuEljfxK+7HsqdBX/L6rxwWraYw==
+
 jest-diff@^23.6.0:
   version "23.6.0"
   resolved "https://registry.yarnpkg.com/jest-diff/-/jest-diff-23.6.0.tgz#1500f3f16e850bb3d71233408089be099f610c7d"
@@ -7688,11 +7693,6 @@ mkdirp@0.5.1, mkdirp@0.5.x, mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.0, mkdirp@
   integrity sha1-MAV0OOrGz3+MR2fzhkjWaX11yQM=
   dependencies:
     minimist "0.0.8"
-
-mockdate@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/mockdate/-/mockdate-2.0.2.tgz#5ae0c0eaf8fe23e009cd01f9889b42c4f634af12"
-  integrity sha1-WuDA6vj+I+AJzQH5iJtCxPY0rxI=
 
 moment@2.24.0, moment@^2.10.2:
   version "2.24.0"
