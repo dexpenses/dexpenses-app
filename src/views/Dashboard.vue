@@ -46,7 +46,7 @@ import DoughnutAggregation from '@/components/dashboard/DoughnutAggregation.vue'
 import Map from '@/components/dashboard/Map.vue';
 import Kpi from '@/components/dashboard/Kpi.vue';
 import defaultLayout from '@/components/dashboard/default-layout';
-import { parseProps } from '@/util/relative-dates';
+import { parseLayout } from '@/util/dashboard';
 
 export default {
   name: 'Dashboard',
@@ -83,10 +83,7 @@ export default {
     } else {
       ({ layout } = ref.data());
     }
-    this.layout = layout.map(item => ({
-      ...item,
-      props: parseProps(item.props),
-    }));
+    this.layout = parseLayout(layout);
   },
 };
 </script>

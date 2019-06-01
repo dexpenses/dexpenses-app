@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`dashboard/default-layout should be parsed correctly 1`] = `
+Array [
+  Object {
+    "component": "Kpi",
+    "h": 2,
+    "i": "0",
+    "props": Object {
+      "func": "aggregateAverageTotal",
+      "title": "Average monthly total",
+    },
+    "w": 3,
+    "x": 0,
+    "y": 0,
+  },
+  Object {
+    "component": "Kpi",
+    "h": 2,
+    "i": "1",
+    "props": Object {
+      "data": Object {
+        "start": "2019-05-01",
+      },
+      "func": "aggregateTotal",
+      "title": "Current month",
+    },
+    "w": 3,
+    "x": 3,
+    "y": 0,
+  },
+  Object {
+    "component": "TagCloud",
+    "h": 2,
+    "i": "2",
+    "props": undefined,
+    "w": 3,
+    "x": 6,
+    "y": 0,
+  },
+  Object {
+    "component": "DoughnutAggregation",
+    "h": 2,
+    "i": "3",
+    "props": Object {
+      "func": "aggregateByPaymentMethod",
+    },
+    "w": 3,
+    "x": 9,
+    "y": 0,
+  },
+  Object {
+    "component": "ExpensesOverTime",
+    "h": 3,
+    "i": "6",
+    "props": undefined,
+    "w": 6,
+    "x": 0,
+    "y": 3,
+  },
+  Object {
+    "component": "Map",
+    "h": 3,
+    "i": "7",
+    "props": Object {
+      "center": Object {
+        "lat": 52.427547,
+        "lng": 10.78042,
+      },
+    },
+    "w": 6,
+    "x": 6,
+    "y": 3,
+  },
+]
+`;
