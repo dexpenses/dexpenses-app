@@ -1,5 +1,5 @@
 import firebase from 'firebase/app';
-import { firebaseAction } from 'vuexfire';
+import { firestoreAction } from 'vuexfire';
 import firebaseBindAction from './firebase-bind-action';
 
 /* eslint-disable no-param-reassign */
@@ -27,8 +27,8 @@ export default {
     loadRules: firebaseBindAction('rules', ({ getters }) =>
       getters.rulesRef.orderBy('last_updated', 'desc')
     ),
-    unbindRules: firebaseAction(({ unbindFirebaseRef }) => {
-      unbindFirebaseRef('rules');
+    unbindRules: firestoreAction(({ unbindFirestoreRef }) => {
+      unbindFirestoreRef('rules');
     }),
   },
 };

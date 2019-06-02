@@ -1,5 +1,5 @@
 import firebase from 'firebase/app';
-import { firebaseAction } from 'vuexfire';
+import { firestoreAction } from 'vuexfire';
 import firebaseBindAction from './firebase-bind-action';
 
 /* eslint-disable no-param-reassign */
@@ -22,8 +22,8 @@ export default {
         .doc(rootState.user.user.uid)
         .collection('recurringPayments')
     ),
-    unbind: firebaseAction(({ unbindFirebaseRef }) => {
-      unbindFirebaseRef('recurringPayments');
+    unbind: firestoreAction(({ unbindFirestoreRef }) => {
+      unbindFirestoreRef('recurringPayments');
     }),
   },
 };

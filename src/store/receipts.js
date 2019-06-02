@@ -1,5 +1,5 @@
 import firebase from 'firebase/app';
-import { firebaseAction } from 'vuexfire';
+import { firestoreAction } from 'vuexfire';
 import firebaseBindAction from './firebase-bind-action';
 
 /* eslint-disable no-param-reassign */
@@ -54,10 +54,10 @@ export default {
         .collection('receipts')
         .where('result.state', '==', 'pending')
     ),
-    unbindReceipts: firebaseAction(({ unbindFirebaseRef }) => {
-      unbindFirebaseRef('openReceipts');
-      unbindFirebaseRef('pendingReceipts');
-      unbindFirebaseRef('receipts');
+    unbindReceipts: firestoreAction(({ unbindFirestoreRef }) => {
+      unbindFirestoreRef('openReceipts');
+      unbindFirestoreRef('pendingReceipts');
+      unbindFirestoreRef('receipts');
     }),
     updateReceipt({ rootState }, { id, field, value }) {
       return firebase
