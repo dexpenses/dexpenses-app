@@ -64,8 +64,8 @@ Array [
     "i": "7",
     "props": Object {
       "center": Object {
-        "lat": 52.427547,
-        "lng": 10.78042,
+        "lat": 2,
+        "lng": 1,
       },
     },
     "w": 6,

@@ -83,7 +83,7 @@ export default {
     } else {
       ({ layout } = ref.data());
     }
-    this.layout = parseLayout(layout);
+    this.layout = await parseLayout(layout);
   },
 };
 </script>

@@ -52,6 +52,6 @@ export default [
     h: 3,
     i: '7',
     component: 'Map',
-    props: { center: { lat: 52.427547, lng: 10.78042 } },
+    props: { center: '$home' },
   },
 ];
