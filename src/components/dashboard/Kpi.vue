@@ -37,8 +37,6 @@ export default {
       const { data } = await firebase.functions().httpsCallable(this.func)(
         this.data || {}
       );
-      console.log('got KPI', this.title, data);
-
       this.value = data.value || 0;
     } catch {
       this.error = true;
