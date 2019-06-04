@@ -2,6 +2,7 @@ import firebase from 'firebase/app';
 import { DateTime } from 'luxon';
 import { isObject, map } from './object';
 import store from '@/store';
+import { unwrapPromises } from './promises';
 
 const handlers = {
   now(mutations) {
@@ -43,23 +44,17 @@ function parseDynamic(value, args) {
   return handlers[func](args);
 }
 
-function parsePropsInternal(props, promises) {
+function parsePropsInternal(props) {
   return map(props, ([key, value]) => {
     let parsed;
     if (isObject(value)) {
       if (Object.keys(value).length === 1 && Object.keys(value)[0].startsWith('$')) {
         parsed = parseDynamic(Object.keys(value)[0], Object.values(value)[0]);
-        if (parsed instanceof Promise) {
-          promises.push(parsed);
-        }
       } else {
-        parsed = parsePropsInternal(value, promises);
+        parsed = parsePropsInternal(value);
       }
     } else if (typeof value === 'string' && value.startsWith('$')) {
       parsed = parseDynamic(value);
-      if (parsed instanceof Promise) {
-        promises.push(parsed);
-      }
     } else {
       parsed = value;
     }
@@ -67,32 +62,11 @@ function parsePropsInternal(props, promises) {
   });
 }
 
-async function unwrapPromises(obj) {
-  const entries = [];
-  const wrapped = Object.entries(obj);
-  for (let i = 0; i < wrapped.length; i += 1) {
-    const [key, value] = wrapped[i];
-    // await in loop does not matter because all promises are already resolved
-    if (value instanceof Promise) {
-      // eslint-disable-next-line no-await-in-loop
-      entries.push([key, await value]);
-    } else if (isObject(value)) {
-      // eslint-disable-next-line no-await-in-loop
-      entries.push([key, await unwrapPromises(value)]);
-    } else {
-      entries.push([key, value]);
-    }
-  }
-  return Object.fromEntries(entries);
-}
-
 // eslint-disable-next-line import/prefer-default-export
 export async function parseProps(props) {
   if (!props) {
     return props;
   }
-  const promises = [];
-  const propsWithPromises = parsePropsInternal(props, promises);
-  await Promise.all(promises);
+  const propsWithPromises = parsePropsInternal(props);
   return unwrapPromises(propsWithPromises);
 }
