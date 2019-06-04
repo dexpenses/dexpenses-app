@@ -11,3 +11,7 @@ export function isObject(obj) {
 export function map(obj, mapper) {
   return Object.fromEntries(Object.entries(obj).map(mapper));
 }
+
+export function mapValues(obj, mapper) {
+  return map(obj, ([key, value]) => [key, mapper(value)]);
+}

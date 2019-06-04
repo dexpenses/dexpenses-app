@@ -1,6 +1,6 @@
 import firebase from 'firebase/app';
 import { DateTime } from 'luxon';
-import { isObject, map } from './object';
+import { isObject, mapValues } from './object';
 import store from '@/store';
 import { unwrapPromises } from './promises';
 
@@ -45,20 +45,18 @@ function parseDynamic(value, args) {
 }
 
 function parsePropsInternal(props) {
-  return map(props, ([key, value]) => {
-    let parsed;
+  return mapValues(props, value => {
     if (isObject(value)) {
-      if (Object.keys(value).length === 1 && Object.keys(value)[0].startsWith('$')) {
-        parsed = parseDynamic(Object.keys(value)[0], Object.values(value)[0]);
-      } else {
-        parsed = parsePropsInternal(value);
+      const keys = Object.keys(value);
+      if (keys.length === 1 && keys[0].startsWith('$')) {
+        return parseDynamic(keys[0], value[keys[0]]);
       }
-    } else if (typeof value === 'string' && value.startsWith('$')) {
-      parsed = parseDynamic(value);
-    } else {
-      parsed = value;
+      return parsePropsInternal(value);
     }
-    return [key, parsed];
+    if (typeof value === 'string' && value.startsWith('$')) {
+      return parseDynamic(value);
+    }
+    return value;
   });
 }
 
