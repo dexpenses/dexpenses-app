@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@dexmo/vue-transitioning-result-icon": "^0.1.1",
-    "@dexpenses/core": "^1.0.2",
+    "@dexpenses/core": "^1.1.0",
     "@dexpenses/rule-conditions": "^1.0.4",
     "chart.js": "^2.8.0",
     "deep-equal": "^1.0.1",
