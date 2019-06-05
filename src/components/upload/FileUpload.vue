@@ -4,23 +4,30 @@
       class="dropzone"
       @hovered="hovering = $event"
       @dropped="startUpload($event)"
-      :class="{hovering: hovering}"
+      :class="{hovering}"
     >
       <h3>Just drop some files</h3>
 
       <div class="file">
         <label class="file-label">
           <input
+            ref="fileInput"
             type="file"
             @change="startUpload($event.target.files)"
             multiple
+            accept="image/*"
           >
-          <span class="file-cta">
-            <span class="file-icon">
-              <v-icon>cloud_upload</v-icon>
-            </span>
-            <span class="file-label">or choose a file…</span>
-          </span>
+          <v-btn
+            color="blue-grey"
+            class="white--text"
+            @click="$refs.fileInput.click()"
+          >
+            <v-icon
+              left
+              dark
+            >cloud_upload</v-icon>
+            or choose a file…
+          </v-btn>
         </label>
       </div>
     </drop-zone>
@@ -36,8 +43,8 @@
 <script>
 import { mapState } from 'vuex';
 import firebase from 'firebase/app';
-import DropZone from '@/components/DropZone.vue';
-import FileUploadTask from '@/components/FileUploadTask.vue';
+import DropZone from '@/components/upload/DropZone.vue';
+import FileUploadTask from '@/components/upload/FileUploadTask.vue';
 
 export default {
   name: 'fileUpload',
@@ -77,19 +84,33 @@ export default {
   justify-content: center;
   flex-direction: column;
   height: 300px;
-  border: 2px dashed #f16624;
+  border: 2px dashed #607d8b;
   border-radius: 5px;
   background: white;
   margin: 10px 0;
+  position: relative;
 }
 
 .dropzone.hovering {
-  border: 2px solid #f16624;
-  color: #dadada !important;
+  border: 2px solid #ff5722;
+}
+
+.dropzone.hovering::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  background: white;
+  opacity: 0.7;
 }
 
 progress::-webkit-progress-value {
   transition: width 0.1s ease;
+}
+
+h3 {
+  margin: 1em;
 }
 
 .file input {

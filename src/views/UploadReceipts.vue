@@ -4,7 +4,7 @@
   </v-container>
 </template>
 <script>
-import FileUpload from '@/components/FileUpload.vue';
+import FileUpload from '@/components/upload/FileUpload.vue';
 
 export default {
   name: 'uploadReceipts',
