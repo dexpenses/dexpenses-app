@@ -63,7 +63,7 @@
 
 <script>
 import { createNamespacedHelpers } from 'vuex';
-import ReceiptCard from '@/components/ReceiptCard.vue';
+import ReceiptCard from '@/components/receipts/ReceiptCard.vue';
 
 const { mapActions, mapState } = createNamespacedHelpers('receipts');
 
