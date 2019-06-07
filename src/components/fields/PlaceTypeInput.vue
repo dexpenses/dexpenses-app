@@ -15,15 +15,18 @@
 <script>
 import { placeTypeMappings } from '@dexpenses/core';
 import { prettifySnakeCase } from '@/util/string';
+import { alphabeticallyBy } from '@/util/sort';
 
 export default {
   props: { value: String, prependIcon: Boolean },
   data() {
     return {
-      placeTypes: Object.keys(placeTypeMappings).map(placeType => ({
-        value: placeType,
-        name: prettifySnakeCase(placeType),
-      })),
+      placeTypes: Object.keys(placeTypeMappings)
+        .map(placeType => ({
+          value: placeType,
+          name: prettifySnakeCase(placeType),
+        }))
+        .sort(alphabeticallyBy('name')),
     };
   },
 };

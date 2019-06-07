@@ -14,6 +14,7 @@
 <script>
 import { placeTypeMappings } from '@dexpenses/core';
 import { prettifySnakeCase } from '@/util/string';
+import { alphabeticallyBy } from '@/util/sort';
 
 export default {
   props: ['value'],
@@ -24,7 +25,8 @@ export default {
         .map(placeTypeCategory => ({
           value: placeTypeCategory,
           name: prettifySnakeCase(placeTypeCategory),
-        })),
+        }))
+        .sort(alphabeticallyBy('name')),
     };
   },
 };

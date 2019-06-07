@@ -1,0 +1,1403 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlaceTypeCategoryInput.vue should not trigger input event if new value is set programmatically 1`] = `
+<div
+  class="v-input v-text-field v-text-field--single-line v-select v-autocomplete v-input--hide-details v-input--is-label-active v-input--is-dirty theme--light"
+>
+  <div
+    class="v-input__control"
+  >
+    <div
+      class="v-input__slot"
+    >
+      <div
+        class="v-select__slot"
+      >
+        <input
+          aria-label="Place Type Category"
+          autocomplete="off"
+          role="combobox"
+          type="text"
+        />
+        <div
+          class="v-input__append-inner"
+        >
+          <div
+            class="v-input__icon v-input__icon--append"
+          >
+            <i
+              aria-hidden="true"
+              class="v-icon material-icons theme--light"
+            >
+              arrow_drop_down
+            </i>
+          </div>
+        </div>
+      </div>
+      <div
+        class="v-menu"
+      >
+        <div
+          class="v-menu__content theme--light v-menu__content--auto v-autocomplete__content"
+          style="max-height: 200px; min-width: 0px; max-width: auto; top: 12px; left: 12px; transform-origin: top left; z-index: 0; display: none;"
+        >
+          <div
+            class="v-select-list v-card theme--light"
+          >
+            <div
+              class="v-list theme--light"
+              role="list"
+            >
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Barber
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Car
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Clothing
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Education
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Entertainment
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                class="primary--text"
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link v-list__tile--active theme--light primary--text"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Food
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Health
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Household
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Pet
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Relocation
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Tech
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Transport
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Travel
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`PlaceTypeCategoryInput.vue should not trigger input event if new value is set programmatically 2`] = `
+<div
+  class="v-input v-text-field v-text-field--single-line v-select v-autocomplete v-input--hide-details v-input--is-label-active v-input--is-dirty theme--light"
+>
+  <div
+    class="v-input__control"
+  >
+    <div
+      class="v-input__slot"
+    >
+      <div
+        class="v-select__slot"
+      >
+        <input
+          aria-label="Place Type Category"
+          autocomplete="off"
+          role="combobox"
+          type="text"
+        />
+        <div
+          class="v-input__append-inner"
+        >
+          <div
+            class="v-input__icon v-input__icon--append"
+          >
+            <i
+              aria-hidden="true"
+              class="v-icon material-icons theme--light"
+            >
+              arrow_drop_down
+            </i>
+          </div>
+        </div>
+      </div>
+      <div
+        class="v-menu"
+      >
+        <div
+          class="v-menu__content theme--light v-menu__content--auto v-autocomplete__content"
+          style="max-height: 200px; min-width: 0px; max-width: auto; top: 12px; left: 12px; transform-origin: top left; z-index: 0; display: none;"
+        >
+          <div
+            class="v-select-list v-card theme--light"
+          >
+            <div
+              class="v-list theme--light"
+              role="list"
+            >
+              <div
+                class="primary--text"
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link v-list__tile--active theme--light primary--text"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Barber
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Car
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Clothing
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Education
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Entertainment
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                class=""
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Food
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Health
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Household
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Pet
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Relocation
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Tech
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Transport
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Travel
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`PlaceTypeCategoryInput.vue should render correctly with value 1`] = `
+<div
+  class="v-input v-text-field v-text-field--single-line v-select v-autocomplete v-input--hide-details v-input--is-label-active v-input--is-dirty theme--light"
+>
+  <div
+    class="v-input__control"
+  >
+    <div
+      class="v-input__slot"
+    >
+      <div
+        class="v-select__slot"
+      >
+        <input
+          aria-label="Place Type Category"
+          autocomplete="off"
+          role="combobox"
+          type="text"
+        />
+        <div
+          class="v-input__append-inner"
+        >
+          <div
+            class="v-input__icon v-input__icon--append"
+          >
+            <i
+              aria-hidden="true"
+              class="v-icon material-icons theme--light"
+            >
+              arrow_drop_down
+            </i>
+          </div>
+        </div>
+      </div>
+      <div
+        class="v-menu"
+      >
+        <div
+          class="v-menu__content theme--light v-menu__content--auto v-autocomplete__content"
+          style="max-height: 200px; min-width: 0px; max-width: auto; top: 12px; left: 12px; transform-origin: top left; z-index: 0; display: none;"
+        >
+          <div
+            class="v-select-list v-card theme--light"
+          >
+            <div
+              class="v-list theme--light"
+              role="list"
+            >
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Barber
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Car
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Clothing
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Education
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Entertainment
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                class="primary--text"
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link v-list__tile--active theme--light primary--text"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Food
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Health
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Household
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Pet
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Relocation
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Tech
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Transport
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Travel
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`PlaceTypeCategoryInput.vue should renders correctly 1`] = `
+<div
+  class="v-input v-text-field v-text-field--single-line v-select v-autocomplete v-input--hide-details theme--light"
+>
+  <div
+    class="v-input__control"
+  >
+    <div
+      class="v-input__slot"
+    >
+      <div
+        class="v-select__slot"
+      >
+        <label
+          aria-hidden="true"
+          class="v-label theme--light"
+          style="left: 0px; position: absolute;"
+        >
+          Place Type Category
+        </label>
+        <input
+          aria-label="Place Type Category"
+          autocomplete="off"
+          role="combobox"
+          type="text"
+        />
+        <div
+          class="v-input__append-inner"
+        >
+          <div
+            class="v-input__icon v-input__icon--append"
+          >
+            <i
+              aria-hidden="true"
+              class="v-icon material-icons theme--light"
+            >
+              arrow_drop_down
+            </i>
+          </div>
+        </div>
+      </div>
+      <div
+        class="v-menu"
+      >
+        <div
+          class="v-menu__content theme--light v-menu__content--auto v-autocomplete__content"
+          style="max-height: 200px; min-width: 0px; max-width: auto; top: 12px; left: 12px; transform-origin: top left; z-index: 0; display: none;"
+        >
+          <div
+            class="v-select-list v-card theme--light"
+          >
+            <div
+              class="v-list theme--light"
+              role="list"
+            >
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Barber
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Car
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Clothing
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Education
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Entertainment
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Food
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Health
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Household
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Pet
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Relocation
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Tech
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Transport
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Travel
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`PlaceTypeCategoryInput.vue should update v-model correctly 1`] = `
+<div
+  class="v-input v-text-field v-text-field--single-line v-select v-autocomplete v-input--hide-details v-input--is-label-active v-input--is-dirty v-input--is-focused theme--light primary--text"
+>
+  <div
+    class="v-input__control"
+  >
+    <div
+      class="v-input__slot"
+    >
+      <div
+        class="v-select__slot"
+      >
+        <input
+          aria-label="Place Type Category"
+          autocomplete="off"
+          role="combobox"
+          type="text"
+        />
+        <div
+          class="v-input__append-inner"
+        >
+          <div
+            class="v-input__icon v-input__icon--append"
+          >
+            <i
+              aria-hidden="true"
+              class="v-icon material-icons theme--light primary--text"
+            >
+              arrow_drop_down
+            </i>
+          </div>
+        </div>
+      </div>
+      <div
+        class="v-menu"
+      >
+        <div
+          class="v-menu__content theme--light v-menu__content--auto v-autocomplete__content"
+          style="max-height: 200px; min-width: 0px; max-width: auto; top: 12px; left: 12px; transform-origin: top left; z-index: 8; display: none; z-index: 8;"
+        >
+          <div
+            class="v-select-list v-card theme--light"
+          >
+            <div
+              class="v-list theme--light"
+              role="list"
+            >
+              <div
+                class="primary--text"
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link v-list__tile--active theme--light primary--text"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Barber
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Car
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Clothing
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Education
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Entertainment
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Food
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Health
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Household
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Pet
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Relocation
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Tech
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Transport
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  <div
+                    class="v-list__tile__content"
+                  >
+                    <div
+                      class="v-list__tile__title"
+                    >
+                      Travel
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
