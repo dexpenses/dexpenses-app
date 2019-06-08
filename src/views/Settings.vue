@@ -20,15 +20,55 @@
       <v-icon>account_box</v-icon>
     </v-tab>
 
-    <v-tab-item
-      v-for="i in 3"
-      :key="i"
-      :value="'tab-' + i"
-    >
+    <v-tab-item value="tab-1">
+      <v-card flat>
+        <v-card-text>
+          <v-layout
+            fill-height
+            d-flex
+            column
+          >
+            <span>{{userData}}</span>
+
+            <GmapAutocomplete
+              label="Home Address"
+              placeholder=""
+              @place_changed="setPlace"
+            >
+            </GmapAutocomplete>
+
+            <GmapMap
+              v-if="userData && userData.homeLocation"
+              ref="map"
+              :center="userData.homeLocation"
+              :zoom="15"
+              map-type-id="terrain"
+              style="width: 400px; height: 400px"
+            >
+              <GmapMarker
+                :position="userData.homeLocation"
+                :clickable="true"
+                :draggable="true"
+              />
+            </GmapMap>
+          </v-layout>
+        </v-card-text>
+      </v-card>
+    </v-tab-item>
+    <v-tab-item value="tab-2">
       <v-card flat>
         <v-card-text>
           <v-layout fill-height>
-            Llorem ipsum
+            tab 2
+          </v-layout>
+        </v-card-text>
+      </v-card>
+    </v-tab-item>
+    <v-tab-item value="tab-3">
+      <v-card flat>
+        <v-card-text>
+          <v-layout fill-height>
+            tab 3
           </v-layout>
         </v-card-text>
       </v-card>
@@ -36,7 +76,28 @@
   </v-tabs>
 </template>
 <script>
+import { createNamespacedHelpers } from 'vuex';
+import GmapMap from 'vue2-google-maps/dist/components/map.vue';
+import GmapMarker from 'vue2-google-maps/dist/components/marker';
+// import GmapAutocomplete from 'vue2-google-maps/dist/components/autocomplete.vue';
+import GmapAutocomplete from '@/components/GmapAutocomplete.vue';
+
+const { mapState } = createNamespacedHelpers('user');
+
 export default {
   name: 'Settings',
+  components: {
+    GmapMap,
+    GmapMarker,
+    GmapAutocomplete,
+  },
+  computed: {
+    ...mapState(['userData']),
+  },
+  methods: {
+    setPlace(e) {
+      console.log('from settings', e);
+    },
+  },
 };
 </script>

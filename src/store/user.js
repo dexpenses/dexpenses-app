@@ -1,4 +1,5 @@
 import firebase from 'firebase/app';
+import { firestoreAction } from 'vuexfire';
 import router from '@/router';
 
 /* eslint-disable no-param-reassign */
@@ -7,6 +8,7 @@ export default {
   state: {
     user: null,
     checkLoggedIn$: null,
+    userData: null,
   },
   getters: {
     isAuthenticated: state => state.user != null,
@@ -20,7 +22,7 @@ export default {
     },
   },
   actions: {
-    async checkLoggedIn({ commit, state }) {
+    async checkLoggedIn({ commit, state, dispatch }) {
       if (state.user) {
         return Promise.resolve(state.user);
       }
@@ -35,6 +37,7 @@ export default {
             firebase.auth().onAuthStateChanged(user => {
               if (user) {
                 commit('setUser', user);
+                dispatch('loadUserData');
               }
               commit('setCheckLoggedIn$', null);
               resolve(user);
@@ -44,12 +47,13 @@ export default {
       commit('setCheckLoggedIn$', checkLoggedIn$);
       return checkLoggedIn$;
     },
-    login({ commit }) {
+    login({ commit, dispatch }) {
       firebase
         .auth()
         .signInWithPopup(new firebase.auth.GoogleAuthProvider())
         .then(result => {
           commit('setUser', result.user);
+          dispatch('loadUserData');
           router.push('dashboard');
         })
         .catch(error => {
@@ -61,5 +65,14 @@ export default {
       commit('setUser', null);
       router.push({ name: 'home' });
     },
+    loadUserData: firestoreAction(({ bindFirestoreRef, state }) => {
+      bindFirestoreRef(
+        'userData',
+        firebase
+          .firestore()
+          .collection('users')
+          .doc(state.user.uid)
+      );
+    }),
   },
 };
