@@ -38,6 +38,7 @@ export default {
       this.autocomplete.setComponentRestrictions({
         country: ['de'],
       });
+      this.autocomplete.setFields(['formatted_address', 'geometry']);
       this.autocomplete.addListener('place_changed', () => {
         const place = this.autocomplete.getPlace();
         this.$emit('place_changed', place);

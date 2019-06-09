@@ -28,29 +28,30 @@
             d-flex
             column
           >
-            <span>{{userData}}</span>
-
-            <GmapAutocomplete
-              label="Home Address"
-              placeholder=""
-              @place_changed="setPlace"
-            >
-            </GmapAutocomplete>
-
-            <GmapMap
-              v-if="userData && userData.homeLocation"
-              ref="map"
-              :center="userData.homeLocation"
-              :zoom="15"
-              map-type-id="terrain"
-              style="width: 400px; height: 400px"
-            >
-              <GmapMarker
-                :position="userData.homeLocation"
-                :clickable="true"
-                :draggable="true"
+            <v-subheader>Home Address</v-subheader>
+            <template v-if="userData">
+              <GmapAutocomplete
+                :value="userData.homeLocation ? userData.homeLocation.text : ''"
+                solo
+                clearable
+                @place_changed="updateHomeLocation"
               />
-            </GmapMap>
+
+              <GmapMap
+                v-if="userData.homeLocation"
+                ref="map"
+                :center="userData.homeLocation"
+                :zoom="15"
+                map-type-id="terrain"
+                style="width: 400px; height: 400px"
+              >
+                <GmapMarker
+                  :position="userData.homeLocation"
+                  :clickable="true"
+                  :draggable="true"
+                />
+              </GmapMap>
+            </template>
           </v-layout>
         </v-card-text>
       </v-card>
@@ -79,8 +80,8 @@
 import { createNamespacedHelpers } from 'vuex';
 import GmapMap from 'vue2-google-maps/dist/components/map.vue';
 import GmapMarker from 'vue2-google-maps/dist/components/marker';
-// import GmapAutocomplete from 'vue2-google-maps/dist/components/autocomplete.vue';
 import GmapAutocomplete from '@/components/GmapAutocomplete.vue';
+import firebase from 'firebase/app';
 
 const { mapState } = createNamespacedHelpers('user');
 
@@ -92,11 +93,30 @@ export default {
     GmapAutocomplete,
   },
   computed: {
-    ...mapState(['userData']),
+    ...mapState(['userData', 'user']),
   },
   methods: {
-    setPlace(e) {
-      console.log('from settings', e);
+    async updateHomeLocation(e) {
+      const currentHome = this.userData.homeLocation;
+      const lat = e.geometry.location.lat();
+      const lng = e.geometry.location.lng();
+      if (currentHome && currentHome.lat === lat && currentHome.lng === lng) {
+        return;
+      }
+      await firebase
+        .firestore()
+        .collection('users')
+        .doc(this.user.uid)
+        .set(
+          {
+            homeLocation: {
+              text: e.formatted_address,
+              lat,
+              lng,
+            },
+          },
+          { merge: true }
+        );
     },
   },
 };
