@@ -22,7 +22,7 @@
 
       <v-list-tile
         ripple
-        @click="openSettings"
+        to="/settings"
       >
         <v-list-tile-content>
           <v-list-tile-title>
