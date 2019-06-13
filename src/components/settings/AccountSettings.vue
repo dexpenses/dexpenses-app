@@ -18,13 +18,11 @@
 
       <PhoneNumberInput
         ref="phoneNumberInput"
-        :append-icon="phoneNumberSavable() ? 'save' : null"
-        @click:append="updatePhoneNumber"
         :loading="phoneNumberLoading"
         :error-messages="phoneNumberError ? [phoneNumberError] : []"
         :value="userData.phoneNumber"
-        @input="phoneNumber = $event"
         country-prefix-hint
+        @save="updatePhoneNumber"
       />
 
       <v-subheader>Home Address</v-subheader>
@@ -72,7 +70,6 @@ export default {
   },
   data() {
     return {
-      phoneNumber: null,
       phoneNumberLoading: false,
       phoneNumberError: null,
     };
@@ -81,20 +78,7 @@ export default {
     ...mapState(['userData', 'user']),
   },
   methods: {
-    phoneNumberSavable() {
-      if (this.phoneNumber === null) {
-        return false;
-      }
-      if (!this.userData.phoneNumber && !this.phoneNumber) {
-        return false;
-      }
-      return (
-        this.userData.phoneNumber !== this.phoneNumber &&
-        this.$refs.phoneNumberInput &&
-        this.$refs.phoneNumberInput.valid
-      );
-    },
-    async updatePhoneNumber() {
+    async updatePhoneNumber(phoneNumber) {
       this.phoneNumberLoading = true;
       this.phoneNumberError = null;
       try {
@@ -104,7 +88,7 @@ export default {
           .doc(this.user.uid)
           .set(
             {
-              phoneNumber: this.phoneNumber.trim() || null,
+              phoneNumber: phoneNumber.trim() || null,
             },
             { merge: true }
           );
