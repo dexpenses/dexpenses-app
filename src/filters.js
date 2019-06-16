@@ -13,7 +13,7 @@ function pickUnit(value) {
   return [i, unitValue];
 }
 
-Vue.filter('dataSize', (value) => {
+Vue.filter('dataSize', value => {
   const [i, unitValue] = pickUnit(value);
   return `${unitValue.toFixed(2)} ${dataSizes[i]}`;
 });
@@ -26,7 +26,7 @@ Vue.filter('dataSizeProgress', ([value, total]) => {
 const currencies = {
   EUR: '€',
 };
-Vue.filter('currency', (money) => {
+Vue.filter('currency', money => {
   if (!money) {
     return '';
   }
@@ -34,7 +34,7 @@ Vue.filter('currency', (money) => {
   return `${value.toFixed(2)} ${currencies[currency] || currency}`;
 });
 
-Vue.filter('date', (value) => {
+Vue.filter('date', value => {
   if (!value) {
     return '';
   }
@@ -47,7 +47,7 @@ Vue.filter('date', (value) => {
   }).toFormat('MM/dd/yyyy');
 });
 
-Vue.filter('time', (value) => {
+Vue.filter('time', value => {
   if (!value) {
     return value;
   }
@@ -57,4 +57,4 @@ Vue.filter('time', (value) => {
   }`;
 });
 
-Vue.filter('address', (value) => (!value ? '' : `${value.street}, ${value.city}`));
+Vue.filter('address', value => (!value ? '' : `${value.street}, ${value.city}`));

@@ -51,5 +51,10 @@ export default new Router({
       name: 'settings',
       component: () => import('./views/Settings.vue'),
     },
+    {
+      path: '/search',
+      name: 'search',
+      component: () => import('./views/Search.vue'),
+    },
   ],
 });

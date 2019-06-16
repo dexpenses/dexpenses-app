@@ -1,6 +1,9 @@
 <template>
   <div class="receipt">
-    <ReceiptImage :src="receipt.downloadUrl" />
+    <ReceiptImage
+      v-if="!hideImage"
+      :src="receipt.downloadUrl"
+    />
     <span v-if="!receipt.result || receipt.result.state === 'pending'">Pending
       <v-progress-circular indeterminate />
     </span>
@@ -109,6 +112,7 @@ export default {
   },
   props: {
     receipt: Object,
+    hideImage: Boolean,
   },
   data() {
     return {
