@@ -14,7 +14,12 @@
     column
   >
     <template v-if="userData">
-      <v-subheader v-t="'language'"></v-subheader>
+      <v-subheader class="subheader">
+        <v-icon>language</v-icon>
+        <span>
+          {{$t('language')}}
+        </span>
+      </v-subheader>
       <v-radio-group
         :value="userData.preferredLang || 'en'"
         @change="$i18n.setLanguageAsync($event)"
@@ -28,7 +33,10 @@
         ></v-radio>
       </v-radio-group>
 
-      <v-subheader v-t="'phoneNumber'"></v-subheader>
+      <v-subheader class="subheader">
+        <v-icon>phone</v-icon>
+        <span>{{$t('phoneNumber')}}</span>
+      </v-subheader>
 
       <PhoneNumberInput
         ref="phoneNumberInput"
@@ -39,7 +47,10 @@
         @save="updatePhoneNumber"
       />
 
-      <v-subheader v-t="'homeAddress'"></v-subheader>
+      <v-subheader class="subheader">
+        <v-icon>home</v-icon>
+        <span v-t="'homeAddress'"></span>
+      </v-subheader>
       <GmapAutocomplete
         :value="userData.homeLocation ? userData.homeLocation.text : ''"
         solo
@@ -139,3 +150,8 @@ export default {
   },
 };
 </script>
+<style scoped>
+.subheader > *:not(:first-child) {
+  margin-left: 0.7em;
+}
+</style>
