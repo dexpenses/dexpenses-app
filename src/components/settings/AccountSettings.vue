@@ -14,7 +14,21 @@
     column
   >
     <template v-if="userData">
-      <v-subheader>Phone Number</v-subheader>
+      <v-subheader v-t="'language'"></v-subheader>
+      <v-radio-group
+        :value="userData.preferredLang || 'en'"
+        @change="$i18n.setLanguageAsync($event)"
+        mandatory
+      >
+        <v-radio
+          v-for="(name, lang) in languages"
+          :key="lang"
+          :label="name"
+          :value="lang"
+        ></v-radio>
+      </v-radio-group>
+
+      <v-subheader v-t="'phoneNumber'"></v-subheader>
 
       <PhoneNumberInput
         ref="phoneNumberInput"
@@ -25,7 +39,7 @@
         @save="updatePhoneNumber"
       />
 
-      <v-subheader>Home Address</v-subheader>
+      <v-subheader v-t="'homeAddress'"></v-subheader>
       <GmapAutocomplete
         :value="userData.homeLocation ? userData.homeLocation.text : ''"
         solo
@@ -57,6 +71,7 @@ import GmapMarker from 'vue2-google-maps/dist/components/marker';
 import GmapAutocomplete from '@/components/GmapAutocomplete.vue';
 import firebase from 'firebase/app';
 import PhoneNumberInput from '@/components/fields/PhoneNumberInput.vue';
+import languages from '@/i18n/langs';
 
 const { mapState } = createNamespacedHelpers('user');
 
@@ -72,6 +87,7 @@ export default {
     return {
       phoneNumberLoading: false,
       phoneNumberError: null,
+      languages,
     };
   },
   computed: {

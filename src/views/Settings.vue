@@ -5,52 +5,30 @@
   >
     <v-tabs-slider></v-tabs-slider>
 
-    <v-tab href="#tab-1">
-      Account
-      <v-icon>account_circle</v-icon>
+    <v-tab
+      v-for="tab in tabs"
+      :key="tab.name"
+      :href="`#tab-${tab.name}`"
+    >
+      {{$t(tab.name)}}
+      <v-icon>{{tab.icon}}</v-icon>
     </v-tab>
 
-    <v-tab href="#tab-2">
-      Favorites
-      <v-icon>favorite</v-icon>
-    </v-tab>
-
-    <v-tab href="#tab-3">
-      Nearby
-      <v-icon>account_box</v-icon>
-    </v-tab>
-
-    <v-tab-item value="tab-1">
+    <v-tab-item
+      v-for="tab in tabs"
+      :key="tab.name"
+      :value="`tab-${tab.name}`"
+    >
       <v-card
         flat
         height="100%"
       >
         <v-card-text>
-          <AccountSettings />
-        </v-card-text>
-      </v-card>
-    </v-tab-item>
-    <v-tab-item value="tab-2">
-      <v-card
-        flat
-        height="100%"
-      >
-        <v-card-text>
-          <v-layout fill-height>
-            tab 2
-          </v-layout>
-        </v-card-text>
-      </v-card>
-    </v-tab-item>
-    <v-tab-item value="tab-3">
-      <v-card
-        flat
-        height="100%"
-      >
-        <v-card-text>
-          <v-layout fill-height>
-            tab 3
-          </v-layout>
+          <component
+            :is="tab.component"
+            v-if="tab.component"
+          />
+          <span v-else>test</span>
         </v-card-text>
       </v-card>
     </v-tab-item>
@@ -63,6 +41,19 @@ export default {
   name: 'Settings',
   components: {
     AccountSettings,
+  },
+  data() {
+    return {
+      tabs: [
+        {
+          name: 'account',
+          icon: 'account_circle',
+          component: 'AccountSettings',
+        },
+        { name: 'favorites', icon: 'favorite' },
+        { name: 'nearby', icon: 'account_box' },
+      ],
+    };
   },
 };
 </script>

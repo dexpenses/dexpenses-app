@@ -28,7 +28,7 @@
           :key="item.name"
           :to="item.link"
         >
-          {{item.name}}
+          {{$t(item.name)}}
           <v-icon right>{{item.icon}}</v-icon>
         </v-btn>
       </v-toolbar-items>
@@ -154,27 +154,27 @@ export default {
       drawer: false,
       items: [
         {
-          name: 'Dashboard',
+          name: 'dashboard',
           link: '/dashboard',
           icon: 'dashboard',
         },
         {
-          name: 'Recurring',
+          name: 'recurring',
           link: '/recurring',
           icon: 'payment',
         },
         {
-          name: 'Receipts',
+          name: 'receipts',
           link: '/receipts',
           icon: 'receipt',
         },
         {
-          name: 'Rules',
+          name: 'rules',
           link: '/rules',
           icon: 'build',
         },
         {
-          name: 'Upload',
+          name: 'upload',
           link: '/upload',
           icon: 'cloud_upload',
         },

@@ -11,6 +11,7 @@ import './directives';
 
 import 'viewerjs/dist/viewer.css';
 import './styles.css';
+import i18n from './i18n'
 
 Vue.use(VueViewer);
 
@@ -27,5 +28,6 @@ Vue.config.productionTip = false;
 new Vue({
   router,
   store,
-  render: h => h(App),
+  i18n,
+  render: h => h(App)
 }).$mount('#app');

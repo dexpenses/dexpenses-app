@@ -6,11 +6,9 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
+    "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/i18n/**/*.json'",
     "test:e2e": "vue-cli-service test:e2e",
     "test:unit": "vue-cli-service test:unit"
-  },
-  "engines": {
-    "node": "12"
   },
   "dependencies": {
     "@dexmo/vue-transitioning-result-icon": "^0.1.1",
@@ -27,6 +25,7 @@
     "vue": "^2.6.10",
     "vue-chartjs": "^3.4.2",
     "vue-grid-layout": "^2.3.4",
+    "vue-i18n": "^8.0.0",
     "vue-instantsearch": "^2.2.1",
     "vue-router": "^3.0.1",
     "vue2-google-maps": "^0.10.6",
@@ -53,8 +52,12 @@
     "jest-date-mock": "^1.0.7",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
+    "vue-cli-plugin-i18n": "^0.6.0",
     "vue-cli-plugin-vuetify": "^0.5.0",
     "vue-template-compiler": "^2.6.10",
     "vuetify-loader": "^1.0.5"
+  },
+  "engines": {
+    "node": "12"
   }
 }
