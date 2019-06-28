@@ -17,7 +17,7 @@
     "algoliasearch": "^3.33.0",
     "chart.js": "^2.8.0",
     "deep-equal": "^1.0.1",
-    "firebase": "^6.2.0",
+    "firebase": "^6.2.4",
     "instantsearch.css": "^7.3.1",
     "luxon": "^1.16.0",
     "v-viewer": "^1.4.1",
