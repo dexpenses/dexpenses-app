@@ -11,8 +11,8 @@
   ></v-text-field>
 </template>
 <script>
-import { fields } from '@/util/receipt';
 import { DateTime } from 'luxon';
+import { fields } from '@/util/receipt';
 
 export default {
   name: 'DateInput',

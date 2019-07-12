@@ -36,9 +36,9 @@
 </template>
 <script>
 import firebase from 'firebase/app';
+import { DateTime } from 'luxon';
 import BarChart from '@/components/dashboard/BarChart.vue';
 import { dateRange } from '@/util/dates';
-import { DateTime } from 'luxon';
 
 function label(period) {
   switch (period) {

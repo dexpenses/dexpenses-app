@@ -41,9 +41,9 @@
   </v-container>
 </template>
 <script>
+import { createNamespacedHelpers } from 'vuex';
 import Rule from '@/components/rules/Rule.vue';
 
-import { createNamespacedHelpers } from 'vuex';
 
 const { mapActions, mapState } = createNamespacedHelpers('rules');
 

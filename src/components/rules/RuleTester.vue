@@ -145,14 +145,14 @@
 </template>
 <script>
 import { parseCondition } from '@dexpenses/rule-conditions';
+import TransitioningResultIcon from '@dexmo/vue-transitioning-result-icon';
+import { placeTypeMappings } from '@dexpenses/core';
 import PaymentMethodInput from '@/components/fields/PaymentMethodInput.vue';
 import CurrencyInput from '@/components/fields/CurrencyInput.vue';
 import DateInput from '@/components/fields/DateInput.vue';
 import TimeInput from '@/components/fields/TimeInput.vue';
 import PlaceTypeInput from '@/components/fields/PlaceTypeInput.vue';
 import PlaceTypeCategoryInput from '@/components/fields/PlaceTypeCategoryInput.vue';
-import TransitioningResultIcon from '@dexmo/vue-transitioning-result-icon';
-import { placeTypeMappings } from '@dexpenses/core';
 import { prettifyCamelCase } from '@/util/string';
 
 function prettifyCondition(condition) {
