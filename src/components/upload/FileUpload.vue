@@ -32,17 +32,21 @@
       </div>
     </drop-zone>
     <div class="file-upload-tasks">
-      <file-upload-task
-        v-for="(uploadTask, index) in uploadTasks"
-        :key="index"
-        :task="uploadTask"
-      />
+      <slot
+        name="upload-tasks"
+        :upload-tasks="uploadTasks"
+      >
+        <file-upload-task
+          v-for="(uploadTask, index) in uploadTasks"
+          :key="index"
+          :task="uploadTask"
+        />
+      </slot>
+
     </div>
   </div>
 </template>
 <script>
-import { mapState } from 'vuex';
-import firebase from 'firebase/app';
 import DropZone from '@/components/upload/DropZone.vue';
 import FileUploadTask from '@/components/upload/FileUploadTask.vue';
 
@@ -52,25 +56,23 @@ export default {
     DropZone,
     FileUploadTask,
   },
+  props: {
+    upload: {
+      type: Function,
+      required: true,
+    },
+  },
   data() {
     return {
       hovering: false,
       uploadTasks: [],
     };
   },
-  computed: {
-    ...mapState('user', ['user']),
-  },
   methods: {
     startUpload(files) {
       for (let i = 0; i < files.length; i += 1) {
         const file = files[i];
-        const uploadTask = firebase
-          .storage()
-          .ref(`images/${this.user.uid}/${Date.now()}-${file.name}`)
-          .put(file, {
-            contentType: file.type,
-          });
+        const uploadTask = this.upload(file);
         this.uploadTasks.push(uploadTask);
       }
     },

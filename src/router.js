@@ -56,5 +56,10 @@ export default new Router({
       name: 'search',
       component: () => import('./views/Search.vue'),
     },
+    {
+      path: '/admin/test-data',
+      name: 'adminTestData',
+      component: () => import('./views/admin/TestData.vue')
+    }
   ],
 });
