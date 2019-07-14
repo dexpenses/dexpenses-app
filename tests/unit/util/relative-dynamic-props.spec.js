@@ -1,6 +1,6 @@
-import { parseProps } from '@/util/relative-dynamic-props';
 import * as mockDate from 'jest-date-mock';
 import firebase from 'firebase/app';
+import { parseProps } from '@/util/relative-dynamic-props';
 
 jest.mock('firebase/app', () => ({
   firestore: jest.fn().mockReturnValue({

@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import Vuetify from 'vuetify';
 import { mount } from '@vue/test-utils';
-import DateInput from '@/components/fields/DateInput.vue';
 import { DateTime } from 'luxon';
+import DateInput from '@/components/fields/DateInput.vue';
 
 import '@/filters';
 

@@ -1,9 +1,11 @@
 <template>
   <v-container>
-    <file-upload />
+    <FileUpload :upload="uploadReceipt" />
   </v-container>
 </template>
 <script>
+import firebase from 'firebase/app';
+import { mapState } from 'vuex';
 import FileUpload from '@/components/upload/FileUpload.vue';
 
 export default {
@@ -11,8 +13,18 @@ export default {
   components: {
     FileUpload,
   },
-  data() {
-    return {};
+  computed: {
+    ...mapState('user', ['user']),
+  },
+  methods: {
+    uploadReceipt(file) {
+      return firebase
+        .storage()
+        .ref(`images/${this.user.uid}/${Date.now()}-${file.name}`)
+        .put(file, {
+          contentType: file.type,
+        });
+    },
   },
 };
 </script>

@@ -1,5 +1,5 @@
-import { dateRange } from '@/util/dates';
 import { DateTime } from 'luxon';
+import { dateRange } from '@/util/dates';
 
 describe('dates.dateRange', () => {
   it('should every month from 01/01 - 03/01 + 03/31', () => {

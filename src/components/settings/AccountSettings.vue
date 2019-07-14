@@ -79,8 +79,8 @@
 import { createNamespacedHelpers } from 'vuex';
 import GmapMap from 'vue2-google-maps/dist/components/map.vue';
 import GmapMarker from 'vue2-google-maps/dist/components/marker';
-import GmapAutocomplete from '@/components/GmapAutocomplete.vue';
 import firebase from 'firebase/app';
+import GmapAutocomplete from '@/components/GmapAutocomplete.vue';
 import PhoneNumberInput from '@/components/fields/PhoneNumberInput.vue';
 import languages from '@/i18n/langs';
 
