@@ -186,11 +186,11 @@ export default {
       }
       console.log(this.selected.ref);
       function ext(f) {
-        f = f.split('.');
-        if (f.length === 0) {
+        const parts = f.split('.');
+        if (parts.length === 0) {
           return null;
         }
-        return f[f.length - 1];
+        return parts[parts.length - 1];
       }
 
       info.path = `${info.category}/${[
