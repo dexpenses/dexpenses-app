@@ -10,5 +10,17 @@
   "homeAddress": "Heimataddresse",
   "account": "Konto",
   "favorites": "Favoriten",
-  "nearby": "In der Nähe"
+  "nearby": "In der Nähe",
+  "validations": {
+    "messages": {
+      "_default": "{0} ist ungültig.",
+      "required": "{0} ist erforderlich.",
+      "unique": "{0} existiert bereits."
+    }
+  },
+  "admin": {
+    "testData": {
+      "identifier": "Testdaten-Identifier"
+    }
+  }
 }

@@ -14,3 +14,11 @@ export function prettifyCamelCase(s) {
   }
   return s[0].toUpperCase() + s.slice(1).replace(/([a-z])([A-Z])/g, (_, $1, $2) => `${$1} ${$2}`);
 }
+
+export function ext(f) {
+  const parts = f.split('.');
+  if (parts.length === 0) {
+    return null;
+  }
+  return parts[parts.length - 1];
+}

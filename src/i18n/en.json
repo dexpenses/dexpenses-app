@@ -10,5 +10,17 @@
   "homeAddress": "Home Address",
   "account": "Account",
   "favorites": "Favorites",
-  "nearby": "Nearby"
+  "nearby": "Nearby",
+  "validations": {
+    "messages": {
+      "_default": "{0} is invalid.",
+      "required": "{0} is required.",
+      "unique": "{0} already exists."
+    }
+  },
+  "admin": {
+    "testData": {
+      "identifier": "Test data identifier"
+    }
+  }
 }

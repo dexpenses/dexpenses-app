@@ -2,6 +2,7 @@ import Vue from 'vue';
 import './plugins/vuetify';
 import VueViewer from 'v-viewer';
 import * as VueGoogleMaps from 'vue2-google-maps';
+import VeeValidate from 'vee-validate'
 import App from './App.vue';
 import router from './router';
 import store from './store';
@@ -21,6 +22,11 @@ Vue.use(VueGoogleMaps, {
     libraries: 'places',
   },
   installComponents: false,
+});
+
+Vue.use(VeeValidate, {
+  i18nRootKey: 'validations',
+  i18n,
 });
 
 Vue.config.productionTip = false;
