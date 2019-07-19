@@ -21,7 +21,7 @@
     "deep-equal": "^1.0.1",
     "firebase": "^6.3.0",
     "instantsearch.css": "^7.3.1",
-    "lodash": "^4.17.14",
+    "lodash": "^4.17.15",
     "luxon": "^1.17.1",
     "snyk": "^1.193.2",
     "v-viewer": "^1.4.2",
