@@ -100,7 +100,6 @@ import ProgressModal from '@/components/ProgressModal.vue';
 import { ext } from '@/util/string';
 
 const testDataImageBucket = 'dexpenses-207219-test-images';
-const storage = firebase.app().storage(`gs://${testDataImageBucket}/`);
 
 const VTextFieldWithValidation = withValidation(VTextField, ({ errors }) => ({
   'error-messages': errors,
@@ -197,14 +196,11 @@ export default {
         await this.$refs.progress.run([
           {
             message: 'Saving image',
-            run: async () => {
-              const blob = await fetch(this.value.downloadUrl).then(r =>
-                r.blob()
-              );
-              console.log(blob);
-              await storage.ref(info.path).put(blob);
-              return storage.ref(this.value.ref.fullPath).delete();
-            },
+            run: () =>
+              firebase.functions().httpsCallable('moveTestDataImage')({
+                ...info,
+                source: this.value.ref.fullPath,
+              }),
           },
           {
             message: 'Saving info',
@@ -235,7 +231,7 @@ export default {
               }),
           },
           {
-            message: 'Creating pull request',
+            message: 'Commiting file & creating issue',
             run: result =>
               firebase.functions().httpsCallable('addTestDataFile')({
                 ...info,
