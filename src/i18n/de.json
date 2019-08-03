@@ -11,6 +11,14 @@
   "account": "Konto",
   "favorites": "Favoriten",
   "nearby": "In der Nähe",
+  "paymentMethods": {
+    "DEBIT": "EC-Karte",
+    "CREDIT": "Kreditkarte",
+    "CASH": "Bar",
+    "DKV_CARD": "Tankkarte",
+    "PAYPAL": "PayPal",
+    "ONLINE": "Online"
+  },
   "validations": {
     "messages": {
       "_default": "{0} ist ungültig.",

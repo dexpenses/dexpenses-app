@@ -11,6 +11,14 @@
   "account": "Account",
   "favorites": "Favorites",
   "nearby": "Nearby",
+  "paymentMethods": {
+    "DEBIT": "Debit Card",
+    "CREDIT": "Credit Card",
+    "CASH": "Cash",
+    "DKV_CARD": "Fuel Card",
+    "PAYPAL": "PayPal",
+    "ONLINE": "Online"
+  },
   "validations": {
     "messages": {
       "_default": "{0} is invalid.",

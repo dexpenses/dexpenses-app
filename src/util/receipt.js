@@ -8,12 +8,11 @@ export const fields = {
   placeType: { icon: 'place', displayName: 'Place Type' },
   placeTypeCategory: { icon: 'place', displayName: 'Place Type Category' },
 };
-export const paymentMethods = [
-  { name: 'DEBIT', displayName: 'Debit Card', icon: 'credit_card' },
-  { name: 'CREDIT', displayName: 'Credit Card', icon: 'credit_card' },
-  { name: 'CASH', displayName: 'Cash', icon: 'money' },
-  { name: 'PAYPAL', displayName: 'PayPal' },
-];
+export const paymentMethodIcons = {
+  DEBIT: 'credit_card',
+  CREDIT: 'credit_card',
+  CASH: 'money',
+};
 
 export const currencies = ['EUR', 'USD', 'GBP'];
 

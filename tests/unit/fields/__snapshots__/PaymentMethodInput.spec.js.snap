@@ -31,11 +31,9 @@ exports[`PaymentMethodInput.vue should not trigger input event if new value is s
         <div
           class="v-select__selections"
         >
-          <div
-            class="v-select__selection v-select__selection--comma"
-          >
-            Debit Card
-          </div>
+          
+    Debit Card
+  
           <input
             aria-label="Payment method"
             aria-readonly="false"
@@ -80,15 +78,9 @@ exports[`PaymentMethodInput.vue should not trigger input event if new value is s
                 <a
                   class="v-list__tile v-list__tile--link v-list__tile--active theme--light primary--text"
                 >
-                  <div
-                    class="v-list__tile__content"
-                  >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Debit Card
-                    </div>
-                  </div>
+                  
+    Debit Card
+  
                 </a>
               </div>
               <div
@@ -97,15 +89,9 @@ exports[`PaymentMethodInput.vue should not trigger input event if new value is s
                 <a
                   class="v-list__tile v-list__tile--link theme--light"
                 >
-                  <div
-                    class="v-list__tile__content"
-                  >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Credit Card
-                    </div>
-                  </div>
+                  
+    Credit Card
+  
                 </a>
               </div>
               <div
@@ -114,15 +100,9 @@ exports[`PaymentMethodInput.vue should not trigger input event if new value is s
                 <a
                   class="v-list__tile v-list__tile--link theme--light"
                 >
-                  <div
-                    class="v-list__tile__content"
-                  >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Cash
-                    </div>
-                  </div>
+                  
+    Cash
+  
                 </a>
               </div>
               <div
@@ -131,15 +111,31 @@ exports[`PaymentMethodInput.vue should not trigger input event if new value is s
                 <a
                   class="v-list__tile v-list__tile--link theme--light"
                 >
-                  <div
-                    class="v-list__tile__content"
-                  >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      PayPal
-                    </div>
-                  </div>
+                  
+    Fuel Card
+  
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  
+    PayPal
+  
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  
+    Online
+  
                 </a>
               </div>
             </div>
@@ -182,11 +178,9 @@ exports[`PaymentMethodInput.vue should not trigger input event if new value is s
         <div
           class="v-select__selections"
         >
-          <div
-            class="v-select__selection v-select__selection--comma"
-          >
-            Credit Card
-          </div>
+          
+    Credit Card
+  
           <input
             aria-label="Payment method"
             aria-readonly="false"
@@ -231,15 +225,9 @@ exports[`PaymentMethodInput.vue should not trigger input event if new value is s
                 <a
                   class="v-list__tile v-list__tile--link theme--light"
                 >
-                  <div
-                    class="v-list__tile__content"
-                  >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Debit Card
-                    </div>
-                  </div>
+                  
+    Debit Card
+  
                 </a>
               </div>
               <div
@@ -249,15 +237,9 @@ exports[`PaymentMethodInput.vue should not trigger input event if new value is s
                 <a
                   class="v-list__tile v-list__tile--link v-list__tile--active theme--light primary--text"
                 >
-                  <div
-                    class="v-list__tile__content"
-                  >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Credit Card
-                    </div>
-                  </div>
+                  
+    Credit Card
+  
                 </a>
               </div>
               <div
@@ -266,15 +248,9 @@ exports[`PaymentMethodInput.vue should not trigger input event if new value is s
                 <a
                   class="v-list__tile v-list__tile--link theme--light"
                 >
-                  <div
-                    class="v-list__tile__content"
-                  >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Cash
-                    </div>
-                  </div>
+                  
+    Cash
+  
                 </a>
               </div>
               <div
@@ -283,15 +259,31 @@ exports[`PaymentMethodInput.vue should not trigger input event if new value is s
                 <a
                   class="v-list__tile v-list__tile--link theme--light"
                 >
-                  <div
-                    class="v-list__tile__content"
-                  >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      PayPal
-                    </div>
-                  </div>
+                  
+    Fuel Card
+  
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  
+    PayPal
+  
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  
+    Online
+  
                 </a>
               </div>
             </div>
@@ -370,15 +362,9 @@ exports[`PaymentMethodInput.vue should render correctly 1`] = `
                 <a
                   class="v-list__tile v-list__tile--link theme--light"
                 >
-                  <div
-                    class="v-list__tile__content"
-                  >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Debit Card
-                    </div>
-                  </div>
+                  
+    Debit Card
+  
                 </a>
               </div>
               <div
@@ -387,15 +373,9 @@ exports[`PaymentMethodInput.vue should render correctly 1`] = `
                 <a
                   class="v-list__tile v-list__tile--link theme--light"
                 >
-                  <div
-                    class="v-list__tile__content"
-                  >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Credit Card
-                    </div>
-                  </div>
+                  
+    Credit Card
+  
                 </a>
               </div>
               <div
@@ -404,15 +384,9 @@ exports[`PaymentMethodInput.vue should render correctly 1`] = `
                 <a
                   class="v-list__tile v-list__tile--link theme--light"
                 >
-                  <div
-                    class="v-list__tile__content"
-                  >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Cash
-                    </div>
-                  </div>
+                  
+    Cash
+  
                 </a>
               </div>
               <div
@@ -421,15 +395,31 @@ exports[`PaymentMethodInput.vue should render correctly 1`] = `
                 <a
                   class="v-list__tile v-list__tile--link theme--light"
                 >
-                  <div
-                    class="v-list__tile__content"
-                  >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      PayPal
-                    </div>
-                  </div>
+                  
+    Fuel Card
+  
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  
+    PayPal
+  
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  
+    Online
+  
                 </a>
               </div>
             </div>
@@ -472,11 +462,9 @@ exports[`PaymentMethodInput.vue should render correctly with value 1`] = `
         <div
           class="v-select__selections"
         >
-          <div
-            class="v-select__selection v-select__selection--comma"
-          >
-            Debit Card
-          </div>
+          
+    Debit Card
+  
           <input
             aria-label="Payment method"
             aria-readonly="false"
@@ -521,15 +509,9 @@ exports[`PaymentMethodInput.vue should render correctly with value 1`] = `
                 <a
                   class="v-list__tile v-list__tile--link v-list__tile--active theme--light primary--text"
                 >
-                  <div
-                    class="v-list__tile__content"
-                  >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Debit Card
-                    </div>
-                  </div>
+                  
+    Debit Card
+  
                 </a>
               </div>
               <div
@@ -538,15 +520,9 @@ exports[`PaymentMethodInput.vue should render correctly with value 1`] = `
                 <a
                   class="v-list__tile v-list__tile--link theme--light"
                 >
-                  <div
-                    class="v-list__tile__content"
-                  >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Credit Card
-                    </div>
-                  </div>
+                  
+    Credit Card
+  
                 </a>
               </div>
               <div
@@ -555,15 +531,9 @@ exports[`PaymentMethodInput.vue should render correctly with value 1`] = `
                 <a
                   class="v-list__tile v-list__tile--link theme--light"
                 >
-                  <div
-                    class="v-list__tile__content"
-                  >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Cash
-                    </div>
-                  </div>
+                  
+    Cash
+  
                 </a>
               </div>
               <div
@@ -572,15 +542,31 @@ exports[`PaymentMethodInput.vue should render correctly with value 1`] = `
                 <a
                   class="v-list__tile v-list__tile--link theme--light"
                 >
-                  <div
-                    class="v-list__tile__content"
-                  >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      PayPal
-                    </div>
-                  </div>
+                  
+    Fuel Card
+  
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  
+    PayPal
+  
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  
+    Online
+  
                 </a>
               </div>
             </div>
@@ -623,11 +609,9 @@ exports[`PaymentMethodInput.vue should update v-model correctly 1`] = `
         <div
           class="v-select__selections"
         >
-          <div
-            class="v-select__selection v-select__selection--comma"
-          >
-            Debit Card
-          </div>
+          
+    Debit Card
+  
           <input
             aria-label="Payment method"
             aria-readonly="false"
@@ -672,15 +656,9 @@ exports[`PaymentMethodInput.vue should update v-model correctly 1`] = `
                 <a
                   class="v-list__tile v-list__tile--link v-list__tile--active theme--light primary--text"
                 >
-                  <div
-                    class="v-list__tile__content"
-                  >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Debit Card
-                    </div>
-                  </div>
+                  
+    Debit Card
+  
                 </a>
               </div>
               <div
@@ -689,15 +667,9 @@ exports[`PaymentMethodInput.vue should update v-model correctly 1`] = `
                 <a
                   class="v-list__tile v-list__tile--link theme--light"
                 >
-                  <div
-                    class="v-list__tile__content"
-                  >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Credit Card
-                    </div>
-                  </div>
+                  
+    Credit Card
+  
                 </a>
               </div>
               <div
@@ -706,15 +678,9 @@ exports[`PaymentMethodInput.vue should update v-model correctly 1`] = `
                 <a
                   class="v-list__tile v-list__tile--link theme--light"
                 >
-                  <div
-                    class="v-list__tile__content"
-                  >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Cash
-                    </div>
-                  </div>
+                  
+    Cash
+  
                 </a>
               </div>
               <div
@@ -723,15 +689,31 @@ exports[`PaymentMethodInput.vue should update v-model correctly 1`] = `
                 <a
                   class="v-list__tile v-list__tile--link theme--light"
                 >
-                  <div
-                    class="v-list__tile__content"
-                  >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      PayPal
-                    </div>
-                  </div>
+                  
+    Fuel Card
+  
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  
+    PayPal
+  
+                </a>
+              </div>
+              <div
+                role="listitem"
+              >
+                <a
+                  class="v-list__tile v-list__tile--link theme--light"
+                >
+                  
+    Online
+  
                 </a>
               </div>
             </div>
