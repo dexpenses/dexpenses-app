@@ -3,7 +3,7 @@
     <drop-zone
       class="dropzone"
       @hovered="hovering = $event"
-      @dropped="startUpload($event)"
+      @dropped="hovering = false; startUpload($event)"
       :class="{hovering}"
     >
       <h3>Just drop some files</h3>
