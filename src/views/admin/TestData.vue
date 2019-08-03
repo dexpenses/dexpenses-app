@@ -59,7 +59,7 @@
     <AddTestDataForm
       v-if="selected"
       :value="selected"
-      @done="selected = null; removePendingImage($event)"
+      @done="determineOpenPanel(); selected = null; removePendingImage($event)"
     />
   </v-container>
 </template>
@@ -110,12 +110,18 @@ export default {
         ({ ref }) => ref.fullPath !== toRemove.ref.fullPath
       );
     },
+    determineOpenPanel() {
+      const anyPending = this.pending.length > 0;
+      this.uploadOpen = [!anyPending, anyPending];
+    },
   },
   async created() {
     const { items } = await storage.ref().listAll();
     this.pending = items
       .filter(i => i.name.startsWith(this.user.uid))
       .map(ref => ({ ref, downloadUrl: null }));
+
+    this.determineOpenPanel();
 
     const downloadURLs = await Promise.all(
       this.pending.map(({ ref }) => storage.ref(ref.fullPath).getDownloadURL())
