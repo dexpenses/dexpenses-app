@@ -39,16 +39,7 @@
           label="Classifier"
           v-model.trim="info.classifier"
         ></v-text-field>
-        <ValidationProvider
-          rules="required"
-          v-slot="{errors}"
-        >
-          <PaymentMethodInput
-            v-model="info.paymentMethod"
-            required
-            :error-messages="errors"
-          />
-        </ValidationProvider>
+        <PaymentMethodInput v-model="info.paymentMethod" />
         <ValidationProvider
           rules="required"
           v-slot="{errors}"
@@ -154,12 +145,7 @@ export default {
     },
     identifier() {
       const info = this.transformedInfo;
-      if (
-        !info.category ||
-        !info.cityCode ||
-        !info.name ||
-        !info.paymentMethod
-      ) {
+      if (!info.category || !info.cityCode || !info.name) {
         return null;
       }
       return `${[
