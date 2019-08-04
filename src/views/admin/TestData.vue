@@ -60,7 +60,8 @@
     <AddTestDataForm
       v-if="selected"
       :value="selected"
-      @done="determineOpenPanel(); selected = null; removePendingImage($event)"
+      @done="removePendingImage($event); determineOpenPanel(); selected = null"
+      @deleted="removePendingImage($event); determineOpenPanel(); selected = null"
     />
   </v-container>
 </template>

@@ -58,6 +58,16 @@
         ></v-textarea>
         <v-flex row>
           <v-btn
+            color="error"
+            @click="deleteImage"
+          >
+            <v-icon
+              left
+              dark
+            >delete</v-icon>
+            Delete image
+          </v-btn>
+          <v-btn
             type="submit"
             color="primary"
             :disabled="pending || invalid || !validated"
@@ -160,6 +170,15 @@ export default {
     },
   },
   methods: {
+    async deleteImage() {
+      await firebase
+        .app()
+        .storage(`gs://${testDataImageBucket}/`)
+        .ref(this.value.ref.fullPath)
+        .delete();
+      this.$emit('deleted', this.value);
+      this.$emit('input', null);
+    },
     async saveInfo() {
       const valid = await this.$refs.form.validate();
       if (!valid) {
