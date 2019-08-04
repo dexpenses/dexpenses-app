@@ -167,8 +167,6 @@ export default {
       }
       const info = this.transformedInfo;
 
-      console.log(this.value.ref);
-
       info.path = `${info.category}/${[
         info.cityCode,
         info.name,
@@ -177,7 +175,6 @@ export default {
       ]
         .filter(p => !!p)
         .join('-')}.${ext(this.value.ref.name)}`;
-      console.log(info);
       try {
         await this.$refs.progress.run([
           {
@@ -230,7 +227,6 @@ export default {
 
         this.$emit('done', this.value);
         this.$emit('input', null);
-        console.log('done');
       } catch (e) {
         console.error('something happened', e);
       }
@@ -238,6 +234,14 @@ export default {
   },
   created() {
     this.$validator.extend('unique', unique);
+  },
+  watch: {
+    value() {
+      Object.keys(this.info).forEach(key => {
+        this.info[key] = '';
+      });
+      this.$refs.form.reset();
+    },
   },
 };
 </script>
