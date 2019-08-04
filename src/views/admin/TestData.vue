@@ -36,9 +36,13 @@
           indeterminate
           v-if="!pending"
         />
-        <template v-else>
+        <v-layout
+          row
+          wrap
+          v-else
+        >
           <span v-if="pending.length === 0">Nothing here.</span>
-          <v-card
+          <v-flex
             v-for="p in pending"
             :key="p.ref.name"
             @click="selectImage(p)"
@@ -49,11 +53,8 @@
               contain
               :src="p.downloadUrl"
             />
-            <v-card-title>
-              {{p.ref.name}}
-            </v-card-title>
-          </v-card>
-        </template>
+          </v-flex>
+        </v-layout>
       </v-expansion-panel-content>
     </v-expansion-panel>
     <AddTestDataForm
