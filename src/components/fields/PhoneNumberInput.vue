@@ -65,6 +65,9 @@ export default {
       }
       return this.value !== this.model;
     },
+    focus() {
+      this.$refs.input.focus();
+    },
   },
   watch: {
     value(v) {

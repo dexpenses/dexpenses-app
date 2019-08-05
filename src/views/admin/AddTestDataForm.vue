@@ -1,9 +1,8 @@
 <template>
-  <v-layout
-    d-flex
-    row
+  <v-row class="d-flex"
+        
   >
-    <v-flex
+    <v-col
       style="max-height: 100%; max-width: 50%"
       v-viewer="{toolbar: true, navbar: false, title: false}"
     >
@@ -11,8 +10,8 @@
         :src="value.downloadUrl"
         style="max-height: 100%; max-width: 100%"
       />
-    </v-flex>
-    <v-flex grow>
+    </v-col>
+    <v-col class="grow" >
 
       <ValidationObserver
         tag="form"
@@ -56,7 +55,7 @@
           v-model.trim="info.notes"
           label="Notes"
         ></v-textarea>
-        <v-flex row>
+        <v-col class="row" >
           <v-btn
             color="error"
             @click="deleteImage"
@@ -80,11 +79,11 @@
             :debounce="200"
           >
           </ExternalValidation>
-        </v-flex>
+        </v-col>
       </ValidationObserver>
-    </v-flex>
+    </v-col>
     <ProgressModal ref="progress" />
-  </v-layout>
+  </v-row>
 </template>
 
 <script>

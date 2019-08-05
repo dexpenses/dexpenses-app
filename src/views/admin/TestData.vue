@@ -1,62 +1,62 @@
 <template>
   <v-container>
-    <v-expansion-panel
+    <v-expansion-panels
       v-model="uploadOpen"
       expand
     >
-      <v-expansion-panel-content>
-        <template v-slot:header>
-          <div>
-            Upload
-          </div>
-        </template>
-        <FileUpload
-          :upload="uploadImage"
-          class="upload"
-          :class="{collapsed: !!selected}"
-        >
-          <template
-            slot="upload-tasks"
-            slot-scope="{uploadTasks}"
+      <v-expansion-panel>
+        <v-expansion-panel-header>
+          Upload
+        </v-expansion-panel-header>
+        <v-expansion-panel-content>
+          <FileUpload
+            :upload="uploadImage"
+            class="upload"
+            :class="{collapsed: !!selected}"
           >
-            <FileUploadTask
-              v-for="(uploadTask, index) in uploadTasks"
-              :key="index"
-              :task="uploadTask"
-              @img-clicked="selectImage"
-            />
-          </template>
-        </FileUpload>
-      </v-expansion-panel-content>
-      <v-expansion-panel-content>
-        <template v-slot:header>
+            <template
+              slot="upload-tasks"
+              slot-scope="{uploadTasks}"
+            >
+              <FileUploadTask
+                v-for="(uploadTask, index) in uploadTasks"
+                :key="index"
+                :task="uploadTask"
+                @img-clicked="selectImage"
+              />
+            </template>
+          </FileUpload>
+        </v-expansion-panel-content>
+
+      </v-expansion-panel>
+      <v-expansion-panel>
+        <v-expansion-panel-header>
           Previously uploaded
-        </template>
-        <v-progress-circular
-          indeterminate
-          v-if="!pending"
-        />
-        <v-layout
-          row
-          wrap
-          v-else
-        >
-          <span v-if="pending.length === 0">Nothing here.</span>
-          <v-flex
-            v-for="p in pending"
-            :key="p.ref.name"
-            @click="selectImage(p)"
-          >
-            <v-img
-              v-if="p.downloadUrl"
-              max-height="200px"
-              contain
-              :src="p.downloadUrl"
-            />
-          </v-flex>
-        </v-layout>
-      </v-expansion-panel-content>
-    </v-expansion-panel>
+        </v-expansion-panel-header>
+        <v-expansion-panel-content>
+          <v-progress-circular
+            indeterminate
+            v-if="!pending"
+          />
+          <v-row v-else>
+            <span v-if="pending.length === 0">Nothing here.</span>
+            <v-col
+              v-for="p in pending"
+              :key="p.ref.name"
+              @click="selectImage(p)"
+            >
+              <v-img
+                v-if="p.downloadUrl"
+                max-height="200px"
+                contain
+                :src="p.downloadUrl"
+              />
+            </v-col>
+          </v-row>
+        </v-expansion-panel-content>
+
+      </v-expansion-panel>
+    </v-expansion-panels>
     <AddTestDataForm
       v-if="selected"
       :value="selected"

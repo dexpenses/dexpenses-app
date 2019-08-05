@@ -210,7 +210,10 @@ export default {
         datasets: [
           {
             label: 'Expenses',
-            backgroundColor: this.$vuetify.theme.primary,
+            backgroundColor: (this.$vuetify.theme.isDark
+              ? this.$vuetify.theme.themes.dark
+              : this.$vuetify.theme.themes.light
+            ).primary,
             data,
           },
         ],

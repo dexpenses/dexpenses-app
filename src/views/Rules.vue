@@ -1,6 +1,6 @@
 <template>
-  <v-container fluid>
-    <v-layout row>
+  <v-container>
+    <v-row align="center">
       <v-select
         v-model="selected"
         :items="selectableRules"
@@ -18,7 +18,7 @@
         @click="addNewRule"
         :disabled="locked"
       >New Rule</v-btn>
-    </v-layout>
+    </v-row>
     <v-container v-if="!rules.length && !newRule">
       <v-alert
         v-if="!loading"
@@ -43,7 +43,6 @@
 <script>
 import { createNamespacedHelpers } from 'vuex';
 import Rule from '@/components/rules/Rule.vue';
-
 
 const { mapActions, mapState } = createNamespacedHelpers('rules');
 

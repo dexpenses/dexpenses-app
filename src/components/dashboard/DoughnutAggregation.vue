@@ -18,15 +18,24 @@ export default {
   data() {
     return {
       chartData: null,
-      colors: [
-        this.$vuetify.theme.primary,
-        this.$vuetify.theme.error,
-        this.$vuetify.theme.secondary,
-        this.$vuetify.theme.success,
-        this.$vuetify.theme.warning,
-        this.$vuetify.theme.accent,
-      ],
     };
+  },
+  computed: {
+    theme() {
+      return this.$vuetify.theme.isDark
+        ? this.$vuetify.theme.themes.dark
+        : this.$vuetify.theme.themes.light;
+    },
+    colors() {
+      return [
+        this.theme.primary,
+        this.theme.error,
+        this.theme.secondary,
+        this.theme.success,
+        this.theme.warning,
+        this.theme.accent,
+      ];
+    },
   },
   async mounted() {
     const { data } = await firebase.functions().httpsCallable(this.func)(

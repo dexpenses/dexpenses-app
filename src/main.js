@@ -1,8 +1,8 @@
 import Vue from 'vue';
-import './plugins/vuetify';
 import VueViewer from 'v-viewer';
 import * as VueGoogleMaps from 'vue2-google-maps';
 import VeeValidate from 'vee-validate'
+import vuetify from './plugins/vuetify';
 import App from './App.vue';
 import router from './router';
 import store from './store';
@@ -35,5 +35,6 @@ new Vue({
   router,
   store,
   i18n,
+  vuetify,
   render: h => h(App)
 }).$mount('#app');

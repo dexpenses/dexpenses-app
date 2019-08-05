@@ -9,7 +9,7 @@ const tooltipFormats = {
   hour: 'MM/dd/yyyy HH',
 };
 
-/* eslint-disable no-underscore-dangle: "off" */
+/* eslint no-underscore-dangle: "off" */
 export default {
   extends: Bar,
   props: ['chartData'],

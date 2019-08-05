@@ -7,12 +7,12 @@
     <v-card>
       <v-card-title class="headline">{{title}}</v-card-title>
       <v-card-text>
-        <v-layout
+        <v-row
           v-for="(task,i ) in tasks"
           :key="i"
-          align-center
+          align="center"
         >
-          <v-flex shrink>
+          <v-col class="shrink" >
             <v-icon
               v-if="task.state === 'success'"
               size="32px"
@@ -30,11 +30,11 @@
               v-else
               :indeterminate="task.state === 'running'"
             />
-          </v-flex>
-          <v-flex grow>
+          </v-col>
+          <v-col class="grow" >
             <span>{{task.message}}</span>
-          </v-flex>
-        </v-layout>
+          </v-col>
+        </v-row>
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>

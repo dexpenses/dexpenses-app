@@ -3,7 +3,7 @@
     v-if="key === '$and' || key == '$or'"
     class="bool-condition"
   >
-    <v-layout>
+    <v-row>
       <v-select
         class="field-select bool-select"
         :value="key"
@@ -21,7 +21,7 @@
         class="hoverable-icon"
         @click="$emit('delete')"
       >delete</v-icon>
-    </v-layout>
+    </v-row>
 
     <div class="children">
       <Condition
@@ -68,7 +68,7 @@
       menu-props="auto"
       label="Select"
       hide-details
-      :prepend-icon="(fields[key] || {}).icon"
+      :prepend-icon="(receiptFields[key] || {}).icon"
       single-line
     ></v-select>
 
@@ -125,7 +125,7 @@ export default {
   },
   data() {
     return {
-      fields,
+      receiptFields: fields,
       fieldNames: Object.entries(fields)
         .map(([name, def]) => ({
           ...def,

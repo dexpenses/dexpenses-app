@@ -7,7 +7,10 @@
     transition="dialog-bottom-transition"
   >
     <template v-slot:activator="{ on }">
-      <v-btn v-on="on">
+      <v-btn
+        v-on="on"
+        class="ma-2"
+      >
         <v-icon left>build</v-icon>
         Test
       </v-btn>
@@ -33,112 +36,117 @@
           {{rule.condition | prettifyCondition }}
         </v-container>
 
-        <v-expansion-panel
+        <v-expansion-panels
           :value="0"
           popout
         >
-          <v-expansion-panel-content>
-            <template v-slot:header>
+          <v-expansion-panel>
+            <v-expansion-panel-header>
               <div>Custom receipt</div>
-            </template>
-            <v-card>
-              <v-card-text>
-                <v-form>
-                  <v-container grid-list-md>
-                    <v-layout wrap>
-                      <v-flex xs12>
-                        <v-text-field
-                          @input="$set(receipt.header, 0, $event)"
-                          label="Header"
-                          prepend-icon="title"
-                        ></v-text-field>
-                      </v-flex>
+            </v-expansion-panel-header>
+            <v-expansion-panel-content>
+              <v-card>
+                <v-card-text>
+                  <v-form>
+                    <v-container>
+                      <v-row>
+                        <v-col cols="12">
+                          <v-text-field
+                            @input="$set(receipt.header, 0, $event)"
+                            label="Header"
+                            prepend-icon="title"
+                          ></v-text-field>
+                        </v-col>
 
-                      <v-flex
-                        xs12
-                        sm6
-                      >
-                        <DateInput v-model="receipt.date" />
-                      </v-flex>
-                      <v-flex
-                        xs12
-                        sm6
-                      >
-                        <TimeInput v-model="receipt.time" />
-                      </v-flex>
+                        <v-col
+                          cols="12"
+                          sm="6"
+                        >
+                          <DateInput v-model="receipt.date" />
+                        </v-col>
+                        <v-col
+                          cols="12"
+                          sm="6"
+                        >
+                          <TimeInput v-model="receipt.time" />
+                        </v-col>
 
-                      <v-flex
-                        xs12
-                        sm6
-                        md4
-                      >
-                        <v-text-field
-                          type="number"
-                          label="Amount"
-                          prepend-icon="attach_money"
-                          :value="receipt.amount.value"
-                          @input="receipt.amount.value = Number($event)"
-                        ></v-text-field>
-                      </v-flex>
-                      <v-flex
-                        xs12
-                        sm6
-                        md4
-                      >
-                        <CurrencyInput v-model="receipt.amount.currency" />
-                      </v-flex>
-                      <v-flex
-                        xs12
-                        sm6
-                        md4
-                      >
-                        <PaymentMethodInput v-model="receipt.paymentMethod" />
-                      </v-flex>
-                      <v-flex
-                        xs12
-                        sm6
-                      >
-                        <PlaceTypeInput
-                          prepend-icon
-                          @input="$set(receipt.place.types, 0, $event)"
-                        />
-                      </v-flex>
-                      <v-flex
-                        xs12
-                        sm6
-                      >
-                        <PlaceTypeCategoryInput @input="$set(receipt.place.types, 1, findPlaceTypeForCategory($event))" />
-                      </v-flex>
-                    </v-layout>
-                  </v-container>
-                </v-form>
-              </v-card-text>
-            </v-card>
-          </v-expansion-panel-content>
-          <v-expansion-panel-content>
-            <template v-slot:header>
-              <div>Search for a sample receipt</div>
-            </template>
-            <v-card>
-              <v-card-text>
-                ...not implemented...
-              </v-card-text>
-            </v-card>
-          </v-expansion-panel-content>
-        </v-expansion-panel>
+                        <v-col
+                          cols="12"
+                          sm="6"
+                          md="4"
+                        >
+                          <v-text-field
+                            type="number"
+                            label="Amount"
+                            prepend-icon="attach_money"
+                            :value="receipt.amount.value"
+                            @input="receipt.amount.value = Number($event)"
+                          ></v-text-field>
+                        </v-col>
+                        <v-col
+                          cols="12"
+                          sm="6"
+                          md="4"
+                        >
+                          <CurrencyInput v-model="receipt.amount.currency" />
+                        </v-col>
+                        <v-col
+                          cols="12"
+                          sm="6"
+                          md="4"
+                        >
+                          <PaymentMethodInput v-model="receipt.paymentMethod" />
+                        </v-col>
+                        <v-col
+                          cols="12"
+                          sm="6"
+                        >
+                          <PlaceTypeInput
+                            prepend-icon
+                            @input="$set(receipt.place.types, 0, $event)"
+                          />
+                        </v-col>
+                        <v-col
+                          cols="12"
+                          sm="6"
+                        >
+                          <PlaceTypeCategoryInput @input="$set(receipt.place.types, 1, findPlaceTypeForCategory($event))" />
+                        </v-col>
+                      </v-row>
+                    </v-container>
+                  </v-form>
+                </v-card-text>
+              </v-card>
+            </v-expansion-panel-content>
+          </v-expansion-panel>
+          <v-expansion-panel>
+            <v-expansion-panel-header>
+              Search for a sample receipt
+            </v-expansion-panel-header>
+            <v-expansion-panel-content>
+              <v-card>
+                <v-card-text>
+                  ...not implemented...
+                </v-card-text>
+              </v-card>
+            </v-expansion-panel-content>
+          </v-expansion-panel>
+        </v-expansion-panels>
 
-        <v-layout
-          justify-center
-          align-center
+        <v-row
+          justify="center"
+          align="center"
+          class="ma-2"
         >
-          <transitioning-result-icon
+          <TransitioningResultIcon
             class="result-icon"
             :success-color="$vuetify.theme.success"
             :error-color="$vuetify.theme.error"
             :error="!result"
           />
           <span class="result-message">Receipt {{result ? 'matches' : 'does not match'}}</span>
-        </v-layout>
+        </v-row>
       </v-card-text>
     </v-card>
   </v-dialog>

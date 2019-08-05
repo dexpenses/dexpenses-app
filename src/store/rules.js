@@ -11,6 +11,9 @@ export default {
   },
   getters: {
     rulesRef(_state, _getters, rootState) {
+      if (!rootState.user.user) {
+        return null;
+      }
       return firebase
         .firestore()
         .collection('rulesByUser')

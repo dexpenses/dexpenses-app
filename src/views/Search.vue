@@ -6,8 +6,8 @@
         :search-client="searchClient"
         :index-name="index"
       >
-        <v-layout row>
-          <v-flex grow>
+        <v-row >
+          <v-col class="grow" >
             <AisSearchBox
               autofocus
               show-loading-indicator
@@ -26,8 +26,8 @@
               </template>
 
             </AisSearchBox>
-          </v-flex>
-        </v-layout>
+          </v-col>
+        </v-row>
         <AisHits class="hits">
           <template slot-scope="{ items }">
             <ReceiptCard

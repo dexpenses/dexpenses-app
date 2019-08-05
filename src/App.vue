@@ -1,16 +1,16 @@
 <template>
   <v-app>
 
-    <v-toolbar
+    <v-app-bar
       app
       clipped-left
       absolute
     >
-      <v-toolbar-side-icon
+      <v-app-bar-nav-icon
         class="hidden-md-and-up"
         v-if="user"
         @click.stop="drawer = !drawer"
-      ></v-toolbar-side-icon>
+      />
       <v-toolbar-title class="headline text-uppercase">
         <router-link to="/">
           <span>DexmoHQ</span>
@@ -18,41 +18,23 @@
         </router-link>
       </v-toolbar-title>
 
-      <v-toolbar-items
-        v-if="user"
-        class="hidden-sm-and-down"
-      >
-        <v-btn
-          flat
-          v-for="item in items"
-          :key="item.name"
-          :to="item.link"
-        >
-          {{$t(item.name)}}
-          <v-icon right>{{item.icon}}</v-icon>
-        </v-btn>
-      </v-toolbar-items>
+      <template v-if="user && $vuetify.breakpoint.mdAndUp">
+        <v-toolbar-items>
+          <v-btn
+            text
+            v-for="item in items"
+            :key="item.name"
+            :to="item.link"
+          >
+            {{$t(item.name)}}
+            <v-icon right>{{item.icon}}</v-icon>
+          </v-btn>
+        </v-toolbar-items>
+      </template>
 
       <v-spacer></v-spacer>
 
-      <!-- <v-flex
-        v-if="user"
-        class="pending-message hidden-sm-and-down"
-      >
-        <span v-if="pendingReceiptsCount">
-          {{pendingReceiptsCount}} receipts pending.
-          <v-progress-circular
-            indeterminate
-            size="16"
-            width="1"
-          ></v-progress-circular>
-        </span>
-        <span v-else>No receipts pending.
-          <v-icon>check</v-icon>
-        </span>
-      </v-flex> -->
-
-      <account-menu
+      <AccountMenu
         v-if="user"
         class="hidden-sm-and-down"
       />
@@ -61,75 +43,73 @@
         color="primary"
         @click="login"
       >LOGIN</v-btn>
-    </v-toolbar>
+    </v-app-bar>
 
     <v-navigation-drawer
       v-if="user"
       v-model="drawer"
-      absolute
+      app
       temporary
     >
-      <v-list class="pa-1">
-        <v-list-tile avatar>
-          <v-list-tile-avatar>
-            <img :src="user.photoURL">
-          </v-list-tile-avatar>
-
-          <v-list-tile-content>
-            <v-list-tile-title>{{user.displayName}}</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-      </v-list>
-
       <v-list
-        class="pt-0"
+        nav
         dense
       >
+        <v-list-item>
+          <v-list-item-avatar>
+            <img :src="user.photoURL">
+          </v-list-item-avatar>
+
+          <v-list-item-content>
+            <v-list-item-title>{{user.displayName}}</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+
         <v-divider></v-divider>
 
-        <v-list-tile
+        <v-list-item
           v-for="item in items"
           :key="item.name"
           :to="item.link"
         >
-          <v-list-tile-action>
+          <v-list-item-action>
             <v-icon>{{ item.icon }}</v-icon>
-          </v-list-tile-action>
+          </v-list-item-action>
 
-          <v-list-tile-content>
-            <v-list-tile-title>{{ item.name }}</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
+          <v-list-item-content>
+            <v-list-item-title>{{ item.name }}</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
 
         <v-divider></v-divider>
 
-        <v-list-tile
+        <v-list-item
           ripple
           to="/settings"
         >
-          <v-list-tile-action>
+          <v-list-item-action>
             <v-icon>settings</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>
               Settings
-            </v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
 
-        <v-list-tile
+        <v-list-item
           ripple
           @click="logout"
         >
-          <v-list-tile-action>
+          <v-list-item-action>
             <v-icon>logout</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>
               Logout
-            </v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
 
       </v-list>
     </v-navigation-drawer>

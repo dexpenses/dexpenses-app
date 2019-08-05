@@ -1,6 +1,6 @@
 <template>
   <div>
-    <drop-zone
+    <DropZone
       class="dropzone"
       @hovered="hovering = $event"
       @dropped="hovering = false; startUpload($event)"
@@ -30,16 +30,17 @@
           </v-btn>
         </label>
       </div>
-    </drop-zone>
+    </DropZone>
     <div class="file-upload-tasks">
       <slot
         name="upload-tasks"
         :upload-tasks="uploadTasks"
       >
-        <file-upload-task
+        <FileUploadTask
           v-for="(uploadTask, index) in uploadTasks"
           :key="index"
           :task="uploadTask"
+          :on-complete="onComplete"
         />
       </slot>
 
@@ -61,6 +62,7 @@ export default {
       type: Function,
       required: true,
     },
+    onComplete: Function,
   },
   data() {
     return {

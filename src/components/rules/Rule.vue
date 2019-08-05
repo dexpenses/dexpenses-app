@@ -31,14 +31,16 @@
         @keyup.enter="addTag"
       >
     </v-container>
-    <v-layout row>
+    <v-row>
       <v-btn
+        class="ma-2"
         color="primary"
         :disabled="!anyChanges"
         @click="save"
         :loading="saving"
       >Save</v-btn>
       <v-btn
+        class="ma-2"
         color="error"
         :disabled="!anyChanges"
         @click="discard"
@@ -47,11 +49,11 @@
         v-model="testingRule"
         :rule="rule"
       />
-      <v-btn>
+      <v-btn class="ma-2">
         <v-icon left>play_arrow</v-icon>
         Run
       </v-btn>
-    </v-layout>
+    </v-row>
     <!-- {{rule}} -->
   </v-container>
 </template>

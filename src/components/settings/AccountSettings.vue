@@ -1,19 +1,37 @@
 <template>
-  <v-layout
-    fill-height
-    align-center
-    justify-center
+  <v-row
+    class="fill-height"
+    align="center"
+    justify="center"
     v-if="!userData"
   >
     <v-progress-circular indeterminate />
-  </v-layout>
-  <v-layout
+  </v-row>
+  <v-container
+    class="fill-height d-flex"
     v-else
-    fill-height
-    d-flex
-    column
   >
-    <template v-if="userData">
+    <v-col v-if="userData">
+      <v-banner
+        :value="!userData.phoneNumber && showBanner"
+        icon="info"
+        icon-color="primary"
+        elevation="2"
+      >
+        You can help us better read your receipt by providing your phone number.
+        <template v-slot:actions>
+          <v-btn
+            text
+            color="primary"
+            @click="$refs.phoneNumberInput.focus(); showBanner = false;"
+          >Fill</v-btn>
+          <v-btn
+            text
+            color="primary"
+            @click="showBanner = false"
+          >Dismiss</v-btn>
+        </template>
+      </v-banner>
       <v-subheader class="subheader">
         <v-icon>language</v-icon>
         <span>
@@ -72,8 +90,8 @@
           :draggable="true"
         />
       </GmapMap>
-    </template>
-  </v-layout>
+    </v-col>
+  </v-container>
 </template>
 <script>
 import { createNamespacedHelpers } from 'vuex';
@@ -99,6 +117,7 @@ export default {
       phoneNumberLoading: false,
       phoneNumberError: null,
       languages,
+      showBanner: true,
     };
   },
   computed: {

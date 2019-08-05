@@ -1,18 +1,12 @@
 <template>
-  <v-layout
-    row
-    justify-space-between
-  >
-    <v-layout column>
+  <v-row justify="space-between">
+    <v-col>
       <h3>{{value.name}}</h3>
       <div class="recurring-payment-info">
         <div v-if="value.description">
           {{value.description}}
         </div>
-        <v-layout
-          row
-          class="spans"
-        >
+        <v-row class="spans">
           <span>
             {{value.amount | currency}}
           </span>
@@ -20,25 +14,18 @@
           <span>
             {{value.paymentMethod}}
           </span>
-        </v-layout>
-        <v-layout
-          row
-          class="spans"
-        >
+        </v-row>
+        <v-row class="spans">
           <span>Paid</span>
           <span>{{value.period}}</span>
           <template v-if="value.dueDate">
             <span>due by</span>
             <span>{{value.dueDate}}</span>
           </template>
-        </v-layout>
+        </v-row>
       </div>
-    </v-layout>
-    <v-layout
-      column
-      shrink
-      justify-space-around
-    >
+    </v-col>
+    <v-col class="shrink">
       <v-icon
         class="hoverable-icon"
         @click="$emit('edit', value)"
@@ -83,8 +70,8 @@
       >
         <v-icon>cached</v-icon>
       </span>
-    </v-layout>
-  </v-layout>
+    </v-col>
+  </v-row>
 </template>
 <script>
 import firebase from 'firebase/app';

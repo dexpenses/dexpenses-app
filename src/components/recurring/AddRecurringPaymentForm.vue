@@ -22,26 +22,26 @@
           ref="form"
           v-model="valid"
         >
-          <v-container grid-list-md>
-            <v-layout wrap>
-              <v-flex xs12>
+          <v-container>
+            <v-row>
+              <v-col cols="12">
                 <v-text-field
                   v-model="recurringPayment.name"
                   ref="nameField"
                   label="Name*"
                   :rules="[rules.required]"
                 ></v-text-field>
-              </v-flex>
-              <v-flex xs12>
+              </v-col>
+              <v-col cols="12">
                 <v-textarea
                   v-model="recurringPayment.description"
                   label="Description"
                 ></v-textarea>
-              </v-flex>
-              <v-flex
-                xs12
-                sm6
-                md4
+              </v-col>
+              <v-col
+                cols="12"
+                sm="6"
+                md="4"
               >
                 <v-text-field
                   v-model="recurringPayment.amount.value"
@@ -49,26 +49,26 @@
                   type="number"
                   :rules="[rules.required]"
                 ></v-text-field>
-              </v-flex>
-              <v-flex
-                xs12
-                sm6
-                md4
+              </v-col>
+              <v-col
+                cols="12"
+                sm="6"
+                md="4"
               >
                 <CurrencyInput v-model="recurringPayment.amount.currency" />
-              </v-flex>
+              </v-col>
 
-              <v-flex
-                xs12
-                sm6
-                md4
+              <v-col
+                cols="12"
+                sm="6"
+                md="4"
               >
                 <PaymentMethodInput v-model="recurringPayment.paymentMethod" />
-              </v-flex>
+              </v-col>
 
-              <v-flex
-                xs12
-                sm6
+              <v-col
+                cols="12"
+                sm="6"
               >
                 <v-select
                   required
@@ -76,10 +76,10 @@
                   v-model="recurringPayment.period"
                   :items="['Monthly', 'Quarterly', 'Yearly']"
                 />
-              </v-flex>
-              <v-flex
-                xs12
-                sm6
+              </v-col>
+              <v-col
+                cols="12"
+                sm="6"
               >
                 <v-text-field
                   v-if="recurringPayment.period === 'Monthly'"
@@ -96,8 +96,8 @@
                   mask="##/##"
                   :return-masked-value="true"
                 />
-              </v-flex>
-            </v-layout>
+              </v-col>
+            </v-row>
           </v-container>
           <small>*indicates required field</small>
         </v-form>

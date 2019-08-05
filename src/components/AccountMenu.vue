@@ -4,49 +4,51 @@
     offset-y
     transition="slide-y-transition"
   >
-    <v-btn
-      fab
-      icon
-      slot="activator"
-    >
-      <v-avatar>
-        <img :src="user.photoURL" />
-      </v-avatar>
-    </v-btn>
-    <v-list>
-      <v-list-tile>
-        <v-list-tile-title>
-          {{user.displayName}}
-        </v-list-tile-title>
-      </v-list-tile>
+    <template v-slot:activator="{on}">
+      <v-btn
+        fab
+        icon
+      >
+        <v-avatar v-on="on">
+          <img :src="user.photoURL" />
+        </v-avatar>
+      </v-btn>
+    </template>
 
-      <v-list-tile
+    <v-list>
+      <v-list-item>
+        <v-list-item-title>
+          {{user.displayName}}
+        </v-list-item-title>
+      </v-list-item>
+
+      <v-list-item
         ripple
         to="/settings"
       >
-        <v-list-tile-content>
-          <v-list-tile-title>
+        <v-list-item-content>
+          <v-list-item-title>
             Settings
-          </v-list-tile-title>
-        </v-list-tile-content>
-        <v-list-tile-action>
+          </v-list-item-title>
+        </v-list-item-content>
+        <v-list-item-action>
           <v-icon>settings</v-icon>
-        </v-list-tile-action>
-      </v-list-tile>
+        </v-list-item-action>
+      </v-list-item>
 
-      <v-list-tile
+      <v-list-item
         ripple
         @click="logout"
       >
-        <v-list-tile-content>
-          <v-list-tile-title>
+        <v-list-item-content>
+          <v-list-item-title>
             Logout
-          </v-list-tile-title>
-        </v-list-tile-content>
-        <v-list-tile-action>
+          </v-list-item-title>
+        </v-list-item-content>
+        <v-list-item-action>
           <v-icon>logout</v-icon>
-        </v-list-tile-action>
-      </v-list-tile>
+        </v-list-item-action>
+      </v-list-item>
     </v-list>
   </v-menu>
 </template>
