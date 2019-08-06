@@ -8,7 +8,7 @@
     :rules="[(v) => validatePhoneNumber(v) || 'Invalid phone number.']"
     :hint="showCountryPrefixHint ? 'It is recommended to add a country prefix, e.g. +49.' : null"
   >
-    <template slot="append">
+    <template v-slot:append>
       <v-icon
         v-if="hasChanges()"
         @click="model = value"

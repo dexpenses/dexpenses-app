@@ -1,16 +1,26 @@
-import { mount } from '@vue/test-utils';
-import Vue from 'vue';
+import { createLocalVue, mount } from '@vue/test-utils';
 import Vuetify from 'vuetify';
 import PhoneNumberInput from '@/components/fields/PhoneNumberInput.vue';
 
-Vue.use(Vuetify);
+const localVue = createLocalVue();
 
 describe('PhoneNumberInput', () => {
+  let vuetify;
+  beforeEach(() => {
+    vuetify = new Vuetify({
+      icons: {
+        iconfont: 'md',
+      },
+    });
+  });
+
   it('should render correctly', () => {
     const wrapper = mount(PhoneNumberInput, {
       propsData: {
         value: '+491234567890',
       },
+      localVue,
+      vuetify,
     });
     expect(wrapper.element).toMatchSnapshot();
 
@@ -23,6 +33,8 @@ describe('PhoneNumberInput', () => {
         value: '01234567890',
         countryPrefixHint: true,
       },
+      localVue,
+      vuetify,
     });
     wrapper.find('input').element.focus();
     expect(wrapper.element).toMatchSnapshot(); // show hint
@@ -35,6 +47,8 @@ describe('PhoneNumberInput', () => {
       propsData: {
         value: '+491234567890',
       },
+      localVue,
+      vuetify,
     });
     expect(wrapper.element).toMatchSnapshot(); // no buttons
     wrapper.find('input').setValue('+491234567891');
@@ -46,6 +60,8 @@ describe('PhoneNumberInput', () => {
       propsData: {
         value: '+491234567890',
       },
+      localVue,
+      vuetify,
     });
     expect(wrapper.element).toMatchSnapshot(); // no buttons
     wrapper.find('input').setValue('');
@@ -57,6 +73,8 @@ describe('PhoneNumberInput', () => {
       propsData: {
         value: '+491234567890',
       },
+      localVue,
+      vuetify,
     });
     wrapper.find('input').setValue('+4912');
     await wrapper.vm.$nextTick(); // wait for validation changes
@@ -68,6 +86,8 @@ describe('PhoneNumberInput', () => {
       propsData: {
         value: '+491234567890',
       },
+      localVue,
+      vuetify,
     });
     wrapper.find('input').setValue('+491234567891');
     const clear = wrapper.findAll('i').wrappers.find(w => w.text() === 'clear');
@@ -86,6 +106,8 @@ describe('PhoneNumberInput', () => {
       listeners: {
         save: saveCallback,
       },
+      localVue,
+      vuetify,
     });
     wrapper.find('input').setValue('+491234567891');
     const save = wrapper.findAll('i').wrappers.find(w => w.text() === 'save');
