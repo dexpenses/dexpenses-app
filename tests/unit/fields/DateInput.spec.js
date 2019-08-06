@@ -1,16 +1,20 @@
-import Vue from 'vue';
-import Vuetify from 'vuetify';
-import { mount } from '@vue/test-utils';
+import { mount, createLocalVue } from '@vue/test-utils';
 import { DateTime } from 'luxon';
+import createVuetify from '../vuetify';
 import DateInput from '@/components/fields/DateInput.vue';
 
 import '@/filters';
 
-Vue.use(Vuetify, {}); // should actually use localVue, but that causes a console error atm
+const localVue = createLocalVue();
 
 describe('DateInput.vue', () => {
+  let vuetify;
+  beforeEach(() => {
+    vuetify = createVuetify();
+  });
+
   it('should render correctly', () => {
-    const wrapper = mount(DateInput);
+    const wrapper = mount(DateInput, { localVue, vuetify });
     expect(wrapper.element).toMatchSnapshot();
   });
 
@@ -19,13 +23,15 @@ describe('DateInput.vue', () => {
       propsData: {
         value: new Date('2019-04-28T00:00:00.000Z'),
       },
+      localVue,
+      vuetify,
     });
     expect(wrapper.element).toMatchSnapshot();
     expect(wrapper.find('input').element.value).toEqual('04/28/2019');
   });
 
   it('should trigger input event if user selects new item', async () => {
-    const wrapper = mount(DateInput);
+    const wrapper = mount(DateInput, { localVue, vuetify });
     wrapper.find('input').setValue('04/28/2019');
     expect(wrapper.find('input').element.value).toEqual('04/28/2019');
     await wrapper.vm.$nextTick();
@@ -45,6 +51,8 @@ describe('DateInput.vue', () => {
       propsData: {
         value: new Date('2019-04-28T00:00:00.000Z'),
       },
+      localVue,
+      vuetify,
     });
     expect(wrapper.element).toMatchSnapshot();
     expect(wrapper.find('input').element.value).toEqual('04/28/2019');
@@ -57,15 +65,18 @@ describe('DateInput.vue', () => {
   });
 
   it('should update v-model correctly', async () => {
-    const wrapper = mount({
-      template: '<DateInput v-model="modelValue"></DateInput>',
-      data: () => ({
-        modelValue: null,
-      }),
-      components: {
-        DateInput,
+    const wrapper = mount(
+      {
+        template: '<DateInput v-model="modelValue"></DateInput>',
+        data: () => ({
+          modelValue: null,
+        }),
+        components: {
+          DateInput,
+        },
       },
-    });
+      { localVue, vuetify }
+    );
 
     wrapper.find('input').setValue('04/28/2019');
     await wrapper.vm.$nextTick();

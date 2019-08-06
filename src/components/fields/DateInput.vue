@@ -5,17 +5,18 @@
     @input="emit"
     :label="label"
     :prepend-icon="icon"
-    mask="##/##/####"
+    v-mask="'##/##/####'"
     :rules="[v => this.validateDate(v) || 'Invalid date.']"
-    :return-masked-value="true"
   ></v-text-field>
 </template>
 <script>
 import { DateTime } from 'luxon';
+import { mask } from 'vue-the-mask';
 import { fields } from '@/util/receipt';
 
 export default {
   name: 'DateInput',
+  directives: { mask },
   props: {
     value: Date,
     label: {

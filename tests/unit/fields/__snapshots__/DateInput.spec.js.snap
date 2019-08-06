@@ -2,7 +2,7 @@
 
 exports[`DateInput.vue should not trigger input event if new value is set programmatically 1`] = `
 <div
-  class="v-input v-text-field v-input--is-label-active v-input--is-dirty theme--light"
+  class="v-input v-input--is-label-active v-input--is-dirty theme--light v-text-field"
 >
   <div
     class="v-input__prepend-outer"
@@ -12,7 +12,7 @@ exports[`DateInput.vue should not trigger input event if new value is set progra
     >
       <i
         aria-hidden="true"
-        class="v-icon material-icons theme--light"
+        class="v-icon notranslate material-icons theme--light"
       >
         date_range
       </i>
@@ -28,15 +28,14 @@ exports[`DateInput.vue should not trigger input event if new value is set progra
         class="v-text-field__slot"
       >
         <label
-          aria-hidden="true"
           class="v-label v-label--active theme--light"
+          for="input-24"
           style="left: 0px; position: absolute;"
         >
           Date
         </label>
         <input
-          aria-label="Date"
-          maxlength="10"
+          id="input-24"
           type="text"
         />
       </div>
@@ -47,8 +46,10 @@ exports[`DateInput.vue should not trigger input event if new value is set progra
       <div
         class="v-messages theme--light"
       >
-        <div
+        <span
           class="v-messages__wrapper"
+          name="message-transition"
+          tag="div"
         />
       </div>
     </div>
@@ -58,7 +59,7 @@ exports[`DateInput.vue should not trigger input event if new value is set progra
 
 exports[`DateInput.vue should not trigger input event if new value is set programmatically 2`] = `
 <div
-  class="v-input v-text-field v-input--is-label-active v-input--is-dirty theme--light"
+  class="v-input v-input--is-label-active v-input--is-dirty theme--light v-text-field"
 >
   <div
     class="v-input__prepend-outer"
@@ -68,7 +69,7 @@ exports[`DateInput.vue should not trigger input event if new value is set progra
     >
       <i
         aria-hidden="true"
-        class="v-icon material-icons theme--light"
+        class="v-icon notranslate material-icons theme--light"
       >
         date_range
       </i>
@@ -84,15 +85,14 @@ exports[`DateInput.vue should not trigger input event if new value is set progra
         class="v-text-field__slot"
       >
         <label
-          aria-hidden="true"
           class="v-label v-label--active theme--light"
+          for="input-24"
           style="left: 0px; position: absolute;"
         >
           Date
         </label>
         <input
-          aria-label="Date"
-          maxlength="10"
+          id="input-24"
           type="text"
         />
       </div>
@@ -103,8 +103,10 @@ exports[`DateInput.vue should not trigger input event if new value is set progra
       <div
         class="v-messages theme--light"
       >
-        <div
+        <span
           class="v-messages__wrapper"
+          name="message-transition"
+          tag="div"
         />
       </div>
     </div>
@@ -114,7 +116,7 @@ exports[`DateInput.vue should not trigger input event if new value is set progra
 
 exports[`DateInput.vue should render correctly 1`] = `
 <div
-  class="v-input v-text-field theme--light"
+  class="v-input theme--light v-text-field"
 >
   <div
     class="v-input__prepend-outer"
@@ -124,7 +126,7 @@ exports[`DateInput.vue should render correctly 1`] = `
     >
       <i
         aria-hidden="true"
-        class="v-icon material-icons theme--light"
+        class="v-icon notranslate material-icons theme--light"
       >
         date_range
       </i>
@@ -140,15 +142,14 @@ exports[`DateInput.vue should render correctly 1`] = `
         class="v-text-field__slot"
       >
         <label
-          aria-hidden="true"
           class="v-label theme--light"
+          for="input-3"
           style="left: 0px; position: absolute;"
         >
           Date
         </label>
         <input
-          aria-label="Date"
-          maxlength="10"
+          id="input-3"
           type="text"
         />
       </div>
@@ -159,8 +160,10 @@ exports[`DateInput.vue should render correctly 1`] = `
       <div
         class="v-messages theme--light"
       >
-        <div
+        <span
           class="v-messages__wrapper"
+          name="message-transition"
+          tag="div"
         />
       </div>
     </div>
@@ -170,7 +173,7 @@ exports[`DateInput.vue should render correctly 1`] = `
 
 exports[`DateInput.vue should render correctly with value 1`] = `
 <div
-  class="v-input v-text-field v-input--is-label-active v-input--is-dirty theme--light"
+  class="v-input v-input--is-label-active v-input--is-dirty theme--light v-text-field"
 >
   <div
     class="v-input__prepend-outer"
@@ -180,7 +183,7 @@ exports[`DateInput.vue should render correctly with value 1`] = `
     >
       <i
         aria-hidden="true"
-        class="v-icon material-icons theme--light"
+        class="v-icon notranslate material-icons theme--light"
       >
         date_range
       </i>
@@ -196,15 +199,14 @@ exports[`DateInput.vue should render correctly with value 1`] = `
         class="v-text-field__slot"
       >
         <label
-          aria-hidden="true"
           class="v-label v-label--active theme--light"
+          for="input-10"
           style="left: 0px; position: absolute;"
         >
           Date
         </label>
         <input
-          aria-label="Date"
-          maxlength="10"
+          id="input-10"
           type="text"
         />
       </div>
@@ -215,8 +217,10 @@ exports[`DateInput.vue should render correctly with value 1`] = `
       <div
         class="v-messages theme--light"
       >
-        <div
+        <span
           class="v-messages__wrapper"
+          name="message-transition"
+          tag="div"
         />
       </div>
     </div>
@@ -226,7 +230,7 @@ exports[`DateInput.vue should render correctly with value 1`] = `
 
 exports[`DateInput.vue should trigger input event if user selects new item 1`] = `
 <div
-  class="v-input v-text-field v-input--is-label-active v-input--is-dirty theme--light"
+  class="v-input v-input--is-label-active v-input--is-dirty theme--light v-text-field"
 >
   <div
     class="v-input__prepend-outer"
@@ -236,7 +240,7 @@ exports[`DateInput.vue should trigger input event if user selects new item 1`] =
     >
       <i
         aria-hidden="true"
-        class="v-icon material-icons theme--light"
+        class="v-icon notranslate material-icons theme--light"
       >
         date_range
       </i>
@@ -252,15 +256,14 @@ exports[`DateInput.vue should trigger input event if user selects new item 1`] =
         class="v-text-field__slot"
       >
         <label
-          aria-hidden="true"
           class="v-label v-label--active theme--light"
+          for="input-17"
           style="left: 0px; position: absolute;"
         >
           Date
         </label>
         <input
-          aria-label="Date"
-          maxlength="10"
+          id="input-17"
           type="text"
         />
       </div>
@@ -271,8 +274,10 @@ exports[`DateInput.vue should trigger input event if user selects new item 1`] =
       <div
         class="v-messages theme--light"
       >
-        <div
+        <span
           class="v-messages__wrapper"
+          name="message-transition"
+          tag="div"
         />
       </div>
     </div>
@@ -282,7 +287,7 @@ exports[`DateInput.vue should trigger input event if user selects new item 1`] =
 
 exports[`DateInput.vue should update v-model correctly 1`] = `
 <div
-  class="v-input v-text-field v-input--is-label-active v-input--is-dirty theme--light"
+  class="v-input v-input--is-label-active v-input--is-dirty theme--light v-text-field"
 >
   <div
     class="v-input__prepend-outer"
@@ -292,7 +297,7 @@ exports[`DateInput.vue should update v-model correctly 1`] = `
     >
       <i
         aria-hidden="true"
-        class="v-icon material-icons theme--light"
+        class="v-icon notranslate material-icons theme--light"
       >
         date_range
       </i>
@@ -308,15 +313,14 @@ exports[`DateInput.vue should update v-model correctly 1`] = `
         class="v-text-field__slot"
       >
         <label
-          aria-hidden="true"
           class="v-label v-label--active theme--light"
+          for="input-32"
           style="left: 0px; position: absolute;"
         >
           Date
         </label>
         <input
-          aria-label="Date"
-          maxlength="10"
+          id="input-32"
           type="text"
         />
       </div>
@@ -327,8 +331,10 @@ exports[`DateInput.vue should update v-model correctly 1`] = `
       <div
         class="v-messages theme--light"
       >
-        <div
+        <span
           class="v-messages__wrapper"
+          name="message-transition"
+          tag="div"
         />
       </div>
     </div>
