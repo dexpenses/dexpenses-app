@@ -14,16 +14,9 @@ exports[`PhoneNumberInput should render correctly 1`] = `
         class="v-text-field__slot"
       >
         <input
-          id="input-3"
+          id="input-4"
           type="text"
         />
-      </div>
-      <div
-        class="v-input__append-inner"
-      >
-        <!---->
-         
-        <!---->
       </div>
     </div>
     <div
@@ -43,7 +36,7 @@ exports[`PhoneNumberInput should render correctly 1`] = `
 </div>
 `;
 
-exports[`PhoneNumberInput should restore saved value 1`] = `
+exports[`PhoneNumberInput should show country code prefix hint: hide hint 1`] = `
 <div
   class="v-input v-input--is-label-active v-input--is-dirty v-input--is-focused theme--light v-text-field primary--text"
 >
@@ -57,16 +50,9 @@ exports[`PhoneNumberInput should restore saved value 1`] = `
         class="v-text-field__slot"
       >
         <input
-          id="input-41"
+          id="input-11"
           type="text"
         />
-      </div>
-      <div
-        class="v-input__append-inner"
-      >
-        <!---->
-         
-        <!---->
       </div>
     </div>
     <div
@@ -86,7 +72,7 @@ exports[`PhoneNumberInput should restore saved value 1`] = `
 </div>
 `;
 
-exports[`PhoneNumberInput should save value 1`] = `
+exports[`PhoneNumberInput should show country code prefix hint: show hint 1`] = `
 <div
   class="v-input v-input--is-label-active v-input--is-dirty v-input--is-focused theme--light v-text-field primary--text"
 >
@@ -100,59 +86,9 @@ exports[`PhoneNumberInput should save value 1`] = `
         class="v-text-field__slot"
       >
         <input
-          id="input-49"
+          id="input-11"
           type="text"
         />
-      </div>
-      <div
-        class="v-input__append-inner"
-      >
-        <!---->
-         
-        <!---->
-      </div>
-    </div>
-    <div
-      class="v-text-field__details"
-    >
-      <div
-        class="v-messages theme--light primary--text"
-      >
-        <span
-          class="v-messages__wrapper"
-          name="message-transition"
-          tag="div"
-        />
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`PhoneNumberInput should show country code prefix hint 1`] = `
-<div
-  class="v-input v-input--is-label-active v-input--is-dirty v-input--is-focused theme--light v-text-field primary--text"
->
-  <div
-    class="v-input__control"
-  >
-    <div
-      class="v-input__slot"
-    >
-      <div
-        class="v-text-field__slot"
-      >
-        <input
-          id="input-9"
-          type="text"
-        />
-      </div>
-      <div
-        class="v-input__append-inner"
-      >
-        <!---->
-         
-        <!---->
       </div>
     </div>
     <div
@@ -169,7 +105,7 @@ exports[`PhoneNumberInput should show country code prefix hint 1`] = `
           <div
             class="v-messages__message"
           >
-            It is recommended to add a country prefix, e.g. +49.
+            It is recommended to supply the country calling code, e.g. +49.
           </div>
         </span>
       </div>
@@ -178,60 +114,7 @@ exports[`PhoneNumberInput should show country code prefix hint 1`] = `
 </div>
 `;
 
-exports[`PhoneNumberInput should show country code prefix hint 2`] = `
-<div
-  class="v-input v-input--is-label-active v-input--is-dirty v-input--is-focused theme--light v-text-field primary--text"
->
-  <div
-    class="v-input__control"
-  >
-    <div
-      class="v-input__slot"
-    >
-      <div
-        class="v-text-field__slot"
-      >
-        <input
-          id="input-9"
-          type="text"
-        />
-      </div>
-      <div
-        class="v-input__append-inner"
-      >
-        <i
-          class="v-icon notranslate v-icon--link material-icons theme--light"
-          role="button"
-        >
-          clear
-        </i>
-         
-        <i
-          class="v-icon notranslate v-icon--link material-icons theme--light"
-          role="button"
-        >
-          save
-        </i>
-      </div>
-    </div>
-    <div
-      class="v-text-field__details"
-    >
-      <div
-        class="v-messages theme--light primary--text"
-      >
-        <span
-          class="v-messages__wrapper"
-          name="message-transition"
-          tag="div"
-        />
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`PhoneNumberInput should show error and hide save button 1`] = `
+exports[`PhoneNumberInput should show error 1`] = `
 <div
   class="v-input v-input--has-state v-input--is-label-active v-input--is-dirty theme--light v-text-field error--text"
 >
@@ -245,21 +128,9 @@ exports[`PhoneNumberInput should show error and hide save button 1`] = `
         class="v-text-field__slot"
       >
         <input
-          id="input-33"
+          id="input-17"
           type="text"
         />
-      </div>
-      <div
-        class="v-input__append-inner"
-      >
-        <i
-          class="v-icon notranslate v-icon--link material-icons theme--light"
-          role="button"
-        >
-          clear
-        </i>
-         
-        <!---->
       </div>
     </div>
     <div
@@ -279,198 +150,6 @@ exports[`PhoneNumberInput should show error and hide save button 1`] = `
             Invalid phone number.
           </div>
         </span>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`PhoneNumberInput should show save and restore button if changes are made 1`] = `
-<div
-  class="v-input v-input--is-label-active v-input--is-dirty theme--light v-text-field"
->
-  <div
-    class="v-input__control"
-  >
-    <div
-      class="v-input__slot"
-    >
-      <div
-        class="v-text-field__slot"
-      >
-        <input
-          id="input-17"
-          type="text"
-        />
-      </div>
-      <div
-        class="v-input__append-inner"
-      >
-        <!---->
-         
-        <!---->
-      </div>
-    </div>
-    <div
-      class="v-text-field__details"
-    >
-      <div
-        class="v-messages theme--light"
-      >
-        <span
-          class="v-messages__wrapper"
-          name="message-transition"
-          tag="div"
-        />
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`PhoneNumberInput should show save and restore button if changes are made 2`] = `
-<div
-  class="v-input v-input--is-label-active v-input--is-dirty theme--light v-text-field"
->
-  <div
-    class="v-input__control"
-  >
-    <div
-      class="v-input__slot"
-    >
-      <div
-        class="v-text-field__slot"
-      >
-        <input
-          id="input-17"
-          type="text"
-        />
-      </div>
-      <div
-        class="v-input__append-inner"
-      >
-        <i
-          class="v-icon notranslate v-icon--link material-icons theme--light"
-          role="button"
-        >
-          clear
-        </i>
-         
-        <i
-          class="v-icon notranslate v-icon--link material-icons theme--light"
-          role="button"
-        >
-          save
-        </i>
-      </div>
-    </div>
-    <div
-      class="v-text-field__details"
-    >
-      <div
-        class="v-messages theme--light"
-      >
-        <span
-          class="v-messages__wrapper"
-          name="message-transition"
-          tag="div"
-        />
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`PhoneNumberInput should show save and restore button if input is cleared 1`] = `
-<div
-  class="v-input v-input--is-label-active v-input--is-dirty theme--light v-text-field"
->
-  <div
-    class="v-input__control"
-  >
-    <div
-      class="v-input__slot"
-    >
-      <div
-        class="v-text-field__slot"
-      >
-        <input
-          id="input-25"
-          type="text"
-        />
-      </div>
-      <div
-        class="v-input__append-inner"
-      >
-        <!---->
-         
-        <!---->
-      </div>
-    </div>
-    <div
-      class="v-text-field__details"
-    >
-      <div
-        class="v-messages theme--light"
-      >
-        <span
-          class="v-messages__wrapper"
-          name="message-transition"
-          tag="div"
-        />
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`PhoneNumberInput should show save and restore button if input is cleared 2`] = `
-<div
-  class="v-input theme--light v-text-field"
->
-  <div
-    class="v-input__control"
-  >
-    <div
-      class="v-input__slot"
-    >
-      <div
-        class="v-text-field__slot"
-      >
-        <input
-          id="input-25"
-          type="text"
-        />
-      </div>
-      <div
-        class="v-input__append-inner"
-      >
-        <i
-          class="v-icon notranslate v-icon--link material-icons theme--light"
-          role="button"
-        >
-          clear
-        </i>
-         
-        <i
-          class="v-icon notranslate v-icon--link material-icons theme--light"
-          role="button"
-        >
-          save
-        </i>
-      </div>
-    </div>
-    <div
-      class="v-text-field__details"
-    >
-      <div
-        class="v-messages theme--light"
-      >
-        <span
-          class="v-messages__wrapper"
-          name="message-transition"
-          tag="div"
-        />
       </div>
     </div>
   </div>

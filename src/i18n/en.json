@@ -19,6 +19,13 @@
     "PAYPAL": "PayPal",
     "ONLINE": "Online"
   },
+  "fields": {
+    "phoneNumber": {
+      "name": "Phone number",
+      "invalidMessage": "Invalid phone number.",
+      "countryCallingCodeHint": "It is recommended to supply the country calling code, e.g. +49."
+    }
+  },
   "validations": {
     "messages": {
       "_default": "{0} is invalid.",

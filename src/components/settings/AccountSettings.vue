@@ -58,12 +58,22 @@
 
       <PhoneNumberInput
         ref="phoneNumberInput"
+        v-model="phoneNumber"
         :loading="phoneNumberLoading"
         :error-messages="phoneNumberError ? [phoneNumberError] : []"
-        :value="userData.phoneNumber"
         country-prefix-hint
-        @save="updatePhoneNumber"
-      />
+      >
+        <template v-slot:append="{valid}">
+          <v-icon
+            v-if="phoneNumber !== userData.phoneNumber"
+            @click="phoneNumber = userData.phoneNumber"
+          >clear</v-icon>
+          <v-icon
+            v-if="phoneNumber !== userData.phoneNumber && valid"
+            @click="updatePhoneNumber"
+          >save</v-icon>
+        </template>
+      </PhoneNumberInput>
 
       <v-subheader class="subheader">
         <v-icon>home</v-icon>
@@ -114,6 +124,7 @@ export default {
   },
   data() {
     return {
+      phoneNumber: '',
       phoneNumberLoading: false,
       phoneNumberError: null,
       languages,
@@ -123,8 +134,13 @@ export default {
   computed: {
     ...mapState(['userData', 'user']),
   },
+  watch: {
+    userData(v) {
+      this.phoneNumber = v.phoneNumber;
+    },
+  },
   methods: {
-    async updatePhoneNumber(phoneNumber) {
+    async updatePhoneNumber() {
       this.phoneNumberLoading = true;
       this.phoneNumberError = null;
       try {
@@ -134,7 +150,7 @@ export default {
           .doc(this.user.uid)
           .set(
             {
-              phoneNumber: phoneNumber.trim() || null,
+              phoneNumber: this.phoneNumber.trim() || null,
             },
             { merge: true }
           );

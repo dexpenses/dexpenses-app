@@ -30,5 +30,11 @@
     "testData": {
       "identifier": "Testdaten-Identifier"
     }
+  },
+  "fields": {
+    "phoneNumber": {
+      "invalidMessage": "Ungültige Telefonnummer.",
+      "countryCallingCodeHint": "Es empfielt sich die Ländervorwahl anzugeben, z.B. +49."
+    }
   }
 }
