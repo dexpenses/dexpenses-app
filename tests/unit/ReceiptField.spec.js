@@ -1,14 +1,20 @@
-import Vue from 'vue';
-import Vuetify from 'vuetify';
-import { shallowMount, mount } from '@vue/test-utils';
+import { shallowMount, mount, createLocalVue } from '@vue/test-utils';
+import createVuetify from './vuetify';
 import ReceiptField from '@/components/receipts/ReceiptField.vue';
 import '@/directives';
 
-Vue.use(Vuetify, {}); // should actually use localVue, but that causes a console error atm
+const localVue = createLocalVue();
 
 describe('ReceiptField.vue', () => {
+  let vuetify;
+  beforeEach(() => {
+    vuetify = createVuetify();
+  });
+
   it('should render correctly', () => {
     const wrapper = shallowMount(ReceiptField, {
+      localVue,
+      vuetify,
       propsData: {
         field: 'field',
         icon: 'icon',
@@ -26,6 +32,8 @@ describe('ReceiptField.vue', () => {
 
   it('should apply the provided filter', () => {
     const wrapper = shallowMount(ReceiptField, {
+      localVue,
+      vuetify,
       propsData: {
         field: 'field',
         icon: 'icon',
@@ -49,6 +57,8 @@ describe('ReceiptField.vue', () => {
 
   it('should show red icon if required value is missing', () => {
     const wrapper = shallowMount(ReceiptField, {
+      localVue,
+      vuetify,
       propsData: {
         field: 'field',
         icon: 'icon',
@@ -67,6 +77,8 @@ describe('ReceiptField.vue', () => {
 
   it('should enter edit mode on double-click of the text', () => {
     const wrapper = mount(ReceiptField, {
+      localVue,
+      vuetify,
       propsData: {
         field: 'field',
         icon: 'icon',

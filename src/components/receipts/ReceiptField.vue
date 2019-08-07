@@ -21,6 +21,7 @@
           :loading="submitted"
         >
           <v-text-field
+            v-if="mask"
             class="edit-input receipt-field-text-field"
             height="1em"
             ref="editInput"
@@ -28,12 +29,21 @@
             :loading="submitted"
             :rules="rules"
             :type="type"
-            :mask="mask"
-            :return-masked-value="true"
+            v-mask="mask"
+          />
+          <v-text-field
+            v-else
+            class="edit-input receipt-field-text-field"
+            height="1em"
+            ref="editInput"
+            v-model="changedValueHolder.changedValue"
+            :loading="submitted"
+            :rules="rules"
+            :type="type"
           />
         </slot>
         <v-btn
-          flat
+          text
           icon
           type="submit"
           v-if="editing || changedValueHolder.changedValue"
@@ -41,7 +51,7 @@
           <v-icon>check</v-icon>
         </v-btn>
         <v-btn
-          flat
+          text
           icon
           v-if="editing || changedValueHolder.changedValue"
           @click="editing = false; changedValueHolder.changedValue = value"
@@ -55,6 +65,7 @@
 <script>
 import { mapActions } from 'vuex';
 import deepEqual from 'deep-equal';
+import { mask } from 'vue-the-mask';
 
 export default {
   name: 'ReceiptField',
@@ -76,6 +87,7 @@ export default {
       default: v => (!v ? '' : v.toString()),
     },
   },
+  directives: { mask },
   data() {
     return {
       changedValueHolder: {

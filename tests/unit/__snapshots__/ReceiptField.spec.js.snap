@@ -20,9 +20,17 @@ exports[`ReceiptField.vue should apply the provided filter 1`] = `
       style="display: none;"
     >
       <v-text-field-stub
+        backgroundcolor=""
         class="edit-input receipt-field-text-field"
+        clearicon="$vuetify.icons.clear"
+        errorcount="1"
+        errormessages=""
         height="1em"
-        return-masked-value="true"
+        loaderheight="2"
+        messages=""
+        rules=""
+        successmessages=""
+        type="text"
       />
        
       <!---->
@@ -37,7 +45,7 @@ exports[`ReceiptField.vue should enter edit mode on double-click of the text 1`]
 <div>
   <i
     aria-hidden="true"
-    class="v-icon material-icons theme--light"
+    class="v-icon notranslate material-icons theme--light"
   >
     icon
   </i>
@@ -56,7 +64,7 @@ exports[`ReceiptField.vue should enter edit mode on double-click of the text 1`]
       style="display: none;"
     >
       <div
-        class="v-input edit-input receipt-field-text-field v-text-field theme--light"
+        class="v-input edit-input receipt-field-text-field theme--light v-text-field"
       >
         <div
           class="v-input__control"
@@ -69,6 +77,7 @@ exports[`ReceiptField.vue should enter edit mode on double-click of the text 1`]
               class="v-text-field__slot"
             >
               <input
+                id="input-20"
                 type="text"
               />
             </div>
@@ -79,8 +88,10 @@ exports[`ReceiptField.vue should enter edit mode on double-click of the text 1`]
             <div
               class="v-messages theme--light"
             >
-              <div
+              <span
                 class="v-messages__wrapper"
+                name="message-transition"
+                tag="div"
               />
             </div>
           </div>
@@ -99,7 +110,7 @@ exports[`ReceiptField.vue should enter edit mode on double-click of the text 2`]
 <div>
   <i
     aria-hidden="true"
-    class="v-icon material-icons theme--light"
+    class="v-icon notranslate material-icons theme--light"
   >
     icon
   </i>
@@ -119,7 +130,7 @@ exports[`ReceiptField.vue should enter edit mode on double-click of the text 2`]
       style=""
     >
       <div
-        class="v-input edit-input receipt-field-text-field v-text-field v-input--is-label-active v-input--is-dirty theme--light"
+        class="v-input edit-input receipt-field-text-field v-input--is-label-active v-input--is-dirty theme--light v-text-field"
       >
         <div
           class="v-input__control"
@@ -132,6 +143,7 @@ exports[`ReceiptField.vue should enter edit mode on double-click of the text 2`]
               class="v-text-field__slot"
             >
               <input
+                id="input-20"
                 type="text"
               />
             </div>
@@ -142,8 +154,10 @@ exports[`ReceiptField.vue should enter edit mode on double-click of the text 2`]
             <div
               class="v-messages theme--light"
             >
-              <div
+              <span
                 class="v-messages__wrapper"
+                name="message-transition"
+                tag="div"
               />
             </div>
           </div>
@@ -151,35 +165,35 @@ exports[`ReceiptField.vue should enter edit mode on double-click of the text 2`]
       </div>
        
       <button
-        class="v-btn v-btn--flat v-btn--icon theme--light"
+        class="v-btn v-btn--fab v-btn--flat v-btn--icon v-btn--round v-btn--text theme--light v-size--default"
         type="submit"
       >
-        <div
+        <span
           class="v-btn__content"
         >
           <i
             aria-hidden="true"
-            class="v-icon material-icons theme--light"
+            class="v-icon notranslate material-icons theme--light"
           >
             check
           </i>
-        </div>
+        </span>
       </button>
        
       <button
-        class="v-btn v-btn--flat v-btn--icon theme--light"
+        class="v-btn v-btn--fab v-btn--flat v-btn--icon v-btn--round v-btn--text theme--light v-size--default"
         type="button"
       >
-        <div
+        <span
           class="v-btn__content"
         >
           <i
             aria-hidden="true"
-            class="v-icon material-icons theme--light"
+            class="v-icon notranslate material-icons theme--light"
           >
             close
           </i>
-        </div>
+        </span>
       </button>
     </v-form-stub>
   </span>
@@ -206,9 +220,17 @@ exports[`ReceiptField.vue should render correctly 1`] = `
       style="display: none;"
     >
       <v-text-field-stub
+        backgroundcolor=""
         class="edit-input receipt-field-text-field"
+        clearicon="$vuetify.icons.clear"
+        errorcount="1"
+        errormessages=""
         height="1em"
-        return-masked-value="true"
+        loaderheight="2"
+        messages=""
+        rules=""
+        successmessages=""
+        type="text"
       />
        
       <!---->
@@ -240,9 +262,17 @@ exports[`ReceiptField.vue should show red icon if required value is missing 1`] 
       class="form"
     >
       <v-text-field-stub
+        backgroundcolor=""
         class="edit-input receipt-field-text-field"
+        clearicon="$vuetify.icons.clear"
+        errorcount="1"
+        errormessages=""
         height="1em"
-        return-masked-value="true"
+        loaderheight="2"
+        messages=""
+        rules=""
+        successmessages=""
+        type="text"
       />
        
       <!---->
