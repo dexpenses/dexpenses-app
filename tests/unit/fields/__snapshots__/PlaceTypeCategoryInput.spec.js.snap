@@ -2,21 +2,24 @@
 
 exports[`PlaceTypeCategoryInput.vue should not trigger input event if new value is set programmatically 1`] = `
 <div
-  class="v-input v-text-field v-text-field--single-line v-select v-autocomplete v-input--hide-details v-input--is-label-active v-input--is-dirty theme--light"
+  class="v-input v-input--hide-details v-input--is-label-active v-input--is-dirty theme--light v-text-field v-text-field--single-line v-select v-autocomplete"
+  eager="true"
 >
   <div
     class="v-input__control"
   >
     <div
+      aria-expanded="false"
+      aria-haspopup="listbox"
+      aria-owns="list-69"
       class="v-input__slot"
+      role="combobox"
     >
       <div
         class="v-select__slot"
       >
         <input
-          aria-label="Place Type Category"
-          autocomplete="off"
-          role="combobox"
+          id="input-69"
           type="text"
         />
         <div
@@ -27,7 +30,7 @@ exports[`PlaceTypeCategoryInput.vue should not trigger input event if new value 
           >
             <i
               aria-hidden="true"
-              class="v-icon material-icons theme--light"
+              class="v-icon notranslate material-icons theme--light"
             >
               arrow_drop_down
             </i>
@@ -43,232 +46,247 @@ exports[`PlaceTypeCategoryInput.vue should not trigger input event if new value 
         >
           <div
             class="v-select-list v-card theme--light"
+            id="list-69"
           >
             <div
-              class="v-list theme--light"
-              role="list"
+              class="v-list v-sheet v-sheet--tile theme--light"
+              id="list-69"
+              role="listbox"
+              tabindex="-1"
             >
               <div
-                role="listitem"
+                aria-labelledby="barber-list-item-73"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
+                <div
+                  class="v-list-item__content"
                 >
                   <div
-                    class="v-list__tile__content"
+                    class="v-list-item__title"
+                    id="barber-list-item-73"
                   >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Barber
-                    </div>
+                    Barber
                   </div>
-                </a>
+                </div>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="car-list-item-73"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
+                <div
+                  class="v-list-item__content"
                 >
                   <div
-                    class="v-list__tile__content"
+                    class="v-list-item__title"
+                    id="car-list-item-73"
                   >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Car
-                    </div>
+                    Car
                   </div>
-                </a>
+                </div>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="clothing-list-item-73"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
+                <div
+                  class="v-list-item__content"
                 >
                   <div
-                    class="v-list__tile__content"
+                    class="v-list-item__title"
+                    id="clothing-list-item-73"
                   >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Clothing
-                    </div>
+                    Clothing
                   </div>
-                </a>
+                </div>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="education-list-item-73"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
+                <div
+                  class="v-list-item__content"
                 >
                   <div
-                    class="v-list__tile__content"
+                    class="v-list-item__title"
+                    id="education-list-item-73"
                   >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Education
-                    </div>
+                    Education
                   </div>
-                </a>
+                </div>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="entertainment-list-item-73"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
+                <div
+                  class="v-list-item__content"
                 >
                   <div
-                    class="v-list__tile__content"
+                    class="v-list-item__title"
+                    id="entertainment-list-item-73"
                   >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Entertainment
-                    </div>
+                    Entertainment
                   </div>
-                </a>
+                </div>
               </div>
               <div
-                class="primary--text"
-                role="listitem"
+                aria-labelledby="food-list-item-73"
+                aria-selected="true"
+                class="v-list-item primary--text v-list-item--active v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link v-list__tile--active theme--light primary--text"
+                <div
+                  class="v-list-item__content"
                 >
                   <div
-                    class="v-list__tile__content"
+                    class="v-list-item__title"
+                    id="food-list-item-73"
                   >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Food
-                    </div>
+                    Food
                   </div>
-                </a>
+                </div>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="health-list-item-73"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
+                <div
+                  class="v-list-item__content"
                 >
                   <div
-                    class="v-list__tile__content"
+                    class="v-list-item__title"
+                    id="health-list-item-73"
                   >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Health
-                    </div>
+                    Health
                   </div>
-                </a>
+                </div>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="household-list-item-73"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
+                <div
+                  class="v-list-item__content"
                 >
                   <div
-                    class="v-list__tile__content"
+                    class="v-list-item__title"
+                    id="household-list-item-73"
                   >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Household
-                    </div>
+                    Household
                   </div>
-                </a>
+                </div>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="pet-list-item-73"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
+                <div
+                  class="v-list-item__content"
                 >
                   <div
-                    class="v-list__tile__content"
+                    class="v-list-item__title"
+                    id="pet-list-item-73"
                   >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Pet
-                    </div>
+                    Pet
                   </div>
-                </a>
+                </div>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="relocation-list-item-73"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
+                <div
+                  class="v-list-item__content"
                 >
                   <div
-                    class="v-list__tile__content"
+                    class="v-list-item__title"
+                    id="relocation-list-item-73"
                   >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Relocation
-                    </div>
+                    Relocation
                   </div>
-                </a>
+                </div>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="tech-list-item-73"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
+                <div
+                  class="v-list-item__content"
                 >
                   <div
-                    class="v-list__tile__content"
+                    class="v-list-item__title"
+                    id="tech-list-item-73"
                   >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Tech
-                    </div>
+                    Tech
                   </div>
-                </a>
+                </div>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="transport-list-item-73"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
+                <div
+                  class="v-list-item__content"
                 >
                   <div
-                    class="v-list__tile__content"
+                    class="v-list-item__title"
+                    id="transport-list-item-73"
                   >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Transport
-                    </div>
+                    Transport
                   </div>
-                </a>
+                </div>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="travel-list-item-73"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
+                <div
+                  class="v-list-item__content"
                 >
                   <div
-                    class="v-list__tile__content"
+                    class="v-list-item__title"
+                    id="travel-list-item-73"
                   >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Travel
-                    </div>
+                    Travel
                   </div>
-                </a>
+                </div>
               </div>
             </div>
           </div>
@@ -281,21 +299,24 @@ exports[`PlaceTypeCategoryInput.vue should not trigger input event if new value 
 
 exports[`PlaceTypeCategoryInput.vue should not trigger input event if new value is set programmatically 2`] = `
 <div
-  class="v-input v-text-field v-text-field--single-line v-select v-autocomplete v-input--hide-details v-input--is-label-active v-input--is-dirty theme--light"
+  class="v-input v-input--hide-details v-input--is-label-active v-input--is-dirty theme--light v-text-field v-text-field--single-line v-select v-autocomplete"
+  eager="true"
 >
   <div
     class="v-input__control"
   >
     <div
+      aria-expanded="false"
+      aria-haspopup="listbox"
+      aria-owns="list-69"
       class="v-input__slot"
+      role="combobox"
     >
       <div
         class="v-select__slot"
       >
         <input
-          aria-label="Place Type Category"
-          autocomplete="off"
-          role="combobox"
+          id="input-69"
           type="text"
         />
         <div
@@ -306,7 +327,7 @@ exports[`PlaceTypeCategoryInput.vue should not trigger input event if new value 
           >
             <i
               aria-hidden="true"
-              class="v-icon material-icons theme--light"
+              class="v-icon notranslate material-icons theme--light"
             >
               arrow_drop_down
             </i>
@@ -322,233 +343,551 @@ exports[`PlaceTypeCategoryInput.vue should not trigger input event if new value 
         >
           <div
             class="v-select-list v-card theme--light"
+            id="list-69"
           >
             <div
-              class="v-list theme--light"
-              role="list"
+              class="v-list v-sheet v-sheet--tile theme--light"
+              id="list-69"
+              role="listbox"
+              tabindex="-1"
             >
               <div
-                class="primary--text"
-                role="listitem"
+                aria-labelledby="barber-list-item-73"
+                aria-selected="true"
+                class="v-list-item primary--text v-list-item--active v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link v-list__tile--active theme--light primary--text"
+                <div
+                  class="v-list-item__content"
                 >
                   <div
-                    class="v-list__tile__content"
+                    class="v-list-item__title"
+                    id="barber-list-item-73"
                   >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Barber
-                    </div>
+                    Barber
                   </div>
-                </a>
+                </div>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="car-list-item-73"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
+                <div
+                  class="v-list-item__content"
                 >
                   <div
-                    class="v-list__tile__content"
+                    class="v-list-item__title"
+                    id="car-list-item-73"
                   >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Car
-                    </div>
+                    Car
                   </div>
-                </a>
+                </div>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="clothing-list-item-73"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
+                <div
+                  class="v-list-item__content"
                 >
                   <div
-                    class="v-list__tile__content"
+                    class="v-list-item__title"
+                    id="clothing-list-item-73"
                   >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Clothing
-                    </div>
+                    Clothing
                   </div>
-                </a>
+                </div>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="education-list-item-73"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
+                <div
+                  class="v-list-item__content"
                 >
                   <div
-                    class="v-list__tile__content"
+                    class="v-list-item__title"
+                    id="education-list-item-73"
                   >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Education
-                    </div>
+                    Education
                   </div>
-                </a>
+                </div>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="entertainment-list-item-73"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
+                <div
+                  class="v-list-item__content"
                 >
                   <div
-                    class="v-list__tile__content"
+                    class="v-list-item__title"
+                    id="entertainment-list-item-73"
                   >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Entertainment
-                    </div>
+                    Entertainment
                   </div>
-                </a>
+                </div>
               </div>
               <div
-                class=""
-                role="listitem"
+                aria-labelledby="food-list-item-73"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
+                <div
+                  class="v-list-item__content"
                 >
                   <div
-                    class="v-list__tile__content"
+                    class="v-list-item__title"
+                    id="food-list-item-73"
                   >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Food
-                    </div>
+                    Food
                   </div>
-                </a>
+                </div>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="health-list-item-73"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
+                <div
+                  class="v-list-item__content"
                 >
                   <div
-                    class="v-list__tile__content"
+                    class="v-list-item__title"
+                    id="health-list-item-73"
                   >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Health
-                    </div>
+                    Health
                   </div>
-                </a>
+                </div>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="household-list-item-73"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
+                <div
+                  class="v-list-item__content"
                 >
                   <div
-                    class="v-list__tile__content"
+                    class="v-list-item__title"
+                    id="household-list-item-73"
                   >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Household
-                    </div>
+                    Household
                   </div>
-                </a>
+                </div>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="pet-list-item-73"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
+                <div
+                  class="v-list-item__content"
                 >
                   <div
-                    class="v-list__tile__content"
+                    class="v-list-item__title"
+                    id="pet-list-item-73"
                   >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Pet
-                    </div>
+                    Pet
                   </div>
-                </a>
+                </div>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="relocation-list-item-73"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
+                <div
+                  class="v-list-item__content"
                 >
                   <div
-                    class="v-list__tile__content"
+                    class="v-list-item__title"
+                    id="relocation-list-item-73"
                   >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Relocation
-                    </div>
+                    Relocation
                   </div>
-                </a>
+                </div>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="tech-list-item-73"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
+                <div
+                  class="v-list-item__content"
                 >
                   <div
-                    class="v-list__tile__content"
+                    class="v-list-item__title"
+                    id="tech-list-item-73"
                   >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Tech
-                    </div>
+                    Tech
                   </div>
-                </a>
+                </div>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="transport-list-item-73"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
+                <div
+                  class="v-list-item__content"
                 >
                   <div
-                    class="v-list__tile__content"
+                    class="v-list-item__title"
+                    id="transport-list-item-73"
                   >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Transport
-                    </div>
+                    Transport
                   </div>
-                </a>
+                </div>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="travel-list-item-73"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
+                <div
+                  class="v-list-item__content"
                 >
                   <div
-                    class="v-list__tile__content"
+                    class="v-list-item__title"
+                    id="travel-list-item-73"
                   >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Travel
-                    </div>
+                    Travel
                   </div>
-                </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`PlaceTypeCategoryInput.vue should render correctly 1`] = `
+<div
+  class="v-input v-input--hide-details theme--light v-text-field v-text-field--single-line v-select v-autocomplete"
+  eager="true"
+>
+  <div
+    class="v-input__control"
+  >
+    <div
+      aria-expanded="false"
+      aria-haspopup="listbox"
+      aria-owns="list-3"
+      class="v-input__slot"
+      role="combobox"
+    >
+      <div
+        class="v-select__slot"
+      >
+        <label
+          class="v-label theme--light"
+          for="input-3"
+          style="left: 0px; position: absolute;"
+        >
+          Place Type Category
+        </label>
+        <input
+          id="input-3"
+          type="text"
+        />
+        <div
+          class="v-input__append-inner"
+        >
+          <div
+            class="v-input__icon v-input__icon--append"
+          >
+            <i
+              aria-hidden="true"
+              class="v-icon notranslate material-icons theme--light"
+            >
+              arrow_drop_down
+            </i>
+          </div>
+        </div>
+      </div>
+      <div
+        class="v-menu"
+      >
+        <div
+          class="v-menu__content theme--light v-menu__content--auto v-autocomplete__content"
+          style="max-height: 200px; min-width: 0px; max-width: auto; top: 12px; left: 12px; transform-origin: top left; z-index: 0; display: none;"
+        >
+          <div
+            class="v-select-list v-card theme--light"
+            id="list-3"
+          >
+            <div
+              class="v-list v-sheet v-sheet--tile theme--light"
+              id="list-3"
+              role="listbox"
+              tabindex="-1"
+            >
+              <div
+                aria-labelledby="barber-list-item-7"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
+              >
+                <div
+                  class="v-list-item__content"
+                >
+                  <div
+                    class="v-list-item__title"
+                    id="barber-list-item-7"
+                  >
+                    Barber
+                  </div>
+                </div>
+              </div>
+              <div
+                aria-labelledby="car-list-item-7"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
+              >
+                <div
+                  class="v-list-item__content"
+                >
+                  <div
+                    class="v-list-item__title"
+                    id="car-list-item-7"
+                  >
+                    Car
+                  </div>
+                </div>
+              </div>
+              <div
+                aria-labelledby="clothing-list-item-7"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
+              >
+                <div
+                  class="v-list-item__content"
+                >
+                  <div
+                    class="v-list-item__title"
+                    id="clothing-list-item-7"
+                  >
+                    Clothing
+                  </div>
+                </div>
+              </div>
+              <div
+                aria-labelledby="education-list-item-7"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
+              >
+                <div
+                  class="v-list-item__content"
+                >
+                  <div
+                    class="v-list-item__title"
+                    id="education-list-item-7"
+                  >
+                    Education
+                  </div>
+                </div>
+              </div>
+              <div
+                aria-labelledby="entertainment-list-item-7"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
+              >
+                <div
+                  class="v-list-item__content"
+                >
+                  <div
+                    class="v-list-item__title"
+                    id="entertainment-list-item-7"
+                  >
+                    Entertainment
+                  </div>
+                </div>
+              </div>
+              <div
+                aria-labelledby="food-list-item-7"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
+              >
+                <div
+                  class="v-list-item__content"
+                >
+                  <div
+                    class="v-list-item__title"
+                    id="food-list-item-7"
+                  >
+                    Food
+                  </div>
+                </div>
+              </div>
+              <div
+                aria-labelledby="health-list-item-7"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
+              >
+                <div
+                  class="v-list-item__content"
+                >
+                  <div
+                    class="v-list-item__title"
+                    id="health-list-item-7"
+                  >
+                    Health
+                  </div>
+                </div>
+              </div>
+              <div
+                aria-labelledby="household-list-item-7"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
+              >
+                <div
+                  class="v-list-item__content"
+                >
+                  <div
+                    class="v-list-item__title"
+                    id="household-list-item-7"
+                  >
+                    Household
+                  </div>
+                </div>
+              </div>
+              <div
+                aria-labelledby="pet-list-item-7"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
+              >
+                <div
+                  class="v-list-item__content"
+                >
+                  <div
+                    class="v-list-item__title"
+                    id="pet-list-item-7"
+                  >
+                    Pet
+                  </div>
+                </div>
+              </div>
+              <div
+                aria-labelledby="relocation-list-item-7"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
+              >
+                <div
+                  class="v-list-item__content"
+                >
+                  <div
+                    class="v-list-item__title"
+                    id="relocation-list-item-7"
+                  >
+                    Relocation
+                  </div>
+                </div>
+              </div>
+              <div
+                aria-labelledby="tech-list-item-7"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
+              >
+                <div
+                  class="v-list-item__content"
+                >
+                  <div
+                    class="v-list-item__title"
+                    id="tech-list-item-7"
+                  >
+                    Tech
+                  </div>
+                </div>
+              </div>
+              <div
+                aria-labelledby="transport-list-item-7"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
+              >
+                <div
+                  class="v-list-item__content"
+                >
+                  <div
+                    class="v-list-item__title"
+                    id="transport-list-item-7"
+                  >
+                    Transport
+                  </div>
+                </div>
+              </div>
+              <div
+                aria-labelledby="travel-list-item-7"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
+              >
+                <div
+                  class="v-list-item__content"
+                >
+                  <div
+                    class="v-list-item__title"
+                    id="travel-list-item-7"
+                  >
+                    Travel
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -561,21 +900,24 @@ exports[`PlaceTypeCategoryInput.vue should not trigger input event if new value 
 
 exports[`PlaceTypeCategoryInput.vue should render correctly with value 1`] = `
 <div
-  class="v-input v-text-field v-text-field--single-line v-select v-autocomplete v-input--hide-details v-input--is-label-active v-input--is-dirty theme--light"
+  class="v-input v-input--hide-details v-input--is-label-active v-input--is-dirty theme--light v-text-field v-text-field--single-line v-select v-autocomplete"
+  eager="true"
 >
   <div
     class="v-input__control"
   >
     <div
+      aria-expanded="false"
+      aria-haspopup="listbox"
+      aria-owns="list-25"
       class="v-input__slot"
+      role="combobox"
     >
       <div
         class="v-select__slot"
       >
         <input
-          aria-label="Place Type Category"
-          autocomplete="off"
-          role="combobox"
+          id="input-25"
           type="text"
         />
         <div
@@ -586,7 +928,7 @@ exports[`PlaceTypeCategoryInput.vue should render correctly with value 1`] = `
           >
             <i
               aria-hidden="true"
-              class="v-icon material-icons theme--light"
+              class="v-icon notranslate material-icons theme--light"
             >
               arrow_drop_down
             </i>
@@ -602,517 +944,247 @@ exports[`PlaceTypeCategoryInput.vue should render correctly with value 1`] = `
         >
           <div
             class="v-select-list v-card theme--light"
+            id="list-25"
           >
             <div
-              class="v-list theme--light"
-              role="list"
+              class="v-list v-sheet v-sheet--tile theme--light"
+              id="list-25"
+              role="listbox"
+              tabindex="-1"
             >
               <div
-                role="listitem"
+                aria-labelledby="barber-list-item-29"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
+                <div
+                  class="v-list-item__content"
                 >
                   <div
-                    class="v-list__tile__content"
+                    class="v-list-item__title"
+                    id="barber-list-item-29"
                   >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Barber
-                    </div>
+                    Barber
                   </div>
-                </a>
+                </div>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="car-list-item-29"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
+                <div
+                  class="v-list-item__content"
                 >
                   <div
-                    class="v-list__tile__content"
+                    class="v-list-item__title"
+                    id="car-list-item-29"
                   >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Car
-                    </div>
+                    Car
                   </div>
-                </a>
+                </div>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="clothing-list-item-29"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
+                <div
+                  class="v-list-item__content"
                 >
                   <div
-                    class="v-list__tile__content"
+                    class="v-list-item__title"
+                    id="clothing-list-item-29"
                   >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Clothing
-                    </div>
+                    Clothing
                   </div>
-                </a>
+                </div>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="education-list-item-29"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
+                <div
+                  class="v-list-item__content"
                 >
                   <div
-                    class="v-list__tile__content"
+                    class="v-list-item__title"
+                    id="education-list-item-29"
                   >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Education
-                    </div>
+                    Education
                   </div>
-                </a>
+                </div>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="entertainment-list-item-29"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
+                <div
+                  class="v-list-item__content"
                 >
                   <div
-                    class="v-list__tile__content"
+                    class="v-list-item__title"
+                    id="entertainment-list-item-29"
                   >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Entertainment
-                    </div>
+                    Entertainment
                   </div>
-                </a>
+                </div>
               </div>
               <div
-                class="primary--text"
-                role="listitem"
+                aria-labelledby="food-list-item-29"
+                aria-selected="true"
+                class="v-list-item primary--text v-list-item--active v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link v-list__tile--active theme--light primary--text"
+                <div
+                  class="v-list-item__content"
                 >
                   <div
-                    class="v-list__tile__content"
+                    class="v-list-item__title"
+                    id="food-list-item-29"
                   >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Food
-                    </div>
+                    Food
                   </div>
-                </a>
+                </div>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="health-list-item-29"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
+                <div
+                  class="v-list-item__content"
                 >
                   <div
-                    class="v-list__tile__content"
+                    class="v-list-item__title"
+                    id="health-list-item-29"
                   >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Health
-                    </div>
+                    Health
                   </div>
-                </a>
+                </div>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="household-list-item-29"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
+                <div
+                  class="v-list-item__content"
                 >
                   <div
-                    class="v-list__tile__content"
+                    class="v-list-item__title"
+                    id="household-list-item-29"
                   >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Household
-                    </div>
+                    Household
                   </div>
-                </a>
+                </div>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="pet-list-item-29"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
+                <div
+                  class="v-list-item__content"
                 >
                   <div
-                    class="v-list__tile__content"
+                    class="v-list-item__title"
+                    id="pet-list-item-29"
                   >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Pet
-                    </div>
+                    Pet
                   </div>
-                </a>
+                </div>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="relocation-list-item-29"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
+                <div
+                  class="v-list-item__content"
                 >
                   <div
-                    class="v-list__tile__content"
+                    class="v-list-item__title"
+                    id="relocation-list-item-29"
                   >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Relocation
-                    </div>
+                    Relocation
                   </div>
-                </a>
+                </div>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="tech-list-item-29"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
+                <div
+                  class="v-list-item__content"
                 >
                   <div
-                    class="v-list__tile__content"
+                    class="v-list-item__title"
+                    id="tech-list-item-29"
                   >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Tech
-                    </div>
+                    Tech
                   </div>
-                </a>
+                </div>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="transport-list-item-29"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
+                <div
+                  class="v-list-item__content"
                 >
                   <div
-                    class="v-list__tile__content"
+                    class="v-list-item__title"
+                    id="transport-list-item-29"
                   >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Transport
-                    </div>
+                    Transport
                   </div>
-                </a>
+                </div>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="travel-list-item-29"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
+                <div
+                  class="v-list-item__content"
                 >
                   <div
-                    class="v-list__tile__content"
+                    class="v-list-item__title"
+                    id="travel-list-item-29"
                   >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Travel
-                    </div>
+                    Travel
                   </div>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`PlaceTypeCategoryInput.vue should renders correctly 1`] = `
-<div
-  class="v-input v-text-field v-text-field--single-line v-select v-autocomplete v-input--hide-details theme--light"
->
-  <div
-    class="v-input__control"
-  >
-    <div
-      class="v-input__slot"
-    >
-      <div
-        class="v-select__slot"
-      >
-        <label
-          aria-hidden="true"
-          class="v-label theme--light"
-          style="left: 0px; position: absolute;"
-        >
-          Place Type Category
-        </label>
-        <input
-          aria-label="Place Type Category"
-          autocomplete="off"
-          role="combobox"
-          type="text"
-        />
-        <div
-          class="v-input__append-inner"
-        >
-          <div
-            class="v-input__icon v-input__icon--append"
-          >
-            <i
-              aria-hidden="true"
-              class="v-icon material-icons theme--light"
-            >
-              arrow_drop_down
-            </i>
-          </div>
-        </div>
-      </div>
-      <div
-        class="v-menu"
-      >
-        <div
-          class="v-menu__content theme--light v-menu__content--auto v-autocomplete__content"
-          style="max-height: 200px; min-width: 0px; max-width: auto; top: 12px; left: 12px; transform-origin: top left; z-index: 0; display: none;"
-        >
-          <div
-            class="v-select-list v-card theme--light"
-          >
-            <div
-              class="v-list theme--light"
-              role="list"
-            >
-              <div
-                role="listitem"
-              >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
-                >
-                  <div
-                    class="v-list__tile__content"
-                  >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Barber
-                    </div>
-                  </div>
-                </a>
-              </div>
-              <div
-                role="listitem"
-              >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
-                >
-                  <div
-                    class="v-list__tile__content"
-                  >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Car
-                    </div>
-                  </div>
-                </a>
-              </div>
-              <div
-                role="listitem"
-              >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
-                >
-                  <div
-                    class="v-list__tile__content"
-                  >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Clothing
-                    </div>
-                  </div>
-                </a>
-              </div>
-              <div
-                role="listitem"
-              >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
-                >
-                  <div
-                    class="v-list__tile__content"
-                  >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Education
-                    </div>
-                  </div>
-                </a>
-              </div>
-              <div
-                role="listitem"
-              >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
-                >
-                  <div
-                    class="v-list__tile__content"
-                  >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Entertainment
-                    </div>
-                  </div>
-                </a>
-              </div>
-              <div
-                role="listitem"
-              >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
-                >
-                  <div
-                    class="v-list__tile__content"
-                  >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Food
-                    </div>
-                  </div>
-                </a>
-              </div>
-              <div
-                role="listitem"
-              >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
-                >
-                  <div
-                    class="v-list__tile__content"
-                  >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Health
-                    </div>
-                  </div>
-                </a>
-              </div>
-              <div
-                role="listitem"
-              >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
-                >
-                  <div
-                    class="v-list__tile__content"
-                  >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Household
-                    </div>
-                  </div>
-                </a>
-              </div>
-              <div
-                role="listitem"
-              >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
-                >
-                  <div
-                    class="v-list__tile__content"
-                  >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Pet
-                    </div>
-                  </div>
-                </a>
-              </div>
-              <div
-                role="listitem"
-              >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
-                >
-                  <div
-                    class="v-list__tile__content"
-                  >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Relocation
-                    </div>
-                  </div>
-                </a>
-              </div>
-              <div
-                role="listitem"
-              >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
-                >
-                  <div
-                    class="v-list__tile__content"
-                  >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Tech
-                    </div>
-                  </div>
-                </a>
-              </div>
-              <div
-                role="listitem"
-              >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
-                >
-                  <div
-                    class="v-list__tile__content"
-                  >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Transport
-                    </div>
-                  </div>
-                </a>
-              </div>
-              <div
-                role="listitem"
-              >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
-                >
-                  <div
-                    class="v-list__tile__content"
-                  >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Travel
-                    </div>
-                  </div>
-                </a>
+                </div>
               </div>
             </div>
           </div>
@@ -1125,21 +1197,24 @@ exports[`PlaceTypeCategoryInput.vue should renders correctly 1`] = `
 
 exports[`PlaceTypeCategoryInput.vue should update v-model correctly 1`] = `
 <div
-  class="v-input v-text-field v-text-field--single-line v-select v-autocomplete v-input--hide-details v-input--is-label-active v-input--is-dirty v-input--is-focused theme--light primary--text"
+  class="v-input v-input--hide-details v-input--is-label-active v-input--is-dirty v-input--is-focused theme--light v-text-field v-text-field--single-line v-text-field--is-booted v-select v-autocomplete primary--text"
+  eager=""
 >
   <div
     class="v-input__control"
   >
     <div
+      aria-expanded="false"
+      aria-haspopup="listbox"
+      aria-owns="list-92"
       class="v-input__slot"
+      role="combobox"
     >
       <div
         class="v-select__slot"
       >
         <input
-          aria-label="Place Type Category"
-          autocomplete="off"
-          role="combobox"
+          id="input-92"
           type="text"
         />
         <div
@@ -1150,7 +1225,7 @@ exports[`PlaceTypeCategoryInput.vue should update v-model correctly 1`] = `
           >
             <i
               aria-hidden="true"
-              class="v-icon material-icons theme--light primary--text"
+              class="v-icon notranslate material-icons theme--light primary--text"
             >
               arrow_drop_down
             </i>
@@ -1166,232 +1241,247 @@ exports[`PlaceTypeCategoryInput.vue should update v-model correctly 1`] = `
         >
           <div
             class="v-select-list v-card theme--light"
+            id="list-92"
           >
             <div
-              class="v-list theme--light"
-              role="list"
+              class="v-list v-sheet v-sheet--tile theme--light"
+              id="list-92"
+              role="listbox"
+              tabindex="-1"
             >
               <div
-                class="primary--text"
-                role="listitem"
+                aria-labelledby="barber-list-item-96"
+                aria-selected="true"
+                class="v-list-item primary--text v-list-item--active v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link v-list__tile--active theme--light primary--text"
+                <div
+                  class="v-list-item__content"
                 >
                   <div
-                    class="v-list__tile__content"
+                    class="v-list-item__title"
+                    id="barber-list-item-96"
                   >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Barber
-                    </div>
+                    Barber
                   </div>
-                </a>
+                </div>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="car-list-item-96"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
+                <div
+                  class="v-list-item__content"
                 >
                   <div
-                    class="v-list__tile__content"
+                    class="v-list-item__title"
+                    id="car-list-item-96"
                   >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Car
-                    </div>
+                    Car
                   </div>
-                </a>
+                </div>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="clothing-list-item-96"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
+                <div
+                  class="v-list-item__content"
                 >
                   <div
-                    class="v-list__tile__content"
+                    class="v-list-item__title"
+                    id="clothing-list-item-96"
                   >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Clothing
-                    </div>
+                    Clothing
                   </div>
-                </a>
+                </div>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="education-list-item-96"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
+                <div
+                  class="v-list-item__content"
                 >
                   <div
-                    class="v-list__tile__content"
+                    class="v-list-item__title"
+                    id="education-list-item-96"
                   >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Education
-                    </div>
+                    Education
                   </div>
-                </a>
+                </div>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="entertainment-list-item-96"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
+                <div
+                  class="v-list-item__content"
                 >
                   <div
-                    class="v-list__tile__content"
+                    class="v-list-item__title"
+                    id="entertainment-list-item-96"
                   >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Entertainment
-                    </div>
+                    Entertainment
                   </div>
-                </a>
+                </div>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="food-list-item-96"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
+                <div
+                  class="v-list-item__content"
                 >
                   <div
-                    class="v-list__tile__content"
+                    class="v-list-item__title"
+                    id="food-list-item-96"
                   >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Food
-                    </div>
+                    Food
                   </div>
-                </a>
+                </div>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="health-list-item-96"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
+                <div
+                  class="v-list-item__content"
                 >
                   <div
-                    class="v-list__tile__content"
+                    class="v-list-item__title"
+                    id="health-list-item-96"
                   >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Health
-                    </div>
+                    Health
                   </div>
-                </a>
+                </div>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="household-list-item-96"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
+                <div
+                  class="v-list-item__content"
                 >
                   <div
-                    class="v-list__tile__content"
+                    class="v-list-item__title"
+                    id="household-list-item-96"
                   >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Household
-                    </div>
+                    Household
                   </div>
-                </a>
+                </div>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="pet-list-item-96"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
+                <div
+                  class="v-list-item__content"
                 >
                   <div
-                    class="v-list__tile__content"
+                    class="v-list-item__title"
+                    id="pet-list-item-96"
                   >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Pet
-                    </div>
+                    Pet
                   </div>
-                </a>
+                </div>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="relocation-list-item-96"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
+                <div
+                  class="v-list-item__content"
                 >
                   <div
-                    class="v-list__tile__content"
+                    class="v-list-item__title"
+                    id="relocation-list-item-96"
                   >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Relocation
-                    </div>
+                    Relocation
                   </div>
-                </a>
+                </div>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="tech-list-item-96"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
+                <div
+                  class="v-list-item__content"
                 >
                   <div
-                    class="v-list__tile__content"
+                    class="v-list-item__title"
+                    id="tech-list-item-96"
                   >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Tech
-                    </div>
+                    Tech
                   </div>
-                </a>
+                </div>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="transport-list-item-96"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
+                <div
+                  class="v-list-item__content"
                 >
                   <div
-                    class="v-list__tile__content"
+                    class="v-list-item__title"
+                    id="transport-list-item-96"
                   >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Transport
-                    </div>
+                    Transport
                   </div>
-                </a>
+                </div>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="travel-list-item-96"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
+                <div
+                  class="v-list-item__content"
                 >
                   <div
-                    class="v-list__tile__content"
+                    class="v-list-item__title"
+                    id="travel-list-item-96"
                   >
-                    <div
-                      class="v-list__tile__title"
-                    >
-                      Travel
-                    </div>
+                    Travel
                   </div>
-                </a>
+                </div>
               </div>
             </div>
           </div>
