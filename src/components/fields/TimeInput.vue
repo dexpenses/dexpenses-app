@@ -1,25 +1,33 @@
 <template>
+  <!-- <input
+    type="text"
+    v-mask="'##:##:##'"
+    :value="value"
+    @input="$emit('input', $event.target.value)"
+  > -->
   <v-text-field
     :value="formattedValue"
     @input="emit"
     label="Time"
     :prepend-icon="icon"
-    mask="##:##:##"
+    v-mask="'##:##:##'"
     :rules="[time]"
-    :return-masked-value="true"
   ></v-text-field>
 </template>
 <script>
+import { mask } from 'vue-the-mask';
 import { fields } from '@/util/receipt';
 import { time } from '@/util/form-rules';
 
 export default {
   name: 'TimeInput',
   props: ['value'],
+  directives: { mask },
   data() {
     return {
       time,
       icon: fields.time.icon,
+      modelValue: null,
     };
   },
   computed: {

@@ -1,15 +1,19 @@
-import Vue from 'vue';
-import Vuetify from 'vuetify';
-import { mount } from '@vue/test-utils';
+import { mount, createLocalVue } from '@vue/test-utils';
+import createVuetify from '../vuetify';
 import TimeInput from '@/components/fields/TimeInput.vue';
 
 import '@/filters';
 
-Vue.use(Vuetify, {}); // should actually use localVue, but that causes a console error atm
+const localVue = createLocalVue();
 
 describe('TimeInput.vue', () => {
+  let vuetify;
+  beforeEach(() => {
+    vuetify = createVuetify();
+  });
+
   it('should render correctly', () => {
-    const wrapper = mount(TimeInput);
+    const wrapper = mount(TimeInput, { localVue, vuetify });
     expect(wrapper.element).toMatchSnapshot();
   });
 
@@ -22,13 +26,33 @@ describe('TimeInput.vue', () => {
           second: 30,
         },
       },
+      localVue,
+      vuetify,
     });
     expect(wrapper.element).toMatchSnapshot();
     expect(wrapper.find('input').element.value).toEqual('12:00:30');
   });
 
+  // it('should provide a masked input', async () => {
+  //   const wrapper = mount(
+  //     {
+  //       template: '<TimeInput v-model="data"/>',
+  //       data: () => ({ data: null }),
+  //       components: { TimeInput },
+  //     },
+  //     { localVue, vuetify }
+  //   );
+
+  //   const input = wrapper.find('input');
+  //   input.setValue('1200');
+  //   input.trigger('keydown');
+  //   console.log(wrapper.vm.$data.data);
+
+  //   expect(input.element.value).toBe('12:0');
+  // });
+
   it('should trigger input event if user selects new item', async () => {
-    const wrapper = mount(TimeInput);
+    const wrapper = mount(TimeInput, { localVue, vuetify });
     wrapper.find('input').setValue('13:00:00');
     expect(wrapper.find('input').element.value).toEqual('13:00:00');
     await wrapper.vm.$nextTick();
@@ -48,6 +72,8 @@ describe('TimeInput.vue', () => {
           second: 15,
         },
       },
+      localVue,
+      vuetify,
     });
     expect(wrapper.element).toMatchSnapshot();
     expect(wrapper.find('input').element.value).toEqual('12:30:15');
@@ -64,15 +90,18 @@ describe('TimeInput.vue', () => {
   });
 
   it('should update v-model correctly', async () => {
-    const wrapper = mount({
-      template: '<TimeInput v-model="modelValue"></TimeInput>',
-      data: () => ({
-        modelValue: null,
-      }),
-      components: {
-        TimeInput,
+    const wrapper = mount(
+      {
+        template: '<TimeInput v-model="modelValue" />',
+        data: () => ({
+          modelValue: null,
+        }),
+        components: {
+          TimeInput,
+        },
       },
-    });
+      { localVue, vuetify }
+    );
 
     wrapper.find('input').setValue('13:00:00');
     await wrapper.vm.$nextTick();

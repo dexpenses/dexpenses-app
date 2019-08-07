@@ -13,17 +13,18 @@
       ref="timeField"
       :value="value[1]"
       @input="$refs.timeField && $refs.timeField.validate() && $emit('input', [value[0], $event])"
-      mask="##:##:##"
+      v-mask="'##:##:##'"
       :rules="[time]"
-      :return-masked-value="true"
     ></v-text-field>
   </div>
 </template>
 <script>
+import { mask } from 'vue-the-mask';
 import { time } from '@/util/form-rules';
 
 export default {
   props: ['value'],
+  directives: { mask },
   data() {
     return { time };
   },
