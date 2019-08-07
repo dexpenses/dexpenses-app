@@ -1,13 +1,17 @@
-import { mount } from '@vue/test-utils';
-import Vue from 'vue';
-import Vuetify from 'vuetify';
+import { mount, createLocalVue } from '@vue/test-utils';
+import createVuetify from '../vuetify';
 import PlaceTypeInput from '@/components/fields/PlaceTypeInput.vue';
 
-Vue.use(Vuetify);
+const localVue = createLocalVue();
 
 describe('PlaceTypeInput.vue', () => {
+  let vuetify;
+  beforeEach(() => {
+    vuetify = createVuetify();
+  });
+
   it('should renders correctly', () => {
-    const wrapper = mount(PlaceTypeInput);
+    const wrapper = mount(PlaceTypeInput, { propsData: { eager: true }, localVue, vuetify });
     expect(wrapper.element).toMatchSnapshot();
   });
 
@@ -15,15 +19,18 @@ describe('PlaceTypeInput.vue', () => {
     const wrapper = mount(PlaceTypeInput, {
       propsData: {
         value: 'supermarket',
+        eager: true,
       },
+      localVue,
+      vuetify,
     });
     expect(wrapper.element).toMatchSnapshot();
   });
 
   it('should trigger input event if user selects new item', () => {
-    const wrapper = mount(PlaceTypeInput);
+    const wrapper = mount(PlaceTypeInput, { propsData: { eager: true }, localVue, vuetify });
     wrapper.find('.v-select__slot').trigger('click');
-    wrapper.find('.v-list__tile').trigger('click'); // click first item
+    wrapper.find('.v-list-item').trigger('click'); // click first item
 
     expect(wrapper.emitted().input).toBeTruthy();
     expect(wrapper.emitted().input[0]).toHaveLength(1);
@@ -34,7 +41,10 @@ describe('PlaceTypeInput.vue', () => {
     const wrapper = mount(PlaceTypeInput, {
       propsData: {
         value: 'supermarket',
+        eager: true,
       },
+      localVue,
+      vuetify,
     });
     expect(wrapper.element).toMatchSnapshot();
     wrapper.setProps({
@@ -45,18 +55,21 @@ describe('PlaceTypeInput.vue', () => {
   });
 
   it('should update v-model correctly', () => {
-    const wrapper = mount({
-      template: '<PlaceTypeInput v-model="modelValue"/>',
-      data: () => ({
-        modelValue: null,
-      }),
-      components: {
-        PlaceTypeInput,
+    const wrapper = mount(
+      {
+        template: '<PlaceTypeInput v-model="modelValue" eager/>',
+        data: () => ({
+          modelValue: null,
+        }),
+        components: {
+          PlaceTypeInput,
+        },
       },
-    });
+      { localVue, vuetify }
+    );
 
     wrapper.find('.v-select__slot').trigger('click');
-    wrapper.find('.v-list__tile').trigger('click'); // click first item
+    wrapper.find('.v-list-item').trigger('click'); // click first item
 
     expect(wrapper.vm.modelValue).toEqual('accounting');
     expect(wrapper.element).toMatchSnapshot();

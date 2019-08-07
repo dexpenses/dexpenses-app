@@ -1,5 +1,6 @@
 <template>
   <v-autocomplete
+    v-bind="$attrs"
     :value="value"
     @input="$emit('input', $event)"
     :items="placeTypes"
