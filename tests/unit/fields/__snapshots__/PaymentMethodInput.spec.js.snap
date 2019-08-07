@@ -2,8 +2,8 @@
 
 exports[`PaymentMethodInput.vue should not trigger input event if new value is set programmatically 1`] = `
 <div
-  class="v-input payment-method-input v-text-field v-text-field--single-line v-select v-input--hide-details v-input--is-label-active v-input--is-dirty theme--light"
-  role="combobox"
+  class="v-input payment-method-input v-input--hide-details v-input--is-label-active v-input--is-dirty theme--light v-text-field v-text-field--single-line v-select"
+  eager="true"
 >
   <div
     class="v-input__prepend-outer"
@@ -13,7 +13,7 @@ exports[`PaymentMethodInput.vue should not trigger input event if new value is s
     >
       <i
         aria-hidden="true"
-        class="v-icon material-icons theme--light"
+        class="v-icon notranslate material-icons theme--light"
       >
         credit_card
       </i>
@@ -23,7 +23,11 @@ exports[`PaymentMethodInput.vue should not trigger input event if new value is s
     class="v-input__control"
   >
     <div
+      aria-expanded="false"
+      aria-haspopup="listbox"
+      aria-owns="list-53"
       class="v-input__slot"
+      role="button"
     >
       <div
         class="v-select__slot"
@@ -35,9 +39,8 @@ exports[`PaymentMethodInput.vue should not trigger input event if new value is s
     Debit Card
   
           <input
-            aria-label="Payment method"
-            aria-readonly="false"
-            autocomplete="on"
+            aria-readonly="true"
+            id="input-53"
             readonly="readonly"
             type="text"
           />
@@ -50,7 +53,7 @@ exports[`PaymentMethodInput.vue should not trigger input event if new value is s
           >
             <i
               aria-hidden="true"
-              class="v-icon material-icons theme--light"
+              class="v-icon notranslate material-icons theme--light"
             >
               arrow_drop_down
             </i>
@@ -66,77 +69,79 @@ exports[`PaymentMethodInput.vue should not trigger input event if new value is s
         >
           <div
             class="v-select-list v-card theme--light"
+            id="list-53"
           >
             <div
-              class="v-list theme--light"
-              role="list"
+              class="v-list v-sheet v-sheet--tile theme--light"
+              id="list-53"
+              role="listbox"
+              tabindex="-1"
             >
               <div
-                class="primary--text"
-                role="listitem"
+                aria-labelledby="debit-list-item-59"
+                aria-selected="true"
+                class="v-list-item primary--text v-list-item--active v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link v-list__tile--active theme--light primary--text"
-                >
-                  
+                
     Debit Card
   
-                </a>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="credit-list-item-59"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
-                >
-                  
+                
     Credit Card
   
-                </a>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="cash-list-item-59"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
-                >
-                  
+                
     Cash
   
-                </a>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="dkv_card-list-item-59"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
-                >
-                  
+                
     Fuel Card
   
-                </a>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="paypal-list-item-59"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
-                >
-                  
+                
     PayPal
   
-                </a>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="online-list-item-59"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
-                >
-                  
+                
     Online
   
-                </a>
               </div>
             </div>
           </div>
@@ -149,8 +154,8 @@ exports[`PaymentMethodInput.vue should not trigger input event if new value is s
 
 exports[`PaymentMethodInput.vue should not trigger input event if new value is set programmatically 2`] = `
 <div
-  class="v-input payment-method-input v-text-field v-text-field--single-line v-select v-input--hide-details v-input--is-label-active v-input--is-dirty theme--light"
-  role="combobox"
+  class="v-input payment-method-input v-input--hide-details v-input--is-label-active v-input--is-dirty theme--light v-text-field v-text-field--single-line v-select"
+  eager="true"
 >
   <div
     class="v-input__prepend-outer"
@@ -160,7 +165,7 @@ exports[`PaymentMethodInput.vue should not trigger input event if new value is s
     >
       <i
         aria-hidden="true"
-        class="v-icon material-icons theme--light"
+        class="v-icon notranslate material-icons theme--light"
       >
         credit_card
       </i>
@@ -170,7 +175,11 @@ exports[`PaymentMethodInput.vue should not trigger input event if new value is s
     class="v-input__control"
   >
     <div
+      aria-expanded="false"
+      aria-haspopup="listbox"
+      aria-owns="list-53"
       class="v-input__slot"
+      role="button"
     >
       <div
         class="v-select__slot"
@@ -182,9 +191,8 @@ exports[`PaymentMethodInput.vue should not trigger input event if new value is s
     Credit Card
   
           <input
-            aria-label="Payment method"
-            aria-readonly="false"
-            autocomplete="on"
+            aria-readonly="true"
+            id="input-53"
             readonly="readonly"
             type="text"
           />
@@ -197,7 +205,7 @@ exports[`PaymentMethodInput.vue should not trigger input event if new value is s
           >
             <i
               aria-hidden="true"
-              class="v-icon material-icons theme--light"
+              class="v-icon notranslate material-icons theme--light"
             >
               arrow_drop_down
             </i>
@@ -213,78 +221,79 @@ exports[`PaymentMethodInput.vue should not trigger input event if new value is s
         >
           <div
             class="v-select-list v-card theme--light"
+            id="list-53"
           >
             <div
-              class="v-list theme--light"
-              role="list"
+              class="v-list v-sheet v-sheet--tile theme--light"
+              id="list-53"
+              role="listbox"
+              tabindex="-1"
             >
               <div
-                class=""
-                role="listitem"
+                aria-labelledby="debit-list-item-59"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
-                >
-                  
+                
     Debit Card
   
-                </a>
               </div>
               <div
-                class="primary--text"
-                role="listitem"
+                aria-labelledby="credit-list-item-59"
+                aria-selected="true"
+                class="v-list-item primary--text v-list-item--active v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link v-list__tile--active theme--light primary--text"
-                >
-                  
+                
     Credit Card
   
-                </a>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="cash-list-item-59"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
-                >
-                  
+                
     Cash
   
-                </a>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="dkv_card-list-item-59"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
-                >
-                  
+                
     Fuel Card
   
-                </a>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="paypal-list-item-59"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
-                >
-                  
+                
     PayPal
   
-                </a>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="online-list-item-59"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
-                >
-                  
+                
     Online
   
-                </a>
               </div>
             </div>
           </div>
@@ -297,21 +306,25 @@ exports[`PaymentMethodInput.vue should not trigger input event if new value is s
 
 exports[`PaymentMethodInput.vue should render correctly 1`] = `
 <div
-  class="v-input payment-method-input v-text-field v-text-field--single-line v-select v-input--hide-details theme--light"
-  role="combobox"
+  class="v-input payment-method-input v-input--hide-details theme--light v-text-field v-text-field--single-line v-select"
+  eager="true"
 >
   <div
     class="v-input__control"
   >
     <div
+      aria-expanded="false"
+      aria-haspopup="listbox"
+      aria-owns="list-4"
       class="v-input__slot"
+      role="button"
     >
       <div
         class="v-select__slot"
       >
         <label
-          aria-hidden="true"
           class="v-label theme--light"
+          for="input-4"
           style="left: 0px; position: absolute;"
         >
           Payment method
@@ -320,9 +333,8 @@ exports[`PaymentMethodInput.vue should render correctly 1`] = `
           class="v-select__selections"
         >
           <input
-            aria-label="Payment method"
-            aria-readonly="false"
-            autocomplete="on"
+            aria-readonly="true"
+            id="input-4"
             readonly="readonly"
             type="text"
           />
@@ -335,7 +347,7 @@ exports[`PaymentMethodInput.vue should render correctly 1`] = `
           >
             <i
               aria-hidden="true"
-              class="v-icon material-icons theme--light"
+              class="v-icon notranslate material-icons theme--light"
             >
               arrow_drop_down
             </i>
@@ -351,76 +363,79 @@ exports[`PaymentMethodInput.vue should render correctly 1`] = `
         >
           <div
             class="v-select-list v-card theme--light"
+            id="list-4"
           >
             <div
-              class="v-list theme--light"
-              role="list"
+              class="v-list v-sheet v-sheet--tile theme--light"
+              id="list-4"
+              role="listbox"
+              tabindex="-1"
             >
               <div
-                role="listitem"
+                aria-labelledby="debit-list-item-9"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
-                >
-                  
+                
     Debit Card
   
-                </a>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="credit-list-item-9"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
-                >
-                  
+                
     Credit Card
   
-                </a>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="cash-list-item-9"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
-                >
-                  
+                
     Cash
   
-                </a>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="dkv_card-list-item-9"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
-                >
-                  
+                
     Fuel Card
   
-                </a>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="paypal-list-item-9"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
-                >
-                  
+                
     PayPal
   
-                </a>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="online-list-item-9"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
-                >
-                  
+                
     Online
   
-                </a>
               </div>
             </div>
           </div>
@@ -433,8 +448,8 @@ exports[`PaymentMethodInput.vue should render correctly 1`] = `
 
 exports[`PaymentMethodInput.vue should render correctly with value 1`] = `
 <div
-  class="v-input payment-method-input v-text-field v-text-field--single-line v-select v-input--hide-details v-input--is-label-active v-input--is-dirty theme--light"
-  role="combobox"
+  class="v-input payment-method-input v-input--hide-details v-input--is-label-active v-input--is-dirty theme--light v-text-field v-text-field--single-line v-select"
+  eager="true"
 >
   <div
     class="v-input__prepend-outer"
@@ -444,7 +459,7 @@ exports[`PaymentMethodInput.vue should render correctly with value 1`] = `
     >
       <i
         aria-hidden="true"
-        class="v-icon material-icons theme--light"
+        class="v-icon notranslate material-icons theme--light"
       >
         credit_card
       </i>
@@ -454,7 +469,11 @@ exports[`PaymentMethodInput.vue should render correctly with value 1`] = `
     class="v-input__control"
   >
     <div
+      aria-expanded="false"
+      aria-haspopup="listbox"
+      aria-owns="list-20"
       class="v-input__slot"
+      role="button"
     >
       <div
         class="v-select__slot"
@@ -466,9 +485,8 @@ exports[`PaymentMethodInput.vue should render correctly with value 1`] = `
     Debit Card
   
           <input
-            aria-label="Payment method"
-            aria-readonly="false"
-            autocomplete="on"
+            aria-readonly="true"
+            id="input-20"
             readonly="readonly"
             type="text"
           />
@@ -481,7 +499,7 @@ exports[`PaymentMethodInput.vue should render correctly with value 1`] = `
           >
             <i
               aria-hidden="true"
-              class="v-icon material-icons theme--light"
+              class="v-icon notranslate material-icons theme--light"
             >
               arrow_drop_down
             </i>
@@ -497,77 +515,79 @@ exports[`PaymentMethodInput.vue should render correctly with value 1`] = `
         >
           <div
             class="v-select-list v-card theme--light"
+            id="list-20"
           >
             <div
-              class="v-list theme--light"
-              role="list"
+              class="v-list v-sheet v-sheet--tile theme--light"
+              id="list-20"
+              role="listbox"
+              tabindex="-1"
             >
               <div
-                class="primary--text"
-                role="listitem"
+                aria-labelledby="debit-list-item-26"
+                aria-selected="true"
+                class="v-list-item primary--text v-list-item--active v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link v-list__tile--active theme--light primary--text"
-                >
-                  
+                
     Debit Card
   
-                </a>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="credit-list-item-26"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
-                >
-                  
+                
     Credit Card
   
-                </a>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="cash-list-item-26"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
-                >
-                  
+                
     Cash
   
-                </a>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="dkv_card-list-item-26"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
-                >
-                  
+                
     Fuel Card
   
-                </a>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="paypal-list-item-26"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
-                >
-                  
+                
     PayPal
   
-                </a>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="online-list-item-26"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
-                >
-                  
+                
     Online
   
-                </a>
               </div>
             </div>
           </div>
@@ -580,8 +600,8 @@ exports[`PaymentMethodInput.vue should render correctly with value 1`] = `
 
 exports[`PaymentMethodInput.vue should update v-model correctly 1`] = `
 <div
-  class="v-input payment-method-input v-text-field v-text-field--single-line v-select v-input--hide-details v-input--is-label-active v-input--is-dirty v-input--is-focused theme--light primary--text"
-  role="combobox"
+  class="v-input payment-method-input v-input--hide-details v-input--is-label-active v-input--is-dirty v-input--is-focused theme--light v-text-field v-text-field--single-line v-text-field--is-booted v-select primary--text"
+  eager=""
 >
   <div
     class="v-input__prepend-outer"
@@ -591,7 +611,7 @@ exports[`PaymentMethodInput.vue should update v-model correctly 1`] = `
     >
       <i
         aria-hidden="true"
-        class="v-icon material-icons theme--light primary--text"
+        class="v-icon notranslate material-icons theme--light primary--text"
       >
         credit_card
       </i>
@@ -601,7 +621,11 @@ exports[`PaymentMethodInput.vue should update v-model correctly 1`] = `
     class="v-input__control"
   >
     <div
+      aria-expanded="false"
+      aria-haspopup="listbox"
+      aria-owns="list-71"
       class="v-input__slot"
+      role="button"
     >
       <div
         class="v-select__slot"
@@ -613,9 +637,8 @@ exports[`PaymentMethodInput.vue should update v-model correctly 1`] = `
     Debit Card
   
           <input
-            aria-label="Payment method"
-            aria-readonly="false"
-            autocomplete="on"
+            aria-readonly="true"
+            id="input-71"
             readonly="readonly"
             type="text"
           />
@@ -628,7 +651,7 @@ exports[`PaymentMethodInput.vue should update v-model correctly 1`] = `
           >
             <i
               aria-hidden="true"
-              class="v-icon material-icons theme--light primary--text"
+              class="v-icon notranslate material-icons theme--light primary--text"
             >
               arrow_drop_down
             </i>
@@ -644,77 +667,79 @@ exports[`PaymentMethodInput.vue should update v-model correctly 1`] = `
         >
           <div
             class="v-select-list v-card theme--light"
+            id="list-71"
           >
             <div
-              class="v-list theme--light"
-              role="list"
+              class="v-list v-sheet v-sheet--tile theme--light"
+              id="list-71"
+              role="listbox"
+              tabindex="-1"
             >
               <div
-                class="primary--text"
-                role="listitem"
+                aria-labelledby="debit-list-item-89"
+                aria-selected="true"
+                class="v-list-item primary--text v-list-item--active v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link v-list__tile--active theme--light primary--text"
-                >
-                  
+                
     Debit Card
   
-                </a>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="credit-list-item-89"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
-                >
-                  
+                
     Credit Card
   
-                </a>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="cash-list-item-89"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
-                >
-                  
+                
     Cash
   
-                </a>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="dkv_card-list-item-89"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
-                >
-                  
+                
     Fuel Card
   
-                </a>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="paypal-list-item-89"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
-                >
-                  
+                
     PayPal
   
-                </a>
               </div>
               <div
-                role="listitem"
+                aria-labelledby="online-list-item-89"
+                aria-selected="false"
+                class="v-list-item v-list-item--link theme--light"
+                role="option"
+                tabindex="0"
               >
-                <a
-                  class="v-list__tile v-list__tile--link theme--light"
-                >
-                  
+                
     Online
   
-                </a>
               </div>
             </div>
           </div>

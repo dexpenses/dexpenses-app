@@ -2,6 +2,7 @@
   <v-select
     class="payment-method-input"
     :value="value"
+    v-bind="$attrs"
     @input="$emit('input', $event)"
     :items="paymentMethods"
     menu-props="auto"
