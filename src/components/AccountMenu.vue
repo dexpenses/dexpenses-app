@@ -36,6 +36,17 @@
         </v-list-item-action>
       </v-list-item>
 
+      <v-list-item>
+        <v-list-item-action>
+          <v-switch
+            color="primary"
+            :input-value="$vuetify.theme.isDark"
+            @change="$store.dispatch('localSettings/setDarkTheme',{dark:!!$event,$vuetify})"
+          ></v-switch>
+        </v-list-item-action>
+        <v-list-item-title>Dark mode</v-list-item-title>
+      </v-list-item>
+
       <v-list-item
         ripple
         @click="logout"
@@ -63,7 +74,6 @@ export default {
   },
   methods: {
     ...mapActions(['logout']),
-    openSettings() {},
   },
 };
 </script>
