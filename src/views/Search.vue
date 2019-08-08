@@ -6,8 +6,8 @@
         :search-client="searchClient"
         :index-name="index"
       >
-        <v-row >
-          <v-col class="grow" >
+        <v-row>
+          <v-col class="grow">
             <AisSearchBox
               autofocus
               show-loading-indicator
@@ -56,7 +56,7 @@ import {
   AisSearchBox,
   AisPoweredBy,
   AisHits,
-  AisHighlight,
+  // AisHighlight,
 } from 'vue-instantsearch';
 import ReceiptCard from '@/components/receipts/ReceiptCard.vue';
 import 'instantsearch.css/themes/algolia-min.css';
@@ -68,7 +68,7 @@ export default {
     AisPoweredBy,
     AisHits,
     ReceiptCard,
-    AisHighlight,
+    // AisHighlight,
   },
   data() {
     return { searchClient: null, index: process.env.VUE_APP_ALGOLIA_INDEX };

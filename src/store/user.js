@@ -1,6 +1,5 @@
 import firebase from 'firebase/app';
 import { firestoreAction } from 'vuexfire';
-import router from '@/router';
 
 /* eslint-disable no-param-reassign */
 export default {
@@ -47,23 +46,23 @@ export default {
       commit('setCheckLoggedIn$', checkLoggedIn$);
       return checkLoggedIn$;
     },
-    login({ commit, dispatch }) {
+    login({ commit, dispatch }, { $router }) {
       firebase
         .auth()
         .signInWithPopup(new firebase.auth.GoogleAuthProvider())
         .then(result => {
           commit('setUser', result.user);
           dispatch('loadUserData');
-          router.push('dashboard');
+          $router.push('dashboard');
         })
         .catch(error => {
           console.error(error);
         });
     },
-    async logout({ commit }) {
+    async logout({ commit }, { $router }) {
       await firebase.auth().signOut();
       commit('setUser', null);
-      router.push({ name: 'home' });
+      $router.push({ name: 'home' });
     },
     loadUserData: firestoreAction(({ bindFirestoreRef, state }) => {
       bindFirestoreRef(

@@ -41,7 +41,7 @@
       <v-btn
         v-else
         color="primary"
-        @click="login"
+        @click="login({$router})"
       >LOGIN</v-btn>
     </v-app-bar>
 
