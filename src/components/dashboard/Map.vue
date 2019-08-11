@@ -36,7 +36,8 @@ import GmapMap from 'vue2-google-maps/dist/components/map.vue';
 import GmapMarker from 'vue2-google-maps/dist/components/marker';
 import GmapInfoWindow from 'vue2-google-maps/dist/components/infoWindow.vue';
 import firebase from 'firebase/app';
-import { parseBigQueryGeographicPoint } from '@/util/geo';
+import debounce from 'lodash/debounce';
+import { parseBigQueryGeographicPoint, isBoundsWithin } from '@/util/geo';
 
 export default {
   props: {
@@ -61,12 +62,11 @@ export default {
           height: -35,
         },
       },
+      lastBounds: null,
     };
   },
-  async mounted() {
-    const map = await this.$refs.map.$mapPromise;
-    map.addListener('idle', async () => {
-      const bounds = map.getBounds();
+  methods: {
+    updateBounds: debounce(async function cb(bounds) {
       const ne = bounds.getNorthEast();
       const sw = bounds.getSouthWest();
       const { data } = await firebase
@@ -85,6 +85,18 @@ export default {
         ...r,
         position: parseBigQueryGeographicPoint(r.location),
       }));
+    }, 500),
+  },
+  async mounted() {
+    const map = await this.$refs.map.$mapPromise;
+    map.addListener('idle', async () => {
+      const bounds = map.getBounds();
+      if (this.lastBounds && isBoundsWithin(this.lastBounds, bounds)) {
+        this.lastBounds = bounds;
+        return;
+      }
+      this.lastBounds = bounds;
+      this.updateBounds(bounds);
     });
   },
 };
