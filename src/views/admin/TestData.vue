@@ -1,8 +1,8 @@
 <template>
   <v-container>
     <v-expansion-panels
-      v-model="uploadOpen"
-      expand
+      v-model="panels"
+      multiple
     >
       <v-expansion-panel>
         <v-expansion-panel-header>
@@ -56,13 +56,20 @@
         </v-expansion-panel-content>
 
       </v-expansion-panel>
+      <v-expansion-panel>
+        <v-expansion-panel-header>
+          Add new receipt test data
+        </v-expansion-panel-header>
+        <v-expansion-panel-content>
+          <AddTestDataForm
+            v-if="selected"
+            :value="selected"
+            @done="removePendingImage($event); determineOpenPanel(); selected = null"
+            @deleted="removePendingImage($event); determineOpenPanel(); selected = null"
+          />
+        </v-expansion-panel-content>
+      </v-expansion-panel>
     </v-expansion-panels>
-    <AddTestDataForm
-      v-if="selected"
-      :value="selected"
-      @done="removePendingImage($event); determineOpenPanel(); selected = null"
-      @deleted="removePendingImage($event); determineOpenPanel(); selected = null"
-    />
   </v-container>
 </template>
 <script>
@@ -84,12 +91,36 @@ export default {
   data() {
     return {
       selected: null,
-      uploadOpen: [true, false],
+      uploadOpen: false,
+      previouslyUploadedOpen: false,
       pending: null,
     };
   },
   computed: {
     ...mapState('user', ['user']),
+    panels: {
+      get() {
+        const p = [];
+        if (this.uploadOpen) {
+          p.push(0);
+        }
+        if (this.previouslyUploadedOpen) {
+          p.push(1);
+        }
+        if (this.selected) {
+          p.push(2);
+        }
+        return p;
+      },
+      set(newValue) {
+        if (newValue.includes(0)) {
+          this.uploadOpen = true;
+        }
+        if (newValue.includes(1)) {
+          this.previouslyUploadedOpen = true;
+        }
+      },
+    },
   },
   methods: {
     uploadImage(file) {
@@ -105,7 +136,8 @@ export default {
       }
 
       this.selected = { ref, downloadUrl };
-      this.uploadOpen = [false, false];
+      this.uploadOpen = false;
+      this.previouslyUploadedOpen = false;
     },
     removePendingImage(toRemove) {
       this.pending = this.pending.filter(
@@ -114,7 +146,8 @@ export default {
     },
     determineOpenPanel() {
       const anyPending = this.pending.length > 0;
-      this.uploadOpen = [!anyPending, anyPending];
+      this.uploadOpen = !anyPending;
+      this.previouslyUploadedOpen = anyPending;
     },
   },
   async created() {

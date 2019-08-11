@@ -1,7 +1,5 @@
 <template>
-  <v-row class="d-flex"
-        
-  >
+  <v-row class="d-flex">
     <v-col
       style="max-height: 100%; max-width: 50%"
       v-viewer="{toolbar: true, navbar: false, title: false}"
@@ -11,7 +9,7 @@
         style="max-height: 100%; max-width: 100%"
       />
     </v-col>
-    <v-col class="grow" >
+    <v-col class="grow">
 
       <ValidationObserver
         tag="form"
@@ -55,8 +53,9 @@
           v-model.trim="info.notes"
           label="Notes"
         ></v-textarea>
-        <v-col class="row" >
+        <v-col class="row">
           <v-btn
+            class="ml-1 mr-1"
             color="error"
             @click="deleteImage"
           >
@@ -67,6 +66,7 @@
             Delete image
           </v-btn>
           <v-btn
+            class="ml-1 mr-1"
             type="submit"
             color="primary"
             :disabled="pending || invalid || !validated"

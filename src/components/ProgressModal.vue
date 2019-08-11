@@ -12,7 +12,7 @@
           :key="i"
           align="center"
         >
-          <v-col class="shrink" >
+          <v-col class="shrink">
             <v-icon
               v-if="task.state === 'success'"
               size="32px"
@@ -31,7 +31,7 @@
               :indeterminate="task.state === 'running'"
             />
           </v-col>
-          <v-col class="grow" >
+          <v-col class="grow">
             <span>{{task.message}}</span>
           </v-col>
         </v-row>
@@ -40,7 +40,7 @@
         <v-spacer></v-spacer>
         <v-btn
           :disabled="!okEnabled"
-          flat
+          text
           @click="show = false"
         >OK</v-btn>
       </v-card-actions>

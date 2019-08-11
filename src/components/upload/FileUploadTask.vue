@@ -29,7 +29,7 @@
           {{ [snapshot.bytesTransferred, snapshot.totalBytes] | dataSizeProgress }}
         </v-progress-circular>
         <v-btn
-          flat
+          text
           small
           :disabled="!active"
           @click="snapshot.state === 'paused' ? task.resume() : task.pause()"
@@ -37,7 +37,7 @@
           {{snapshot.state === 'paused' ? 'Resume' : 'Pause'}}
         </v-btn>
         <v-btn
-          flat
+          text
           small
           color="error"
           @click="task.cancel()"
