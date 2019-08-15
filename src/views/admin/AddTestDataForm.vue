@@ -4,40 +4,51 @@
       style="max-height: 100%; max-width: 50%"
       v-viewer="{toolbar: true, navbar: false, title: false}"
     >
-      <v-row v-if="!editing">
+      <v-row v-if="!editMode">
         <v-btn
           fab
-          @click="editing = true"
+          @click="editMode = 'crop'"
         >
           <v-icon>edit</v-icon>
+        </v-btn>
+        <v-btn
+          fab
+          @click="editMode = 'redact'"
+        >
+          <v-icon>flag</v-icon>
         </v-btn>
       </v-row>
       <v-row v-else>
         <v-btn
           fab
-          @click="cropImage"
+          @click="editMode == 'crop' ? cropImage() : redactImage()"
         >
           <v-icon>check</v-icon>
         </v-btn>
         <v-btn
           fab
-          @click="editedUrl = null; editing = false"
+          @click="editMode = null"
         >
           <v-icon>clear</v-icon>
         </v-btn>
       </v-row>
       <img
-        v-if="!editing"
+        v-if="!editMode"
         :src="edited ? edited.url : value.downloadUrl"
         style="max-height: 100%; max-width: 100%"
       />
-      <vue-cropper
-        v-else
+      <VueCropper
+        v-else-if="editMode == 'crop'"
         ref="cropper"
         :src="value.downloadUrl"
         alt="Source Image"
-      >
-      </vue-cropper>
+      />
+      <VueImageRedact
+        v-else-if="editMode == 'redact'"
+        ref="redacter"
+        :src="edited ? edited.url : value.downloadUrl"
+        style="max-height: 100%; max-width: 100%"
+      />
     </v-col>
     <v-col class="grow">
 
@@ -125,6 +136,7 @@ import {
 } from 'vee-validate';
 import { VTextField } from 'vuetify/lib';
 import VueCropper from 'vue-cropperjs';
+import VueImageRedact from 'vue-image-redact';
 import ExternalValidation from '@/components/ExternalValidation.vue';
 import PaymentMethodInput from '@/components/fields/PaymentMethodInput.vue';
 import ProgressModal from '@/components/ProgressModal.vue';
@@ -169,6 +181,7 @@ export default {
     VTextFieldWithValidation,
     ValidationProvider,
     VueCropper,
+    VueImageRedact,
   },
   data() {
     return {
@@ -181,7 +194,7 @@ export default {
         notes: '',
       },
       edited: null,
-      editing: false,
+      editMode: null,
     };
   },
   computed: {
@@ -212,18 +225,24 @@ export default {
     },
   },
   methods: {
-    async cropImage() {
+    async handleImageEditDone(canvas) {
       this.edited = {
-        url: this.$refs.cropper.getCroppedCanvas().toDataURL(),
+        url: canvas.toDataURL(),
         blob: await new Promise((resolve, reject) => {
           try {
-            this.$refs.cropper.getCroppedCanvas().toBlob(resolve);
+            canvas.toBlob(resolve);
           } catch (e) {
             reject(e);
           }
         }),
       };
-      this.editing = false;
+      this.editMode = null;
+    },
+    async cropImage() {
+      await this.handleImageEditDone(this.$refs.cropper.getCroppedCanvas());
+    },
+    async redactImage() {
+      await this.handleImageEditDone(this.$refs.redacter.canvas());
     },
     async deleteImage() {
       await firebase

@@ -12768,6 +12768,14 @@ vue-i18n@^8.12.0:
   resolved "https://registry.yarnpkg.com/vue-i18n/-/vue-i18n-8.14.0.tgz#613cbbc21d71dc608cd085f8a94ea3a40badcd33"
   integrity sha512-utI1Rvc8i+fmmUkkKRmHaf4QQ87s7rGVL5ZZLsKvvRzmgaIr1l+GfGxxxRmsZxHpPlgeB8OxoUZ4noqZgDL6xg==
 
+vue-image-redact@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/vue-image-redact/-/vue-image-redact-0.0.1.tgz#e96b5ef856ed3eeca1f15340c06d231153e733ae"
+  integrity sha512-OmGj+VtVvd0NWE3Frb1pZiyxYakvVGWHSHpX5J0eeX3v14JTHwNvtoM0vfNL46zlCiWgBLtoTfn4Zvh73kWCCw==
+  dependencies:
+    core-js "^2.6.5"
+    vue "^2.6.10"
+
 vue-instantsearch@^2.2.2:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/vue-instantsearch/-/vue-instantsearch-2.3.0.tgz#e9e2195df58af9149f8b02c0eab994de58524c6c"
