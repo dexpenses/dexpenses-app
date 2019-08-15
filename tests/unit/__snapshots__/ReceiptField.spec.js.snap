@@ -165,7 +165,7 @@ exports[`ReceiptField.vue should enter edit mode on double-click of the text 2`]
       </div>
        
       <button
-        class="v-btn v-btn--fab v-btn--flat v-btn--icon v-btn--round v-btn--text theme--light v-size--default"
+        class="v-btn v-btn--flat v-btn--icon v-btn--round v-btn--text theme--light v-size--default"
         type="submit"
       >
         <span
@@ -181,7 +181,7 @@ exports[`ReceiptField.vue should enter edit mode on double-click of the text 2`]
       </button>
        
       <button
-        class="v-btn v-btn--fab v-btn--flat v-btn--icon v-btn--round v-btn--text theme--light v-size--default"
+        class="v-btn v-btn--flat v-btn--icon v-btn--round v-btn--text theme--light v-size--default"
         type="button"
       >
         <span
