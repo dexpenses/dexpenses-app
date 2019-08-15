@@ -4,10 +4,40 @@
       style="max-height: 100%; max-width: 50%"
       v-viewer="{toolbar: true, navbar: false, title: false}"
     >
+      <v-row v-if="!editing">
+        <v-btn
+          fab
+          @click="editing = true"
+        >
+          <v-icon>edit</v-icon>
+        </v-btn>
+      </v-row>
+      <v-row v-else>
+        <v-btn
+          fab
+          @click="cropImage"
+        >
+          <v-icon>check</v-icon>
+        </v-btn>
+        <v-btn
+          fab
+          @click="editedUrl = null; editing = false"
+        >
+          <v-icon>clear</v-icon>
+        </v-btn>
+      </v-row>
       <img
-        :src="value.downloadUrl"
+        v-if="!editing"
+        :src="edited ? edited.url : value.downloadUrl"
         style="max-height: 100%; max-width: 100%"
       />
+      <vue-cropper
+        v-else
+        ref="cropper"
+        :src="value.downloadUrl"
+        alt="Source Image"
+      >
+      </vue-cropper>
     </v-col>
     <v-col class="grow">
 
@@ -94,10 +124,12 @@ import {
   ValidationProvider,
 } from 'vee-validate';
 import { VTextField } from 'vuetify/lib';
+import VueCropper from 'vue-cropperjs';
 import ExternalValidation from '@/components/ExternalValidation.vue';
 import PaymentMethodInput from '@/components/fields/PaymentMethodInput.vue';
 import ProgressModal from '@/components/ProgressModal.vue';
 import { ext } from '@/util/string';
+import 'cropperjs/dist/cropper.css';
 
 const testDataImageBucket = 'dexpenses-207219-test-images';
 
@@ -114,6 +146,14 @@ const unique = v => {
     .then(snap => !snap.exists);
 };
 
+function getExtensionForBlob(blob) {
+  const m = blob.type.match(/^image\/(.*)$/);
+  if (m) {
+    return m[1];
+  }
+  return null;
+}
+
 export default {
   props: {
     value: {
@@ -128,6 +168,7 @@ export default {
     ExternalValidation,
     VTextFieldWithValidation,
     ValidationProvider,
+    VueCropper,
   },
   data() {
     return {
@@ -139,6 +180,8 @@ export default {
         category: '',
         notes: '',
       },
+      edited: null,
+      editing: false,
     };
   },
   computed: {
@@ -169,6 +212,19 @@ export default {
     },
   },
   methods: {
+    async cropImage() {
+      this.edited = {
+        url: this.$refs.cropper.getCroppedCanvas().toDataURL(),
+        blob: await new Promise((resolve, reject) => {
+          try {
+            this.$refs.cropper.getCroppedCanvas().toBlob(resolve);
+          } catch (e) {
+            reject(e);
+          }
+        }),
+      };
+      this.editing = false;
+    },
     async deleteImage() {
       await firebase
         .app()
@@ -197,11 +253,23 @@ export default {
         await this.$refs.progress.run([
           {
             message: 'Saving image',
-            run: () =>
-              firebase.functions().httpsCallable('moveTestDataImage')({
+            run: () => {
+              if (this.edited) {
+                const newExt = getExtensionForBlob(this.edited.blob);
+                if (newExt) {
+                  info.path = info.path.replace(/\..*$/, `.${newExt}`);
+                }
+                return firebase
+                  .app()
+                  .storage(`gs://${testDataImageBucket}/`)
+                  .ref(info.path)
+                  .put(this.edited.blob);
+              }
+              return firebase.functions().httpsCallable('moveTestDataImage')({
                 ...info,
                 source: this.value.ref.fullPath,
-              }),
+              });
+            },
           },
           {
             message: 'Saving info',
