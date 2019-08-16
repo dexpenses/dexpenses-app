@@ -47,7 +47,8 @@
         v-else-if="editMode == 'redact'"
         ref="redacter"
         :src="edited ? edited.url : value.downloadUrl"
-        style="max-height: 100%; max-width: 100%"
+        max-height="100%"
+        max-width="100%"
       />
     </v-col>
     <v-col class="grow">
