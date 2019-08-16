@@ -56,13 +56,12 @@
         </v-expansion-panel-content>
 
       </v-expansion-panel>
-      <v-expansion-panel>
+      <v-expansion-panel v-if="selected">
         <v-expansion-panel-header>
           Add new receipt test data
         </v-expansion-panel-header>
         <v-expansion-panel-content>
           <AddTestDataForm
-            v-if="selected"
             :value="selected"
             @done="removePendingImage($event); determineOpenPanel(); selected = null"
             @deleted="removePendingImage($event); determineOpenPanel(); selected = null"
