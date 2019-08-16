@@ -6,27 +6,34 @@
     >
       <v-row v-if="!editMode">
         <v-btn
-          fab
+          icon
           @click="editMode = 'crop'"
         >
           <v-icon>edit</v-icon>
         </v-btn>
         <v-btn
-          fab
+          icon
           @click="editMode = 'redact'"
         >
           <v-icon>flag</v-icon>
         </v-btn>
+        <v-btn
+          icon
+          :disabled="!edited"
+          @click="edited = null"
+        >
+          <v-icon>restore</v-icon>
+        </v-btn>
       </v-row>
       <v-row v-else>
         <v-btn
-          fab
+          icon
           @click="editMode == 'crop' ? cropImage() : redactImage()"
         >
           <v-icon>check</v-icon>
         </v-btn>
         <v-btn
-          fab
+          icon
           @click="editMode = null"
         >
           <v-icon>clear</v-icon>
