@@ -273,17 +273,22 @@ export default {
         await this.$refs.progress.run([
           {
             message: 'Saving image',
-            run: () => {
+            run: async () => {
               if (this.edited) {
                 const newExt = getExtensionForBlob(this.edited.blob);
                 if (newExt) {
                   info.path = info.path.replace(/\..*$/, `.${newExt}`);
                 }
-                return firebase
+                await firebase
                   .app()
                   .storage(`gs://${testDataImageBucket}/`)
                   .ref(info.path)
                   .put(this.edited.blob);
+                return firebase
+                  .app()
+                  .storage(`gs://${testDataImageBucket}/`)
+                  .ref(this.value.ref.fullPath)
+                  .delete();
               }
               return firebase.functions().httpsCallable('moveTestDataImage')({
                 ...info,
