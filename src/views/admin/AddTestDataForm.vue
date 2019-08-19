@@ -92,7 +92,7 @@
         >
           <v-select
             v-model="info.category"
-            :items="['bills','ec','gas_station','normal','parking']"
+            :items="categories"
             label="Category"
             :error-messages="errors"
             required
@@ -149,9 +149,13 @@ import ExternalValidation from '@/components/ExternalValidation.vue';
 import PaymentMethodInput from '@/components/fields/PaymentMethodInput.vue';
 import ProgressModal from '@/components/ProgressModal.vue';
 import { ext } from '@/util/string';
+import {
+  categories,
+  storage,
+  buildIdentifier,
+  testDataImageBucket,
+} from './util';
 import 'cropperjs/dist/cropper.css';
-
-const testDataImageBucket = 'dexpenses-207219-test-images';
 
 const VTextFieldWithValidation = withValidation(VTextField, ({ errors }) => ({
   'error-messages': errors,
@@ -193,6 +197,7 @@ export default {
   },
   data() {
     return {
+      categories,
       info: {
         cityCode: '',
         name: '',
@@ -221,15 +226,7 @@ export default {
       if (!info.category || !info.cityCode || !info.name) {
         return null;
       }
-      return `${[
-        info.category,
-        info.cityCode,
-        info.name,
-        info.classifier,
-        info.paymentMethod,
-      ]
-        .filter(p => !!p)
-        .join('-')}`;
+      return buildIdentifier(info);
     },
   },
   methods: {
@@ -253,11 +250,7 @@ export default {
       await this.handleImageEditDone(this.$refs.redacter.canvas());
     },
     async deleteImage() {
-      await firebase
-        .app()
-        .storage(`gs://${testDataImageBucket}/`)
-        .ref(this.value.ref.fullPath)
-        .delete();
+      await storage.ref(this.value.ref.fullPath).delete();
       this.$emit('deleted', this.value);
       this.$emit('input', null);
     },
@@ -286,16 +279,8 @@ export default {
                 if (newExt) {
                   info.path = info.path.replace(/\..*$/, `.${newExt}`);
                 }
-                await firebase
-                  .app()
-                  .storage(`gs://${testDataImageBucket}/`)
-                  .ref(info.path)
-                  .put(this.edited.blob);
-                return firebase
-                  .app()
-                  .storage(`gs://${testDataImageBucket}/`)
-                  .ref(this.value.ref.fullPath)
-                  .delete();
+                await storage.ref(info.path).put(this.edited.blob);
+                return storage.ref(this.value.ref.fullPath).delete();
               }
               return firebase.functions().httpsCallable('moveTestDataImage')({
                 ...info,
@@ -309,17 +294,7 @@ export default {
               firebase
                 .firestore()
                 .collection('testData')
-                .doc(
-                  `${[
-                    info.category,
-                    info.cityCode,
-                    info.name,
-                    info.classifier,
-                    info.paymentMethod,
-                  ]
-                    .filter(p => !!p)
-                    .join('-')}`
-                )
+                .doc(this.identifier)
                 .set({
                   ...info,
                 }),
@@ -340,9 +315,6 @@ export default {
               }),
           },
         ]);
-        // wob-rewe-laagberg
-        // gf-penny
-
         this.$emit('done', this.value);
         this.$emit('input', null);
       } catch (e) {

@@ -68,24 +68,31 @@
           />
         </v-expansion-panel-content>
       </v-expansion-panel>
+      <v-expansion-panel>
+        <v-expansion-panel-header>
+          Explore test data
+        </v-expansion-panel-header>
+        <v-expansion-panel-content>
+          <ExploreTestData />
+        </v-expansion-panel-content>
+      </v-expansion-panel>
     </v-expansion-panels>
   </v-container>
 </template>
 <script>
-import firebase from 'firebase/app';
 import { mapState } from 'vuex';
+import { storage } from './util';
 import FileUpload from '@/components/upload/FileUpload.vue';
 import FileUploadTask from '@/components/upload/FileUploadTask.vue';
 import AddTestDataForm from './AddTestDataForm.vue';
-
-const testDataImageBucket = 'dexpenses-207219-test-images';
-const storage = firebase.app().storage(`gs://${testDataImageBucket}/`);
+import ExploreTestData from './ExploreTestData.vue';
 
 export default {
   components: {
     FileUpload,
     FileUploadTask,
     AddTestDataForm,
+    ExploreTestData,
   },
   data() {
     return {
