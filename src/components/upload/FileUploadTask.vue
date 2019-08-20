@@ -4,7 +4,7 @@
       <div v-if="downloadUrl">
         <a
           :href="downloadUrl"
-          @click="$emit('img-clicked',{$event,ref: snapshot.ref,downloadUrl})"
+          @click="$emit('click:img',{$event,ref: snapshot.ref,downloadUrl})"
           target="_blank"
           rel="noopener"
         >

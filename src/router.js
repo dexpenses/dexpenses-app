@@ -57,9 +57,32 @@ export default new Router({
       component: () => import('./views/Search.vue'),
     },
     {
-      path: '/admin/test-data',
-      name: 'adminTestData',
-      component: () => import('./views/admin/TestData.vue')
-    }
+      path: '/admin',
+      name: 'admin',
+      component: () => import('./views/admin/Admin.vue'),
+      children: [
+        {
+          path: 'test-data/upload',
+          name: 'adminTestDataUpload',
+          component: () => import('./views/admin/UploadTestData.vue'),
+        },
+        {
+          path: 'test-data/new',
+          name: 'adminTestDataNew',
+          component: () => import('./views/admin/NewTestData.vue'),
+        },
+        {
+          path: 'test-data/browse',
+          name: 'adminTestDataBrowse',
+          component: () => import('./views/admin/ExploreTestData.vue'),
+        },
+        {
+          path: 'test-data/:path',
+          name: 'adminTestDataEdit',
+          component: () => import('./views/admin/AddTestData.vue'),
+          props: true,
+        },
+      ],
+    },
   ],
 });
