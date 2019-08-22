@@ -711,10 +711,10 @@
   resolved "https://registry.yarnpkg.com/@dexpenses/core/-/core-1.3.1.tgz#974ea4ed5c6877c68ccdf931f2c740d0fd8de4fb"
   integrity sha512-mbyYCUq8CFIdg44mSUjYVfz0q9u1/5mz9F6p28zPCsJoGzeheOtiJHitxlCF9ga7J4FoazQacfTGd3AtnH/iTA==
 
-"@dexpenses/rule-conditions@^1.2.3":
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/@dexpenses/rule-conditions/-/rule-conditions-1.2.3.tgz#ad4ec91c3273f758c53ee2b3a444f9cb3cb70989"
-  integrity sha512-z/h2/f13txwVZtdS/5WmwqgrrXG6VH9OSU0K1EGd94c2Rw8fzj2+vPaDLuF68GW4ppL0kdLPNkZ+Tr7Yo7k5zQ==
+"@dexpenses/rule-conditions@^1.2.4":
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/@dexpenses/rule-conditions/-/rule-conditions-1.2.4.tgz#aecfb065b47345256e219b42b9ffbabb38658494"
+  integrity sha512-/JzqKjSEiTSm+c1GBZ+K5Y07g7NF6PQAli79iNaJ/mVfV2crvQtb+8bITrLsctE0FAw/Z7Ht5//rlYrFEj+8Mg==
   dependencies:
     "@dexpenses/core" "^1.2.2"
     luxon "^1.17.1"
