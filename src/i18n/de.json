@@ -26,7 +26,6 @@
   },
   "admin": {
     "testData": {
-      "identifier": "Testdaten-Identifier",
       "browse": "Durchsuchen",
       "newRecord": "Neuer Datensatz",
       "title": "Testdaten",
@@ -43,7 +42,8 @@
     "classifier": "Klassifikator",
     "paymentMethod": "Bezahlmethode",
     "category": "Kategorie",
-    "notes": "Bemerkungen"
+    "notes": "Bemerkungen",
+    "testDataIdentifier": "Testdaten-Identifier"
   },
   "actions": {
     "deleteImage": "Bild löschen",

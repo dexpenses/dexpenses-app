@@ -30,7 +30,8 @@
     "classifier": "Classifier",
     "paymentMethod": "Payment method",
     "category": "Category",
-    "notes": "Notes"
+    "notes": "Notes",
+    "testDataIdentifier": "Test data identifier"
   },
   "validations": {
     "_default": "{_field_} is invalid.",
@@ -39,7 +40,6 @@
   },
   "admin": {
     "testData": {
-      "identifier": "Test data identifier",
       "title": "Test data",
       "upload": "Upload",
       "newRecord": "New record",

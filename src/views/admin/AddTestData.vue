@@ -68,7 +68,7 @@
               :loading="pending"
             >{{$t('actions.save')}}</v-btn>
             <ExternalValidation
-              :name="$t('admin.testData.identifier')"
+              name="testDataIdentifier"
               rules="uniqueTestDataRecord"
               :value="identifier"
               :debounce="200"
