@@ -13,6 +13,18 @@
       >
         <v-btn
           text
+          @click="rotateImage(-1)"
+        >
+          <v-icon>rotate_left</v-icon>
+        </v-btn>
+        <v-btn
+          text
+          @click="rotateImage(1)"
+        >
+          <v-icon>rotate_right</v-icon>
+        </v-btn>
+        <v-btn
+          text
           @click="editMode = 'crop'"
         >
           <v-icon>crop</v-icon>
@@ -118,6 +130,30 @@ export default {
     },
     async redactImage() {
       await this.handleImageEditDone(this.$refs.redacter.canvas());
+    },
+    async rotateImage(direction) {
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      const img = new Image();
+      img.crossOrigin = 'Anonymous';
+      await new Promise((resolve, reject) => {
+        img.onload = resolve;
+        img.onerror = reject;
+        img.src = this.value.url;
+      });
+      canvas.width = img.width;
+      canvas.height = img.height;
+      ctx.drawImage(img, 0, 0, img.width, img.height);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const [width, height] = [canvas.width, canvas.height];
+      ctx.save();
+      canvas.width = height;
+      canvas.height = width;
+      ctx.translate(canvas.width / 2, canvas.height / 2);
+      ctx.rotate((direction / 2) * Math.PI);
+      ctx.drawImage(img, -img.width / 2, -img.height / 2);
+      ctx.restore();
+      await this.handleImageEditDone(canvas);
     },
   },
 };
