@@ -74,8 +74,10 @@ export default {
     startUpload(files) {
       for (let i = 0; i < files.length; i += 1) {
         const file = files[i];
-        const uploadTask = this.upload(file);
-        this.uploadTasks.push(uploadTask);
+        if (file.type.match(/^image\/.*/)) {
+          const uploadTask = this.upload(file);
+          this.uploadTasks.push(uploadTask);
+        }
       }
     },
   },
