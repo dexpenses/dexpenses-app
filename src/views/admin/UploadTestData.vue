@@ -1,17 +1,19 @@
 <template>
-  <FileUpload :upload="uploadImage">
-    <template
-      slot="upload-tasks"
-      slot-scope="{uploadTasks}"
-    >
-      <FileUploadTask
-        v-for="(uploadTask, index) in uploadTasks"
-        :key="index"
-        :task="uploadTask"
-        @click:img="selectImage"
-      />
-    </template>
-  </FileUpload>
+  <v-container>
+    <FileUpload :upload="uploadImage">
+      <template
+        slot="upload-tasks"
+        slot-scope="{uploadTasks}"
+      >
+        <FileUploadTask
+          v-for="(uploadTask, index) in uploadTasks"
+          :key="index"
+          :task="uploadTask"
+          @click:img="selectImage"
+        />
+      </template>
+    </FileUpload>
+  </v-container>
 </template>
 <script>
 import { mapState } from 'vuex';
