@@ -12,37 +12,41 @@
           @submit.prevent="saveInfo"
         >
           <VTextFieldWithValidation
-            label="City code"
+            :label="$t('fields.cityCode')"
+            name="cityCode"
             v-model.trim="info.cityCode"
             required
             rules="required"
           ></VTextFieldWithValidation>
           <VTextFieldWithValidation
-            label="Name"
+            :label="$t('fields.name')"
+            name="name"
             v-model.trim="info.name"
             required
             rules="required"
           ></VTextFieldWithValidation>
           <v-text-field
-            label="Classifier"
+            :label="$t('fields.classifier')"
+            name="classifier"
             v-model.trim="info.classifier"
           ></v-text-field>
           <PaymentMethodInput v-model="info.paymentMethod" />
           <ValidationProvider
+            name="category"
             rules="required"
             v-slot="{errors}"
           >
             <v-select
               v-model="info.category"
               :items="categories"
-              label="Category"
+              :label="$t('fields.category')"
               :error-messages="errors"
               required
             ></v-select>
           </ValidationProvider>
           <v-textarea
             v-model.trim="info.notes"
-            label="Notes"
+            :label="$t('fields.notes')"
           ></v-textarea>
           <v-col class="row">
             <v-btn
@@ -54,7 +58,7 @@
                 left
                 dark
               >delete</v-icon>
-              Delete image
+              {{$t('actions.deleteImage')}}
             </v-btn>
             <v-btn
               class="ml-1 mr-1"
@@ -62,10 +66,10 @@
               color="primary"
               :disabled="pending || invalid || !validated"
               :loading="pending"
-            >Save</v-btn>
+            >{{$t('actions.save')}}</v-btn>
             <ExternalValidation
               :name="$t('admin.testData.identifier')"
-              rules="unique"
+              rules="uniqueTestDataRecord"
               :value="identifier"
               :debounce="200"
             >
@@ -84,6 +88,7 @@ import {
   withValidation,
   ValidationObserver,
   ValidationProvider,
+  extend,
 } from 'vee-validate';
 import { VTextField } from 'vuetify/lib';
 
@@ -105,14 +110,14 @@ const VTextFieldWithValidation = withValidation(VTextField, ({ errors }) => ({
   'error-messages': errors,
 }));
 
-const unique = v => {
+extend('uniqueTestDataRecord', v => {
   return firebase
     .firestore()
     .collection('testData')
     .doc(v)
     .get()
     .then(snap => !snap.exists);
-};
+});
 
 function getExtensionForBlob(blob) {
   const m = blob.type.match(/^image\/(.*)$/);
@@ -247,7 +252,6 @@ export default {
     },
   },
   created() {
-    this.$validator.extend('unique', unique);
     this.image = {
       url: this.downloadUrl,
     };

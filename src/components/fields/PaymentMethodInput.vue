@@ -6,7 +6,7 @@
     @input="$emit('input', $event)"
     :items="paymentMethods"
     menu-props="auto"
-    label="Payment method"
+    :label="$t('fields.paymentMethod')"
     :prepend-icon="icons[value]"
     hide-details
     single-line

@@ -40,7 +40,7 @@
       </v-subheader>
       <v-radio-group
         :value="userData.preferredLang || 'en'"
-        @change="$i18n.setLanguageAsync($event)"
+        @change="changeLanguage"
         mandatory
       >
         <v-radio
@@ -186,6 +186,19 @@ export default {
               lat,
               lng,
             },
+          },
+          { merge: true }
+        );
+    },
+    async changeLanguage($event) {
+      await this.$i18n.setLanguageAsync($event);
+      await firebase
+        .firestore()
+        .collection('users')
+        .doc(this.user.uid)
+        .set(
+          {
+            preferredLang: $event,
           },
           { merge: true }
         );

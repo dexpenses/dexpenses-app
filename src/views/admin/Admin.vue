@@ -21,7 +21,7 @@
           <v-divider></v-divider>
           <v-list-item>
             <v-list-item-content>
-              <v-list-item-subtitle>Test data</v-list-item-subtitle>
+              <v-list-item-subtitle>{{$t('admin.testData.title')}}</v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
           <v-list
@@ -37,7 +37,7 @@
               </v-list-item-icon>
 
               <v-list-item-content>
-                <v-list-item-title>Upload</v-list-item-title>
+                <v-list-item-title>{{$t('admin.testData.upload')}}</v-list-item-title>
               </v-list-item-content>
             </v-list-item>
             <v-list-item
@@ -49,7 +49,7 @@
               </v-list-item-icon>
 
               <v-list-item-content>
-                <v-list-item-title>New record</v-list-item-title>
+                <v-list-item-title>{{$t('admin.testData.newRecord')}}</v-list-item-title>
               </v-list-item-content>
             </v-list-item>
             <v-list-item
@@ -61,7 +61,7 @@
               </v-list-item-icon>
 
               <v-list-item-content>
-                <v-list-item-title>Browse</v-list-item-title>
+                <v-list-item-title>{{$t('admin.testData.browse')}}</v-list-item-title>
               </v-list-item-content>
             </v-list-item>
           </v-list>

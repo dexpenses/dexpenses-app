@@ -20,21 +20,33 @@
     "ONLINE": "Online"
   },
   "validations": {
-    "messages": {
-      "_default": "{0} ist ungültig.",
-      "required": "{0} ist erforderlich.",
-      "unique": "{0} existiert bereits."
-    }
+    "_default": "{_field_} ist ungültig.",
+    "required": "{_field_} ist erforderlich.",
+    "uniqueTestDataRecord": "{_field_} existiert bereits."
   },
   "admin": {
     "testData": {
-      "identifier": "Testdaten-Identifier"
+      "identifier": "Testdaten-Identifier",
+      "browse": "Durchsuchen",
+      "newRecord": "Neuer Datensatz",
+      "title": "Testdaten",
+      "upload": "Hochladen"
     }
   },
   "fields": {
     "phoneNumber": {
       "invalidMessage": "Ungültige Telefonnummer.",
       "countryCallingCodeHint": "Es empfielt sich die Ländervorwahl anzugeben, z.B. +49."
-    }
+    },
+    "cityCode": "Stadtschlüssel",
+    "name": "Name",
+    "classifier": "Klassifikator",
+    "paymentMethod": "Bezahlmethode",
+    "category": "Kategorie",
+    "notes": "Bemerkungen"
+  },
+  "actions": {
+    "deleteImage": "Bild löschen",
+    "save": "Speichern"
   }
 }

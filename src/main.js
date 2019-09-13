@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import VueViewer from 'v-viewer';
 import * as VueGoogleMaps from 'vue2-google-maps';
-import VeeValidate from 'vee-validate'
 import vuetify from './plugins/vuetify';
 import App from './App.vue';
 import router from './router';
@@ -12,7 +11,8 @@ import './directives';
 
 import 'viewerjs/dist/viewer.css';
 import './styles.css';
-import i18n from './i18n'
+import i18n from './i18n';
+import './plugins/vee-validate';
 
 Vue.use(VueViewer);
 
@@ -24,11 +24,6 @@ Vue.use(VueGoogleMaps, {
   installComponents: false,
 });
 
-Vue.use(VeeValidate, {
-  i18nRootKey: 'validations',
-  i18n,
-});
-
 Vue.config.productionTip = false;
 
 new Vue({
@@ -36,5 +31,5 @@ new Vue({
   store,
   i18n,
   vuetify,
-  render: h => h(App)
+  render: h => h(App),
 }).$mount('#app');

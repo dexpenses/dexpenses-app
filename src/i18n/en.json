@@ -24,18 +24,30 @@
       "name": "Phone number",
       "invalidMessage": "Invalid phone number.",
       "countryCallingCodeHint": "It is recommended to supply the country calling code, e.g. +49."
-    }
+    },
+    "cityCode": "City code",
+    "name": "Name",
+    "classifier": "Classifier",
+    "paymentMethod": "Payment method",
+    "category": "Category",
+    "notes": "Notes"
   },
   "validations": {
-    "messages": {
-      "_default": "{0} is invalid.",
-      "required": "{0} is required.",
-      "unique": "{0} already exists."
-    }
+    "_default": "{_field_} is invalid.",
+    "required": "{_field_} is required.",
+    "uniqueTestDataRecord": "{_field_} already exists."
   },
   "admin": {
     "testData": {
-      "identifier": "Test data identifier"
+      "identifier": "Test data identifier",
+      "title": "Test data",
+      "upload": "Upload",
+      "newRecord": "New record",
+      "browse": "Browse"
     }
+  },
+  "actions": {
+    "deleteImage": "Delete image",
+    "save": "Save"
   }
 }
