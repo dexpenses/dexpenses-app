@@ -10,5 +10,8 @@ export default new Vuetify({
   },
   theme: {
     dark: loadDarkTheme(),
+    options: {
+      customProperties: true,
+    },
   },
 });

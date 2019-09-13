@@ -92,13 +92,13 @@ export default {
   height: 300px;
   border: 2px dashed #607d8b;
   border-radius: 5px;
-  background: white;
+  /* background: white; */
   margin: 10px 0;
   position: relative;
 }
 
 .dropzone.hovering {
-  border: 2px solid #ff5722;
+  border: 2px solid var(--v-primary-base);
 }
 
 .dropzone.hovering::before {
@@ -107,7 +107,7 @@ export default {
   width: 100%;
   height: 100%;
   z-index: 2;
-  background: white;
+  background: var(--v-secondary-lighten5);
   opacity: 0.7;
 }
 
