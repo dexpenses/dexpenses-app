@@ -79,6 +79,7 @@
       :src="value.url"
       max-height="100%"
       max-width="100%"
+      style="width: 100%;"
     />
   </v-row>
 </template>
