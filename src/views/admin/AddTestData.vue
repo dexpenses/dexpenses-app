@@ -1,7 +1,10 @@
 <template>
   <v-row no-gutters>
     <v-col style="max-height: 100%; max-width: 50%">
-      <ImageEditor v-model="image" />
+      <ImageEditor
+        v-if="image"
+        v-model="image"
+      />
     </v-col>
     <v-col class="grow">
       <v-container>
@@ -102,7 +105,7 @@ import {
   storage,
   buildIdentifier,
   testDataImageBucket,
-  getUrl,
+  testImageUploadBucket,
 } from './util';
 import 'cropperjs/dist/cropper.css';
 
@@ -158,9 +161,6 @@ export default {
     };
   },
   computed: {
-    downloadUrl() {
-      return getUrl(this.path);
-    },
     transformedInfo() {
       return {
         ...this.info,
@@ -181,7 +181,9 @@ export default {
   },
   methods: {
     async deleteImage() {
-      await storage.ref(this.path).delete();
+      await storage(testImageUploadBucket)
+        .ref(this.path)
+        .delete();
       this.$router.push({ name: 'adminTestDataNew' });
     },
     async saveInfo() {
@@ -209,8 +211,12 @@ export default {
                 if (newExt) {
                   info.path = info.path.replace(/\..*$/, `.${newExt}`);
                 }
-                await storage.ref(info.path).put(this.image.blob);
-                return storage.ref(this.path).delete();
+                await storage(testDataImageBucket)
+                  .ref(info.path)
+                  .put(this.image.blob);
+                return storage(testImageUploadBucket)
+                  .ref(this.path)
+                  .delete();
               }
               return firebase.functions().httpsCallable('moveTestDataImage')({
                 ...info,
@@ -251,9 +257,11 @@ export default {
       }
     },
   },
-  created() {
+  async created() {
     this.image = {
-      url: this.downloadUrl,
+      url: await storage(testImageUploadBucket)
+        .ref(this.path)
+        .getDownloadURL(),
     };
   },
 };

@@ -19,7 +19,7 @@
 import { mapState } from 'vuex';
 import FileUpload from '@/components/upload/FileUpload.vue';
 import FileUploadTask from '@/components/upload/FileUploadTask.vue';
-import { storage } from './util';
+import { storage, testImageUploadBucket } from './util';
 
 export default {
   components: { FileUpload, FileUploadTask },
@@ -28,8 +28,8 @@ export default {
   },
   methods: {
     uploadImage(file) {
-      return storage
-        .ref(`${this.user.uid}-${Date.now()}-${file.name}`)
+      return storage(testImageUploadBucket)
+        .ref(`${this.user.uid}/${Date.now()}-${file.name}`)
         .put(file, {
           contentType: file.type,
         });

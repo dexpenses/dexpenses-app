@@ -29,7 +29,7 @@
 
 <script>
 import { mapState } from 'vuex';
-import { storage, getUrl } from './util';
+import { storage, testImageUploadBucket } from './util';
 
 export default {
   data() {
@@ -41,10 +41,18 @@ export default {
     ...mapState('user', ['user']),
   },
   async created() {
-    const { items } = await storage.ref().listAll();
-    this.pending = items
-      .filter(i => i.name.startsWith(this.user.uid))
-      .map(ref => ({ ref, downloadUrl: getUrl(ref.fullPath) }));
+    const { items } = await storage(testImageUploadBucket)
+      .ref(this.user.uid)
+      .listAll();
+
+    this.pending = await Promise.all(
+      items.map(async ref => ({
+        ref,
+        downloadUrl: await storage(testImageUploadBucket)
+          .ref(ref.fullPath)
+          .getDownloadURL(),
+      }))
+    );
   },
 };
 </script>
