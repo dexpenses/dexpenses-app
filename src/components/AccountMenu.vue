@@ -28,7 +28,7 @@
       >
         <v-list-item-content>
           <v-list-item-title>
-            Settings
+            {{$t('settings.title')}}
           </v-list-item-title>
         </v-list-item-content>
         <v-list-item-action>
@@ -44,7 +44,7 @@
             @change="$store.dispatch('localSettings/setDarkTheme',{dark:!!$event,$vuetify})"
           ></v-switch>
         </v-list-item-action>
-        <v-list-item-title>Dark mode</v-list-item-title>
+        <v-list-item-title>{{$t('settings.darkMode')}}</v-list-item-title>
       </v-list-item>
 
       <v-list-item
@@ -53,7 +53,7 @@
       >
         <v-list-item-content>
           <v-list-item-title>
-            Logout
+            {{$t('auth.logout')}}
           </v-list-item-title>
         </v-list-item-content>
         <v-list-item-action>

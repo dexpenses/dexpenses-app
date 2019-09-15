@@ -6,7 +6,7 @@
       @dropped="hovering = false; startUpload($event)"
       :class="{hovering}"
     >
-      <h3>Just drop some files</h3>
+      <h3>{{$t('actions.dropFiles')}}</h3>
 
       <div class="file">
         <label class="file-label">
@@ -26,7 +26,7 @@
               left
               dark
             >cloud_upload</v-icon>
-            or choose a file…
+            {{$t('actions.orChooseFile')}}
           </v-btn>
         </label>
       </div>

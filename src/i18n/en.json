@@ -4,7 +4,10 @@
   "receipts": "Receipts",
   "rules": "Rules",
   "upload": "Upload",
-  "settings": "Settings",
+  "settings": {
+    "title": "Settings",
+    "darkMode": "Dark mode"
+  },
   "language": "Language",
   "phoneNumber": "Phone Number",
   "homeAddress": "Home Address",
@@ -31,7 +34,8 @@
     "paymentMethod": "Payment method",
     "category": "Category",
     "notes": "Notes",
-    "testDataIdentifier": "Test data identifier"
+    "testDataIdentifier": "Test data identifier",
+    "id": "ID"
   },
   "validations": {
     "_default": "{_field_} is invalid.",
@@ -48,6 +52,12 @@
   },
   "actions": {
     "deleteImage": "Delete image",
-    "save": "Save"
+    "save": "Save",
+    "selectReceipt": "Select a receipt",
+    "dropFiles": "Just drop some files",
+    "orChooseFile": "or choose a file…"
+  },
+  "auth": {
+    "logout": "Logout"
   }
 }

@@ -18,32 +18,32 @@
     <v-divider vertical></v-divider>
     <v-col>
       <v-scroll-y-transition mode="out-in">
-        <div v-if="!selected">Select a receipt</div>
+        <div v-if="!selected">{{$t('actions.selectReceipt')}}</div>
         <div v-else>
           <v-simple-table>
             <tbody>
               <tr>
-                <td>ID</td>
+                <td>{{$t('fields.id')}}</td>
                 <td>{{ selected.id }}</td>
               </tr>
               <tr>
-                <td>Category</td>
+                <td>{{$t('fields.category')}}</td>
                 <td>{{ selected.data.category }}</td>
               </tr>
               <tr>
-                <td>City code</td>
+                <td>{{$t('fields.cityCode')}}</td>
                 <td>{{ selected.data.cityCode }}</td>
               </tr>
               <tr>
-                <td>Name</td>
+                <td>{{$t('fields.name')}}</td>
                 <td>{{ selected.data.name }}</td>
               </tr>
               <tr>
-                <td>Classifier</td>
+                <td>{{$t('fields.classifier')}}</td>
                 <td>{{ selected.data.classifier }}</td>
               </tr>
               <tr>
-                <td>Payment method</td>
+                <td>{{$t('fields.paymentMethod')}}</td>
                 <td>{{ selected.data.paymentMethod }}</td>
               </tr>
             </tbody>

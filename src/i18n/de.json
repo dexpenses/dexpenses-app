@@ -4,7 +4,10 @@
   "receipts": "Bons",
   "rules": "Regeln",
   "upload": "Hochladen",
-  "settings": "Einstellungen",
+  "settings": {
+    "title": "Einstellungen",
+    "darkMode": "Dunkler Modus"
+  },
   "language": "Spache",
   "phoneNumber": "Telefonnummer",
   "homeAddress": "Heimataddresse",
@@ -43,10 +46,17 @@
     "paymentMethod": "Bezahlmethode",
     "category": "Kategorie",
     "notes": "Bemerkungen",
-    "testDataIdentifier": "Testdaten-Identifier"
+    "testDataIdentifier": "Testdaten-Identifier",
+    "id": "ID"
   },
   "actions": {
     "deleteImage": "Bild löschen",
-    "save": "Speichern"
+    "save": "Speichern",
+    "selectReceipt": "Beleg auswählen",
+    "dropFiles": "Dateien einfach hier reinziehen",
+    "orChooseFile": "oder eine Datei wählen"
+  },
+  "auth": {
+    "logout": "Abmelden"
   }
 }
