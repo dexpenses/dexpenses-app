@@ -2,22 +2,38 @@
   <DoughnutChart
     v-if="chartData"
     :chart-data="chartData"
-    :options="{responsive: true, maintainAspectRatio: false}"
+    :options="options"
   />
 </template>
 <script>
 import firebase from 'firebase/app';
 import DoughnutChart from '@/components/dashboard/DoughnutChart.vue';
+import FormattableMixin from './FormattableMixin';
 
 export default {
+  mixins: [FormattableMixin],
   props: {
     func: String,
     data: Object,
   },
   components: { DoughnutChart },
   data() {
+    const self = this;
     return {
       chartData: null,
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        tooltips: {
+          callbacks: {
+            label(tooltipItem, data) {
+              const value =
+                data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+              return self.nf.format(value);
+            },
+          },
+        },
+      },
     };
   },
   computed: {
@@ -44,11 +60,11 @@ export default {
     this.chartData = {
       datasets: [
         {
-          data: data.map(row => Object.values(row)[1]),
+          data: data.map(({ value }) => value),
           backgroundColor: this.colors, // TODO: maybe it is not enough
         },
       ],
-      labels: data.map(row => Object.values(row)[0]),
+      labels: data.map(({ key }) => key),
     };
   },
 };

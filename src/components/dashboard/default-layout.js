@@ -6,7 +6,7 @@ export default [
     h: 2,
     i: '0',
     component: 'Kpi',
-    props: { title: 'Average monthly total', func: 'aggregateAverageTotal' },
+    props: { title: 'Average monthly total', func: 'aggregateAverageTotal', format: {style:'currency',currency:'EUR'} },
   },
   {
     x: 3,
@@ -25,9 +25,12 @@ export default [
           },
         },
       },
+      format: {
+        style:'currency',currency:'EUR'
+      }
     },
   },
-  { x: 6, y: 0, w: 3, h: 2, i: '2', component: 'TagCloud' },
+  { x: 6, y: 0, w: 3, h: 2, i: '2', component: 'TagCloud', props: {format:{style:'currency',currency:'EUR'}} },
   {
     x: 9,
     y: 0,
@@ -35,7 +38,7 @@ export default [
     h: 2,
     i: '3',
     component: 'DoughnutAggregation',
-    props: { func: 'aggregateByPaymentMethod' },
+    props: { func: 'groupByPaymentMethod', format: {style:'currency',currency:'EUR'} },
   },
   {
     x: 0,

@@ -23,6 +23,7 @@
         :chart-data="chartData"
         v-if="chartData"
         @drill="drillDown"
+        :tooltip-label="v => nf.format(v)"
       />
       <v-progress-circular
         v-if="loading"
@@ -39,66 +40,70 @@ import firebase from 'firebase/app';
 import { DateTime } from 'luxon';
 import BarChart from '@/components/dashboard/BarChart.vue';
 import { dateRange } from '@/util/dates';
+import FormattableMixin from './FormattableMixin';
 
 function label(period) {
   switch (period) {
-    case 'yearly':
-      return row => new Date(row.year, 0, 1);
-    case 'monthly':
-      return row => new Date(row.year, row.month - 1, 1);
-    case 'daily':
-      return row => new Date(row.year, row.month - 1, row.day);
-    case 'hourly':
-      return row => new Date(row.year, row.month - 1, row.day, row.hour);
+    case 'year':
+      return ([row]) => new Date(row.year, 0, 1);
+    case 'month':
+      return ([row]) => new Date(row.year, row.month - 1, 1);
+    case 'day':
+      return ([row]) => new Date(row.year, row.month - 1, row.day);
+    case 'hour':
+      return ([row]) => new Date(row.year, row.month - 1, row.day, row.hour);
     default:
       return '';
   }
 }
 
 const startEndFor = {
-  monthly(row) {
+  month([row]) {
     return [`${row.year}-01-01`, `${row.year}-12-31`];
   },
-  daily(row) {
+  day([row]) {
     return [
       `${row.year}-${row.month}-01`,
       `${row.year}-${row.month}-${new Date(row.year, row.month, 0).getDate()}`,
     ];
   },
-  hourly(row) {
+  hour([row]) {
     const day = `${row.year}-${row.month}-${row.day}`;
     return [day, `${day} 23:59:59.999999`];
   },
 };
 
 const breadcrumbFor = {
-  monthly(start) {
+  month(start) {
     const [y] = start.split('-');
     return `${y}`;
   },
-  daily(start) {
+  day(start) {
     const [y, m] = start.split('-');
     return `${m}/${y}`;
   },
-  hourly(start) {
+  hour(start) {
     const [, , d] = start.split('-');
     return `${d}`;
   },
 };
 
-const unitForPeriod = {
-  yearly: 'year',
-  monthly: 'month',
-  daily: 'day',
-  hourly: 'hour',
-};
-
 export default {
+  mixins: [FormattableMixin],
   name: 'ExpensesOverTime',
   props: {
     title: {
       type: String,
       default: 'Expenses over time',
+    },
+    format: {
+      type: Object,
+      default() {
+        return {
+          style: 'currency',
+          currency: 'EUR',
+        };
+      },
     },
   },
   components: {
@@ -110,7 +115,7 @@ export default {
       rows: null,
       chartData: null,
       drillLevel: 1,
-      drillLevels: ['yearly', 'monthly', 'daily', 'hourly'],
+      drillLevels: ['year', 'month', 'day', 'hour'],
       start: DateTime.local()
         .minus({ years: 1 })
         .toSQLDate(),
@@ -125,8 +130,10 @@ export default {
         },
         {
           text: 'Last year',
-          start: '2018-05-01',
-          end: '2019-05-01',
+          start: DateTime.local()
+            .plus({ years: -1 })
+            .toSQLDate(),
+          end: DateTime.local().toSQLDate(),
         },
       ],
     };
@@ -178,7 +185,7 @@ export default {
       this.loading = true;
       if (!this.chartData) {
         // render dummy chart to display loading animation
-        const unit = unitForPeriod[this.drillLevels[this.drillLevel]];
+        const unit = this.drillLevels[this.drillLevel];
         const from = DateTime.fromSQL(this.start);
         const to = DateTime.fromSQL(this.end);
         const dates = dateRange(unit, from, to);
@@ -199,13 +206,13 @@ export default {
 
       this.chartData = this.newChartData({
         labels: result.data.map(label(this.drillLevels[this.drillLevel])),
-        data: result.data.map(r => r.total),
+        data: result.data.map(([, total]) => total),
       });
       this.loading = false;
     },
     newChartData({ labels, data }) {
       return {
-        $unit: unitForPeriod[this.drillLevels[this.drillLevel]],
+        $unit: this.drillLevels[this.drillLevel],
         labels,
         datasets: [
           {

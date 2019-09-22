@@ -1,7 +1,7 @@
 <template>
   <div class="kpi-container">
     <h2 v-if="title">{{title}}</h2>
-    <span v-if="value || value === 0">{{value}} €</span>
+    <span v-if="value || value === 0">{{value}}</span>
     <span
       class="red--text text--lighten-1"
       v-else-if="error"
@@ -16,8 +16,10 @@
 </template>
 <script>
 import firebase from 'firebase/app';
+import FormattableMixin from './FormattableMixin';
 
 export default {
+  mixins: [FormattableMixin],
   props: {
     title: String,
     func: {
@@ -37,7 +39,7 @@ export default {
       const { data } = await firebase.functions().httpsCallable(this.func)(
         this.data || {}
       );
-      this.value = data.value || 0;
+      this.value = this.nf.format(data.value || 0);
     } catch {
       this.error = true;
     }

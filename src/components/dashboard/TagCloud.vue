@@ -15,7 +15,7 @@
             {{ text }}
           </div>
         </template>
-        <span>{{weight}} €</span>
+        <span>{{nf.format(weight)}}</span>
       </v-tooltip>
     </template>
   </vue-word-cloud>
@@ -24,8 +24,10 @@
 <script>
 import firebase from 'firebase/app';
 import VueWordCloud from 'vuewordcloud';
+import FormattableMixin from './FormattableMixin';
 
 export default {
+  mixins: [FormattableMixin],
   components: {
     VueWordCloud,
   },
@@ -37,12 +39,12 @@ export default {
     };
   },
   async mounted() {
-    const { data } = await firebase
-      .functions()
-      .httpsCallable('aggregateByTags')({});
-    this.tags = data.map(({ tag, total }) => [tag, total]);
-    this.top3Threshold = data[2] ? data[2].total : 0;
-    this.top10Threshold = data[9] ? data[9].total : 0;
+    const { data } = await firebase.functions().httpsCallable('groupByTags')(
+      {}
+    );
+    this.tags = data.map(({ key, value }) => [key, value]);
+    this.top3Threshold = data[2] ? data[2].value : 0;
+    this.top10Threshold = data[9] ? data[9].value : 0;
   },
 };
 </script>

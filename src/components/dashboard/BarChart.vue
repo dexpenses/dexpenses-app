@@ -12,9 +12,10 @@ const tooltipFormats = {
 /* eslint no-underscore-dangle: "off" */
 export default {
   extends: Bar,
-  props: ['chartData'],
+  props: ['chartData', 'tooltipLabel'],
   computed: {
     options() {
+      const vm = this;
       return {
         responsive: true,
         maintainAspectRatio: false,
@@ -31,7 +32,7 @@ export default {
               );
             },
             label(tooltipItem) {
-              return `${tooltipItem.value} €`;
+              return vm.tooltipLabel(tooltipItem.value);
             },
           },
         },
