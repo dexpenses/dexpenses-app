@@ -4,6 +4,7 @@ node_js:
 cache: yarn
 script:
   - yarn test:unit --silent
+  - yarn build
 deploy:
   on:
     branch: master
