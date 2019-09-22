@@ -65,6 +65,7 @@
     <img
       v-if="!editMode"
       :src="value.url"
+      crossorigin="anonymous"
       style="max-height: 100%; max-width: 100%"
     />
     <VueCropper
