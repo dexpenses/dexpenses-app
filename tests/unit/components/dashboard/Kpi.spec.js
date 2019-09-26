@@ -18,6 +18,10 @@ describe('dashboard/Kpi', () => {
       propsData: {
         title: 'title',
         func: 'mockFunc',
+        format: {
+          style: 'currency',
+          currency: 'EUR'
+        }
       },
       stubs: {
         'v-progress-circular': true,

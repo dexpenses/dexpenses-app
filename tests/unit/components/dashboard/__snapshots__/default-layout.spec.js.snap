@@ -7,6 +7,10 @@ Array [
     "h": 2,
     "i": "0",
     "props": Object {
+      "format": Object {
+        "currency": "EUR",
+        "style": "currency",
+      },
       "func": "aggregateAverageTotal",
       "title": "Average monthly total",
     },
@@ -22,6 +26,10 @@ Array [
       "data": Object {
         "start": "2019-05-01",
       },
+      "format": Object {
+        "currency": "EUR",
+        "style": "currency",
+      },
       "func": "aggregateTotal",
       "title": "Current month",
     },
@@ -33,7 +41,12 @@ Array [
     "component": "TagCloud",
     "h": 2,
     "i": "2",
-    "props": undefined,
+    "props": Object {
+      "format": Object {
+        "currency": "EUR",
+        "style": "currency",
+      },
+    },
     "w": 3,
     "x": 6,
     "y": 0,
@@ -43,7 +56,11 @@ Array [
     "h": 2,
     "i": "3",
     "props": Object {
-      "func": "aggregateByPaymentMethod",
+      "format": Object {
+        "currency": "EUR",
+        "style": "currency",
+      },
+      "func": "groupByPaymentMethod",
     },
     "w": 3,
     "x": 9,
