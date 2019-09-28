@@ -36,9 +36,10 @@ export default {
   },
   async mounted() {
     try {
-      const { data } = await firebase.functions().httpsCallable(this.func)(
-        this.data || {}
-      );
+      const { data } = await firebase.functions().httpsCallable('query')({
+        name: this.func,
+        params: this.data || {},
+      });
       this.value = this.nf.format(data.value || 0);
     } catch {
       this.error = true;

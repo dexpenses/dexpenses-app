@@ -39,9 +39,9 @@ export default {
     };
   },
   async mounted() {
-    const { data } = await firebase.functions().httpsCallable('groupByTags')(
-      {}
-    );
+    const { data } = await firebase.functions().httpsCallable('query')({
+      name: 'groupByTags',
+    });
     this.tags = data.map(({ key, value }) => [key, value]);
     this.top3Threshold = data[2] ? data[2].value : 0;
     this.top10Threshold = data[9] ? data[9].value : 0;

@@ -69,16 +69,17 @@ export default {
     updateBounds: debounce(async function cb(bounds) {
       const ne = bounds.getNorthEast();
       const sw = bounds.getSouthWest();
-      const { data } = await firebase
-        .functions()
-        .httpsCallable('findByBoundingBox')({
-        southWest: {
-          lng: sw.lng(),
-          lat: sw.lat(),
-        },
-        northEast: {
-          lng: ne.lng(),
-          lat: ne.lat(),
+      const { data } = await firebase.functions().httpsCallable('query')({
+        name: 'findByBoundingBox',
+        params: {
+          southWest: {
+            lng: sw.lng(),
+            lat: sw.lat(),
+          },
+          northEast: {
+            lng: ne.lng(),
+            lat: ne.lat(),
+          },
         },
       });
       this.receipts = data.map(r => ({

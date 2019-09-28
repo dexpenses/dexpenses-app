@@ -38,7 +38,7 @@
 <script>
 import firebase from 'firebase/app';
 import { DateTime } from 'luxon';
-import BarChart from '@/components/dashboard/BarChart.vue';
+import BarChart from '@/components/charts/BarChart.vue';
 import { dateRange } from '@/util/dates';
 import FormattableMixin from './FormattableMixin';
 
@@ -56,20 +56,31 @@ function label(period) {
       return '';
   }
 }
-
 const startEndFor = {
   month([row]) {
     return [`${row.year}-01-01`, `${row.year}-12-31`];
   },
   day([row]) {
     return [
-      `${row.year}-${row.month}-01`,
-      `${row.year}-${row.month}-${new Date(row.year, row.month, 0).getDate()}`,
+      DateTime.fromObject({
+        year: row.year,
+        month: row.month,
+      }).toISO(),
+      DateTime.fromObject({
+        year: row.year,
+        month: row.month + 1,
+      })
+        .minus({ milliseconds: 1 })
+        .toISO(),
     ];
   },
   hour([row]) {
-    const day = `${row.year}-${row.month}-${row.day}`;
-    return [day, `${day} 23:59:59.999999`];
+    const day = DateTime.fromObject({
+      year: row.year,
+      month: row.month,
+      day: row.day,
+    });
+    return [day.toISO(), day.plus({ days: 1, milliseconds: -1 }).toISO()];
   },
 };
 
@@ -83,8 +94,7 @@ const breadcrumbFor = {
     return `${m}/${y}`;
   },
   hour(start) {
-    const [, , d] = start.split('-');
-    return `${d}`;
+    return `${DateTime.fromISO(start).day}`;
   },
 };
 
@@ -118,22 +128,22 @@ export default {
       drillLevels: ['year', 'month', 'day', 'hour'],
       start: DateTime.local()
         .minus({ years: 1 })
-        .toSQLDate(),
-      end: DateTime.local().toSQLDate(),
+        .toISO(),
+      end: DateTime.local().toISO(),
       drillBreadcrumbs: [
         {
           text: 'Overall',
           start: '1970-01-01',
           end: DateTime.local()
             .plus({ years: 1 })
-            .toSQLDate(),
+            .toISO(),
         },
         {
           text: 'Last year',
           start: DateTime.local()
             .plus({ years: -1 })
-            .toSQLDate(),
-          end: DateTime.local().toSQLDate(),
+            .toISO(),
+          end: DateTime.local().toISO(),
         },
       ],
     };
@@ -186,8 +196,8 @@ export default {
       if (!this.chartData) {
         // render dummy chart to display loading animation
         const unit = this.drillLevels[this.drillLevel];
-        const from = DateTime.fromSQL(this.start);
-        const to = DateTime.fromSQL(this.end);
+        const from = DateTime.fromISO(this.start);
+        const to = DateTime.fromISO(this.end);
         const dates = dateRange(unit, from, to);
         this.chartData = this.newChartData({
           labels: dates,
@@ -199,9 +209,10 @@ export default {
         start: this.start,
         end: this.end,
       };
-      const result = await firebase
-        .functions()
-        .httpsCallable('aggregateTotalOverTimePeriod')(req);
+      const result = await firebase.functions().httpsCallable('query')({
+        name: 'aggregateTotalOverTimePeriod',
+        params: req,
+      });
       this.rows = result.data;
 
       this.chartData = this.newChartData({

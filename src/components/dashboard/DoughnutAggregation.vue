@@ -7,7 +7,7 @@
 </template>
 <script>
 import firebase from 'firebase/app';
-import DoughnutChart from '@/components/dashboard/DoughnutChart.vue';
+import DoughnutChart from '@/components/charts/DoughnutChart.vue';
 import FormattableMixin from './FormattableMixin';
 
 export default {
@@ -54,9 +54,10 @@ export default {
     },
   },
   async mounted() {
-    const { data } = await firebase.functions().httpsCallable(this.func)(
-      this.data || {}
-    );
+    const { data } = await firebase.functions().httpsCallable('query')({
+      name: this.func,
+      params: this.data || {},
+    });
     this.chartData = {
       datasets: [
         {
