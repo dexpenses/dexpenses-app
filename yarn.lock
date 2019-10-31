@@ -12861,10 +12861,10 @@ vuetify-loader@^1.0.5:
   dependencies:
     loader-utils "^1.2.0"
 
-vuetify@^2.0.18:
-  version "2.0.18"
-  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-2.0.18.tgz#f947174cacccc495b67be3607c857e229d020dbc"
-  integrity sha512-eXmIJ8kDDS9p/JEcKCzF+YAjL4THvDmyemfmx2j/uB6QRm3HV3rp9lGnEqGNbB/98FqbMUItBUKF9rrpM1wMgg==
+vuetify@^2.1.8:
+  version "2.1.8"
+  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-2.1.8.tgz#5c7e5acea0a00f7752728a1661ace1301e51320e"
+  integrity sha512-VJncsWN5y234qRYMB3PMWUcRiCCbTNDHha/VHnNCk+HN6ixLdPf8qbssp/2Dd0TfaIHsppW3qjs6jwuaMOMMaA==
 
 vuewordcloud@^18.7.11:
   version "18.7.11"
