@@ -1,0 +1,63 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: vuetify
+    versions:
+    - 2.4.11
+    - 2.4.3
+    - 2.4.4
+    - 2.4.5
+    - 2.4.6
+    - 2.4.7
+    - 2.4.8
+    - 2.4.9
+  - dependency-name: firebase
+    versions:
+    - 8.2.10
+    - 8.2.5
+    - 8.2.6
+    - 8.2.7
+    - 8.2.8
+    - 8.2.9
+    - 8.3.0
+    - 8.3.1
+    - 8.3.2
+    - 8.3.3
+    - 8.4.0
+    - 8.4.1
+  - dependency-name: vue-cli-plugin-vuetify
+    versions:
+    - 2.1.0
+    - 2.1.1
+    - 2.2.0
+    - 2.2.1
+    - 2.2.2
+    - 2.3.0
+    - 2.3.1
+  - dependency-name: sass-loader
+    versions:
+    - 10.1.1
+    - 11.0.0
+  - dependency-name: "@vue/cli-plugin-babel"
+    versions:
+    - 4.5.11
+  - dependency-name: "@vue/cli-plugin-e2e-cypress"
+    versions:
+    - 4.5.11
+  - dependency-name: luxon
+    versions:
+    - 1.25.0
+  - dependency-name: lodash
+    versions:
+    - 4.17.20
+  - dependency-name: elliptic
+    versions:
+    - 6.5.3
+  - dependency-name: handlebars
+    versions:
+    - 4.7.6
