@@ -11496,7 +11496,6 @@ snyk@^1.235.1:
     needle "^2.2.4"
     opn "^5.5.0"
     os-name "^3.0.0"
-    proxy-agent "*"
     proxy-from-env "^1.0.0"
     semver "^6.0.0"
     snyk-config "^2.2.1"
@@ -12861,10 +12860,10 @@ vuetify-loader@^1.0.5:
   dependencies:
     loader-utils "^1.2.0"
 
-vuetify@^2.0.18:
-  version "2.0.18"
-  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-2.0.18.tgz#f947174cacccc495b67be3607c857e229d020dbc"
-  integrity sha512-eXmIJ8kDDS9p/JEcKCzF+YAjL4THvDmyemfmx2j/uB6QRm3HV3rp9lGnEqGNbB/98FqbMUItBUKF9rrpM1wMgg==
+vuetify@^3.0.0:
+  version "3.8.7"
+  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-3.8.7.tgz#59377e406551c92f5d532694095462c9ee2bc6fa"
+  integrity sha512-Xid5za36cOA9We0QShcjiI4qoWXcwABhlhDHi8/0qpjSrBgJ63GobQdZ9YYyRvjMT3XXJqgbkdis1RS/oGL8Bw==
 
 vuewordcloud@^18.7.11:
   version "18.7.11"
